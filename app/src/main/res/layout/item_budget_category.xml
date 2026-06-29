@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingVertical="@dimen/sw_budget_item_padding_v">
+
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/ivCategoryIcon"
+        android:layout_width="@dimen/sw_budget_icon_size"
+        android:layout_height="@dimen/sw_budget_icon_size"
+        android:background="@drawable/bg_budget_category_icon"
+        android:padding="@dimen/sw_budget_icon_padding"
+        android:scaleType="center"
+        android:importantForAccessibility="no"
+        android:tint="@color/sw_green_primary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_category_shopping"/>
+
+
+    <TextView
+        android:id="@+id/tvCategoryName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/sw_budget_icon_text_gap"
+        android:layout_marginEnd="@dimen/sw_budget_percent_end_gap"
+        android:textAppearance="@style/TextAppearance.SpendWise.BudgetCategoryName"
+        android:singleLine="true"
+        android:ellipsize="end"
+        app:layout_constraintStart_toEndOf="@id/ivCategoryIcon"
+        app:layout_constraintEnd_toStartOf="@id/tvCategoryPercent"
+        app:layout_constraintTop_toTopOf="@id/ivCategoryIcon"
+        tools:text="Shopping"/>
+
+
+    <TextView
+        android:id="@+id/tvCategoryPercent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.SpendWise.BudgetPercent"
+        app:layout_constraintBottom_toBottomOf="@+id/tvCategoryName"
+        app:layout_constraintTop_toTopOf="@+id/tvCategoryName"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="380dp"
+        tools:text="78%" />
+
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/progressBudget"
+        style="@style/Widget.SpendWise.BudgetProgressIndicator"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/sw_budget_icon_text_gap"
+        android:layout_marginTop="@dimen/sw_budget_name_progress_gap"
+        android:progress="78"
+        app:layout_constraintStart_toEndOf="@id/ivCategoryIcon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvCategoryName"/>
+
+
+    <TextView
+        android:id="@+id/tvCategoryAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/sw_budget_progress_amount_gap"
+        android:layout_marginEnd="4dp"
+        android:textAppearance="@style/TextAppearance.SpendWise.BudgetAmount"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/progressBudget"
+        tools:text="$780 / $1,000" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

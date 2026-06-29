@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="sw_surface">#1C1B1F</color>
+    <color name="sw_background">#121212</color>
+
+    <color name="sw_nav_active">#8FD8B5</color>
+    <color name="sw_nav_inactive">#B8B8B8</color>
+    <color name="sw_nav_active_indicator">#274C3B</color>
+
+
+    <color name="fab_background">#1A5C42</color>
+    <color name="fab_icon_color">#FFFFFF</color>
+</resources>

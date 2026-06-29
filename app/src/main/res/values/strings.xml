@@ -1,0 +1,111 @@
+<resources>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- APP                                                          -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <string name="app_name">SpendWise</string>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- TOP APP BAR — ACCESSIBILITY CONTENT DESCRIPTIONS            -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <string name="cd_open_menu">Open navigation menu</string>
+    <string name="cd_open_navigation_drawer">Open navigation drawer</string>
+    <string name="cd_notifications">Notifications</string>
+    <string name="cd_user_profile">User profile</string>
+    <string name="cd_toggle_balance_visibility">Toggle balance visibility</string>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- GREETING SECTION                                             -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+
+    <string name="greeting_subtitle">Here\'s your financial overview</string>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- AVAILABLE BALANCE HERO CARD                                  -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+
+    <string name="label_available_balance">Available Balance</string>
+
+    <!-- Date filter dropdown options -->
+    <string name="filter_this_month">This Month</string>
+    <string name="filter_this_year">This Year</string>
+    <string name="filter_custom_range">Custom Range</string>
+
+    <!-- Income / Expense row labels -->
+    <string name="label_income">Income</string>
+    <string name="label_expenses">Expenses</string>
+
+    <!-- Percentage badge: "↑ 12.5% vs last period" -->
+    <string name="label_vs_last_period">vs last period</string>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- QUICK ACTIONS STRIP                                          -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+
+
+    <!-- Action button labels -->
+    <string name="action_add_expense">Add Expense</string>
+    <string name="action_scan_receipt">Scan Receipt</string>
+    <string name="action_set_budget">Set Budget</string>
+    <string name="action_export_report">Export Report</string>
+
+    <!-- Accessibility content descriptions (more descriptive than labels) -->
+    <string name="cd_add_expense">Add a new expense</string>
+    <string name="cd_scan_receipt">Scan a receipt</string>
+    <string name="cd_set_budget">Set a budget goal</string>
+    <string name="cd_export_report">Export spending report</string>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- SHARED SECTION HEADER                                        -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <string name="label_view_all">View all</string>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- BUDGET OVERVIEW CARD                                         -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <string name="section_budget_overview">Budget Overview</string>
+    <string name="label_of_budget_used">of budget used</string>
+
+    <string name="label_of_total">of %s</string>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- SPEND CATEGORIES  (shared by Budget Overview + Recent Spends)-->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <string name="category_shopping">Shopping</string>
+    <string name="category_food_dining">Food &amp; Dining</string>
+    <string name="category_transport">Transport</string>
+    <string name="category_bills_utilities">Bills &amp; Utilities</string>
+    <string name="category_entertainment">Entertainment</string>
+    <string name="category_travel">Travel</string>
+    <string name="category_groceries">Groceries</string>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- RECENT SPENDS                                                -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+
+    <string name="section_recent_spends">Recent Spends</string>
+
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- AI INSIGHT CARD                                              -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <string name="section_ai_insight">AI Insight</string>
+
+    <string name="btn_view_insights">View Insights</string>
+    <string name="cd_ai_illustration">AI financial insight illustration</string>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- BOTTOM NAVIGATION BAR                                        -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <string name="nav_dashboard">Dashboard</string>
+    <string name="nav_transactions">Transactions</string>
+    <string name="nav_budgets">Budgets</string>
+    <string name="nav_insights">Insights</string>
+
+    <!-- FAB -->
+    <string name="cd_fab_add_expense">Add new expense</string>
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+</resources>

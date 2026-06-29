@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- BRAND                                                        -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <color name="sw_green_primary">#1A5C42</color>
+    <color name="sw_green_primary_dark">#154D37</color>
+    <color name="sw_green_primary_light">#E8F5EF</color>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- SURFACES                                                     -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <color name="sw_background">#F4F6F5</color>
+    <color name="sw_surface">#FFFFFF</color>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- TEXT                                                         -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <color name="sw_text_primary">#1A1A1A</color>
+    <color name="sw_text_secondary">#757575</color>
+    <color name="sw_text_link">#1A5C42</color>
+    <color name="sw_text_on_dark">#FFFFFF</color>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- NOTIFICATION BADGE                                           -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <color name="sw_badge_red">#FF3B30</color>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- AVATAR PLACEHOLDER                                           -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <color name="sw_avatar_placeholder_bg">#E0E8E4</color>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- AVAILABLE BALANCE CARD                                  -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <color name="sw_card_bg">#1D8059</color>
+    <color name="sw_hero_text_primary">#FFFFFF</color>
+
+
+    <color name="sw_hero_text_secondary">#B8D9CE</color>
+    <color name="sw_hero_divider">#2D5E4A</color>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- INCOME / EXPENSE INDICATORS                                  -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+
+
+    <color name="sw_indicator_green_bg">#2D7A5A</color>
+    <color name="sw_indicator_red_bg">#7D2C38</color>
+    <color name="sw_positive_green">#4CAF7D</color>
+    <color name="sw_negative_red">#C0392B</color>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- PERCENTAGE BADGE PILL  (↑ 12.5%)                            -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <color name="sw_badge_pill_bg">#2D7A5A</color>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- FILTER CHIP  ("This Month ▼" on dark hero card)             -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <color name="sw_filter_chip_bg">#FFFFFF</color>
+    <color name="sw_filter_chip_text">#1A1A1A</color>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- QUICK ACTIONS — ICON CONTAINER BACKGROUNDS                   -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+
+    <color name="sw_action_blue_bg">#EAF0FF</color>
+    <color name="sw_action_green_bg">#E8F5EF</color>
+    <color name="sw_action_purple_bg">#EDE7F6</color>
+    <color name="sw_action_amber_bg">#FFF8E1</color>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- QUICK ACTIONS — ICON TINT COLORS                            -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+
+    <color name="fab_icon_color">#FFFFFF</color>
+    <color name="fab_background">#1A5C42</color>
+    <color name="sw_action_blue_icon">#3D5AFE</color>
+    <color name="sw_action_set_budget_icon">#7C3AED</color>
+    <color name="sw_action_export_report_icon">#D97706</color>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- BUDGET PROGRESS BARS  (colour-coded by threshold)           -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+
+    <color name="sw_progress_green">#1A5C42</color>
+    <color name="sw_progress_amber">#D4900A</color>
+    <color name="sw_progress_red">#C0392B</color>
+    <color name="sw_progress_track">#E0E8E4</color>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- BUDGET CATEGORY ICON BACKGROUND                             -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- Reuses sw_action_green_bg for the rounded-square containers -->
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- RECENT SPENDS — ICON CONTAINER BACKGROUNDS                  -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <color name="sw_spend_bg_shopping">#E3F2FD</color>
+    <color name="sw_spend_bg_food">#E8F5EF</color>
+    <color name="sw_spend_bg_entertainment">#F3E5F5</color>
+    <color name="sw_spend_bg_travel">#FCE4EC</color>
+    <color name="sw_spend_bg_groceries">#FFF3E0</color>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- RECENT SPENDS — ICON TINT COLORS                            -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <color name="sw_spend_icon_shopping">#1976D2</color>
+    <!-- Food &amp; Dining reuses @color/sw_green_primary -->
+    <color name="sw_spend_icon_entertainment">#7B1FA2</color>
+    <color name="sw_spend_icon_travel">#C62828</color>
+    <color name="sw_spend_icon_groceries">#E65100</color>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- BOTTOM NAVIGATION                                            -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <color name="sw_nav_active">#1A5C42</color>
+    <color name="sw_nav_inactive">#6F7280</color>
+    <!-- M3 active indicator pill behind the selected destination icon -->
+    <color name="sw_nav_active_indicator">#E8F5EF</color>
+
+
+    <!-- Card, divider and chart colors -->
+    <color name="sw_card_stroke">#E6EAE8</color>
+    <color name="sw_divider">#ECEFEE</color>
+    <color name="sw_chart_line">#D8F3E8</color>
+    <color name="sw_chart_fill">#337A61</color>
+    <color name="sw_chart_track">#E7ECE9</color>
+
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>

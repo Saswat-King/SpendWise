@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Global -->
+    <dimen name="sw_screen_margin">16dp</dimen>
+    <dimen name="sw_section_spacing">20dp</dimen>
+    <dimen name="sw_content_bottom_padding">100dp</dimen>
+    <dimen name="sw_dashboard_content_bottom_padding">100dp</dimen>
+
+    <!-- Shared cards -->
+    <dimen name="sw_card_corner_radius">16dp</dimen>
+    <dimen name="sw_card_elevation">2dp</dimen>
+    <dimen name="sw_card_padding">16dp</dimen>
+
+    <!-- Shared icons -->
+    <dimen name="sw_icon_size">24dp</dimen>
+    <dimen name="sw_icon_touch_target">48dp</dimen>
+    <dimen name="sw_icon_padding">12dp</dimen>
+
+    <!-- Toolbar -->
+    <dimen name="sw_toolbar_height">64dp</dimen>
+    <dimen name="sw_logo_size">28dp</dimen>
+    <dimen name="sw_brand_margin_start">8dp</dimen>
+    <dimen name="sw_brand_text_margin">8dp</dimen>
+    <dimen name="sw_avatar_size">48dp</dimen>
+    <dimen name="sw_toolbar_actions_gap">4dp</dimen>
+    <dimen name="sw_badge_size">10dp</dimen>
+    <dimen name="sw_badge_offset">6dp</dimen>
+
+    <!-- Greeting -->
+    <dimen name="sw_greeting_margin_top">12dp</dimen>
+    <dimen name="sw_greeting_subtitle_margin_top">4dp</dimen>
+
+    <!-- Balance hero card -->
+    <dimen name="sw_hero_card_corner_radius">24dp</dimen>
+    <dimen name="sw_hero_card_padding">20dp</dimen>
+    <dimen name="sw_hero_card_elevation">4dp</dimen>
+
+    <dimen name="sw_balance_main_size">38sp</dimen>
+    <dimen name="sw_balance_decimal_size">22sp</dimen>
+    <dimen name="sw_balance_margin_top">12dp</dimen>
+    <dimen name="sw_balance_decimal_margin">2dp</dimen>
+
+    <!-- Filter chip -->
+    <dimen name="sw_filter_chip_corner_radius">20dp</dimen>
+    <dimen name="sw_filter_chip_min_height">32dp</dimen>
+    <dimen name="sw_filter_chip_padding_h">12dp</dimen>
+    <dimen name="sw_filter_chip_icon_size">16dp</dimen>
+
+    <!-- Percentage badge -->
+    <dimen name="sw_hero_badge_margin_top">10dp</dimen>
+    <dimen name="sw_badge_pill_corner_radius">12dp</dimen>
+    <dimen name="sw_badge_pill_padding_h">10dp</dimen>
+    <dimen name="sw_badge_pill_padding_v">4dp</dimen>
+    <dimen name="sw_badge_vs_text_margin">8dp</dimen>
+
+    <dimen name="sw_hero_section_spacing">16dp</dimen>
+    <dimen name="sw_hero_chart_height">92dp</dimen>
+
+    <!-- Income and expense indicators -->
+    <dimen name="sw_indicator_circle_size">40dp</dimen>
+    <dimen name="sw_indicator_icon_padding">10dp</dimen>
+    <dimen name="sw_indicator_text_margin_start">12dp</dimen>
+    <dimen name="sw_indicator_amount_margin_top">2dp</dimen>
+    <dimen name="sw_indicator_expense_margin_start">8dp</dimen>
+
+    <!-- Budget overview -->
+    <dimen name="sw_section_title_size">18sp</dimen>
+    <dimen name="sw_view_all_size">14sp</dimen>
+    <dimen name="sw_header_content_spacing">16dp</dimen>
+    <dimen name="sw_budget_overview_content_height">184dp</dimen>
+    <dimen name="sw_donut_column_end_margin">8dp</dimen>
+
+    <dimen name="sw_donut_percent_size">28sp</dimen>
+    <dimen name="sw_donut_percent_label_size">12sp</dimen>
+    <dimen name="sw_donut_percent_label_margin">2dp</dimen>
+    <dimen name="sw_donut_group_gap">10dp</dimen>
+    <dimen name="sw_donut_amount_size">16sp</dimen>
+    <dimen name="sw_donut_amount_label_size">11sp</dimen>
+    <dimen name="sw_donut_amount_label_margin">2dp</dimen>
+
+    <!-- Budget category item -->
+    <dimen name="sw_budget_item_padding_v">10dp</dimen>
+    <dimen name="sw_budget_icon_size">40dp</dimen>
+    <dimen name="sw_budget_icon_corner_radius">12dp</dimen>
+    <dimen name="sw_budget_icon_padding">10dp</dimen>
+    <dimen name="sw_budget_icon_text_gap">12dp</dimen>
+    <dimen name="sw_budget_percent_end_gap">8dp</dimen>
+    <dimen name="sw_budget_name_progress_gap">6dp</dimen>
+    <dimen name="sw_budget_progress_amount_gap">4dp</dimen>
+
+    <!-- Progress indicator -->
+    <dimen name="sw_progress_height">6dp</dimen>
+    <dimen name="sw_progress_corner_radius">3dp</dimen>
+
+    <!-- Recent spends -->
+    <dimen name="sw_spend_section_margin_top">20dp</dimen>
+    <dimen name="sw_spend_header_list_gap">4dp</dimen>
+    <dimen name="sw_spend_item_padding_v">12dp</dimen>
+    <dimen name="sw_spend_icon_size">48dp</dimen>
+    <dimen name="sw_spend_icon_corner_radius">14dp</dimen>
+    <dimen name="sw_spend_icon_padding">12dp</dimen>
+    <dimen name="sw_spend_icon_text_gap">14dp</dimen>
+    <dimen name="sw_spend_name_desc_gap">3dp</dimen>
+    <dimen name="sw_spend_amount_date_gap">3dp</dimen>
+    <dimen name="sw_spend_column_gap">8dp</dimen>
+
+    <!-- AI insight card -->
+    <dimen name="sw_ai_card_padding">20dp</dimen>
+    <dimen name="sw_ai_card_min_height">150dp</dimen>
+    <dimen name="sw_ai_sparkle_size">18dp</dimen>
+    <dimen name="sw_ai_sparkle_text_gap">8dp</dimen>
+    <dimen name="sw_ai_desc_margin_top">10dp</dimen>
+    <dimen name="sw_ai_btn_margin_top">16dp</dimen>
+    <dimen name="sw_insight_btn_corner_radius">24dp</dimen>
+    <dimen name="sw_insight_btn_padding_start">20dp</dimen>
+    <dimen name="sw_insight_btn_padding_end">14dp</dimen>
+    <dimen name="sw_insight_btn_text_size">13sp</dimen>
+    <dimen name="sw_ai_illustration_size">110dp</dimen>
+    <dimen name="sw_ai_illustration_margin_start">8dp</dimen>
+
+    <!-- Bottom navigation and FAB -->
+    <dimen name="sw_bottom_nav_height">80dp</dimen>
+    <dimen name="sw_bottom_nav_elevation">8dp</dimen>
+    <dimen name="sw_fab_size">56dp</dimen>
+    <dimen name="sw_fab_elevation">8dp</dimen>
+
+    <!-- Quick actions -->
+    <dimen name="sw_quick_actions_padding_v">20dp</dimen>
+    <dimen name="sw_quick_actions_padding_h">8dp</dimen>
+    <dimen name="sw_quick_action_size">52dp</dimen>
+    <dimen name="sw_quick_action_column_min_height">84dp</dimen>
+    <dimen name="sw_quick_action_corner_radius">14dp</dimen>
+    <dimen name="sw_quick_action_label_margin_top">8dp</dimen>
+
+    <!-- View all touch target -->
+    <dimen name="sw_view_all_padding_v">14dp</dimen>
+    <dimen name="sw_view_all_padding_h">8dp</dimen>
+
+</resources>
