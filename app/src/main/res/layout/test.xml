@@ -5,144 +5,144 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-    <!-- Budget Overview Card -->
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/budgetOverviewCard"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="2dp"
-        app:cardBackgroundColor="@android:color/white"
-        app:cardCornerRadius="18dp"
-        app:cardElevation="3dp"
-        app:cardUseCompatPadding="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/balanceCard"
-        app:strokeColor="#EEF2F6"
-        app:strokeWidth="1dp">
+<!--    &lt;!&ndash; Budget Overview Card &ndash;&gt;-->
+<!--    <com.google.android.material.card.MaterialCardView-->
+<!--        android:id="@+id/budgetOverviewCard"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="2dp"-->
+<!--        android:layout_marginTop="16dp"-->
+<!--        android:layout_marginEnd="2dp"-->
+<!--        app:cardBackgroundColor="@android:color/white"-->
+<!--        app:cardCornerRadius="18dp"-->
+<!--        app:cardElevation="3dp"-->
+<!--        app:cardUseCompatPadding="true"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/balanceCard"-->
+<!--        app:strokeColor="#EEF2F6"-->
+<!--        app:strokeWidth="1dp">-->
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingStart="18dp"
-            android:paddingTop="18dp"
-            android:paddingEnd="18dp"
-            android:paddingBottom="18dp">
+<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:paddingStart="18dp"-->
+<!--            android:paddingTop="18dp"-->
+<!--            android:paddingEnd="18dp"-->
+<!--            android:paddingBottom="18dp">-->
 
-            <TextView
-                android:id="@+id/tvBudgetOverviewTitle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-medium"
-                android:text="Budget Overview"
-                android:textColor="#101828"
-                android:textSize="17sp"
-                app:layout_constraintEnd_toStartOf="@id/tvBudgetViewAll"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+<!--            <TextView-->
+<!--                android:id="@+id/tvBudgetOverviewTitle"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:fontFamily="sans-serif-medium"-->
+<!--                android:text="Budget Overview"-->
+<!--                android:textColor="#101828"-->
+<!--                android:textSize="17sp"-->
+<!--                app:layout_constraintEnd_toStartOf="@id/tvBudgetViewAll"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent" />-->
 
-            <TextView
-                android:id="@+id/tvBudgetViewAll"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-medium"
-                android:text="View all"
-                android:textColor="#0F7A5A"
-                android:textSize="13sp"
-                app:layout_constraintBaseline_toBaselineOf="@id/tvBudgetOverviewTitle"
-                app:layout_constraintEnd_toEndOf="parent" />
+<!--            <TextView-->
+<!--                android:id="@+id/tvBudgetViewAll"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:fontFamily="sans-serif-medium"-->
+<!--                android:text="View all"-->
+<!--                android:textColor="#0F7A5A"-->
+<!--                android:textSize="13sp"-->
+<!--                app:layout_constraintBaseline_toBaselineOf="@id/tvBudgetOverviewTitle"-->
+<!--                app:layout_constraintEnd_toEndOf="parent" />-->
 
-            <FrameLayout
-                android:id="@+id/budgetProgressContainer"
-                android:layout_width="176dp"
-                android:layout_height="176dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginBottom="12dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvBudgetOverviewTitle">
+<!--            <FrameLayout-->
+<!--                android:id="@+id/budgetProgressContainer"-->
+<!--                android:layout_width="176dp"-->
+<!--                android:layout_height="176dp"-->
+<!--                android:layout_marginTop="12dp"-->
+<!--                android:layout_marginBottom="12dp"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/tvBudgetOverviewTitle">-->
 
-                <com.google.android.material.progressindicator.CircularProgressIndicator
-                    android:id="@+id/budgetCircularProgress"
-                    android:layout_width="152dp"
-                    android:layout_height="152dp"
-                    android:layout_gravity="center"
-                    android:indeterminate="false"
-                    android:progress="65"
-                    app:indicatorColor="#197A5A"
-                    app:indicatorDirectionCircular="clockwise"
-                    app:indicatorInset="0dp"
-                    app:indicatorSize="152dp"
-                    app:trackColor="#E9ECEF"
-                    app:trackCornerRadius="7dp"
-                    app:trackThickness="13dp" />
+<!--                <com.google.android.material.progressindicator.CircularProgressIndicator-->
+<!--                    android:id="@+id/budgetCircularProgress"-->
+<!--                    android:layout_width="152dp"-->
+<!--                    android:layout_height="152dp"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:indeterminate="false"-->
+<!--                    android:progress="65"-->
+<!--                    app:indicatorColor="#197A5A"-->
+<!--                    app:indicatorDirectionCircular="clockwise"-->
+<!--                    app:indicatorInset="0dp"-->
+<!--                    app:indicatorSize="152dp"-->
+<!--                    app:trackColor="#E9ECEF"-->
+<!--                    app:trackCornerRadius="7dp"-->
+<!--                    app:trackThickness="13dp" />-->
 
-                <LinearLayout
-                    android:id="@+id/budgetProgressTextGroup"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:orientation="vertical">
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/budgetProgressTextGroup"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:gravity="center"-->
+<!--                    android:orientation="vertical">-->
 
-                    <TextView
-                        android:id="@+id/tvBudgetPercent"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-medium"
-                        android:text="65%"
-                        android:textColor="#101828"
-                        android:textSize="28sp" />
+<!--                    <TextView-->
+<!--                        android:id="@+id/tvBudgetPercent"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:fontFamily="sans-serif-medium"-->
+<!--                        android:text="65%"-->
+<!--                        android:textColor="#101828"-->
+<!--                        android:textSize="28sp" />-->
 
-                    <TextView
-                        android:id="@+id/tvBudgetUsedLabel"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="1dp"
-                        android:text="of budget used"
-                        android:textColor="#667085"
-                        android:textSize="13sp" />
+<!--                    <TextView-->
+<!--                        android:id="@+id/tvBudgetUsedLabel"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="1dp"-->
+<!--                        android:text="of budget used"-->
+<!--                        android:textColor="#667085"-->
+<!--                        android:textSize="13sp" />-->
 
-                    <TextView
-                        android:id="@+id/tvBudgetUsedAmount"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:fontFamily="sans-serif-medium"
-                        android:text="$1,625.00"
-                        android:textColor="#101828"
-                        android:textSize="16sp" />
+<!--                    <TextView-->
+<!--                        android:id="@+id/tvBudgetUsedAmount"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="8dp"-->
+<!--                        android:fontFamily="sans-serif-medium"-->
+<!--                        android:text="$1,625.00"-->
+<!--                        android:textColor="#101828"-->
+<!--                        android:textSize="16sp" />-->
 
-                    <TextView
-                        android:id="@+id/tvBudgetTotalAmount"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="1dp"
-                        android:text="of $2,500.00"
-                        android:textColor="#667085"
-                        android:textSize="10sp" />
+<!--                    <TextView-->
+<!--                        android:id="@+id/tvBudgetTotalAmount"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="1dp"-->
+<!--                        android:text="of $2,500.00"-->
+<!--                        android:textColor="#667085"-->
+<!--                        android:textSize="10sp" />-->
 
-                </LinearLayout>
+<!--                </LinearLayout>-->
 
-            </FrameLayout>
+<!--            </FrameLayout>-->
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvBudgetCategoriesPreview"
-                android:layout_width="0dp"
-                android:layout_height="156dp"
-                android:layout_marginStart="16dp"
-                android:nestedScrollingEnabled="false"
-                android:overScrollMode="never"
-                app:layout_constraintBottom_toBottomOf="@id/budgetProgressContainer"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/budgetProgressContainer"
-                app:layout_constraintTop_toTopOf="@id/budgetProgressContainer" />
+<!--            <androidx.recyclerview.widget.RecyclerView-->
+<!--                android:id="@+id/rvBudgetCategoriesPreview"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="156dp"-->
+<!--                android:layout_marginStart="16dp"-->
+<!--                android:nestedScrollingEnabled="false"-->
+<!--                android:overScrollMode="never"-->
+<!--                app:layout_constraintBottom_toBottomOf="@id/budgetProgressContainer"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toEndOf="@id/budgetProgressContainer"-->
+<!--                app:layout_constraintTop_toTopOf="@id/budgetProgressContainer" />-->
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
 
-    </com.google.android.material.card.MaterialCardView>
+<!--    </com.google.android.material.card.MaterialCardView>-->
 
 
 

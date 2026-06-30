@@ -1,55 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<androidx.drawerlayout.widget.DrawerLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/drawer_layout"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dashboard_root"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
 
-
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/dashboard_scroll_view"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/dashboard_app_bar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clipToPadding="false"
-        android:fillViewport="true">
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        app:elevation="0dp"
+        app:liftOnScroll="true"
+        app:liftOnScrollTargetViewId="@id/dashboard_scroll_view">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/dashboard_content"
+            android:id="@+id/dashboard_top_header"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="62dp"
             android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:paddingBottom="24dp">
-
-
-            <ImageButton
-                android:id="@+id/btn_menu"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="8dp"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:contentDescription="@string/open_navigation_menu"
-                android:padding="12dp"
-                android:src="@drawable/ic_menu"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:tint="#101828" />
-
+            android:paddingEnd="16dp">
 
             <ImageView
                 android:id="@+id/img_logo"
                 android:layout_width="34dp"
                 android:layout_height="34dp"
-                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
                 android:contentDescription="@null"
                 android:scaleType="fitCenter"
                 android:src="@drawable/spendwise_logo"
-                app:layout_constraintBottom_toBottomOf="@id/btn_menu"
-                app:layout_constraintStart_toEndOf="@id/btn_menu"
-                app:layout_constraintTop_toTopOf="@id/btn_menu" />
-
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tv_app_name"
@@ -70,13 +54,35 @@
                 android:layout_height="48dp"
                 android:layout_marginTop="8dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                android:contentDescription="@string/notifications"
+                android:contentDescription="abc"
                 android:padding="12dp"
                 android:src="@drawable/ic_notifications"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:tint="#101828" />
 
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/dashboard_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:overScrollMode="never"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/dashboard_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="24dp">
 
             <TextView
                 android:id="@+id/tv_greeting"
@@ -89,8 +95,7 @@
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/btn_menu" />
-
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tv_overview"
@@ -100,10 +105,9 @@
                 android:text="Here's your financial overview"
                 android:textColor="#667085"
                 android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/tv_greeting"
+                app:layout_constraintStart_toStartOf="@id/tv_greeting"
                 app:layout_constraintTop_toBottomOf="@id/tv_greeting" />
-
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/balance_card"
@@ -134,7 +138,6 @@
                         android:visibility="visible"
                         app:layout_constraintGuide_begin="165dp" />
 
-
                     <androidx.constraintlayout.widget.Guideline
                         android:id="@+id/horizontal_divider_guideline"
                         android:layout_width="wrap_content"
@@ -143,7 +146,6 @@
                         android:visibility="visible"
                         app:layout_constraintGuide_percent="0.64" />
 
-
                     <androidx.constraintlayout.widget.Guideline
                         android:id="@+id/vertical_bottom_guideline"
                         android:layout_width="wrap_content"
@@ -151,7 +153,6 @@
                         android:orientation="vertical"
                         android:visibility="visible"
                         app:layout_constraintGuide_percent="0.50" />
-
 
                     <TextView
                         android:id="@+id/tv_available_balance_label"
@@ -163,7 +164,6 @@
                         app:layout_constraintEnd_toStartOf="@id/vertical_top_guideline"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
-
 
                     <TextView
                         android:id="@+id/tv_available_balance"
@@ -179,7 +179,6 @@
                         app:layout_constraintEnd_toEndOf="@id/tv_available_balance_label"
                         app:layout_constraintStart_toStartOf="@+id/tv_available_balance_label"
                         app:layout_constraintTop_toBottomOf="@id/tv_available_balance_label" />
-
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btn_month"
@@ -207,7 +206,6 @@
                         app:strokeColor="#66FFFFFF"
                         app:strokeWidth="1dp" />
 
-
                     <com.github.mikephil.charting.charts.LineChart
                         android:id="@+id/balance_chart"
                         android:layout_width="0dp"
@@ -221,7 +219,6 @@
                         app:layout_constraintStart_toEndOf="@id/vertical_top_guideline"
                         app:layout_constraintTop_toBottomOf="@id/btn_month" />
 
-
                     <View
                         android:id="@+id/divider_balance"
                         android:layout_width="0dp"
@@ -230,7 +227,6 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="@id/horizontal_divider_guideline" />
-
 
                     <TextView
                         android:id="@+id/tv_income_label"
@@ -244,7 +240,6 @@
                         app:layout_constraintEnd_toStartOf="@id/vertical_bottom_guideline"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/divider_balance" />
-
 
                     <TextView
                         android:id="@+id/tv_income_amount"
@@ -260,7 +255,6 @@
                         app:layout_constraintEnd_toEndOf="@+id/tv_income_label"
                         app:layout_constraintStart_toStartOf="@+id/tv_income_label"
                         app:layout_constraintTop_toBottomOf="@id/tv_income_label" />
-
 
                     <View
                         android:id="@+id/divider_income_expense"
@@ -286,7 +280,6 @@
                         app:layout_constraintStart_toEndOf="@id/vertical_bottom_guideline"
                         app:layout_constraintTop_toBottomOf="@id/divider_balance" />
 
-
                     <TextView
                         android:id="@+id/tv_expense_amount"
                         android:layout_width="0dp"
@@ -302,11 +295,9 @@
                         app:layout_constraintStart_toStartOf="@+id/tv_expense_label"
                         app:layout_constraintTop_toBottomOf="@id/tv_expense_label" />
 
-
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </com.google.android.material.card.MaterialCardView>
-
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/budget_overview_card"
@@ -452,7 +443,6 @@
 
             </com.google.android.material.card.MaterialCardView>
 
-
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/recent_expenses_card"
                 android:layout_width="0dp"
@@ -526,7 +516,6 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </com.google.android.material.card.MaterialCardView>
-
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/ai_insight_card"
@@ -648,16 +637,9 @@
                  Every next view should constrain its top
                  to the bottom of the previous view. -->
 
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
 
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/navigation_view"
-        android:layout_width="280dp"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:fitsSystemWindows="true"
-        app:menu="@menu/drawer_menu" />
-
-</androidx.drawerlayout.widget.DrawerLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
