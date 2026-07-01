@@ -50,6 +50,16 @@ interface ExpenseDao {
     @Query("SELECT * FROM expenses WHERE id= :id")
     suspend fun getExpenseById(id: Long): ExpenseEntity?
 
+    @Transaction
+    @Query("""SELECT * FROM expenses WHERE date >= :startDate AND date <= :endDate
+        ORDER BY amount DESC LIMIT 1""")
+    fun getHighestExpenseWithCategoryInPeriod(startDate: Long, endDate: Long): Flow<ExpenseWithCategory?>
+
+    @Transaction
+    @Query("""SELECT * FROM expenses WHERE date >= :startDate AND date <= :endDate
+        ORDER BY amount ASC LIMIT 1""")
+    fun getLowestExpenseWithCategoryInPeriod(startDate: Long, endDate: Long): Flow<ExpenseWithCategory?>
+
 
     @Query("""SELECT categoryId, COALESCE(SUM(amount),0.0) AS total
           FROM expenses WHERE date >= :startDate AND date <= :endDate
