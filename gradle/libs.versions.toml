@@ -24,6 +24,7 @@ room = "2.8.4"
 hilt = "2.59.2"
 navigation = "2.9.8"
 ksp = "2.3.9"
+fragment = "1.8.9"
 
 
 [libraries]
@@ -57,6 +58,7 @@ androidx-activity-ktx = { group = "androidx.activity", name = "activity-ktx", ve
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 mpandroidchart = { module = "com.github.PhilJay:MPAndroidChart", version.ref = "mpandroidchart" }
 text-recognition = { module = "com.google.mlkit:text-recognition", version.ref = "textRecognition" }
+androidx-fragment = { group = "androidx.fragment", name = "fragment", version.ref = "fragment" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

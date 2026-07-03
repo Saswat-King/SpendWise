@@ -10,6 +10,7 @@ data class BudgetOverview(
     val categoryProgress: List<CategoryBudgetProgress>
 )
 
+
 data class CategoryBudgetProgress(
     val category: CategoryEntity,
     val budgetAmount: Double,

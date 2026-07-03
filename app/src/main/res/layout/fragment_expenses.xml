@@ -43,9 +43,9 @@
                 android:contentDescription="Search expenses"
                 android:padding="12dp"
                 android:src="@drawable/ic_search"
-                android:tint="#10231C"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="#10231C" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -183,7 +183,7 @@
                                     android:layout_height="22dp"
                                     android:layout_gravity="center"
                                     android:contentDescription="Highest expense"
-                                    android:src="@drawable/ic_receipt_long"
+                                    android:src="@drawable/ic_wallet"
                                     app:tint="#FFFFFF" />
 
                             </com.google.android.material.card.MaterialCardView>
