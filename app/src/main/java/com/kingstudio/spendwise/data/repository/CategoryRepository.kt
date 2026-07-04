@@ -15,7 +15,7 @@ interface CategoryRepository {
 }
 
 
-class CategoryRepositoryIml @Inject constructor(
+class CategoryRepositoryImpl @Inject constructor(
     private val categoryDao: CategoryDao, private val expenseDao: ExpenseDao) : CategoryRepository {
 
     override fun getAllCategories(): Flow<List<CategoryEntity>> = categoryDao.getAllCategories()

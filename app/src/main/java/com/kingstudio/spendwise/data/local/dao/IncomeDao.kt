@@ -20,7 +20,7 @@ interface IncomeDao {
     fun getTotalYearlyIncome(): Flow<Double>
 
     @Upsert
-    suspend fun saveIncome(income: IncomeEntity): Long
+    suspend fun upsertIncome(income: IncomeEntity): Long
 
     @Delete
     suspend fun deleteIncome(income: IncomeEntity)
