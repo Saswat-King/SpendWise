@@ -21,10 +21,10 @@ interface CategoryDao {
     suspend fun getExpenseCountForCategory(categoryId: Long): Int
 
     @Upsert
-    suspend fun insertCategory(category: CategoryEntity): Long
+    suspend fun upsertCategory(category: CategoryEntity): Long
 
     @Upsert
-    suspend fun insertCategories(category: List<CategoryEntity>)
+    suspend fun upsertCategories(category: List<CategoryEntity>)
 
     @Delete
     suspend fun deleteCategory(category: CategoryEntity)
