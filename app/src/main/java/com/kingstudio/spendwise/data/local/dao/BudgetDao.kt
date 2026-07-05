@@ -23,7 +23,7 @@ interface BudgetDao {
     fun getTotalBudgetAmount(): Flow<Double>
 
     @Upsert
-    suspend fun saveBudget(budget: BudgetEntity): Long
+    suspend fun upsertBudget(budget: BudgetEntity): Long
 
     @Delete
     suspend fun deleteBudget(budget: BudgetEntity)
