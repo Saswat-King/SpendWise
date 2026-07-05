@@ -42,7 +42,7 @@ interface ExpenseDao {
 
 
     @Upsert
-    suspend fun saveExpense(expense: ExpenseEntity): Long
+    suspend fun upsertExpense(expense: ExpenseEntity): Long
 
     @Delete
     suspend fun deleteExpense(expense: ExpenseEntity)
@@ -64,7 +64,7 @@ interface ExpenseDao {
     @Query("""SELECT categoryId, COALESCE(SUM(amount),0.0) AS total
           FROM expenses WHERE date >= :startDate AND date <= :endDate
           GROUP BY categoryId""")
-    fun getSpendPerCategoryInPeriod(startDate: Long, endDate: Long): Flow<List<CategorySpending>>
+    fun getSpentPerCategoryInPeriod(startDate: Long, endDate: Long): Flow<List<CategorySpending>>
 
 
     data class DailyTotal(

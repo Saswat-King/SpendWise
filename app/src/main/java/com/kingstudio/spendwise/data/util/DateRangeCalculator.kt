@@ -6,7 +6,7 @@ import java.time.ZoneId
 import java.time.temporal.ChronoUnit
 import java.time.Instant
 
-object DataRangeCalculator {
+object DateRangeCalculator {
 
     private val zone = ZoneId.systemDefault()
 
