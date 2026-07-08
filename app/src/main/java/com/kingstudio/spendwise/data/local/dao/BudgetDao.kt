@@ -12,6 +12,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface BudgetDao {
 
+
     @Transaction
     @Query("SELECT * FROM budgets")
     fun getAllBudgetsWithCategory(): Flow<List<BudgetWithCategory>>

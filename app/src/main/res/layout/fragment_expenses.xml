@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/expenses_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -13,12 +12,14 @@
         android:layout_height="wrap_content"
         app:elevation="0dp"
         app:liftOnScroll="true"
+        android:background="@color/sw_background"
         app:liftOnScrollTargetViewId="@id/expenses_scroll_view">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/expenses_header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/sw_background"
             android:paddingStart="24dp"
             android:paddingTop="10dp"
             android:paddingEnd="24dp"
@@ -87,10 +88,10 @@
                 android:id="@+id/expense_summary_card"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
-                app:cardBackgroundColor="#0F8A5F"
+                android:layout_marginTop="16dp"
+                app:cardBackgroundColor="@color/sw_card_bg"
                 app:cardCornerRadius="26dp"
-                app:cardElevation="4dp"
+                app:cardElevation="2dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_expenses_subtitle"
@@ -121,6 +122,7 @@
                         android:id="@+id/expense_card_icon_space"
                         android:layout_width="52dp"
                         android:layout_height="52dp"
+                        android:visibility="visible"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -133,8 +135,8 @@
                         android:textColor="#FFFFFF"
                         android:textSize="36sp"
                         android:textStyle="bold"
-                        app:layout_constraintEnd_toStartOf="@id/expense_card_icon_space"
-                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/tv_total_expense_label"
+                        app:layout_constraintStart_toStartOf="@+id/tv_total_expense_label"
                         app:layout_constraintTop_toBottomOf="@id/tv_total_expense_label" />
 
                     <!-- Horizontal Line -->
@@ -311,13 +313,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:clipToPadding="false"
-                android:minHeight="360dp"
                 android:nestedScrollingEnabled="false"
                 android:overScrollMode="never"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_all_expenses_title"
-                />
+                app:layout_constraintTop_toBottomOf="@id/tv_all_expenses_title" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
