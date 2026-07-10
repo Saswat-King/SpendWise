@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/create_budget_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Fixed Header -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/create_budget_app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/sw_background"
+        app:liftOnScroll="true"
+        app:liftOnScrollTargetViewId="@id/create_budget_scroll_view">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/create_budget_header"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:background="@color/sw_background"
+            android:paddingStart="12dp"
+            android:paddingEnd="16dp">
+
+            <ImageButton
+                android:id="@+id/btn_create_budget_back"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Back"
+                android:padding="10dp"
+                android:src="@drawable/ic_arrow_back"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="#101828" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_create_budget_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="Create Your Budget"
+                android:textColor="#101828"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/btn_create_budget_back"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- Scrollable Content -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/create_budget_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:overScrollMode="never"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/create_budget_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_create_budget_subtitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Set spending limits for your main categories"
+                android:textColor="#667085"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- Next: default budget category cards -->
+
+            <!-- Budget Category List -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_create_budget_categories"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:clipToPadding="false"
+                android:nestedScrollingEnabled="false"
+                android:overScrollMode="never"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_create_budget_subtitle"
+                tools:itemCount="4"
+                tools:listitem="@layout/item_create_budget_category" />
+
+            <!-- Add Category -->
+            <!-- Add Category Action -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/btn_add_budget_category"
+                android:layout_width="0dp"
+                android:layout_height="72dp"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/bg_add_category_button"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:paddingStart="14dp"
+                android:paddingEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rv_create_budget_categories">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/add_category_icon_container"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    app:cardBackgroundColor="#F3FAF7"
+                    app:cardCornerRadius="14dp"
+                    app:cardElevation="0dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:strokeColor="#B7D8CD"
+                    app:strokeWidth="1dp">
+
+                    <ImageView
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@null"
+                        android:src="@drawable/ic_add_expense"
+                        app:tint="#0F7A5A" />
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_add_category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Add Category"
+                    android:textColor="#0F7A5A"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/add_category_icon_container"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/create_budget_summary_card"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="2dp"
+                app:cardBackgroundColor="#0F8A5F"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="2dp"
+                app:cardUseCompatPadding="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btn_add_budget_category"
+                app:strokeWidth="0dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="20dp"
+                    android:paddingTop="20dp"
+                    android:paddingEnd="20dp"
+                    android:paddingBottom="20dp">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tv_create_budget_summary_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="Budget Summary"
+                        android:textColor="#FFFFFF"
+                        android:textSize="18sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tv_create_budget_total_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="18dp"
+                        android:text="Total Budget"
+                        android:textColor="#D9FFFFFF"
+                        android:textSize="15sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_create_budget_summary_title" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tv_create_budget_total_amount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="₹39,000"
+                        android:textColor="#FFFFFF"
+                        android:textSize="40sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_create_budget_total_label" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_continue_budget"
+                android:layout_width="0dp"
+                android:layout_height="56dp"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="2dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="Continue"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                app:backgroundTint="#0B5F43"
+                app:cornerRadius="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/create_budget_summary_card" />
+
+            <Space
+                android:id="@+id/create_budget_bottom_space"
+                android:layout_width="0dp"
+                android:layout_height="18dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btn_continue_budget" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
