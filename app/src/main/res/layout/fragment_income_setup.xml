@@ -3,11 +3,10 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/income_setup_root"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/income_setup_app_bar"
@@ -20,19 +19,19 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/income_setup_header"
             android:layout_width="match_parent"
-            android:layout_height="72dp"
+            android:layout_height="@dimen/sw_header_height"
             android:background="@color/sw_background"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp">
+            android:paddingStart="@dimen/sw_space_16"
+            android:paddingEnd="@dimen/sw_space_16">
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_income_setup_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-medium"
-                android:text="Income Setup"
-                android:textColor="#101828"
-                android:textSize="28sp"
+                android:text="@string/income_setup_title"
+                android:textColor="@color/sw_text_primary"
+                android:textSize="@dimen/sw_text_size_28"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -40,7 +39,6 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
-
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/income_setup_scroll_view"
@@ -54,38 +52,38 @@
             android:id="@+id/income_setup_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp">
+            android:paddingStart="@dimen/sw_space_16"
+            android:paddingEnd="@dimen/sw_space_16">
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_income_setup_subtitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Let's understand your income sources"
-                android:textColor="#667085"
-                android:textSize="15sp"
+                android:text="@string/income_setup_subtitle"
+                android:textColor="@color/sw_text_secondary"
+                android:textSize="@dimen/sw_text_size_15"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-
+            <!-- Income frequency -->
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_income_frequency_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="@dimen/sw_space_24"
                 android:fontFamily="sans-serif-medium"
-                android:text="Income Frequency"
-                android:textColor="#101828"
-                android:textSize="18sp"
+                android:text="@string/income_frequency_title"
+                android:textColor="@color/sw_text_primary"
+                android:textSize="@dimen/sw_text_size_18"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_income_setup_subtitle" />
 
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/income_frequency_tab_layout"
                 android:layout_width="0dp"
-                android:layout_height="56dp"
-                android:layout_marginTop="14dp"
+                android:layout_height="@dimen/sw_income_frequency_height"
+                android:layout_marginTop="@dimen/sw_space_14"
                 android:background="@drawable/bg_income_frequency_track"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -93,39 +91,40 @@
                 app:tabGravity="fill"
                 app:tabIndicator="@drawable/bg_income_frequency_selected"
                 app:tabIndicatorAnimationMode="linear"
-                app:tabIndicatorColor="#0F956C"
+                app:tabIndicatorColor="@color/sw_primary_selected"
                 app:tabIndicatorFullWidth="true"
                 app:tabIndicatorGravity="stretch"
+                app:tabMaxWidth="0dp"
                 app:tabMinWidth="0dp"
                 app:tabMode="fixed"
                 app:tabPaddingStart="0dp"
                 app:tabPaddingEnd="0dp"
                 app:tabRippleColor="@android:color/transparent"
-                app:tabSelectedTextColor="#FFFFFF"
-                app:tabTextColor="#0F8A5F">
+                app:tabSelectedTextColor="@color/sw_on_primary"
+                app:tabTextColor="@color/sw_primary">
 
                 <com.google.android.material.tabs.TabItem
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Monthly Salary" />
+                    android:text="@string/income_frequency_monthly" />
 
                 <com.google.android.material.tabs.TabItem
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Yearly Salary" />
+                    android:text="@string/income_frequency_yearly" />
 
             </com.google.android.material.tabs.TabLayout>
 
-
+            <!-- Primary income -->
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_primary_income_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="28dp"
+                android:layout_marginTop="@dimen/sw_space_28"
                 android:fontFamily="sans-serif-medium"
-                android:text="Primary Income"
-                android:textColor="#101828"
-                android:textSize="18sp"
+                android:text="@string/primary_income_title"
+                android:textColor="@color/sw_text_primary"
+                android:textSize="@dimen/sw_text_size_18"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/income_frequency_tab_layout" />
 
@@ -133,10 +132,10 @@
                 android:id="@+id/tv_primary_income_description"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:text="Enter your take-home salary"
-                android:textColor="#667085"
-                android:textSize="14sp"
+                android:layout_marginTop="@dimen/sw_space_6"
+                android:text="@string/primary_income_description"
+                android:textColor="@color/sw_text_secondary"
+                android:textSize="@dimen/sw_text_size_14"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_primary_income_title" />
@@ -144,13 +143,13 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/primary_income_input_container"
                 android:layout_width="0dp"
-                android:layout_height="116dp"
-                android:layout_marginTop="16dp"
+                android:layout_height="@dimen/sw_income_amount_input_height"
+                android:layout_marginTop="@dimen/sw_space_16"
                 android:background="@drawable/bg_primary_income_input"
-                android:paddingStart="20dp"
-                android:paddingTop="18dp"
-                android:paddingEnd="20dp"
-                android:paddingBottom="16dp"
+                android:paddingStart="@dimen/sw_space_20"
+                android:paddingTop="@dimen/sw_space_18"
+                android:paddingEnd="@dimen/sw_space_20"
+                android:paddingBottom="@dimen/sw_space_16"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_primary_income_description">
@@ -163,7 +162,7 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:gravity="center_vertical"
-                    android:minWidth="48dp"
+                    android:minWidth="@dimen/sw_touch_target"
                     android:orientation="horizontal"
                     app:layout_constraintBaseline_toBaselineOf="@id/et_primary_income_amount"
                     app:layout_constraintStart_toStartOf="parent">
@@ -173,17 +172,18 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-medium"
-                        android:text="₹"
-                        android:textColor="#101828"
-                        android:textSize="42sp" />
+                        android:text="@string/default_currency_symbol"
+                        android:textColor="@color/sw_text_primary"
+                        android:textSize="@dimen/sw_text_size_42" />
 
                     <ImageView
                         android:id="@+id/img_currency_arrow"
-                        android:layout_width="16dp"
-                        android:layout_height="16dp"
-                        android:layout_marginStart="2dp"
+                        android:layout_width="@dimen/sw_icon_size_16"
+                        android:layout_height="@dimen/sw_icon_size_16"
+                        android:layout_marginStart="@dimen/sw_space_2"
+                        android:contentDescription="@null"
                         android:src="@drawable/ic_arrow_drop_down"
-                        app:tint="#667085" />
+                        app:tint="@color/sw_text_secondary" />
 
                 </LinearLayout>
 
@@ -191,16 +191,16 @@
                     android:id="@+id/et_primary_income_amount"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
+                    android:layout_marginStart="@dimen/sw_space_5"
                     android:background="@null"
                     android:fontFamily="sans-serif-medium"
-                    android:hint="0"
+                    android:hint="@string/input_zero"
                     android:inputType="numberDecimal"
                     android:maxLines="1"
-                    android:text="50,000"
-                    android:textColor="#101828"
-                    android:textColorHint="#98A2B3"
-                    android:textSize="42sp"
+                    android:text="@string/income_amount_preview"
+                    android:textColor="@color/sw_text_primary"
+                    android:textColorHint="@color/sw_text_hint"
+                    android:textSize="@dimen/sw_text_size_42"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/currency_selector_container"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -209,26 +209,25 @@
                     android:id="@+id/tv_income_period_note"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Monthly salary (after taxes)"
-                    android:textColor="#344054"
-                    android:textSize="14sp"
+                    android:text="@string/income_period_note"
+                    android:textColor="@color/sw_text_supporting"
+                    android:textSize="@dimen/sw_text_size_14"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/et_primary_income_amount" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-            <!-- Additional Income Section -->
+            <!-- Additional income -->
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_additional_income_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="28dp"
+                android:layout_marginTop="@dimen/sw_space_28"
                 android:fontFamily="sans-serif-medium"
-                android:text="Additional Income (Optional)"
-                android:textColor="#101828"
-                android:textSize="18sp"
+                android:text="@string/additional_income_title"
+                android:textColor="@color/sw_text_primary"
+                android:textSize="@dimen/sw_text_size_18"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/primary_income_input_container" />
 
@@ -236,47 +235,47 @@
                 android:id="@+id/tv_additional_income_description"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:text="Add any extra income sources you have"
-                android:textColor="#667085"
-                android:textSize="14sp"
+                android:layout_marginTop="@dimen/sw_space_6"
+                android:text="@string/additional_income_description"
+                android:textColor="@color/sw_text_secondary"
+                android:textSize="@dimen/sw_text_size_14"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_additional_income_title" />
 
-            <!-- Bonus Income -->
+            <!-- Bonus -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/bonus_income_card"
                 android:layout_width="0dp"
-                android:layout_height="72dp"
-                android:layout_marginStart="2dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="2dp"
+                android:layout_height="@dimen/sw_income_source_row_height"
+                android:layout_marginStart="@dimen/sw_space_2"
+                android:layout_marginTop="@dimen/sw_space_16"
+                android:layout_marginEnd="@dimen/sw_space_2"
                 android:clickable="true"
                 android:focusable="true"
                 android:foreground="?attr/selectableItemBackground"
-                app:cardBackgroundColor="#FFFFFF"
-                app:cardCornerRadius="18dp"
-                app:cardElevation="2dp"
+                app:cardBackgroundColor="@color/sw_surface"
+                app:cardCornerRadius="@dimen/sw_corner_radius_18"
+                app:cardElevation="@dimen/sw_card_elevation"
                 app:cardUseCompatPadding="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_additional_income_description"
-                app:strokeColor="#EAECF0"
-                app:strokeWidth="1dp">
+                app:strokeColor="@color/sw_outline_soft"
+                app:strokeWidth="@dimen/sw_stroke_width">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="14dp">
+                    android:paddingStart="@dimen/sw_space_16"
+                    android:paddingEnd="@dimen/sw_space_14">
 
                     <com.google.android.material.card.MaterialCardView
                         android:id="@+id/bonus_icon_container"
-                        android:layout_width="42dp"
-                        android:layout_height="42dp"
-                        app:cardBackgroundColor="#E6F4EF"
-                        app:cardCornerRadius="12dp"
+                        android:layout_width="@dimen/sw_icon_container_size_42"
+                        android:layout_height="@dimen/sw_icon_container_size_42"
+                        app:cardBackgroundColor="@color/sw_surface_primary"
+                        app:cardCornerRadius="@dimen/sw_corner_radius_12"
                         app:cardElevation="0dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -284,12 +283,12 @@
                         app:strokeWidth="0dp">
 
                         <ImageView
-                            android:layout_width="22dp"
-                            android:layout_height="22dp"
+                            android:layout_width="@dimen/sw_icon_size_22"
+                            android:layout_height="@dimen/sw_icon_size_22"
                             android:layout_gravity="center"
-                            android:contentDescription="Bonus income"
+                            android:contentDescription="@string/content_description_bonus_income"
                             android:src="@drawable/ic_gift"
-                            app:tint="#0F8A5F" />
+                            app:tint="@color/sw_primary" />
 
                     </com.google.android.material.card.MaterialCardView>
 
@@ -297,11 +296,11 @@
                         android:id="@+id/tv_bonus_income_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="14dp"
+                        android:layout_marginStart="@dimen/sw_space_14"
                         android:fontFamily="sans-serif-medium"
-                        android:text="Bonus"
-                        android:textColor="#101828"
-                        android:textSize="16sp"
+                        android:text="@string/bonus_income_title"
+                        android:textColor="@color/sw_text_primary"
+                        android:textSize="@dimen/sw_text_size_16"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@id/bonus_icon_container"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -310,15 +309,15 @@
                         android:id="@+id/tv_bonus_optional_badge"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
+                        android:layout_marginStart="@dimen/sw_space_8"
                         android:background="@drawable/bg_optional_badge"
-                        android:paddingStart="8dp"
-                        android:paddingTop="3dp"
-                        android:paddingEnd="8dp"
-                        android:paddingBottom="3dp"
-                        android:text="Optional"
-                        android:textColor="#667085"
-                        android:textSize="11sp"
+                        android:paddingStart="@dimen/sw_space_8"
+                        android:paddingTop="@dimen/sw_space_3"
+                        android:paddingEnd="@dimen/sw_space_8"
+                        android:paddingBottom="@dimen/sw_space_3"
+                        android:text="@string/label_optional"
+                        android:textColor="@color/sw_text_secondary"
+                        android:textSize="@dimen/sw_text_size_11"
                         app:layout_constraintBaseline_toBaselineOf="@id/tv_bonus_income_title"
                         app:layout_constraintStart_toEndOf="@id/tv_bonus_income_title" />
 
@@ -326,62 +325,62 @@
                         android:id="@+id/tv_bonus_income_amount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="12dp"
-                        android:text="₹0"
-                        android:textColor="#667085"
-                        android:textSize="15sp"
+                        android:layout_marginEnd="@dimen/sw_space_12"
+                        android:text="@string/amount_rupee_zero"
+                        android:textColor="@color/sw_text_secondary"
+                        android:textSize="@dimen/sw_text_size_15"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@id/img_bonus_arrow"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageView
                         android:id="@+id/img_bonus_arrow"
-                        android:layout_width="22dp"
-                        android:layout_height="22dp"
-                        android:contentDescription="Add bonus income"
+                        android:layout_width="@dimen/sw_icon_size_22"
+                        android:layout_height="@dimen/sw_icon_size_22"
+                        android:contentDescription="@string/content_description_add_bonus_income"
                         android:src="@drawable/ic_arrow_drop_down"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:tint="#667085" />
+                        app:tint="@color/sw_text_secondary" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Freelance Income -->
+            <!-- Freelance -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/freelance_income_card"
                 android:layout_width="0dp"
-                android:layout_height="72dp"
-                android:layout_marginStart="2dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginEnd="2dp"
+                android:layout_height="@dimen/sw_income_source_row_height"
+                android:layout_marginStart="@dimen/sw_space_2"
+                android:layout_marginTop="@dimen/sw_space_12"
+                android:layout_marginEnd="@dimen/sw_space_2"
                 android:clickable="true"
                 android:focusable="true"
                 android:foreground="?attr/selectableItemBackground"
-                app:cardBackgroundColor="#FFFFFF"
-                app:cardCornerRadius="18dp"
-                app:cardElevation="2dp"
+                app:cardBackgroundColor="@color/sw_surface"
+                app:cardCornerRadius="@dimen/sw_corner_radius_18"
+                app:cardElevation="@dimen/sw_card_elevation"
                 app:cardUseCompatPadding="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/bonus_income_card"
-                app:strokeColor="#EAECF0"
-                app:strokeWidth="1dp">
+                app:strokeColor="@color/sw_outline_soft"
+                app:strokeWidth="@dimen/sw_stroke_width">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="14dp">
+                    android:paddingStart="@dimen/sw_space_16"
+                    android:paddingEnd="@dimen/sw_space_14">
 
                     <com.google.android.material.card.MaterialCardView
                         android:id="@+id/freelance_icon_container"
-                        android:layout_width="42dp"
-                        android:layout_height="42dp"
-                        app:cardBackgroundColor="#E6F4EF"
-                        app:cardCornerRadius="12dp"
+                        android:layout_width="@dimen/sw_icon_container_size_42"
+                        android:layout_height="@dimen/sw_icon_container_size_42"
+                        app:cardBackgroundColor="@color/sw_surface_primary"
+                        app:cardCornerRadius="@dimen/sw_corner_radius_12"
                         app:cardElevation="0dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -389,12 +388,12 @@
                         app:strokeWidth="0dp">
 
                         <ImageView
-                            android:layout_width="22dp"
-                            android:layout_height="22dp"
+                            android:layout_width="@dimen/sw_icon_size_22"
+                            android:layout_height="@dimen/sw_icon_size_22"
                             android:layout_gravity="center"
-                            android:contentDescription="Freelance income"
+                            android:contentDescription="@string/content_description_freelance_income"
                             android:src="@drawable/ic_work"
-                            app:tint="#0F8A5F" />
+                            app:tint="@color/sw_primary" />
 
                     </com.google.android.material.card.MaterialCardView>
 
@@ -402,11 +401,11 @@
                         android:id="@+id/tv_freelance_income_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="14dp"
+                        android:layout_marginStart="@dimen/sw_space_14"
                         android:fontFamily="sans-serif-medium"
-                        android:text="Freelance Income"
-                        android:textColor="#101828"
-                        android:textSize="16sp"
+                        android:text="@string/freelance_income_title"
+                        android:textColor="@color/sw_text_primary"
+                        android:textSize="@dimen/sw_text_size_16"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@id/freelance_icon_container"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -415,15 +414,15 @@
                         android:id="@+id/tv_freelance_optional_badge"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
+                        android:layout_marginStart="@dimen/sw_space_8"
                         android:background="@drawable/bg_optional_badge"
-                        android:paddingStart="8dp"
-                        android:paddingTop="3dp"
-                        android:paddingEnd="8dp"
-                        android:paddingBottom="3dp"
-                        android:text="Optional"
-                        android:textColor="#667085"
-                        android:textSize="11sp"
+                        android:paddingStart="@dimen/sw_space_8"
+                        android:paddingTop="@dimen/sw_space_3"
+                        android:paddingEnd="@dimen/sw_space_8"
+                        android:paddingBottom="@dimen/sw_space_3"
+                        android:text="@string/label_optional"
+                        android:textColor="@color/sw_text_secondary"
+                        android:textSize="@dimen/sw_text_size_11"
                         app:layout_constraintBaseline_toBaselineOf="@id/tv_freelance_income_title"
                         app:layout_constraintStart_toEndOf="@id/tv_freelance_income_title" />
 
@@ -431,62 +430,62 @@
                         android:id="@+id/tv_freelance_income_amount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="12dp"
-                        android:text="₹0"
-                        android:textColor="#667085"
-                        android:textSize="15sp"
+                        android:layout_marginEnd="@dimen/sw_space_12"
+                        android:text="@string/amount_rupee_zero"
+                        android:textColor="@color/sw_text_secondary"
+                        android:textSize="@dimen/sw_text_size_15"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@id/img_freelance_arrow"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageView
                         android:id="@+id/img_freelance_arrow"
-                        android:layout_width="22dp"
-                        android:layout_height="22dp"
-                        android:contentDescription="Add freelance income"
+                        android:layout_width="@dimen/sw_icon_size_22"
+                        android:layout_height="@dimen/sw_icon_size_22"
+                        android:contentDescription="@string/content_description_add_freelance_income"
                         android:src="@drawable/ic_arrow_drop_down"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:tint="#667085" />
+                        app:tint="@color/sw_text_secondary" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Other Income -->
+
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/other_income_card"
                 android:layout_width="0dp"
-                android:layout_height="72dp"
-                android:layout_marginStart="2dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginEnd="2dp"
+                android:layout_height="@dimen/sw_income_source_row_height"
+                android:layout_marginStart="@dimen/sw_space_2"
+                android:layout_marginTop="@dimen/sw_space_12"
+                android:layout_marginEnd="@dimen/sw_space_2"
                 android:clickable="true"
                 android:focusable="true"
                 android:foreground="?attr/selectableItemBackground"
-                app:cardBackgroundColor="#FFFFFF"
-                app:cardCornerRadius="18dp"
-                app:cardElevation="2dp"
+                app:cardBackgroundColor="@color/sw_surface"
+                app:cardCornerRadius="@dimen/sw_corner_radius_18"
+                app:cardElevation="@dimen/sw_card_elevation"
                 app:cardUseCompatPadding="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/freelance_income_card"
-                app:strokeColor="#EAECF0"
-                app:strokeWidth="1dp">
+                app:strokeColor="@color/sw_outline_soft"
+                app:strokeWidth="@dimen/sw_stroke_width">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="14dp">
+                    android:paddingStart="@dimen/sw_space_16"
+                    android:paddingEnd="@dimen/sw_space_14">
 
                     <com.google.android.material.card.MaterialCardView
                         android:id="@+id/other_income_icon_container"
-                        android:layout_width="42dp"
-                        android:layout_height="42dp"
-                        app:cardBackgroundColor="#E6F4EF"
-                        app:cardCornerRadius="12dp"
+                        android:layout_width="@dimen/sw_icon_container_size_42"
+                        android:layout_height="@dimen/sw_icon_container_size_42"
+                        app:cardBackgroundColor="@color/sw_surface_primary"
+                        app:cardCornerRadius="@dimen/sw_corner_radius_12"
                         app:cardElevation="0dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -494,12 +493,12 @@
                         app:strokeWidth="0dp">
 
                         <ImageView
-                            android:layout_width="22dp"
-                            android:layout_height="22dp"
+                            android:layout_width="@dimen/sw_icon_size_22"
+                            android:layout_height="@dimen/sw_icon_size_22"
                             android:layout_gravity="center"
-                            android:contentDescription="Other income"
+                            android:contentDescription="@string/content_description_other_income"
                             android:src="@drawable/ic_other_income"
-                            app:tint="#0F8A5F" />
+                            app:tint="@color/sw_primary" />
 
                     </com.google.android.material.card.MaterialCardView>
 
@@ -507,11 +506,11 @@
                         android:id="@+id/tv_other_income_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="14dp"
+                        android:layout_marginStart="@dimen/sw_space_14"
                         android:fontFamily="sans-serif-medium"
-                        android:text="Other Income"
-                        android:textColor="#101828"
-                        android:textSize="16sp"
+                        android:text="@string/other_income_title"
+                        android:textColor="@color/sw_text_primary"
+                        android:textSize="@dimen/sw_text_size_16"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@id/other_income_icon_container"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -520,15 +519,15 @@
                         android:id="@+id/tv_other_income_optional_badge"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
+                        android:layout_marginStart="@dimen/sw_space_8"
                         android:background="@drawable/bg_optional_badge"
-                        android:paddingStart="8dp"
-                        android:paddingTop="3dp"
-                        android:paddingEnd="8dp"
-                        android:paddingBottom="3dp"
-                        android:text="Optional"
-                        android:textColor="#667085"
-                        android:textSize="11sp"
+                        android:paddingStart="@dimen/sw_space_8"
+                        android:paddingTop="@dimen/sw_space_3"
+                        android:paddingEnd="@dimen/sw_space_8"
+                        android:paddingBottom="@dimen/sw_space_3"
+                        android:text="@string/label_optional"
+                        android:textColor="@color/sw_text_secondary"
+                        android:textSize="@dimen/sw_text_size_11"
                         app:layout_constraintBaseline_toBaselineOf="@id/tv_other_income_title"
                         app:layout_constraintStart_toEndOf="@id/tv_other_income_title" />
 
@@ -536,40 +535,40 @@
                         android:id="@+id/tv_other_income_amount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="12dp"
-                        android:text="₹0"
-                        android:textColor="#667085"
-                        android:textSize="15sp"
+                        android:layout_marginEnd="@dimen/sw_space_12"
+                        android:text="@string/amount_rupee_zero"
+                        android:textColor="@color/sw_text_secondary"
+                        android:textSize="@dimen/sw_text_size_15"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@id/img_other_income_arrow"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageView
                         android:id="@+id/img_other_income_arrow"
-                        android:layout_width="22dp"
-                        android:layout_height="22dp"
-                        android:contentDescription="Add other income"
+                        android:layout_width="@dimen/sw_icon_size_22"
+                        android:layout_height="@dimen/sw_icon_size_22"
+                        android:contentDescription="@string/content_description_add_other_income"
                         android:src="@drawable/ic_arrow_drop_down"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:tint="#667085" />
+                        app:tint="@color/sw_text_secondary" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </com.google.android.material.card.MaterialCardView>
 
-
+            <!-- Income summary -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/income_summary_card"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="2dp"
-                app:cardBackgroundColor="#0F8A5F"
-                app:cardCornerRadius="24dp"
-                app:cardElevation="2dp"
+                android:layout_marginStart="@dimen/sw_space_2"
+                android:layout_marginTop="@dimen/sw_space_24"
+                android:layout_marginEnd="@dimen/sw_space_2"
+                app:cardBackgroundColor="@color/sw_primary"
+                app:cardCornerRadius="@dimen/sw_corner_radius_24"
+                app:cardElevation="@dimen/sw_card_elevation"
                 app:cardUseCompatPadding="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -579,29 +578,29 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingStart="20dp"
-                    android:paddingTop="20dp"
-                    android:paddingEnd="20dp"
-                    android:paddingBottom="20dp">
+                    android:paddingStart="@dimen/sw_space_20"
+                    android:paddingTop="@dimen/sw_space_20"
+                    android:paddingEnd="@dimen/sw_space_20"
+                    android:paddingBottom="@dimen/sw_space_20">
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/tv_income_summary_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-medium"
-                        android:text="Income Summary"
-                        android:textColor="#FFFFFF"
-                        android:textSize="18sp"
+                        android:text="@string/income_summary_title"
+                        android:textColor="@color/sw_on_primary"
+                        android:textSize="@dimen/sw_text_size_18"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageView
                         android:id="@+id/img_income_wallet"
-                        android:layout_width="122dp"
-                        android:layout_height="134dp"
+                        android:layout_width="@dimen/sw_income_wallet_width"
+                        android:layout_height="@dimen/sw_income_wallet_height"
                         android:adjustViewBounds="true"
                         android:alpha="0.95"
-                        android:contentDescription="Income wallet illustration"
+                        android:contentDescription="@string/content_description_income_wallet"
                         android:scaleType="fitCenter"
                         android:src="@drawable/income_wallet_illustration"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -611,11 +610,11 @@
                         android:id="@+id/tv_income_summary_amount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="18dp"
+                        android:layout_marginTop="@dimen/sw_space_18"
                         android:fontFamily="sans-serif-medium"
-                        android:text="₹50,000"
-                        android:textColor="#FFFFFF"
-                        android:textSize="42sp"
+                        android:text="@string/amount_rupee_50000"
+                        android:textColor="@color/sw_on_primary"
+                        android:textSize="@dimen/sw_text_size_42"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tv_income_summary_title" />
 
@@ -623,19 +622,19 @@
                         android:id="@+id/tv_income_summary_subtitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="Total Monthly Income"
-                        android:textColor="#D9FFFFFF"
-                        android:textSize="15sp"
+                        android:layout_marginTop="@dimen/sw_space_4"
+                        android:text="@string/total_monthly_income_label"
+                        android:textColor="@color/sw_on_primary_85"
+                        android:textSize="@dimen/sw_text_size_15"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tv_income_summary_amount" />
 
                     <View
                         android:id="@+id/income_summary_horizontal_divider"
                         android:layout_width="0dp"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="20dp"
-                        android:background="#33FFFFFF"
+                        android:layout_height="@dimen/sw_divider_thickness"
+                        android:layout_marginTop="@dimen/sw_space_20"
+                        android:background="@color/sw_on_primary_20"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tv_income_summary_subtitle" />
@@ -644,7 +643,7 @@
                         android:id="@+id/income_summary_breakdown_container"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="18dp"
+                        android:layout_marginTop="@dimen/sw_space_18"
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -665,17 +664,17 @@
                                 android:orientation="horizontal">
 
                                 <View
-                                    android:layout_width="9dp"
-                                    android:layout_height="9dp"
+                                    android:layout_width="@dimen/sw_income_summary_dot_size"
+                                    android:layout_height="@dimen/sw_income_summary_dot_size"
                                     android:background="@drawable/bg_dot_base_income" />
 
                                 <com.google.android.material.textview.MaterialTextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginStart="7dp"
-                                    android:text="Base Income"
-                                    android:textColor="#D9FFFFFF"
-                                    android:textSize="12sp" />
+                                    android:layout_marginStart="@dimen/sw_space_7"
+                                    android:text="@string/base_income_label"
+                                    android:textColor="@color/sw_on_primary_85"
+                                    android:textSize="@dimen/sw_text_size_12" />
 
                             </LinearLayout>
 
@@ -683,20 +682,20 @@
                                 android:id="@+id/tv_base_income_amount"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
+                                android:layout_marginTop="@dimen/sw_space_8"
                                 android:fontFamily="sans-serif-medium"
-                                android:text="₹50,000"
-                                android:textColor="#FFFFFF"
-                                android:textSize="18sp" />
+                                android:text="@string/amount_rupee_50000"
+                                android:textColor="@color/sw_on_primary"
+                                android:textSize="@dimen/sw_text_size_18" />
 
                         </LinearLayout>
 
                         <View
-                            android:layout_width="1dp"
-                            android:layout_height="44dp"
-                            android:layout_marginStart="10dp"
-                            android:layout_marginEnd="10dp"
-                            android:background="#33FFFFFF" />
+                            android:layout_width="@dimen/sw_divider_thickness"
+                            android:layout_height="@dimen/sw_income_summary_divider_height"
+                            android:layout_marginStart="@dimen/sw_space_10"
+                            android:layout_marginEnd="@dimen/sw_space_10"
+                            android:background="@color/sw_on_primary_20" />
 
                         <LinearLayout
                             android:id="@+id/additional_income_container"
@@ -712,17 +711,17 @@
                                 android:orientation="horizontal">
 
                                 <View
-                                    android:layout_width="9dp"
-                                    android:layout_height="9dp"
+                                    android:layout_width="@dimen/sw_income_summary_dot_size"
+                                    android:layout_height="@dimen/sw_income_summary_dot_size"
                                     android:background="@drawable/bg_dot_additional_income" />
 
                                 <com.google.android.material.textview.MaterialTextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginStart="7dp"
-                                    android:text="Additional"
-                                    android:textColor="#D9FFFFFF"
-                                    android:textSize="12sp" />
+                                    android:layout_marginStart="@dimen/sw_space_7"
+                                    android:text="@string/additional_income_label"
+                                    android:textColor="@color/sw_on_primary_85"
+                                    android:textSize="@dimen/sw_text_size_12" />
 
                             </LinearLayout>
 
@@ -730,20 +729,20 @@
                                 android:id="@+id/tv_additional_income_amount"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
+                                android:layout_marginTop="@dimen/sw_space_8"
                                 android:fontFamily="sans-serif-medium"
-                                android:text="₹0"
-                                android:textColor="#FFFFFF"
-                                android:textSize="18sp" />
+                                android:text="@string/amount_rupee_zero"
+                                android:textColor="@color/sw_on_primary"
+                                android:textSize="@dimen/sw_text_size_18" />
 
                         </LinearLayout>
 
                         <View
-                            android:layout_width="1dp"
-                            android:layout_height="44dp"
-                            android:layout_marginStart="10dp"
-                            android:layout_marginEnd="10dp"
-                            android:background="#33FFFFFF" />
+                            android:layout_width="@dimen/sw_divider_thickness"
+                            android:layout_height="@dimen/sw_income_summary_divider_height"
+                            android:layout_marginStart="@dimen/sw_space_10"
+                            android:layout_marginEnd="@dimen/sw_space_10"
+                            android:background="@color/sw_on_primary_20" />
 
                         <LinearLayout
                             android:id="@+id/total_income_container"
@@ -759,17 +758,17 @@
                                 android:orientation="horizontal">
 
                                 <View
-                                    android:layout_width="9dp"
-                                    android:layout_height="9dp"
+                                    android:layout_width="@dimen/sw_income_summary_dot_size"
+                                    android:layout_height="@dimen/sw_income_summary_dot_size"
                                     android:background="@drawable/bg_dot_total_income" />
 
                                 <com.google.android.material.textview.MaterialTextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginStart="7dp"
-                                    android:text="Total Income"
-                                    android:textColor="#D9FFFFFF"
-                                    android:textSize="12sp" />
+                                    android:layout_marginStart="@dimen/sw_space_7"
+                                    android:text="@string/total_income_label"
+                                    android:textColor="@color/sw_on_primary_85"
+                                    android:textSize="@dimen/sw_text_size_12" />
 
                             </LinearLayout>
 
@@ -777,11 +776,11 @@
                                 android:id="@+id/tv_total_income_amount"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
+                                android:layout_marginTop="@dimen/sw_space_8"
                                 android:fontFamily="sans-serif-medium"
-                                android:text="₹50,000"
-                                android:textColor="#FFFFFF"
-                                android:textSize="18sp" />
+                                android:text="@string/amount_rupee_50000"
+                                android:textColor="@color/sw_on_primary"
+                                android:textSize="@dimen/sw_text_size_18" />
 
                         </LinearLayout>
 
@@ -794,17 +793,17 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_continue_income"
                 android:layout_width="0dp"
-                android:layout_height="56dp"
-                android:layout_marginStart="2dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="2dp"
+                android:layout_height="@dimen/sw_button_height_large"
+                android:layout_marginStart="@dimen/sw_space_2"
+                android:layout_marginTop="@dimen/sw_space_24"
+                android:layout_marginEnd="@dimen/sw_space_2"
                 android:fontFamily="sans-serif-medium"
-                android:text="Continue"
+                android:text="@string/action_continue"
                 android:textAllCaps="false"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp"
-                app:backgroundTint="#0B5F43"
-                app:cornerRadius="16dp"
+                android:textColor="@color/sw_on_primary"
+                android:textSize="@dimen/sw_text_size_16"
+                app:backgroundTint="@color/sw_primary_dark"
+                app:cornerRadius="@dimen/sw_corner_radius_16"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/income_summary_card" />
@@ -812,7 +811,7 @@
             <Space
                 android:id="@+id/income_setup_bottom_space"
                 android:layout_width="0dp"
-                android:layout_height="18dp"
+                android:layout_height="@dimen/sw_space_18"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/btn_continue_income" />

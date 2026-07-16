@@ -1,9 +1,44 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.SpendWise" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Base application theme -->
+    <style
+        name="Base.Theme.SpendWise"
+        parent="Theme.Material3.DayNight.NoActionBar">
+
+        <!-- Brand -->
+        <item name="colorPrimary">@color/sw_green_primary</item>
+        <item name="colorOnPrimary">@color/sw_on_primary</item>
+        <item name="colorPrimaryContainer">@color/sw_surface_primary</item>
+        <item name="colorOnPrimaryContainer">@color/sw_text_primary</item>
+
+        <item name="colorSecondary">@color/sw_primary_action</item>
+        <item name="colorOnSecondary">@color/sw_on_primary</item>
+
+        <!-- Backgrounds and surfaces -->
+        <item name="android:colorBackground">@color/sw_background</item>
+        <item name="android:windowBackground">@color/sw_background</item>
+        <item name="colorSurface">@color/sw_surface</item>
+        <item name="colorOnSurface">@color/sw_text_primary</item>
+        <item name="colorOnSurfaceVariant">@color/sw_text_secondary</item>
+
+        <!-- Borders -->
+        <item name="colorOutline">@color/sw_outline</item>
+        <item name="colorOutlineVariant">@color/sw_outline_soft</item>
+
+        <!-- System bars -->
+        <item name="android:statusBarColor">@color/sw_background</item>
+        <item name="android:navigationBarColor">@color/sw_surface</item>
+        <item name="android:windowLightStatusBar">true</item>
+
+
+        <!-- DayNight handles dark mode through values-night -->
+
+
     </style>
 
-    <style name="Theme.SpendWise" parent="Base.Theme.SpendWise" />
+    <style
+        name="Theme.SpendWise"
+        parent="Base.Theme.SpendWise" />
+
 </resources>

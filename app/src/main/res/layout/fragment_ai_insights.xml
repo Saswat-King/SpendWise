@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/ai_insights_root"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/ai_insights_app_bar"
@@ -19,19 +18,19 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/ai_insights_header"
             android:layout_width="match_parent"
-            android:layout_height="72dp"
+            android:layout_height="@dimen/sw_header_height"
             android:background="@color/sw_background"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp">
+            android:paddingStart="@dimen/sw_space_16"
+            android:paddingEnd="@dimen/sw_space_16">
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_ai_insights_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-medium"
-                android:text="AI Insights"
-                android:textColor="#101828"
-                android:textSize="28sp"
+                android:text="@string/ai_insights_title"
+                android:textColor="@color/sw_text_primary"
+                android:textSize="@dimen/sw_text_size_28"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -52,16 +51,16 @@
             android:id="@+id/ai_insights_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp">
+            android:paddingStart="@dimen/sw_space_16"
+            android:paddingEnd="@dimen/sw_space_16">
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_ai_insights_subtitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Smart insights to help you spend better"
-                android:textColor="#667085"
-                android:textSize="15sp"
+                android:text="@string/ai_insights_subtitle"
+                android:textColor="@color/sw_text_secondary"
+                android:textSize="@dimen/sw_text_size_15"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -70,31 +69,31 @@
                 android:id="@+id/financial_health_score_card"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="2dp"
-                app:cardBackgroundColor="#FFFFFF"
-                app:cardCornerRadius="24dp"
-                app:cardElevation="2dp"
+                android:layout_marginStart="@dimen/sw_space_2"
+                android:layout_marginTop="@dimen/sw_space_16"
+                android:layout_marginEnd="@dimen/sw_space_2"
+                app:cardBackgroundColor="@color/sw_surface"
+                app:cardCornerRadius="@dimen/sw_corner_radius_24"
+                app:cardElevation="@dimen/sw_card_elevation"
                 app:cardUseCompatPadding="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_ai_insights_subtitle"
-                app:strokeColor="#EAECF0"
-                app:strokeWidth="1dp">
+                app:strokeColor="@color/sw_outline_soft"
+                app:strokeWidth="@dimen/sw_stroke_width">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingStart="20dp"
-                    android:paddingTop="20dp"
-                    android:paddingEnd="20dp"
-                    android:paddingBottom="20dp">
+                    android:paddingStart="@dimen/sw_space_20"
+                    android:paddingTop="@dimen/sw_space_20"
+                    android:paddingEnd="@dimen/sw_space_20"
+                    android:paddingBottom="@dimen/sw_space_20">
 
                     <FrameLayout
                         android:id="@+id/health_score_progress_container"
-                        android:layout_width="112dp"
-                        android:layout_height="112dp"
+                        android:layout_width="@dimen/sw_health_score_container_size"
+                        android:layout_height="@dimen/sw_health_score_container_size"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
@@ -104,18 +103,18 @@
                             android:layout_height="match_parent"
                             android:indeterminate="false"
                             android:progress="82"
-                            app:indicatorColor="#0F8A5F"
-                            app:indicatorSize="104dp"
+                            app:indicatorColor="@color/sw_primary"
+                            app:indicatorSize="@dimen/sw_health_score_indicator_size"
                             app:indicatorTrackGapSize="0dp"
-                            app:trackColor="#E6F4EF"
-                            app:trackThickness="8dp" />
+                            app:trackColor="@color/sw_surface_primary"
+                            app:trackThickness="@dimen/sw_health_score_track_thickness" />
 
                         <ImageView
                             android:id="@+id/img_health_score_icon"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
+                            android:layout_width="@dimen/sw_health_score_icon_size"
+                            android:layout_height="@dimen/sw_health_score_icon_size"
                             android:layout_gravity="center"
-                            android:contentDescription="Financial health score"
+                            android:contentDescription="@string/content_description_financial_health_score"
                             android:src="@drawable/ic_health_shield" />
 
                     </FrameLayout>
@@ -124,11 +123,11 @@
                         android:id="@+id/tv_financial_health_title"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="18dp"
+                        android:layout_marginStart="@dimen/sw_space_18"
                         android:fontFamily="sans-serif-medium"
-                        android:text="Financial Health Score"
-                        android:textColor="#101828"
-                        android:textSize="18sp"
+                        android:text="@string/financial_health_score_title"
+                        android:textColor="@color/sw_text_primary"
+                        android:textSize="@dimen/sw_text_size_18"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@id/health_score_progress_container"
                         app:layout_constraintTop_toTopOf="@id/health_score_progress_container" />
@@ -137,11 +136,11 @@
                         android:id="@+id/tv_health_score_value"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="@dimen/sw_space_8"
                         android:fontFamily="sans-serif-medium"
-                        android:text="82/100"
-                        android:textColor="#0F8A5F"
-                        android:textSize="28sp"
+                        android:text="@string/financial_health_score_preview"
+                        android:textColor="@color/sw_primary"
+                        android:textSize="@dimen/sw_text_size_28"
                         app:layout_constraintStart_toStartOf="@id/tv_financial_health_title"
                         app:layout_constraintTop_toBottomOf="@id/tv_financial_health_title" />
 
@@ -149,15 +148,15 @@
                         android:id="@+id/tv_health_score_status"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
+                        android:layout_marginStart="@dimen/sw_space_10"
                         android:fontFamily="sans-serif-medium"
-                        android:paddingStart="10dp"
-                        android:paddingTop="4dp"
-                        android:paddingEnd="10dp"
-                        android:paddingBottom="4dp"
-                        android:text="Good"
-                        android:textColor="#0F8A5F"
-                        android:textSize="12sp"
+                        android:paddingStart="@dimen/sw_space_10"
+                        android:paddingTop="@dimen/sw_space_4"
+                        android:paddingEnd="@dimen/sw_space_10"
+                        android:paddingBottom="@dimen/sw_space_4"
+                        android:text="@string/financial_health_status_good"
+                        android:textColor="@color/sw_primary"
+                        android:textSize="@dimen/sw_text_size_12"
                         app:layout_constraintBaseline_toBaselineOf="@id/tv_health_score_value"
                         app:layout_constraintStart_toEndOf="@id/tv_health_score_value" />
 
@@ -165,10 +164,10 @@
                         android:id="@+id/tv_health_score_message"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="You're making great financial choices this month."
-                        android:textColor="#667085"
-                        android:textSize="14sp"
+                        android:layout_marginTop="@dimen/sw_space_10"
+                        android:text="@string/financial_health_message"
+                        android:textColor="@color/sw_text_secondary"
+                        android:textSize="@dimen/sw_text_size_14"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@id/tv_financial_health_title"
                         app:layout_constraintTop_toBottomOf="@id/tv_health_score_value" />
@@ -182,35 +181,35 @@
                 android:id="@+id/key_insights_card"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="2dp"
-                app:cardBackgroundColor="#FFFFFF"
-                app:cardCornerRadius="24dp"
-                app:cardElevation="2dp"
+                android:layout_marginStart="@dimen/sw_space_2"
+                android:layout_marginTop="@dimen/sw_space_16"
+                android:layout_marginEnd="@dimen/sw_space_2"
+                app:cardBackgroundColor="@color/sw_surface"
+                app:cardCornerRadius="@dimen/sw_corner_radius_24"
+                app:cardElevation="@dimen/sw_card_elevation"
                 app:cardUseCompatPadding="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/financial_health_score_card"
-                app:strokeColor="#EAECF0"
-                app:strokeWidth="1dp">
+                app:strokeColor="@color/sw_outline_soft"
+                app:strokeWidth="@dimen/sw_stroke_width">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingStart="18dp"
-                    android:paddingTop="18dp"
-                    android:paddingEnd="18dp"
-                    android:paddingBottom="18dp">
+                    android:paddingStart="@dimen/sw_space_18"
+                    android:paddingTop="@dimen/sw_space_18"
+                    android:paddingEnd="@dimen/sw_space_18"
+                    android:paddingBottom="@dimen/sw_space_18">
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/tv_key_insights_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-medium"
-                        android:text="Key Insights"
-                        android:textColor="#101828"
-                        android:textSize="18sp"
+                        android:text="@string/key_insights_title"
+                        android:textColor="@color/sw_text_primary"
+                        android:textSize="@dimen/sw_text_size_18"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -218,7 +217,7 @@
                         android:id="@+id/rv_key_insights"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginTop="@dimen/sw_space_16"
                         android:clipToPadding="false"
                         android:nestedScrollingEnabled="false"
                         android:overScrollMode="never"
@@ -230,39 +229,40 @@
 
             </com.google.android.material.card.MaterialCardView>
 
+
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/budget_warnings_card"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="2dp"
-                app:cardBackgroundColor="#FFFFFF"
-                app:cardCornerRadius="24dp"
-                app:cardElevation="2dp"
+                android:layout_marginStart="@dimen/sw_space_2"
+                android:layout_marginTop="@dimen/sw_space_16"
+                android:layout_marginEnd="@dimen/sw_space_2"
+                app:cardBackgroundColor="@color/sw_surface"
+                app:cardCornerRadius="@dimen/sw_corner_radius_24"
+                app:cardElevation="@dimen/sw_card_elevation"
                 app:cardUseCompatPadding="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/key_insights_card"
-                app:strokeColor="#EAECF0"
-                app:strokeWidth="1dp">
+                app:strokeColor="@color/sw_outline_soft"
+                app:strokeWidth="@dimen/sw_stroke_width">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingStart="18dp"
-                    android:paddingTop="18dp"
-                    android:paddingEnd="18dp"
-                    android:paddingBottom="18dp">
+                    android:paddingStart="@dimen/sw_space_18"
+                    android:paddingTop="@dimen/sw_space_18"
+                    android:paddingEnd="@dimen/sw_space_18"
+                    android:paddingBottom="@dimen/sw_space_18">
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/tv_budget_warnings_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-medium"
-                        android:text="Budget Warnings"
-                        android:textColor="#101828"
-                        android:textSize="18sp"
+                        android:text="@string/budget_warnings_title"
+                        android:textColor="@color/sw_text_primary"
+                        android:textSize="@dimen/sw_text_size_18"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -270,7 +270,7 @@
                         android:id="@+id/rv_budget_warnings"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginTop="@dimen/sw_space_16"
                         android:clipToPadding="false"
                         android:nestedScrollingEnabled="false"
                         android:overScrollMode="never"
@@ -281,23 +281,23 @@
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btn_view_all_budgets"
                         android:layout_width="0dp"
-                        android:layout_height="48dp"
-                        android:layout_marginTop="16dp"
+                        android:layout_height="@dimen/sw_button_height"
+                        android:layout_marginTop="@dimen/sw_space_16"
                         android:fontFamily="sans-serif-medium"
                         android:gravity="center_vertical|start"
-                        android:paddingStart="16dp"
-                        android:paddingEnd="14dp"
-                        android:text="View All Budgets"
+                        android:paddingStart="@dimen/sw_space_16"
+                        android:paddingEnd="@dimen/sw_space_14"
+                        android:text="@string/view_all_budgets"
                         android:textAllCaps="false"
-                        android:textColor="#0F8A5F"
-                        android:textSize="14sp"
-                        app:backgroundTint="#E6F4EF"
-                        app:cornerRadius="14dp"
+                        android:textColor="@color/sw_primary"
+                        android:textSize="@dimen/sw_text_size_14"
+                        app:backgroundTint="@color/sw_surface_primary"
+                        app:cornerRadius="@dimen/sw_corner_radius_14"
                         app:icon="@drawable/ic_arrow_forward"
                         app:iconGravity="end"
                         app:iconPadding="0dp"
-                        app:iconSize="18dp"
-                        app:iconTint="#0F8A5F"
+                        app:iconSize="@dimen/sw_icon_size_18"
+                        app:iconTint="@color/sw_primary"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/rv_budget_warnings" />
@@ -309,7 +309,7 @@
             <Space
                 android:id="@+id/ai_insights_bottom_space"
                 android:layout_width="0dp"
-                android:layout_height="12dp"
+                android:layout_height="@dimen/sw_space_12"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/budget_warnings_card" />

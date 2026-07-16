@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <inset xmlns:android="http://schemas.android.com/apk/res/android"
-    android:insetLeft="4dp"
-    android:insetTop="4dp"
-    android:insetRight="4dp"
-    android:insetBottom="4dp">
+    android:insetLeft="@dimen/sw_income_frequency_selected_inset"
+    android:insetTop="@dimen/sw_income_frequency_selected_inset"
+    android:insetRight="@dimen/sw_income_frequency_selected_inset"
+    android:insetBottom="@dimen/sw_income_frequency_selected_inset">
 
     <shape android:shape="rectangle">
 
-        <solid android:color="#0F956C" />
+        <solid android:color="@color/sw_primary_selected" />
 
-        <corners android:radius="18dp" />
+        <corners android:radius="@dimen/sw_corner_radius_18" />
 
     </shape>
 

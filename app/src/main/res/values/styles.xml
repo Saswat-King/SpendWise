@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-<!--   Bottom Navigation-->
+    <!-- Bottom navigation -->
 
-
-    <!-- Bottom-navigation selected-item indicator -->
     <style name="SpendWiseBottomNavigationIndicator">
         <item name="android:width">56dp</item>
         <item name="android:height">32dp</item>
@@ -29,27 +27,57 @@
     </style>
 
 
-    <style name="TextAppearance.SpendWise.BudgetCategoryName" parent="TextAppearance.MaterialComponents.Body1">
+    <!-- Budget category item -->
+
+    <style
+        name="TextAppearance.SpendWise.BudgetCategoryName"
+        parent="TextAppearance.MaterialComponents.Body1">
+
         <item name="android:textStyle">bold</item>
+
     </style>
 
-    <style name="TextAppearance.SpendWise.BudgetPercent" parent="TextAppearance.MaterialComponents.Caption" />
+    <style
+        name="TextAppearance.SpendWise.BudgetPercent"
+        parent="TextAppearance.MaterialComponents.Caption" />
 
-    <style name="Widget.SpendWise.BudgetProgressIndicator" parent="Widget.MaterialComponents.LinearProgressIndicator" />
+    <style
+        name="TextAppearance.SpendWise.BudgetAmount"
+        parent="TextAppearance.MaterialComponents.Body2" />
 
-    <style name="TextAppearance.SpendWise.BudgetAmount" parent="TextAppearance.MaterialComponents.Body2" />
+    <style
+        name="Widget.SpendWise.BudgetProgressIndicator"
+        parent="Widget.MaterialComponents.LinearProgressIndicator" />
 
-    <style name="TextAppearance.SpendWise.SpendCategory" parent="TextAppearance.MaterialComponents.Body1">
+
+    <!-- Recent expense item -->
+
+    <style
+        name="TextAppearance.SpendWise.SpendCategory"
+        parent="TextAppearance.MaterialComponents.Body1">
+
         <item name="android:textStyle">bold</item>
+
     </style>
 
-    <style name="TextAppearance.SpendWise.SpendAmount" parent="TextAppearance.MaterialComponents.Body1">
+    <style
+        name="TextAppearance.SpendWise.SpendAmount"
+        parent="TextAppearance.MaterialComponents.Body1">
+
         <item name="android:textStyle">bold</item>
+
     </style>
 
-    <style name="TextAppearance.SpendWise.SpendDescription" parent="TextAppearance.MaterialComponents.Body2" />
+    <style
+        name="TextAppearance.SpendWise.SpendDescription"
+        parent="TextAppearance.MaterialComponents.Body2" />
 
-    <style name="TextAppearance.SpendWise.SpendDate" parent="TextAppearance.MaterialComponents.Caption" />
+    <style
+        name="TextAppearance.SpendWise.SpendDate"
+        parent="TextAppearance.MaterialComponents.Caption" />
 
+
+    <!-- Splash, onboarding and authentication -->
+    <!-- Add screen-specific styles here after those layouts are created. -->
 
 </resources>

@@ -2,13 +2,12 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/add_expense_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/sw_background">
+    android:background="@color/sw_background"
+    android:fitsSystemWindows="true">
 
-    <!-- Fixed header -->
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/add_expense_app_bar"
         android:layout_width="match_parent"
@@ -20,33 +19,33 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/add_expense_header"
             android:layout_width="match_parent"
-            android:layout_height="72dp"
+            android:layout_height="@dimen/sw_header_height"
             android:background="@color/sw_background"
-            android:paddingStart="12dp"
-            android:paddingEnd="16dp">
+            android:paddingStart="@dimen/sw_space_12"
+            android:paddingEnd="@dimen/sw_space_16">
 
             <ImageButton
                 android:id="@+id/btn_add_expense_back"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="@dimen/sw_touch_target"
+                android:layout_height="@dimen/sw_touch_target"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                android:contentDescription="Back"
-                android:padding="10dp"
+                android:contentDescription="@string/action_back"
+                android:padding="@dimen/sw_space_10"
                 android:src="@drawable/ic_arrow_back"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:tint="#101828" />
+                app:tint="@color/sw_text_primary" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_add_expense_title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="@dimen/sw_space_8"
                 android:fontFamily="sans-serif-medium"
-                android:text="Add Expense"
-                android:textColor="#101828"
-                android:textSize="24sp"
+                android:text="@string/add_expense_title"
+                android:textColor="@color/sw_text_primary"
+                android:textSize="@dimen/sw_text_size_24"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/btn_add_expense_back"
@@ -56,7 +55,6 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <!-- Scrollable form content -->
     <androidx.core.widget.NestedScrollView
         android:id="@+id/add_expense_scroll_view"
         android:layout_width="match_parent"
@@ -69,51 +67,50 @@
             android:id="@+id/add_expense_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp">
+            android:paddingStart="@dimen/sw_space_16"
+            android:paddingEnd="@dimen/sw_space_16">
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_add_expense_subtitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Track a new expense quickly and keep your budget updated"
-                android:textColor="#667085"
-                android:textSize="15sp"
+                android:text="@string/add_expense_subtitle"
+                android:textColor="@color/sw_text_secondary"
+                android:textSize="@dimen/sw_text_size_15"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <!-- Expense Title -->
+            <!-- Expense title -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/expense_title_card"
                 android:layout_width="0dp"
-                android:layout_height="92dp"
-                android:layout_marginStart="2dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="2dp"
-                app:cardBackgroundColor="#FFFFFF"
-                app:cardCornerRadius="18dp"
-                app:cardElevation="2dp"
+                android:layout_height="@dimen/sw_add_expense_field_height"
+                android:layout_marginStart="@dimen/sw_space_2"
+                android:layout_marginTop="@dimen/sw_space_20"
+                android:layout_marginEnd="@dimen/sw_space_2"
+                app:cardBackgroundColor="@color/sw_surface"
+                app:cardCornerRadius="@dimen/sw_corner_radius_18"
+                app:cardElevation="@dimen/sw_card_elevation"
                 app:cardUseCompatPadding="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_add_expense_subtitle"
-                app:strokeColor="#EAECF0"
-                app:strokeWidth="1dp">
+                app:strokeColor="@color/sw_outline_soft"
+                app:strokeWidth="@dimen/sw_stroke_width">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="16dp">
+                    android:paddingStart="@dimen/sw_space_16"
+                    android:paddingEnd="@dimen/sw_space_16">
 
-                    <!-- Icon Background -->
                     <com.google.android.material.card.MaterialCardView
                         android:id="@+id/expense_title_icon_container"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        app:cardBackgroundColor="#E6F4EF"
-                        app:cardCornerRadius="14dp"
+                        android:layout_width="@dimen/sw_icon_container_size_48"
+                        android:layout_height="@dimen/sw_icon_container_size_48"
+                        app:cardBackgroundColor="@color/sw_surface_primary"
+                        app:cardCornerRadius="@dimen/sw_corner_radius_14"
                         app:cardElevation="0dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -122,12 +119,12 @@
 
                         <ImageView
                             android:id="@+id/img_expense_title"
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
+                            android:layout_width="@dimen/sw_icon_size_24"
+                            android:layout_height="@dimen/sw_icon_size_24"
                             android:layout_gravity="center"
                             android:contentDescription="@null"
                             android:src="@drawable/ic_receipt"
-                            app:tint="#0F8A5F" />
+                            app:tint="@color/sw_primary" />
 
                     </com.google.android.material.card.MaterialCardView>
 
@@ -135,11 +132,11 @@
                         android:id="@+id/tv_expense_title_label"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="14dp"
-                        android:layout_marginTop="22dp"
-                        android:text="Expense Title"
-                        android:textColor="#667085"
-                        android:textSize="14sp"
+                        android:layout_marginStart="@dimen/sw_space_14"
+                        android:layout_marginTop="@dimen/sw_space_22"
+                        android:text="@string/expense_title_label"
+                        android:textColor="@color/sw_text_secondary"
+                        android:textSize="@dimen/sw_text_size_14"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@id/expense_title_icon_container"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -148,16 +145,18 @@
                         android:id="@+id/et_expense_title"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="14dp"
-                        android:layout_marginTop="4dp"
+                        android:layout_marginStart="@dimen/sw_space_14"
                         android:background="@null"
-                        android:hint="Enter expense title"
+                        android:hint="@string/expense_title_hint"
                         android:inputType="textCapSentences"
+                        android:maxLength="40"
                         android:maxLines="1"
+                        android:minHeight="@dimen/sw_touch_target"
                         android:padding="0dp"
-                        android:textColor="#101828"
-                        android:textColorHint="#98A2B3"
-                        android:textSize="17sp"
+                        android:singleLine="true"
+                        android:textColor="@color/sw_text_primary"
+                        android:textColorHint="@color/sw_text_hint"
+                        android:textSize="@dimen/sw_text_size_17"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@id/expense_title_icon_container"
                         app:layout_constraintTop_toBottomOf="@id/tv_expense_title_label" />
@@ -170,13 +169,13 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/expense_amount_container"
                 android:layout_width="0dp"
-                android:layout_height="128dp"
-                android:layout_marginTop="16dp"
+                android:layout_height="@dimen/sw_add_expense_amount_height"
+                android:layout_marginTop="@dimen/sw_space_16"
                 android:background="@drawable/bg_primary_income_input"
-                android:paddingStart="20dp"
-                android:paddingTop="18dp"
-                android:paddingEnd="20dp"
-                android:paddingBottom="16dp"
+                android:paddingStart="@dimen/sw_space_20"
+                android:paddingTop="@dimen/sw_space_18"
+                android:paddingEnd="@dimen/sw_space_20"
+                android:paddingBottom="@dimen/sw_space_16"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/expense_title_card">
@@ -185,9 +184,9 @@
                     android:id="@+id/tv_expense_amount_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Amount"
-                    android:textColor="#667085"
-                    android:textSize="14sp"
+                    android:text="@string/amount_label"
+                    android:textColor="@color/sw_text_secondary"
+                    android:textSize="@dimen/sw_text_size_14"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -195,32 +194,33 @@
                     android:id="@+id/tv_expense_currency_symbol"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="@dimen/sw_space_16"
                     android:fontFamily="sans-serif-medium"
-                    android:text="₹"
-                    android:textColor="#101828"
-                    android:textSize="42sp"
+                    android:text="@string/default_currency_symbol"
+                    android:textColor="@color/sw_text_primary"
+                    android:textSize="@dimen/sw_text_size_42"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_expense_amount_label" />
-
 
                 <EditText
                     android:id="@+id/et_expense_amount"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="@dimen/sw_space_12"
+                    android:layout_marginTop="@dimen/sw_space_16"
                     android:background="@null"
                     android:fontFamily="sans-serif-medium"
-                    android:hint="0"
+                    android:hint="@string/input_zero"
                     android:inputType="numberDecimal"
+                    android:maxLength="9"
                     android:maxLines="1"
                     android:padding="0dp"
-                    android:textColor="#101828"
-                    android:textColorHint="#98A2B3"
-                    android:textSize="42sp"
+                    android:singleLine="true"
+                    android:textColor="@color/sw_text_primary"
+                    android:textColorHint="@color/sw_text_hint"
+                    android:textSize="@dimen/sw_text_size_42"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/tv_expense_currency_symbol"
+                    app:layout_constraintStart_toEndOf="@id/tv_expense_currency_symbol"
                     app:layout_constraintTop_toBottomOf="@id/tv_expense_amount_label" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -229,32 +229,35 @@
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/category_selector_card"
                 android:layout_width="0dp"
-                android:layout_height="92dp"
-                android:layout_marginStart="2dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="2dp"
-                app:cardBackgroundColor="#FFFFFF"
-                app:cardCornerRadius="18dp"
-                app:cardElevation="2dp"
+                android:layout_height="@dimen/sw_add_expense_field_height"
+                android:layout_marginStart="@dimen/sw_space_2"
+                android:layout_marginTop="@dimen/sw_space_16"
+                android:layout_marginEnd="@dimen/sw_space_2"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardBackgroundColor="@color/sw_surface"
+                app:cardCornerRadius="@dimen/sw_corner_radius_18"
+                app:cardElevation="@dimen/sw_card_elevation"
                 app:cardUseCompatPadding="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/expense_amount_container"
-                app:strokeColor="#EAECF0"
-                app:strokeWidth="1dp">
+                app:rippleColor="@color/sw_primary_ripple"
+                app:strokeColor="@color/sw_outline_soft"
+                app:strokeWidth="@dimen/sw_stroke_width">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="16dp">
+                    android:paddingStart="@dimen/sw_space_16"
+                    android:paddingEnd="@dimen/sw_space_16">
 
                     <com.google.android.material.card.MaterialCardView
                         android:id="@+id/category_icon_container"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        app:cardBackgroundColor="#E6F4EF"
-                        app:cardCornerRadius="14dp"
+                        android:layout_width="@dimen/sw_icon_container_size_48"
+                        android:layout_height="@dimen/sw_icon_container_size_48"
+                        app:cardBackgroundColor="@color/sw_surface_primary"
+                        app:cardCornerRadius="@dimen/sw_corner_radius_14"
                         app:cardElevation="0dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -262,12 +265,12 @@
 
                         <ImageView
                             android:id="@+id/img_category_icon"
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
+                            android:layout_width="@dimen/sw_icon_size_24"
+                            android:layout_height="@dimen/sw_icon_size_24"
                             android:layout_gravity="center"
                             android:contentDescription="@null"
                             android:src="@drawable/ic_category"
-                            app:tint="#0F8A5F" />
+                            app:tint="@color/sw_primary" />
 
                     </com.google.android.material.card.MaterialCardView>
 
@@ -275,10 +278,10 @@
                         android:id="@+id/tv_category_label"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="14dp"
-                        android:text="Category"
-                        android:textColor="#667085"
-                        android:textSize="14sp"
+                        android:layout_marginStart="@dimen/sw_space_14"
+                        android:text="@string/category_label"
+                        android:textColor="@color/sw_text_secondary"
+                        android:textSize="@dimen/sw_text_size_14"
                         app:layout_constraintEnd_toStartOf="@id/img_category_arrow"
                         app:layout_constraintStart_toEndOf="@id/category_icon_container"
                         app:layout_constraintTop_toTopOf="@id/category_icon_container" />
@@ -287,25 +290,25 @@
                         android:id="@+id/tv_selected_category"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="14dp"
-                        android:layout_marginTop="4dp"
-                        android:text="Select category"
-                        android:textColor="#101828"
-                        android:textSize="17sp"
+                        android:layout_marginStart="@dimen/sw_space_14"
+                        android:layout_marginTop="@dimen/sw_space_4"
+                        android:text="@string/select_category"
+                        android:textColor="@color/sw_text_primary"
+                        android:textSize="@dimen/sw_text_size_17"
                         app:layout_constraintEnd_toStartOf="@id/img_category_arrow"
                         app:layout_constraintStart_toEndOf="@id/category_icon_container"
                         app:layout_constraintTop_toBottomOf="@id/tv_category_label" />
 
                     <ImageView
                         android:id="@+id/img_category_arrow"
-                        android:layout_width="22dp"
-                        android:layout_height="22dp"
+                        android:layout_width="@dimen/sw_icon_size_22"
+                        android:layout_height="@dimen/sw_icon_size_22"
                         android:contentDescription="@null"
                         android:src="@drawable/ic_arrow_drop_down"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:tint="#667085" />
+                        app:tint="@color/sw_text_secondary" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -315,32 +318,35 @@
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/date_selector_card"
                 android:layout_width="0dp"
-                android:layout_height="92dp"
-                android:layout_marginStart="2dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="2dp"
-                app:cardBackgroundColor="#FFFFFF"
-                app:cardCornerRadius="18dp"
-                app:cardElevation="2dp"
+                android:layout_height="@dimen/sw_add_expense_field_height"
+                android:layout_marginStart="@dimen/sw_space_2"
+                android:layout_marginTop="@dimen/sw_space_16"
+                android:layout_marginEnd="@dimen/sw_space_2"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardBackgroundColor="@color/sw_surface"
+                app:cardCornerRadius="@dimen/sw_corner_radius_18"
+                app:cardElevation="@dimen/sw_card_elevation"
                 app:cardUseCompatPadding="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/category_selector_card"
-                app:strokeColor="#EAECF0"
-                app:strokeWidth="1dp">
+                app:rippleColor="@color/sw_primary_ripple"
+                app:strokeColor="@color/sw_outline_soft"
+                app:strokeWidth="@dimen/sw_stroke_width">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="16dp">
+                    android:paddingStart="@dimen/sw_space_16"
+                    android:paddingEnd="@dimen/sw_space_16">
 
                     <com.google.android.material.card.MaterialCardView
                         android:id="@+id/date_icon_container"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        app:cardBackgroundColor="#EAF2FF"
-                        app:cardCornerRadius="14dp"
+                        android:layout_width="@dimen/sw_icon_container_size_48"
+                        android:layout_height="@dimen/sw_icon_container_size_48"
+                        app:cardBackgroundColor="@color/sw_surface_primary"
+                        app:cardCornerRadius="@dimen/sw_corner_radius_14"
                         app:cardElevation="0dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -348,12 +354,12 @@
 
                         <ImageView
                             android:id="@+id/img_date_icon"
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
+                            android:layout_width="@dimen/sw_icon_size_24"
+                            android:layout_height="@dimen/sw_icon_size_24"
                             android:layout_gravity="center"
                             android:contentDescription="@null"
                             android:src="@drawable/ic_calendar_month"
-                            app:tint="#0F8A5F" />
+                            app:tint="@color/sw_primary" />
 
                     </com.google.android.material.card.MaterialCardView>
 
@@ -361,10 +367,10 @@
                         android:id="@+id/tv_date_label"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="14dp"
-                        android:text="Date"
-                        android:textColor="#667085"
-                        android:textSize="14sp"
+                        android:layout_marginStart="@dimen/sw_space_14"
+                        android:text="@string/date_label"
+                        android:textColor="@color/sw_text_secondary"
+                        android:textSize="@dimen/sw_text_size_14"
                         app:layout_constraintEnd_toStartOf="@id/img_date_arrow"
                         app:layout_constraintStart_toEndOf="@id/date_icon_container"
                         app:layout_constraintTop_toTopOf="@id/date_icon_container" />
@@ -373,25 +379,25 @@
                         android:id="@+id/tv_selected_date"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="14dp"
-                        android:layout_marginTop="4dp"
-                        android:text="Select date"
-                        android:textColor="#101828"
-                        android:textSize="17sp"
+                        android:layout_marginStart="@dimen/sw_space_14"
+                        android:layout_marginTop="@dimen/sw_space_4"
+                        android:text="@string/select_date"
+                        android:textColor="@color/sw_text_primary"
+                        android:textSize="@dimen/sw_text_size_17"
                         app:layout_constraintEnd_toStartOf="@id/img_date_arrow"
                         app:layout_constraintStart_toEndOf="@id/date_icon_container"
                         app:layout_constraintTop_toBottomOf="@id/tv_date_label" />
 
                     <ImageView
                         android:id="@+id/img_date_arrow"
-                        android:layout_width="22dp"
-                        android:layout_height="22dp"
+                        android:layout_width="@dimen/sw_icon_size_22"
+                        android:layout_height="@dimen/sw_icon_size_22"
                         android:contentDescription="@null"
                         android:src="@drawable/ic_arrow_forward"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:tint="#667085" />
+                        app:tint="@color/sw_text_secondary" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -402,45 +408,45 @@
                 android:id="@+id/note_card"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="2dp"
-                app:cardBackgroundColor="#FFFFFF"
-                app:cardCornerRadius="18dp"
-                app:cardElevation="2dp"
+                android:layout_marginStart="@dimen/sw_space_2"
+                android:layout_marginTop="@dimen/sw_space_16"
+                android:layout_marginEnd="@dimen/sw_space_2"
+                app:cardBackgroundColor="@color/sw_surface"
+                app:cardCornerRadius="@dimen/sw_corner_radius_18"
+                app:cardElevation="@dimen/sw_card_elevation"
                 app:cardUseCompatPadding="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/date_selector_card"
-                app:strokeColor="#EAECF0"
-                app:strokeWidth="1dp">
+                app:strokeColor="@color/sw_outline_soft"
+                app:strokeWidth="@dimen/sw_stroke_width">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingStart="16dp"
-                    android:paddingTop="16dp"
-                    android:paddingEnd="16dp"
-                    android:paddingBottom="16dp">
+                    android:paddingStart="@dimen/sw_space_16"
+                    android:paddingTop="@dimen/sw_space_16"
+                    android:paddingEnd="@dimen/sw_space_16"
+                    android:paddingBottom="@dimen/sw_space_16">
 
                     <com.google.android.material.card.MaterialCardView
                         android:id="@+id/note_icon_container"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        app:cardBackgroundColor="#E6F4EF"
-                        app:cardCornerRadius="14dp"
+                        android:layout_width="@dimen/sw_icon_container_size_48"
+                        android:layout_height="@dimen/sw_icon_container_size_48"
+                        app:cardBackgroundColor="@color/sw_surface_primary"
+                        app:cardCornerRadius="@dimen/sw_corner_radius_14"
                         app:cardElevation="0dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
                         <ImageView
                             android:id="@+id/img_note_icon"
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
+                            android:layout_width="@dimen/sw_icon_size_24"
+                            android:layout_height="@dimen/sw_icon_size_24"
                             android:layout_gravity="center"
                             android:contentDescription="@null"
                             android:src="@drawable/ic_note"
-                            app:tint="#0F8A5F" />
+                            app:tint="@color/sw_primary" />
 
                     </com.google.android.material.card.MaterialCardView>
 
@@ -448,10 +454,10 @@
                         android:id="@+id/tv_note_label"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="14dp"
-                        android:text="Note (Optional)"
-                        android:textColor="#667085"
-                        android:textSize="14sp"
+                        android:layout_marginStart="@dimen/sw_space_14"
+                        android:text="@string/note_optional_label"
+                        android:textColor="@color/sw_text_secondary"
+                        android:textSize="@dimen/sw_text_size_14"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@id/note_icon_container"
                         app:layout_constraintTop_toTopOf="@id/note_icon_container" />
@@ -460,17 +466,21 @@
                         android:id="@+id/et_expense_note"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="14dp"
-                        android:layout_marginTop="4dp"
+                        android:layout_marginStart="@dimen/sw_space_14"
+                        android:layout_marginTop="@dimen/sw_space_4"
                         android:background="@null"
                         android:gravity="top|start"
-                        android:hint="Add a short note"
+                        android:hint="@string/note_hint"
                         android:inputType="textCapSentences|textMultiLine"
+                        android:maxLength="150"
+                        android:maxLines="4"
                         android:minLines="3"
+                        android:overScrollMode="never"
                         android:padding="0dp"
-                        android:textColor="#101828"
-                        android:textColorHint="#98A2B3"
-                        android:textSize="16sp"
+                        android:scrollbars="vertical"
+                        android:textColor="@color/sw_text_primary"
+                        android:textColorHint="@color/sw_text_hint"
+                        android:textSize="@dimen/sw_text_size_16"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@id/note_icon_container"
                         app:layout_constraintTop_toBottomOf="@id/tv_note_label" />
@@ -482,17 +492,17 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_save_expense"
                 android:layout_width="0dp"
-                android:layout_height="56dp"
-                android:layout_marginStart="2dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="2dp"
+                android:layout_height="@dimen/sw_button_height_large"
+                android:layout_marginStart="@dimen/sw_space_2"
+                android:layout_marginTop="@dimen/sw_space_24"
+                android:layout_marginEnd="@dimen/sw_space_2"
                 android:fontFamily="sans-serif-medium"
-                android:text="Save Expense"
+                android:text="@string/save_expense"
                 android:textAllCaps="false"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp"
-                app:backgroundTint="#0B5F43"
-                app:cornerRadius="16dp"
+                android:textColor="@color/sw_on_primary"
+                android:textSize="@dimen/sw_text_size_16"
+                app:backgroundTint="@color/sw_primary_dark"
+                app:cornerRadius="@dimen/sw_corner_radius_16"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/note_card" />
@@ -500,7 +510,7 @@
             <Space
                 android:id="@+id/add_expense_bottom_space"
                 android:layout_width="0dp"
-                android:layout_height="16dp"
+                android:layout_height="@dimen/sw_space_16"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/btn_save_expense" />

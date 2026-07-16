@@ -5,7 +5,7 @@
     <solid android:color="@color/sw_surface" />
 
     <corners
-        android:topLeftRadius="28dp"
-        android:topRightRadius="28dp" />
+        android:topLeftRadius="@dimen/sw_bottom_nav_top_corner_radius"
+        android:topRightRadius="@dimen/sw_bottom_nav_top_corner_radius" />
 
 </shape>

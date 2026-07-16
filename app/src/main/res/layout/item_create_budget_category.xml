@@ -1,34 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml version="1.0" encoding="utf-8"?>
-
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="88dp"
-    android:layout_marginStart="2dp"
-    android:layout_marginEnd="2dp"
-    android:layout_marginBottom="2dp"
-    app:cardBackgroundColor="#FFFFFF"
-    app:cardCornerRadius="18dp"
-    app:cardElevation="2dp"
+    android:layout_height="@dimen/sw_create_budget_item_height"
+    android:layout_marginStart="@dimen/sw_space_2"
+    android:layout_marginEnd="@dimen/sw_space_2"
+    android:layout_marginBottom="@dimen/sw_space_2"
+    app:cardBackgroundColor="@color/sw_surface"
+    app:cardCornerRadius="@dimen/sw_corner_radius_18"
+    app:cardElevation="@dimen/sw_card_elevation"
     app:cardUseCompatPadding="true"
-    app:strokeColor="#EAECF0"
-    app:strokeWidth="1dp">
+    app:strokeColor="@color/sw_outline_soft"
+    app:strokeWidth="@dimen/sw_stroke_width">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingStart="14dp"
-        android:paddingEnd="14dp">
+        android:paddingStart="@dimen/sw_space_14"
+        android:paddingEnd="@dimen/sw_space_14">
 
-        <!-- Category Icon Background -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/category_icon_container"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            app:cardBackgroundColor="#E6F4EF"
-            app:cardCornerRadius="14dp"
+            android:layout_width="@dimen/sw_icon_container_size_48"
+            android:layout_height="@dimen/sw_icon_container_size_48"
+            app:cardBackgroundColor="@color/sw_surface_primary"
+            app:cardCornerRadius="@dimen/sw_corner_radius_14"
             app:cardElevation="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -37,61 +35,60 @@
 
             <ImageView
                 android:id="@+id/img_budget_category"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="@dimen/sw_icon_size_24"
+                android:layout_height="@dimen/sw_icon_size_24"
                 android:layout_gravity="center"
                 android:contentDescription="@null"
-                android:src="@drawable/ic_food"
-                app:tint="#0F8A5F" />
+                android:src="@drawable/ic_category"
+                app:tint="@color/sw_primary" />
 
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- Category Name -->
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tv_budget_category_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="14dp"
-            android:layout_marginEnd="12dp"
+            android:layout_marginStart="@dimen/sw_space_14"
+            android:layout_marginEnd="@dimen/sw_space_12"
             android:ellipsize="end"
             android:fontFamily="sans-serif-medium"
             android:maxLines="2"
-            android:textColor="#101828"
-            android:textSize="15sp"
+            android:textColor="@color/sw_text_primary"
+            android:textSize="@dimen/sw_text_size_15"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/budget_amount_container"
             app:layout_constraintStart_toEndOf="@id/category_icon_container"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Food" />
 
-        <!-- Budget Amount Input -->
+
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/budget_amount_container"
-            android:layout_width="126dp"
-            android:layout_height="54dp"
-            app:cardBackgroundColor="#FFFFFF"
-            app:cardCornerRadius="14dp"
+            android:layout_width="@dimen/sw_create_budget_amount_width"
+            android:layout_height="@dimen/sw_create_budget_amount_height"
+            app:cardBackgroundColor="@color/sw_surface"
+            app:cardCornerRadius="@dimen/sw_corner_radius_14"
             app:cardElevation="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:strokeColor="#8AC7B4"
-            app:strokeWidth="1dp">
+            app:strokeColor="@color/sw_outline_primary"
+            app:strokeWidth="@dimen/sw_stroke_width">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingStart="12dp"
-                android:paddingEnd="10dp">
+                android:paddingStart="@dimen/sw_space_12"
+                android:paddingEnd="@dimen/sw_space_10">
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/tv_budget_currency_symbol"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-medium"
-                    android:text="₹"
-                    android:textColor="#101828"
-                    android:textSize="18sp"
+                    android:text="@string/default_currency_symbol"
+                    android:textColor="@color/sw_text_primary"
+                    android:textSize="@dimen/sw_text_size_18"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -100,19 +97,19 @@
                     android:id="@+id/et_budget_amount"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginStart="@dimen/sw_space_8"
                     android:background="@null"
                     android:fontFamily="sans-serif-medium"
                     android:gravity="center_vertical"
-                    android:hint="0"
+                    android:hint="@string/input_zero"
                     android:imeOptions="actionNext"
                     android:inputType="numberDecimal"
                     android:maxLines="1"
                     android:padding="0dp"
                     android:selectAllOnFocus="true"
-                    android:textColor="#101828"
-                    android:textColorHint="#98A2B3"
-                    android:textSize="16sp"
+                    android:textColor="@color/sw_text_primary"
+                    android:textColorHint="@color/sw_text_hint"
+                    android:textSize="@dimen/sw_text_size_16"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/tv_budget_currency_symbol"
                     app:layout_constraintTop_toTopOf="parent" />

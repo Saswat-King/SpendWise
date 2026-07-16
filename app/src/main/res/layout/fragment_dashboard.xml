@@ -2,7 +2,6 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/dashboard_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -11,24 +10,24 @@
         android:id="@+id/dashboard_app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/sw_background"
         app:elevation="0dp"
         app:liftOnScroll="true"
-        android:background="@color/sw_background"
         app:liftOnScrollTargetViewId="@id/dashboard_scroll_view">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/dashboard_top_header"
-            android:background="@color/sw_background"
             android:layout_width="match_parent"
-            android:layout_height="62dp"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp">
+            android:layout_height="@dimen/sw_dashboard_header_height"
+            android:background="@color/sw_background"
+            android:paddingStart="@dimen/sw_space_16"
+            android:paddingEnd="@dimen/sw_space_16">
 
             <ImageView
                 android:id="@+id/img_logo"
-                android:layout_width="34dp"
-                android:layout_height="34dp"
-                android:layout_marginTop="15dp"
+                android:layout_width="@dimen/sw_dashboard_logo_size"
+                android:layout_height="@dimen/sw_dashboard_logo_size"
+                android:layout_marginTop="@dimen/sw_space_15"
                 android:contentDescription="@null"
                 android:scaleType="fitCenter"
                 android:src="@drawable/spendwise_logo"
@@ -39,30 +38,29 @@
                 android:id="@+id/tv_app_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="7dp"
+                android:layout_marginStart="@dimen/sw_space_7"
                 android:fontFamily="sans-serif-medium"
                 android:text="@string/app_name"
-                android:textColor="#101828"
-                android:textSize="22sp"
+                android:textColor="@color/sw_text_primary"
+                android:textSize="@dimen/sw_text_size_22"
                 app:layout_constraintBottom_toBottomOf="@id/img_logo"
                 app:layout_constraintStart_toEndOf="@id/img_logo"
                 app:layout_constraintTop_toTopOf="@id/img_logo" />
 
             <ImageButton
                 android:id="@+id/btn_notification"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="8dp"
+                android:layout_width="@dimen/sw_touch_target"
+                android:layout_height="@dimen/sw_touch_target"
+                android:layout_marginTop="@dimen/sw_space_8"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                android:contentDescription="abc"
-                android:padding="12dp"
+                android:contentDescription="@string/content_description_notifications"
+                android:padding="@dimen/sw_space_12"
                 android:src="@drawable/ic_notifications"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:tint="#101828" />
+                app:tint="@color/sw_text_primary" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -78,18 +76,18 @@
             android:id="@+id/dashboard_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp">
+            android:paddingStart="@dimen/sw_space_16"
+            android:paddingEnd="@dimen/sw_space_16">
 
             <TextView
                 android:id="@+id/tv_greeting"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="@dimen/sw_space_24"
                 android:fontFamily="sans-serif-medium"
-                android:text="Good morning, Ashik! 👋"
-                android:textColor="#101828"
-                android:textSize="24sp"
+                android:text="@string/dashboard_greeting_preview"
+                android:textColor="@color/sw_text_primary"
+                android:textSize="@dimen/sw_text_size_24"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -98,10 +96,10 @@
                 android:id="@+id/tv_overview"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:text="Here's your financial overview"
-                android:textColor="#667085"
-                android:textSize="15sp"
+                android:layout_marginTop="@dimen/sw_space_6"
+                android:text="@string/dashboard_overview_subtitle"
+                android:textColor="@color/sw_text_secondary"
+                android:textSize="@dimen/sw_text_size_15"
                 app:layout_constraintEnd_toEndOf="@id/tv_greeting"
                 app:layout_constraintStart_toStartOf="@id/tv_greeting"
                 app:layout_constraintTop_toBottomOf="@id/tv_greeting" />
@@ -109,13 +107,13 @@
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/balance_card"
                 android:layout_width="0dp"
-                android:layout_height="230dp"
-                android:layout_marginStart="2dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="2dp"
-                app:cardBackgroundColor="#0F8A5F"
-                app:cardCornerRadius="20dp"
-                app:cardElevation="2dp"
+                android:layout_height="@dimen/sw_dashboard_balance_card_height"
+                android:layout_marginStart="@dimen/sw_space_2"
+                android:layout_marginTop="@dimen/sw_space_16"
+                android:layout_marginEnd="@dimen/sw_space_2"
+                app:cardBackgroundColor="@color/sw_primary"
+                app:cardCornerRadius="@dimen/sw_corner_radius_20"
+                app:cardElevation="@dimen/sw_card_elevation"
                 app:cardUseCompatPadding="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -125,7 +123,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="20dp">
+                    android:padding="@dimen/sw_space_20">
 
                     <androidx.constraintlayout.widget.Guideline
                         android:id="@+id/vertical_top_guideline"
@@ -133,7 +131,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         android:visibility="visible"
-                        app:layout_constraintGuide_begin="165dp" />
+                        app:layout_constraintGuide_begin="@dimen/sw_dashboard_chart_guideline" />
 
                     <androidx.constraintlayout.widget.Guideline
                         android:id="@+id/horizontal_divider_guideline"
@@ -155,9 +153,9 @@
                         android:id="@+id/tv_available_balance_label"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="Available balance"
-                        android:textColor="#D9FFFFFF"
-                        android:textSize="13sp"
+                        android:text="@string/available_balance_label"
+                        android:textColor="@color/sw_on_primary_85"
+                        android:textSize="@dimen/sw_text_size_14"
                         app:layout_constraintEnd_toStartOf="@id/vertical_top_guideline"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -166,14 +164,14 @@
                         android:id="@+id/tv_available_balance"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="@dimen/sw_space_5"
                         android:ellipsize="end"
                         android:fontFamily="sans-serif-medium"
                         android:maxLines="1"
-                        android:text="$0.00"
-                        android:textColor="@android:color/white"
-                        android:textSize="28sp"
-                        app:layout_constraintEnd_toStartOf="@+id/vertical_top_guideline"
+                        android:text="@string/amount_dollar_zero"
+                        android:textColor="@color/sw_on_primary"
+                        android:textSize="@dimen/sw_text_size_28"
+                        app:layout_constraintEnd_toStartOf="@id/vertical_top_guideline"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tv_available_balance_label" />
 
@@ -181,35 +179,35 @@
                         android:id="@+id/btn_month"
                         style="@style/Widget.Material3.Button.OutlinedButton"
                         android:layout_width="wrap_content"
-                        android:layout_height="30dp"
+                        android:layout_height="48dp"
                         android:insetTop="0dp"
                         android:insetBottom="0dp"
                         android:minWidth="0dp"
                         android:minHeight="0dp"
-                        android:paddingStart="11dp"
-                        android:paddingEnd="7dp"
-                        android:text="This month"
+                        android:paddingStart="@dimen/sw_space_11"
+                        android:paddingEnd="@dimen/sw_space_7"
+                        android:text="@string/dashboard_filter_this_month"
                         android:textAllCaps="false"
-                        android:textColor="@android:color/white"
-                        android:textSize="12sp"
-                        app:cornerRadius="10dp"
+                        android:textColor="@color/sw_on_primary"
+                        android:textSize="@dimen/sw_text_size_12"
+                        app:cornerRadius="@dimen/sw_corner_radius_10"
                         app:icon="@drawable/ic_arrow_drop_down"
                         app:iconGravity="textEnd"
-                        app:iconPadding="3dp"
-                        app:iconSize="18dp"
-                        app:iconTint="@android:color/white"
+                        app:iconPadding="@dimen/sw_space_3"
+                        app:iconSize="@dimen/sw_icon_size_18"
+                        app:iconTint="@color/sw_on_primary"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:strokeColor="#66FFFFFF"
-                        app:strokeWidth="1dp" />
+                        app:strokeColor="@color/sw_on_primary_40"
+                        app:strokeWidth="@dimen/sw_stroke_width" />
 
                     <com.github.mikephil.charting.charts.LineChart
                         android:id="@+id/balance_chart"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginBottom="4dp"
+                        android:layout_marginStart="@dimen/sw_space_8"
+                        android:layout_marginTop="@dimen/sw_space_4"
+                        android:layout_marginBottom="@dimen/sw_space_4"
                         android:background="@android:color/transparent"
                         app:layout_constraintBottom_toTopOf="@id/divider_balance"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -219,8 +217,8 @@
                     <View
                         android:id="@+id/divider_balance"
                         android:layout_width="0dp"
-                        android:layout_height="1dp"
-                        android:background="#33FFFFFF"
+                        android:layout_height="@dimen/sw_divider_thickness"
+                        android:background="@color/sw_on_primary_20"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="@id/horizontal_divider_guideline" />
@@ -229,11 +227,11 @@
                         android:id="@+id/tv_income_label"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
+                        android:layout_marginTop="@dimen/sw_space_12"
                         android:gravity="start"
-                        android:text="Income"
-                        android:textColor="#D9FFFFFF"
-                        android:textSize="13sp"
+                        android:text="@string/income_label"
+                        android:textColor="@color/sw_on_primary_85"
+                        android:textSize="@dimen/sw_text_size_13"
                         app:layout_constraintEnd_toStartOf="@id/vertical_bottom_guideline"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/divider_balance" />
@@ -242,24 +240,24 @@
                         android:id="@+id/tv_income_amount"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="3dp"
+                        android:layout_marginTop="@dimen/sw_space_3"
                         android:ellipsize="end"
                         android:fontFamily="sans-serif-medium"
                         android:maxLines="1"
-                        android:text="+$0.00"
-                        android:textColor="@android:color/white"
-                        android:textSize="17sp"
-                        app:layout_constraintEnd_toEndOf="@+id/tv_income_label"
-                        app:layout_constraintStart_toStartOf="@+id/tv_income_label"
+                        android:text="@string/amount_dollar_income_zero"
+                        android:textColor="@color/sw_on_primary"
+                        android:textSize="@dimen/sw_text_size_17"
+                        app:layout_constraintEnd_toEndOf="@id/tv_income_label"
+                        app:layout_constraintStart_toStartOf="@id/tv_income_label"
                         app:layout_constraintTop_toBottomOf="@id/tv_income_label" />
 
                     <View
                         android:id="@+id/divider_income_expense"
-                        android:layout_width="1dp"
+                        android:layout_width="@dimen/sw_divider_thickness"
                         android:layout_height="0dp"
-                        android:layout_marginTop="12dp"
-                        android:layout_marginBottom="2dp"
-                        android:background="#33FFFFFF"
+                        android:layout_marginTop="@dimen/sw_space_12"
+                        android:layout_marginBottom="@dimen/sw_space_2"
+                        android:background="@color/sw_on_primary_20"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="@id/vertical_bottom_guideline"
                         app:layout_constraintTop_toBottomOf="@id/divider_balance" />
@@ -268,11 +266,11 @@
                         android:id="@+id/tv_expense_label"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="18dp"
-                        android:layout_marginTop="12dp"
-                        android:text="Expense"
-                        android:textColor="#D9FFFFFF"
-                        android:textSize="13sp"
+                        android:layout_marginStart="@dimen/sw_space_18"
+                        android:layout_marginTop="@dimen/sw_space_12"
+                        android:text="@string/expense_label"
+                        android:textColor="@color/sw_on_primary_85"
+                        android:textSize="@dimen/sw_text_size_13"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@id/vertical_bottom_guideline"
                         app:layout_constraintTop_toBottomOf="@id/divider_balance" />
@@ -281,15 +279,15 @@
                         android:id="@+id/tv_expense_amount"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="3dp"
+                        android:layout_marginTop="@dimen/sw_space_3"
                         android:ellipsize="end"
                         android:fontFamily="sans-serif-medium"
                         android:maxLines="1"
-                        android:text="-$0.00"
-                        android:textColor="@android:color/white"
-                        android:textSize="17sp"
-                        app:layout_constraintEnd_toEndOf="@+id/tv_expense_label"
-                        app:layout_constraintStart_toStartOf="@+id/tv_expense_label"
+                        android:text="@string/amount_dollar_expense_zero"
+                        android:textColor="@color/sw_on_primary"
+                        android:textSize="@dimen/sw_text_size_17"
+                        app:layout_constraintEnd_toEndOf="@id/tv_expense_label"
+                        app:layout_constraintStart_toStartOf="@id/tv_expense_label"
                         app:layout_constraintTop_toBottomOf="@id/tv_expense_label" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -300,35 +298,35 @@
                 android:id="@+id/budget_overview_card"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="2dp"
-                app:cardBackgroundColor="@android:color/white"
-                app:cardCornerRadius="18dp"
-                app:cardElevation="2dp"
+                android:layout_marginStart="@dimen/sw_space_2"
+                android:layout_marginTop="@dimen/sw_space_16"
+                android:layout_marginEnd="@dimen/sw_space_2"
+                app:cardBackgroundColor="@color/sw_surface"
+                app:cardCornerRadius="@dimen/sw_corner_radius_18"
+                app:cardElevation="@dimen/sw_card_elevation"
                 app:cardUseCompatPadding="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/balance_card"
-                app:strokeColor="#EEF2F6"
-                app:strokeWidth="1dp">
+                app:strokeColor="@color/sw_outline_subtle"
+                app:strokeWidth="@dimen/sw_stroke_width">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingStart="18dp"
-                    android:paddingTop="18dp"
-                    android:paddingEnd="18dp"
-                    android:paddingBottom="18dp">
+                    android:paddingStart="@dimen/sw_space_18"
+                    android:paddingTop="@dimen/sw_space_18"
+                    android:paddingEnd="@dimen/sw_space_18"
+                    android:paddingBottom="@dimen/sw_space_18">
 
                     <TextView
                         android:id="@+id/tv_budget_overview_title"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-medium"
-                        android:text="Budget Overview"
-                        android:textColor="#101828"
-                        android:textSize="17sp"
+                        android:text="@string/budget_overview_title"
+                        android:textColor="@color/sw_text_primary"
+                        android:textSize="@dimen/sw_text_size_17"
                         app:layout_constraintEnd_toStartOf="@id/tv_budget_view_all"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -342,44 +340,44 @@
                         android:focusable="true"
                         android:fontFamily="sans-serif-medium"
                         android:gravity="center"
-                        android:minHeight="48dp"
-                        android:paddingStart="8dp"
+                        android:minHeight="49dp"
+                        android:paddingStart="@dimen/sw_space_8"
                         android:paddingEnd="0dp"
-                        android:text="View all"
-                        android:textColor="#0F7A5A"
-                        android:textSize="13sp"
+                        android:text="@string/action_view_all"
+                        android:textColor="@color/sw_primary_action"
+                        android:textSize="@dimen/sw_text_size_13"
                         app:layout_constraintBaseline_toBaselineOf="@id/tv_budget_overview_title"
                         app:layout_constraintEnd_toEndOf="parent" />
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/budget_progress_container"
-                        android:layout_width="176dp"
-                        android:layout_height="176dp"
-                        android:layout_marginTop="12dp"
-                        android:layout_marginBottom="12dp"
+                        android:layout_width="@dimen/sw_dashboard_budget_progress_size"
+                        android:layout_height="@dimen/sw_dashboard_budget_progress_size"
+                        android:layout_marginTop="@dimen/sw_space_12"
+                        android:layout_marginBottom="@dimen/sw_space_12"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tv_budget_overview_title">
 
                         <com.google.android.material.progressindicator.CircularProgressIndicator
                             android:id="@+id/budget_circular_progress"
-                            android:layout_width="152dp"
-                            android:layout_height="152dp"
+                            android:layout_width="@dimen/sw_dashboard_budget_indicator_size"
+                            android:layout_height="@dimen/sw_dashboard_budget_indicator_size"
                             android:indeterminate="false"
                             android:progress="65"
-                            app:indicatorColor="#197A5A"
+                            app:indicatorColor="@color/sw_primary_progress"
                             app:indicatorDirectionCircular="clockwise"
                             app:indicatorInset="0dp"
-                            app:indicatorSize="152dp"
+                            app:indicatorSize="@dimen/sw_dashboard_budget_indicator_size"
                             app:indicatorTrackGapSize="0dp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:trackColor="#E9ECEF"
-                            app:trackCornerRadius="7dp"
+                            app:trackColor="@color/sw_progress_track"
+                            app:trackCornerRadius="@dimen/sw_corner_radius_7"
                             app:trackStopIndicatorSize="0dp"
-                            app:trackThickness="13dp" />
+                            app:trackThickness="@dimen/sw_dashboard_budget_track_thickness" />
 
                         <LinearLayout
                             android:id="@+id/budget_progress_text_group"
@@ -397,37 +395,37 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="sans-serif-medium"
-                                android:text="65%"
-                                android:textColor="#101828"
-                                android:textSize="28sp" />
+                                android:text="@string/budget_used_percent_preview"
+                                android:textColor="@color/sw_text_primary"
+                                android:textSize="@dimen/sw_text_size_28" />
 
                             <TextView
                                 android:id="@+id/tv_budget_used_label"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="1dp"
-                                android:text="of budget used"
-                                android:textColor="#667085"
-                                android:textSize="13sp" />
+                                android:layout_marginTop="@dimen/sw_space_1"
+                                android:text="@string/budget_used_label"
+                                android:textColor="@color/sw_text_secondary"
+                                android:textSize="@dimen/sw_text_size_13" />
 
                             <TextView
                                 android:id="@+id/tv_budget_used_amount"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
+                                android:layout_marginTop="@dimen/sw_space_8"
                                 android:fontFamily="sans-serif-medium"
-                                android:text="$1,625.00"
-                                android:textColor="#101828"
-                                android:textSize="16sp" />
+                                android:text="@string/budget_spent_preview"
+                                android:textColor="@color/sw_text_primary"
+                                android:textSize="@dimen/sw_text_size_16" />
 
                             <TextView
                                 android:id="@+id/tv_budget_total_amount"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="1dp"
-                                android:text="of $2,500.00"
-                                android:textColor="#667085"
-                                android:textSize="10sp" />
+                                android:layout_marginTop="@dimen/sw_space_1"
+                                android:text="@string/budget_total_preview"
+                                android:textColor="@color/sw_text_secondary"
+                                android:textSize="@dimen/sw_text_size_10" />
 
                         </LinearLayout>
 
@@ -436,8 +434,8 @@
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rv_budget_categories_preview"
                         android:layout_width="0dp"
-                        android:layout_height="156dp"
-                        android:layout_marginStart="16dp"
+                        android:layout_height="@dimen/sw_dashboard_budget_list_height"
+                        android:layout_marginStart="@dimen/sw_space_16"
                         android:nestedScrollingEnabled="false"
                         android:overScrollMode="never"
                         app:layout_constraintBottom_toBottomOf="@id/budget_progress_container"
@@ -453,35 +451,35 @@
                 android:id="@+id/recent_expenses_card"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="2dp"
-                app:cardBackgroundColor="@android:color/white"
-                app:cardCornerRadius="18dp"
-                app:cardElevation="2dp"
+                android:layout_marginStart="@dimen/sw_space_2"
+                android:layout_marginTop="@dimen/sw_space_16"
+                android:layout_marginEnd="@dimen/sw_space_2"
+                app:cardBackgroundColor="@color/sw_surface"
+                app:cardCornerRadius="@dimen/sw_corner_radius_18"
+                app:cardElevation="@dimen/sw_card_elevation"
                 app:cardUseCompatPadding="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/budget_overview_card"
-                app:strokeColor="#EEF2F6"
-                app:strokeWidth="1dp">
+                app:strokeColor="@color/sw_outline_subtle"
+                app:strokeWidth="@dimen/sw_stroke_width">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingStart="18dp"
-                    android:paddingTop="18dp"
-                    android:paddingEnd="18dp"
-                    android:paddingBottom="18dp">
+                    android:paddingStart="@dimen/sw_space_18"
+                    android:paddingTop="@dimen/sw_space_18"
+                    android:paddingEnd="@dimen/sw_space_18"
+                    android:paddingBottom="@dimen/sw_space_18">
 
                     <TextView
                         android:id="@+id/tv_recent_expenses_title"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-medium"
-                        android:text="Recent Expenses"
-                        android:textColor="#101828"
-                        android:textSize="17sp"
+                        android:text="@string/recent_expenses_title"
+                        android:textColor="@color/sw_text_primary"
+                        android:textSize="@dimen/sw_text_size_17"
                         app:layout_constraintEnd_toStartOf="@id/tv_recent_expenses_view_all"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -495,12 +493,12 @@
                         android:focusable="true"
                         android:fontFamily="sans-serif-medium"
                         android:gravity="center"
-                        android:minHeight="48dp"
-                        android:paddingStart="8dp"
+                        android:minHeight="49dp"
+                        android:paddingStart="@dimen/sw_space_8"
                         android:paddingEnd="0dp"
-                        android:text="View all"
-                        android:textColor="#0F7A5A"
-                        android:textSize="13sp"
+                        android:text="@string/action_view_all"
+                        android:textColor="@color/sw_primary_action"
+                        android:textSize="@dimen/sw_text_size_13"
                         app:layout_constraintBaseline_toBaselineOf="@id/tv_recent_expenses_title"
                         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -508,10 +506,10 @@
                         android:id="@+id/rv_recent_expenses_preview"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:layout_marginBottom="12dp"
+                        android:layout_marginTop="@dimen/sw_space_12"
+                        android:layout_marginBottom="@dimen/sw_space_12"
                         android:clipToPadding="false"
-                        android:minHeight="176dp"
+                        android:minHeight="@dimen/sw_dashboard_recent_list_min_height"
                         android:nestedScrollingEnabled="false"
                         android:overScrollMode="never"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -527,33 +525,33 @@
                 android:id="@+id/ai_insight_card"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="2dp"
-                app:cardBackgroundColor="@android:color/white"
-                app:cardCornerRadius="18dp"
-                app:cardElevation="2dp"
+                android:layout_marginStart="@dimen/sw_space_2"
+                android:layout_marginTop="@dimen/sw_space_16"
+                android:layout_marginEnd="@dimen/sw_space_2"
+                app:cardBackgroundColor="@color/sw_surface"
+                app:cardCornerRadius="@dimen/sw_corner_radius_18"
+                app:cardElevation="@dimen/sw_card_elevation"
                 app:cardUseCompatPadding="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/recent_expenses_card"
-                app:strokeColor="#EEF2F6"
-                app:strokeWidth="1dp">
+                app:strokeColor="@color/sw_outline_subtle"
+                app:strokeWidth="@dimen/sw_stroke_width">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingStart="18dp"
-                    android:paddingTop="18dp"
-                    android:paddingEnd="18dp"
-                    android:paddingBottom="18dp">
+                    android:paddingStart="@dimen/sw_space_18"
+                    android:paddingTop="@dimen/sw_space_18"
+                    android:paddingEnd="@dimen/sw_space_18"
+                    android:paddingBottom="@dimen/sw_space_18">
 
                     <com.google.android.material.card.MaterialCardView
                         android:id="@+id/ai_icon_container"
-                        android:layout_width="42dp"
-                        android:layout_height="42dp"
-                        app:cardBackgroundColor="#EAF7F2"
-                        app:cardCornerRadius="12dp"
+                        android:layout_width="@dimen/sw_icon_container_size_42"
+                        android:layout_height="@dimen/sw_icon_container_size_42"
+                        app:cardBackgroundColor="@color/sw_surface_primary_subtle"
+                        app:cardCornerRadius="@dimen/sw_corner_radius_12"
                         app:cardElevation="0dp"
                         app:cardUseCompatPadding="false"
                         app:layout_constraintStart_toStartOf="parent"
@@ -562,10 +560,10 @@
 
                         <ImageView
                             android:id="@+id/img_ai_icon"
-                            android:layout_width="22dp"
-                            android:layout_height="22dp"
+                            android:layout_width="@dimen/sw_icon_size_22"
+                            android:layout_height="@dimen/sw_icon_size_22"
                             android:layout_gravity="center"
-                            android:contentDescription="AI insight"
+                            android:contentDescription="@string/content_description_ai_insight"
                             android:src="@drawable/ic_ai_sparkle" />
 
                     </com.google.android.material.card.MaterialCardView>
@@ -574,11 +572,11 @@
                         android:id="@+id/tv_ai_insight_title"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="12dp"
+                        android:layout_marginStart="@dimen/sw_space_12"
                         android:fontFamily="sans-serif-medium"
-                        android:text="AI Insight"
-                        android:textColor="#101828"
-                        android:textSize="17sp"
+                        android:text="@string/dashboard_ai_insight_title"
+                        android:textColor="@color/sw_text_primary"
+                        android:textSize="@dimen/sw_text_size_17"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@id/ai_icon_container"
                         app:layout_constraintTop_toTopOf="@id/ai_icon_container" />
@@ -587,50 +585,50 @@
                         android:id="@+id/tv_ai_insight_subtitle"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="3dp"
-                        android:text="Smart summary of your spending"
-                        android:textColor="#667085"
-                        android:textSize="13sp"
-                        app:layout_constraintEnd_toEndOf="@+id/tv_ai_insight_title"
-                        app:layout_constraintStart_toStartOf="@+id/tv_ai_insight_title"
+                        android:layout_marginTop="@dimen/sw_space_3"
+                        android:text="@string/dashboard_ai_insight_subtitle"
+                        android:textColor="@color/sw_text_secondary"
+                        android:textSize="@dimen/sw_text_size_13"
+                        app:layout_constraintEnd_toEndOf="@id/tv_ai_insight_title"
+                        app:layout_constraintStart_toStartOf="@id/tv_ai_insight_title"
                         app:layout_constraintTop_toBottomOf="@id/tv_ai_insight_title" />
 
                     <TextView
                         android:id="@+id/tv_ai_insight_message"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="32dp"
-                        android:lineSpacingExtra="2dp"
-                        android:text="You spent more on shopping this week than usual. Review your recent expenses to stay within your monthly budget."
-                        android:textColor="#475467"
-                        android:textSize="14sp"
+                        android:layout_marginTop="@dimen/sw_space_32"
+                        android:lineSpacingExtra="@dimen/sw_space_2"
+                        android:text="@string/dashboard_ai_insight_message"
+                        android:textColor="@color/sw_text_tertiary"
+                        android:textSize="@dimen/sw_text_size_14"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_ai_insight_subtitle" />
+                        app:layout_constraintTop_toBottomOf="@id/tv_ai_insight_subtitle" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btn_view_ai_insight"
                         android:layout_width="wrap_content"
-                        android:layout_height="40dp"
-                        android:layout_marginTop="16dp"
+                        android:layout_height="@dimen/sw_button_height_small"
+                        android:layout_marginTop="@dimen/sw_space_16"
                         android:fontFamily="sans-serif-medium"
                         android:insetTop="0dp"
                         android:insetBottom="0dp"
                         android:minWidth="0dp"
                         android:minHeight="0dp"
-                        android:paddingStart="18dp"
-                        android:paddingEnd="14dp"
-                        android:text="View insight"
+                        android:paddingStart="@dimen/sw_space_18"
+                        android:paddingEnd="@dimen/sw_space_14"
+                        android:text="@string/action_view_insight"
                         android:textAllCaps="false"
-                        android:textColor="@android:color/white"
-                        android:textSize="13sp"
-                        app:backgroundTint="#0F7A5A"
-                        app:cornerRadius="12dp"
+                        android:textColor="@color/sw_on_primary"
+                        android:textSize="@dimen/sw_text_size_13"
+                        app:backgroundTint="@color/sw_primary_action"
+                        app:cornerRadius="@dimen/sw_corner_radius_12"
                         app:icon="@drawable/ic_arrow_forward"
                         app:iconGravity="textEnd"
-                        app:iconPadding="6dp"
-                        app:iconSize="17dp"
-                        app:iconTint="@android:color/white"
+                        app:iconPadding="@dimen/sw_space_6"
+                        app:iconSize="@dimen/sw_icon_size_17"
+                        app:iconTint="@color/sw_on_primary"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tv_ai_insight_message" />
 
@@ -638,17 +636,13 @@
 
             </com.google.android.material.card.MaterialCardView>
 
-                        <Space
-                            android:id="@+id/dashboard_bottom_space"
-                            android:layout_width="0dp"
-                            android:layout_height="12dp"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/ai_insight_card" />
-            <!-- Continue adding remaining cards/views here.
-                 Every next view should constrain its top
-                 to the bottom of the previous view. -->
-
+            <Space
+                android:id="@+id/dashboard_bottom_space"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/sw_space_12"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ai_insight_card" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

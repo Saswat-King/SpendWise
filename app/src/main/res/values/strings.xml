@@ -1,111 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- ═══════════════════════════════════════════════════════════ -->
-    <!-- APP                                                          -->
-    <!-- ═══════════════════════════════════════════════════════════ -->
-    <string name="app_name">SpendWise</string>
+    <!-- App -->
+    <string name="app_name" translatable="false">SpendWise</string>
 
-    <!-- ═══════════════════════════════════════════════════════════ -->
-    <!-- TOP APP BAR — ACCESSIBILITY CONTENT DESCRIPTIONS            -->
-    <!-- ═══════════════════════════════════════════════════════════ -->
-    <string name="cd_open_menu">Open navigation menu</string>
-    <string name="cd_open_navigation_drawer">Open navigation drawer</string>
-    <string name="cd_notifications">Notifications</string>
-    <string name="cd_user_profile">User profile</string>
-    <string name="cd_toggle_balance_visibility">Toggle balance visibility</string>
+    <!-- Common actions -->
+    <string name="action_back">Back</string>
+    <string name="action_continue">Continue</string>
+    <string name="action_finish">Finish</string>
+    <string name="action_view_all">View all</string>
+    <string name="label_optional">Optional</string>
 
-    <!-- ═══════════════════════════════════════════════════════════ -->
-    <!-- GREETING SECTION                                             -->
-    <!-- ═══════════════════════════════════════════════════════════ -->
-
-    <string name="greeting_subtitle">Here\'s your financial overview</string>
-
-    <!-- ═══════════════════════════════════════════════════════════ -->
-    <!-- AVAILABLE BALANCE HERO CARD                                  -->
-    <!-- ═══════════════════════════════════════════════════════════ -->
-
-    <string name="label_available_balance">Available Balance</string>
-
-    <!-- Date filter dropdown options -->
-    <string name="filter_this_month">This Month</string>
-    <string name="filter_this_year">This Year</string>
-    <string name="filter_custom_range">Custom Range</string>
-
-    <!-- Income / Expense row labels -->
-    <string name="label_income">Income</string>
-    <string name="label_expenses">Expenses</string>
-
-    <!-- Percentage badge: "↑ 12.5% vs last period" -->
-    <string name="label_vs_last_period">vs last period</string>
-
-    <!-- ═══════════════════════════════════════════════════════════ -->
-    <!-- QUICK ACTIONS STRIP                                          -->
-    <!-- ═══════════════════════════════════════════════════════════ -->
-
-
-    <!-- Action button labels -->
-    <string name="action_add_expense">Add Expense</string>
-    <string name="action_scan_receipt">Scan Receipt</string>
-    <string name="action_set_budget">Set Budget</string>
-    <string name="action_export_report">Export Report</string>
-
-    <!-- Accessibility content descriptions (more descriptive than labels) -->
-    <string name="cd_add_expense">Add a new expense</string>
-    <string name="cd_scan_receipt">Scan a receipt</string>
-    <string name="cd_set_budget">Set a budget goal</string>
-    <string name="cd_export_report">Export spending report</string>
-
-    <!-- ═══════════════════════════════════════════════════════════ -->
-    <!-- SHARED SECTION HEADER                                        -->
-    <!-- ═══════════════════════════════════════════════════════════ -->
-    <string name="label_view_all">View all</string>
-
-    <!-- ═══════════════════════════════════════════════════════════ -->
-    <!-- BUDGET OVERVIEW CARD                                         -->
-    <!-- ═══════════════════════════════════════════════════════════ -->
-    <string name="section_budget_overview">Budget Overview</string>
-    <string name="label_of_budget_used">of budget used</string>
-
-    <string name="label_of_total">of %s</string>
-
-    <!-- ═══════════════════════════════════════════════════════════ -->
-    <!-- SPEND CATEGORIES  (shared by Budget Overview + Recent Spends)-->
-    <!-- ═══════════════════════════════════════════════════════════ -->
-    <string name="category_shopping">Shopping</string>
-    <string name="category_food_dining">Food &amp; Dining</string>
-    <string name="category_transport">Transport</string>
-    <string name="category_bills_utilities">Bills &amp; Utilities</string>
-    <string name="category_entertainment">Entertainment</string>
-    <string name="category_travel">Travel</string>
-    <string name="category_groceries">Groceries</string>
-
-    <!-- ═══════════════════════════════════════════════════════════ -->
-    <!-- RECENT SPENDS                                                -->
-    <!-- ═══════════════════════════════════════════════════════════ -->
-
-    <string name="section_recent_spends">Recent Spends</string>
-
-
-    <!-- ═══════════════════════════════════════════════════════════ -->
-    <!-- AI INSIGHT CARD                                              -->
-    <!-- ═══════════════════════════════════════════════════════════ -->
-    <string name="section_ai_insight">AI Insight</string>
-
-    <string name="btn_view_insights">View Insights</string>
-    <string name="cd_ai_illustration">AI financial insight illustration</string>
-
-    <!-- ═══════════════════════════════════════════════════════════ -->
-    <!-- BOTTOM NAVIGATION BAR                                        -->
-    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- Navigation -->
     <string name="nav_dashboard">Dashboard</string>
     <string name="nav_expenses">Expenses</string>
-    <string name="nav_budgets">Budgets</string>
-    <string name="nav_insights">Insights</string>
+    <string name="nav_budgets">Budget</string>
+    <string name="nav_insights">AI Insights</string>
+    <string name="nav_settings">Settings</string>
 
-    <!-- FAB -->
-    <string name="cd_fab_add_expense">Add new expense</string>
+    <!-- Splash -->
+
+
+    <!-- Onboarding -->
+
+
+    <!-- Authentication -->
+
+
+    <!-- Sign in -->
+    <string name="action_skip">Skip</string>
+    <string name="login_title">Welcome Back</string>
+    <string name="login_subtitle">Sign in to manage your finances.</string>
+
+    <string name="email_address_label">Email address</string>
+    <string name="email_address_hint">Enter your email</string>
+
+    <string name="password_label">Password</string>
+    <string name="password_hint">Enter your password</string>
+    <string name="content_description_show_password">Show password</string>
+    <string name="forgot_password">Forgot password?</string>
+
+    <string name="sign_in">Sign In</string>
+    <string name="continue_with">Or continue with</string>
+    <string name="continue_with_google">Continue with Google</string>
+
+    <string name="no_account_prompt">Don’t have an account?</string>
+    <string name="create_account">Create account</string>
+
+
+    <!-- Create account -->
+    <string name="sign_up_title">Create Account</string>
+    <string name="sign_up_subtitle">Create an account to get started.</string>
+
+    <string name="confirm_password_label">Confirm password</string>
+    <string name="confirm_password_hint">Confirm your password</string>
+    <string name="content_description_show_confirm_password">Show confirm password</string>
+
+    <string name="create_account_action">Create Account</string>
+    <string name="already_have_account_prompt">Already have an account?</string>
+    <string name="sign_in_action">Sign in</string>
+
+
+
+
+    <!-- Income setup -->
+    <string name="income_setup_title">Income Setup</string>
+    <string name="income_setup_subtitle">Let\'s understand your income sources</string>
+    <string name="income_frequency_title">Income Frequency</string>
+    <string name="income_frequency_monthly">Monthly Salary</string>
+    <string name="income_frequency_yearly">Yearly Salary</string>
+
+    <string name="primary_income_title">Primary Income</string>
+    <string name="primary_income_description">Enter your take-home salary</string>
+    <string name="income_period_note">Monthly salary (after taxes)</string>
+
+    <string name="additional_income_title">Additional Income (Optional)</string>
+    <string name="additional_income_description">Add any extra income sources you have</string>
+    <string name="bonus_income_title">Bonus</string>
+    <string name="freelance_income_title">Freelance Income</string>
+    <string name="other_income_title">Other Income</string>
+
+    <string name="income_summary_title">Income Summary</string>
+    <string name="total_monthly_income_label">Total Monthly Income</string>
+    <string name="base_income_label">Base Income</string>
+    <string name="additional_income_label">Additional</string>
+    <string name="total_income_label">Total Income</string>
+
+    <!-- Create budget -->
+    <string name="create_budget_title">Create Your Budget</string>
+    <string name="create_budget_subtitle">Set spending limits for your main categories</string>
+    <string name="add_category">Add Category</string>
+    <string name="budget_summary_title">Budget Summary</string>
+    <string name="total_budget_label">Total Budget</string>
+
+    <!-- Profile setup -->
+    <string name="profile_setup_title">Profile Setup</string>
+    <string name="profile_setup_subtitle">Add your name and an optional profile photo.</string>
+    <string name="add_photo">Add Photo</string>
+    <string name="profile_photo_optional">Profile photo is optional</string>
+    <string name="display_name_label">Display Name</string>
+    <string name="display_name_hint">Enter your name</string>
+
+    <!-- Dashboard -->
+    <string name="dashboard_greeting_preview">Good morning, Ashik! 👋</string>
+    <string name="dashboard_overview_subtitle">Here\'s your financial overview</string>
+
+    <string name="available_balance_label">Available balance</string>
+    <string name="dashboard_filter_this_month">This month</string>
+    <string name="income_label">Income</string>
+    <string name="expense_label">Expense</string>
+
+    <string name="budget_overview_title">Budget Overview</string>
+    <string name="budget_used_label">of budget used</string>
+
+    <string name="recent_expenses_title">Recent Expenses</string>
+
+    <string name="dashboard_ai_insight_title">AI Insight</string>
+    <string name="dashboard_ai_insight_subtitle">Smart summary of your spending</string>
+    <string name="dashboard_ai_insight_message">You spent more on shopping this week than usual. Review your recent expenses to stay within your monthly budget.</string>
+    <string name="action_view_insight">View insight</string>
+
+    <!-- Expenses -->
+    <string name="expenses_title">Expenses</string>
+    <string name="expenses_subtitle">Track and manage your expenses</string>
+    <string name="total_expense_label">Total Expense</string>
+    <string name="highest_expense_label">Highest Expense</string>
+    <string name="lowest_expense_label">Lowest Expense</string>
+    <string name="all_expenses_title">All Expenses</string>
+
+    <!-- Add expense -->
+    <string name="add_expense_title">Add Expense</string>
+    <string name="add_expense_subtitle">Track a new expense quickly and keep your budget updated</string>
+
+    <string name="expense_title_label">Expense Title</string>
+    <string name="expense_title_hint">Enter expense title</string>
+
+    <string name="amount_label">Amount</string>
+
+    <string name="category_label">Category</string>
+    <string name="select_category">Select category</string>
+
+    <string name="date_label">Date</string>
+    <string name="select_date">Select date</string>
+
+    <string name="note_optional_label">Note (Optional)</string>
+    <string name="note_hint">Add a short note</string>
+
+    <string name="save_expense">Save Expense</string>
+
+    <!-- Budget -->
+    <string name="budget_title">Budget</string>
+    <string name="budget_filter_this_month">This Month</string>
+    <string name="budget_subtitle">Track, manage, and achieve your financial goals</string>
+
+    <string name="total_spent_label">Total Spent</string>
+    <string name="remaining_label">Remaining</string>
+    <string name="budget_usage_message" formatted="false">You\'ve used 65% of your budget</string>
+
+    <string name="budget_analytics_title">Budget Analytics</string>
+    <string name="budget_performance_title">Budget Performance</string>
+    <string name="budget_performance_subtitle">Daily budget usage trend</string>
+    <string name="budget_categories_title">Budget Categories</string>
+
+    <!-- AI insights -->
+    <string name="ai_insights_title">AI Insights</string>
+    <string name="ai_insights_subtitle">Smart insights to help you spend better</string>
+
+    <string name="financial_health_score_title">Financial Health Score</string>
+    <string name="financial_health_status_good">Good</string>
+    <string name="financial_health_message">You\'re making great financial choices this month.</string>
+
+    <string name="key_insights_title">Key Insights</string>
+    <string name="budget_warnings_title">Budget Warnings</string>
+    <string name="view_all_budgets">View All Budgets</string>
+
+    <!-- Default and preview values -->
+    <string name="default_currency_symbol">₹</string>
+    <string name="input_zero">0</string>
+    <string name="income_amount_preview">50,000</string>
+
+    <string name="amount_rupee_zero">₹0</string>
+    <string name="amount_rupee_120">₹120</string>
+    <string name="amount_rupee_4250">₹4,250</string>
+    <string name="amount_rupee_17500">₹17,500</string>
+    <string name="amount_rupee_24580">₹24,580</string>
+    <string name="amount_rupee_32500">₹32,500</string>
+    <string name="amount_rupee_39000">₹39,000</string>
+    <string name="amount_rupee_50000">₹50,000</string>
+
+    <string name="amount_dollar_zero">$0.00</string>
+    <string name="amount_dollar_income_zero">+$0.00</string>
+    <string name="amount_dollar_expense_zero">-$0.00</string>
+
+    <string name="budget_used_percent_preview" formatted="false">65%</string>
+    <string name="budget_spent_preview">$1,625.00</string>
+    <string name="budget_total_preview">of $2,500.00</string>
+    <string name="financial_health_score_preview">82/100</string>
+
+    <!-- Accessibility -->
+    <string name="content_description_notifications">Notifications</string>
+    <string name="content_description_search_expenses">Search expenses</string>
+    <string name="content_description_highest_expense">Highest expense</string>
+    <string name="content_description_lowest_expense">Lowest expense</string>
+    <string name="content_description_edit_profile_photo">Edit profile photo</string>
+    <string name="content_description_financial_health_score">Financial health score</string>
+    <string name="content_description_ai_insight">AI insight</string>
+
+    <string name="content_description_bonus_income">Bonus income</string>
+    <string name="content_description_add_bonus_income">Add bonus income</string>
+    <string name="content_description_freelance_income">Freelance income</string>
+    <string name="content_description_add_freelance_income">Add freelance income</string>
+    <string name="content_description_other_income">Other income</string>
+    <string name="content_description_add_other_income">Add other income</string>
+    <string name="content_description_income_wallet">Income wallet illustration</string>
+    <string name="content_description_budget_wallet">Budget wallet</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
 
 </resources>

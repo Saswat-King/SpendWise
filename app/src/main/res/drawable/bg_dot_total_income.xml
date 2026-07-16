@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#FBBF24" />
-    <corners android:radius="50dp" />
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <solid android:color="@color/sw_income_dot_total" />
+
+    <corners android:radius="@dimen/sw_optional_badge_corner_radius" />
+
 </shape>

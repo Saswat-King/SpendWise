@@ -1,14 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="sw_surface">#1C1B1F</color>
-    <color name="sw_background">#121212</color>
+    <!-- Brand and primary actions -->
+    <color name="sw_green_primary">#8FD8B5</color>
+    <color name="sw_primary">#0F8A5F</color>
+    <color name="sw_primary_action">#0F7A5A</color>
+    <color name="sw_primary_dark">#0B5F43</color>
+    <color name="sw_primary_selected">#0F956C</color>
+    <color name="sw_primary_progress">#4DC49A</color>
 
+    <!-- Backgrounds and surfaces -->
+    <color name="sw_background">#121212</color>
+    <color name="sw_surface">#1C1B1F</color>
+    <color name="sw_surface_primary">#20372E</color>
+    <color name="sw_surface_primary_soft">#1A2D25</color>
+    <color name="sw_surface_primary_subtle">#182721</color>
+    <color name="sw_surface_info">#1B2A3C</color>
+    <color name="sw_surface_neutral">#252429</color>
+
+    <!-- Text and icons -->
+    <color name="sw_text_primary">#F2F4F7</color>
+    <color name="sw_text_primary_expenses">#EDF7F2</color>
+    <color name="sw_text_secondary">#B8C0CC</color>
+    <color name="sw_text_secondary_expenses">#B7C5BE</color>
+    <color name="sw_text_tertiary">#AAB2BD</color>
+    <color name="sw_text_supporting">#D0D5DD</color>
+    <color name="sw_text_hint">#858D99</color>
+    <color name="sw_on_primary">#FFFFFF</color>
+
+    <!-- Borders and dividers -->
+    <color name="sw_outline">#5A606B</color>
+    <color name="sw_outline_soft">#3A3D43</color>
+    <color name="sw_outline_subtle">#2D3035</color>
+    <color name="sw_outline_primary">#5D9A84</color>
+    <color name="sw_outline_primary_medium">#497D69</color>
+    <color name="sw_outline_primary_soft">#38604F</color>
+    <color name="sw_outline_primary_dashed">#527969</color>
+
+    <!-- Content placed on green cards -->
+    <color name="sw_on_primary_85">#D9FFFFFF</color>
+    <color name="sw_on_primary_40">#66FFFFFF</color>
+    <color name="sw_on_primary_20">#33FFFFFF</color>
+    <color name="sw_on_primary_15">#26FFFFFF</color>
+    <color name="sw_primary_ripple">#338FD8B5</color>
+
+    <!-- Progress and status -->
+    <color name="sw_progress_track">#363A3F</color>
+    <color name="sw_indicator_green_bg">#2D7A5A</color>
+    <color name="sw_indicator_red_bg">#7D2C38</color>
+    <color name="sw_badge_pill_bg">#2D7A5A</color>
+
+    <!-- Income summary accents -->
+    <color name="sw_income_dot_base">#6CFF9F</color>
+    <color name="sw_income_dot_additional">#38BDF8</color>
+    <color name="sw_income_dot_total">#FBBF24</color>
+
+    <!-- Category and action containers -->
+    <color name="sw_action_green_bg">#20372E</color>
+    <color name="sw_spend_bg_shopping">#1D2D44</color>
+    <color name="sw_spend_icon_shopping">#6EA8FE</color>
+
+    <!-- Bottom navigation and main action -->
     <color name="sw_nav_active">#8FD8B5</color>
     <color name="sw_nav_inactive">#B8B8B8</color>
     <color name="sw_nav_active_indicator">#274C3B</color>
-
-
     <color name="fab_background">#1A5C42</color>
     <color name="fab_icon_color">#FFFFFF</color>
+
+    <!-- Splash, onboarding and authentication -->
+
+
+    <!-- Authentication -->
+    <color name="sw_auth_primary">#087747</color>
+    <color name="sw_auth_accent">#8FD8B5</color>
+    <color name="sw_auth_text_primary">#F2F4F7</color>
+    <color name="sw_auth_icon_container">#1A3027</color>
+    <color name="sw_auth_text_hint">#AAB2BD</color>
+    <color name="sw_auth_divider">#4A505B</color>
+
+    <!-- Add dark screen-specific colors here when those screens are created. -->
+
 </resources>

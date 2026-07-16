@@ -1,83 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- Global -->
-    <dimen name="sw_screen_margin">16dp</dimen>
-    <dimen name="sw_section_spacing">20dp</dimen>
-    <dimen name="sw_content_bottom_padding">100dp</dimen>
-    <dimen name="sw_dashboard_content_bottom_padding">100dp</dimen>
+    <!-- Spacing -->
+    <dimen name="sw_space_1">1dp</dimen>
+    <dimen name="sw_space_2">2dp</dimen>
+    <dimen name="sw_space_3">3dp</dimen>
+    <dimen name="sw_space_4">4dp</dimen>
+    <dimen name="sw_space_5">5dp</dimen>
+    <dimen name="sw_space_6">6dp</dimen>
+    <dimen name="sw_space_7">7dp</dimen>
+    <dimen name="sw_space_8">8dp</dimen>
+    <dimen name="sw_space_9">9dp</dimen>
+    <dimen name="sw_space_10">10dp</dimen>
+    <dimen name="sw_space_11">11dp</dimen>
+    <dimen name="sw_space_12">12dp</dimen>
+    <dimen name="sw_space_14">14dp</dimen>
+    <dimen name="sw_space_15">15dp</dimen>
+    <dimen name="sw_space_16">16dp</dimen>
+    <dimen name="sw_space_18">18dp</dimen>
+    <dimen name="sw_space_20">20dp</dimen>
+    <dimen name="sw_space_22">22dp</dimen>
+    <dimen name="sw_space_24">24dp</dimen>
+    <dimen name="sw_space_28">28dp</dimen>
+    <dimen name="sw_space_32">32dp</dimen>
+    <dimen name="sw_space_36">36dp</dimen>
 
-    <!-- Shared cards -->
-    <dimen name="sw_card_corner_radius">16dp</dimen>
+    <!-- Text sizes -->
+    <dimen name="sw_text_size_10">10sp</dimen>
+    <dimen name="sw_text_size_11">11sp</dimen>
+    <dimen name="sw_text_size_12">12sp</dimen>
+    <dimen name="sw_text_size_13">13sp</dimen>
+    <dimen name="sw_text_size_14">14sp</dimen>
+    <dimen name="sw_text_size_15">15sp</dimen>
+    <dimen name="sw_text_size_16">16sp</dimen>
+    <dimen name="sw_text_size_17">17sp</dimen>
+    <dimen name="sw_text_size_18">18sp</dimen>
+    <dimen name="sw_text_size_22">22sp</dimen>
+    <dimen name="sw_text_size_24">24sp</dimen>
+    <dimen name="sw_text_size_28">28sp</dimen>
+    <dimen name="sw_text_size_32">32sp</dimen>
+    <dimen name="sw_text_size_36">36sp</dimen>
+    <dimen name="sw_text_size_40">40sp</dimen>
+    <dimen name="sw_text_size_42">42sp</dimen>
+
+    <!-- Strokes and elevation -->
+    <dimen name="sw_stroke_width">1dp</dimen>
+    <dimen name="sw_stroke_width_emphasized">1.5dp</dimen>
     <dimen name="sw_card_elevation">2dp</dimen>
-    <dimen name="sw_card_padding">16dp</dimen>
+    <dimen name="sw_floating_elevation">3dp</dimen>
+    <dimen name="sw_navigation_elevation">8dp</dimen>
 
-    <!-- Shared icons -->
-    <dimen name="sw_icon_size">24dp</dimen>
-    <dimen name="sw_icon_touch_target">48dp</dimen>
-    <dimen name="sw_icon_padding">12dp</dimen>
+    <!-- Corner radii -->
+    <dimen name="sw_corner_radius_4">4dp</dimen>
+    <dimen name="sw_corner_radius_7">7dp</dimen>
+    <dimen name="sw_corner_radius_10">10dp</dimen>
+    <dimen name="sw_corner_radius_12">12dp</dimen>
+    <dimen name="sw_corner_radius_14">14dp</dimen>
+    <dimen name="sw_corner_radius_16">16dp</dimen>
+    <dimen name="sw_corner_radius_18">18dp</dimen>
+    <dimen name="sw_corner_radius_20">20dp</dimen>
+    <dimen name="sw_corner_radius_24">24dp</dimen>
+    <dimen name="sw_corner_radius_25">25dp</dimen>
+    <dimen name="sw_corner_radius_26">26dp</dimen>
+    <dimen name="sw_corner_radius_28">28dp</dimen>
+    <dimen name="sw_corner_radius_50">50dp</dimen>
+    <dimen name="sw_corner_radius_90">90dp</dimen>
 
-    <!-- Toolbar -->
-    <dimen name="sw_toolbar_height">64dp</dimen>
-    <dimen name="sw_logo_size">28dp</dimen>
-    <dimen name="sw_brand_margin_start">8dp</dimen>
-    <dimen name="sw_brand_text_margin">8dp</dimen>
-    <dimen name="sw_avatar_size">48dp</dimen>
-    <dimen name="sw_toolbar_actions_gap">4dp</dimen>
-    <dimen name="sw_badge_size">10dp</dimen>
-    <dimen name="sw_badge_offset">6dp</dimen>
+    <!-- Shared components -->
+    <dimen name="sw_touch_target">48dp</dimen>
+    <dimen name="sw_header_height">72dp</dimen>
 
-    <!-- Greeting -->
-    <dimen name="sw_greeting_margin_top">12dp</dimen>
-    <dimen name="sw_greeting_subtitle_margin_top">4dp</dimen>
+    <dimen name="sw_button_height_small">40dp</dimen>
+    <dimen name="sw_button_height">48dp</dimen>
+    <dimen name="sw_button_height_large">56dp</dimen>
 
-    <!-- Balance hero card -->
-    <dimen name="sw_hero_card_corner_radius">24dp</dimen>
-    <dimen name="sw_hero_card_padding">20dp</dimen>
-    <dimen name="sw_hero_card_elevation">4dp</dimen>
+    <dimen name="sw_icon_size_16">16dp</dimen>
+    <dimen name="sw_icon_size_17">17dp</dimen>
+    <dimen name="sw_icon_size_18">18dp</dimen>
+    <dimen name="sw_icon_size_20">20dp</dimen>
+    <dimen name="sw_icon_size_22">22dp</dimen>
+    <dimen name="sw_icon_size_24">24dp</dimen>
+    <dimen name="sw_icon_size_26">26dp</dimen>
+    <dimen name="sw_icon_size_34">34dp</dimen>
+    <dimen name="sw_icon_size_36">36dp</dimen>
 
-    <dimen name="sw_balance_main_size">38sp</dimen>
-    <dimen name="sw_balance_decimal_size">22sp</dimen>
-    <dimen name="sw_balance_margin_top">12dp</dimen>
-    <dimen name="sw_balance_decimal_margin">2dp</dimen>
+    <dimen name="sw_icon_container_size_42">42dp</dimen>
+    <dimen name="sw_icon_container_size_48">48dp</dimen>
+    <dimen name="sw_icon_container_size_50">50dp</dimen>
+    <dimen name="sw_icon_container_size_52">52dp</dimen>
 
-    <!-- Filter chip -->
-    <dimen name="sw_filter_chip_corner_radius">20dp</dimen>
-    <dimen name="sw_filter_chip_min_height">32dp</dimen>
-    <dimen name="sw_filter_chip_padding_h">12dp</dimen>
-    <dimen name="sw_filter_chip_icon_size">16dp</dimen>
+    <dimen name="sw_divider_thickness">1dp</dimen>
 
-    <!-- Percentage badge -->
-    <dimen name="sw_hero_badge_margin_top">10dp</dimen>
-    <dimen name="sw_badge_pill_corner_radius">12dp</dimen>
-    <dimen name="sw_badge_pill_padding_h">10dp</dimen>
-    <dimen name="sw_badge_pill_padding_v">4dp</dimen>
-    <dimen name="sw_badge_vs_text_margin">8dp</dimen>
+    <!-- Main navigation -->
+    <dimen name="sw_bottom_nav_min_height">80dp</dimen>
+    <dimen name="sw_bottom_nav_indicator_width">56dp</dimen>
+    <dimen name="sw_bottom_nav_indicator_height">32dp</dimen>
+    <dimen name="sw_bottom_nav_indicator_corner_radius">16dp</dimen>
+    <dimen name="sw_bottom_nav_icon_size">24dp</dimen>
+    <dimen name="sw_fab_size">49dp</dimen>
 
-    <dimen name="sw_hero_section_spacing">16dp</dimen>
-    <dimen name="sw_hero_chart_height">92dp</dimen>
+    <!-- Dashboard -->
+    <dimen name="sw_dashboard_header_height">62dp</dimen>
+    <dimen name="sw_dashboard_logo_size">34dp</dimen>
+    <dimen name="sw_dashboard_balance_card_height">230dp</dimen>
+    <dimen name="sw_dashboard_chart_guideline">165dp</dimen>
+    <dimen name="sw_dashboard_filter_height">30dp</dimen>
 
-    <!-- Income and expense indicators -->
-    <dimen name="sw_indicator_circle_size">40dp</dimen>
-    <dimen name="sw_indicator_icon_padding">10dp</dimen>
-    <dimen name="sw_indicator_text_margin_start">12dp</dimen>
-    <dimen name="sw_indicator_amount_margin_top">2dp</dimen>
-    <dimen name="sw_indicator_expense_margin_start">8dp</dimen>
+    <dimen name="sw_dashboard_budget_progress_size">176dp</dimen>
+    <dimen name="sw_dashboard_budget_indicator_size">152dp</dimen>
+    <dimen name="sw_dashboard_budget_track_thickness">13dp</dimen>
+    <dimen name="sw_dashboard_budget_list_height">156dp</dimen>
+    <dimen name="sw_dashboard_recent_list_min_height">176dp</dimen>
 
-    <!-- Budget overview -->
-    <dimen name="sw_section_title_size">18sp</dimen>
-    <dimen name="sw_view_all_size">14sp</dimen>
-    <dimen name="sw_header_content_spacing">16dp</dimen>
-    <dimen name="sw_budget_overview_content_height">184dp</dimen>
-    <dimen name="sw_donut_column_end_margin">8dp</dimen>
+    <!-- Expenses -->
+    <dimen name="sw_expenses_bottom_padding">110dp</dimen>
+    <dimen name="sw_expenses_summary_icon_space">52dp</dimen>
+    <dimen name="sw_expenses_summary_divider_height">46dp</dimen>
 
-    <dimen name="sw_donut_percent_size">28sp</dimen>
-    <dimen name="sw_donut_percent_label_size">12sp</dimen>
-    <dimen name="sw_donut_percent_label_margin">2dp</dimen>
-    <dimen name="sw_donut_group_gap">10dp</dimen>
-    <dimen name="sw_donut_amount_size">16sp</dimen>
-    <dimen name="sw_donut_amount_label_size">11sp</dimen>
-    <dimen name="sw_donut_amount_label_margin">2dp</dimen>
+    <!-- Budget -->
+    <dimen name="sw_budget_summary_divider_height">44dp</dimen>
+    <dimen name="sw_budget_summary_progress_height">8dp</dimen>
+    <dimen name="sw_budget_analytics_chart_size">170dp</dimen>
+    <dimen name="sw_budget_performance_chart_height">190dp</dimen>
+
+    <!-- AI insights -->
+    <dimen name="sw_health_score_container_size">112dp</dimen>
+    <dimen name="sw_health_score_indicator_size">104dp</dimen>
+    <dimen name="sw_health_score_track_thickness">8dp</dimen>
+    <dimen name="sw_health_score_icon_size">50dp</dimen>
+
+    <!-- Income setup -->
+    <dimen name="sw_income_frequency_height">56dp</dimen>
+    <dimen name="sw_income_amount_input_height">116dp</dimen>
+    <dimen name="sw_income_source_row_height">72dp</dimen>
+    <dimen name="sw_income_wallet_width">122dp</dimen>
+    <dimen name="sw_income_wallet_height">134dp</dimen>
+    <dimen name="sw_income_summary_divider_height">44dp</dimen>
+    <dimen name="sw_income_summary_dot_size">9dp</dimen>
+
+    <!-- Create budget -->
+    <dimen name="sw_create_budget_add_row_height">72dp</dimen>
+    <dimen name="sw_create_budget_item_height">88dp</dimen>
+    <dimen name="sw_create_budget_amount_width">126dp</dimen>
+    <dimen name="sw_create_budget_amount_height">54dp</dimen>
+
+    <!-- Profile setup -->
+    <dimen name="sw_profile_photo_size">180dp</dimen>
+    <dimen name="sw_profile_photo_corner_radius">90dp</dimen>
+    <dimen name="sw_profile_edit_button_size">50dp</dimen>
+    <dimen name="sw_profile_edit_button_corner_radius">25dp</dimen>
+    <dimen name="sw_profile_name_input_height">64dp</dimen>
+
+    <!-- Add expense -->
+    <dimen name="sw_add_expense_field_height">92dp</dimen>
+    <dimen name="sw_add_expense_amount_height">128dp</dimen>
 
     <!-- Budget category item -->
     <dimen name="sw_budget_item_padding_v">10dp</dimen>
@@ -89,13 +165,7 @@
     <dimen name="sw_budget_name_progress_gap">6dp</dimen>
     <dimen name="sw_budget_progress_amount_gap">4dp</dimen>
 
-    <!-- Progress indicator -->
-    <dimen name="sw_progress_height">6dp</dimen>
-    <dimen name="sw_progress_corner_radius">3dp</dimen>
-
-    <!-- Recent spends -->
-    <dimen name="sw_spend_section_margin_top">20dp</dimen>
-    <dimen name="sw_spend_header_list_gap">4dp</dimen>
+    <!-- Recent expense item -->
     <dimen name="sw_spend_item_padding_v">12dp</dimen>
     <dimen name="sw_spend_icon_size">48dp</dimen>
     <dimen name="sw_spend_icon_corner_radius">14dp</dimen>
@@ -104,37 +174,29 @@
     <dimen name="sw_spend_name_desc_gap">3dp</dimen>
     <dimen name="sw_spend_amount_date_gap">3dp</dimen>
     <dimen name="sw_spend_column_gap">8dp</dimen>
+    <dimen name="sw_spend_item_horizontal_inset">8dp</dimen>
 
-    <!-- AI insight card -->
-    <dimen name="sw_ai_card_padding">20dp</dimen>
-    <dimen name="sw_ai_card_min_height">150dp</dimen>
-    <dimen name="sw_ai_sparkle_size">18dp</dimen>
-    <dimen name="sw_ai_sparkle_text_gap">8dp</dimen>
-    <dimen name="sw_ai_desc_margin_top">10dp</dimen>
-    <dimen name="sw_ai_btn_margin_top">16dp</dimen>
-    <dimen name="sw_insight_btn_corner_radius">24dp</dimen>
-    <dimen name="sw_insight_btn_padding_start">20dp</dimen>
-    <dimen name="sw_insight_btn_padding_end">14dp</dimen>
-    <dimen name="sw_insight_btn_text_size">13sp</dimen>
-    <dimen name="sw_ai_illustration_size">110dp</dimen>
-    <dimen name="sw_ai_illustration_margin_start">8dp</dimen>
+    <!-- Drawables -->
+    <dimen name="sw_badge_pill_corner_radius">12dp</dimen>
+    <dimen name="sw_income_frequency_selected_inset">4dp</dimen>
+    <dimen name="sw_add_category_dash_width">6dp</dimen>
+    <dimen name="sw_add_category_dash_gap">4dp</dimen>
+    <dimen name="sw_optional_badge_corner_radius">50dp</dimen>
+    <dimen name="sw_primary_input_stroke_width">1.5dp</dimen>
+    <dimen name="sw_bottom_nav_top_corner_radius">28dp</dimen>
 
-    <!-- Bottom navigation and FAB -->
-    <dimen name="sw_bottom_nav_height">80dp</dimen>
-    <dimen name="sw_bottom_nav_elevation">8dp</dimen>
-    <dimen name="sw_fab_size">56dp</dimen>
-    <dimen name="sw_fab_elevation">8dp</dimen>
+    <!-- Splash, onboarding and authentication -->
 
-    <!-- Quick actions -->
-    <dimen name="sw_quick_actions_padding_v">20dp</dimen>
-    <dimen name="sw_quick_actions_padding_h">8dp</dimen>
-    <dimen name="sw_quick_action_size">52dp</dimen>
-    <dimen name="sw_quick_action_column_min_height">84dp</dimen>
-    <dimen name="sw_quick_action_corner_radius">14dp</dimen>
-    <dimen name="sw_quick_action_label_margin_top">8dp</dimen>
+    <!-- Authentication -->
+    <dimen name="sw_auth_title_text_size">34sp</dimen>
+    <dimen name="sw_auth_form_margin_top">45dp</dimen>
+    <dimen name="sw_auth_section_spacing">26dp</dimen>
+    <dimen name="sw_auth_input_height">64dp</dimen>
+    <dimen name="sw_auth_icon_container_size">40dp</dimen>
+    <dimen name="sw_auth_google_button_height">60dp</dimen>
 
-    <!-- View all touch target -->
-    <dimen name="sw_view_all_padding_v">14dp</dimen>
-    <dimen name="sw_view_all_padding_h">8dp</dimen>
+
+
+    <!-- Add screen-specific dimensions here after those layouts are created. -->
 
 </resources>

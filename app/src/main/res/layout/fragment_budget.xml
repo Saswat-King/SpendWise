@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/budget_root"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/budget_app_bar"
@@ -19,19 +19,19 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/budget_header"
             android:layout_width="match_parent"
-            android:layout_height="72dp"
+            android:layout_height="@dimen/sw_header_height"
             android:background="@color/sw_background"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp">
+            android:paddingStart="@dimen/sw_space_16"
+            android:paddingEnd="@dimen/sw_space_16">
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_budget_title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-medium"
-                android:text="Budget"
-                android:textColor="#101828"
-                android:textSize="28sp"
+                android:text="@string/budget_title"
+                android:textColor="@color/sw_text_primary"
+                android:textSize="@dimen/sw_text_size_28"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -40,29 +40,29 @@
                 android:id="@+id/btn_budget_month"
                 style="@style/Widget.Material3.Button.OutlinedButton"
                 android:layout_width="wrap_content"
-                android:layout_height="48dp"
+                android:layout_height="@dimen/sw_touch_target"
                 android:fontFamily="sans-serif-medium"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
                 android:minWidth="0dp"
                 android:minHeight="0dp"
-                android:paddingStart="14dp"
-                android:paddingEnd="10dp"
-                android:text="This Month"
+                android:paddingStart="@dimen/sw_space_14"
+                android:paddingEnd="@dimen/sw_space_10"
+                android:text="@string/budget_filter_this_month"
                 android:textAllCaps="false"
-                android:textColor="#101828"
-                android:textSize="14sp"
-                app:cornerRadius="12dp"
+                android:textColor="@color/sw_text_primary"
+                android:textSize="@dimen/sw_text_size_14"
+                app:cornerRadius="@dimen/sw_corner_radius_12"
                 app:icon="@drawable/ic_arrow_drop_down"
                 app:iconGravity="textEnd"
-                app:iconPadding="4dp"
-                app:iconSize="20dp"
-                app:iconTint="#101828"
+                app:iconPadding="@dimen/sw_space_4"
+                app:iconSize="@dimen/sw_icon_size_20"
+                app:iconTint="@color/sw_text_primary"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:strokeColor="#D0D5DD"
-                app:strokeWidth="1dp" />
+                app:strokeColor="@color/sw_outline"
+                app:strokeWidth="@dimen/sw_stroke_width" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -80,32 +80,32 @@
             android:id="@+id/budget_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp">
+            android:paddingStart="@dimen/sw_space_16"
+            android:paddingEnd="@dimen/sw_space_16">
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_budget_subtitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Track, manage, and achieve your financial goals"
-                android:textColor="#667085"
-                android:textSize="15sp"
+                android:layout_marginTop="@dimen/sw_space_10"
+                android:text="@string/budget_subtitle"
+                android:textColor="@color/sw_text_secondary"
+                android:textSize="@dimen/sw_text_size_15"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-
+            <!-- Budget summary -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/budget_summary_card"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="2dp"
-                app:cardBackgroundColor="#0F8A5F"
-                app:cardCornerRadius="24dp"
-                app:cardElevation="2dp"
+                android:layout_marginStart="@dimen/sw_space_2"
+                android:layout_marginTop="@dimen/sw_space_16"
+                android:layout_marginEnd="@dimen/sw_space_2"
+                app:cardBackgroundColor="@color/sw_primary"
+                app:cardCornerRadius="@dimen/sw_corner_radius_24"
+                app:cardElevation="@dimen/sw_card_elevation"
                 app:cardUseCompatPadding="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -115,29 +115,28 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingStart="20dp"
-                    android:paddingTop="20dp"
-                    android:paddingEnd="20dp"
-                    android:paddingBottom="20dp">
-
+                    android:paddingStart="@dimen/sw_space_20"
+                    android:paddingTop="@dimen/sw_space_20"
+                    android:paddingEnd="@dimen/sw_space_20"
+                    android:paddingBottom="@dimen/sw_space_20">
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/tv_budget_summary_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-medium"
-                        android:text="Budget Summary"
-                        android:textColor="#FFFFFF"
-                        android:textSize="18sp"
+                        android:text="@string/budget_summary_title"
+                        android:textColor="@color/sw_on_primary"
+                        android:textSize="@dimen/sw_text_size_18"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <com.google.android.material.card.MaterialCardView
                         android:id="@+id/budget_wallet_icon_container"
-                        android:layout_width="42dp"
-                        android:layout_height="42dp"
-                        app:cardBackgroundColor="#26FFFFFF"
-                        app:cardCornerRadius="14dp"
+                        android:layout_width="@dimen/sw_icon_container_size_42"
+                        android:layout_height="@dimen/sw_icon_container_size_42"
+                        app:cardBackgroundColor="@color/sw_on_primary_15"
+                        app:cardCornerRadius="@dimen/sw_corner_radius_14"
                         app:cardElevation="0dp"
                         app:cardUseCompatPadding="false"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -146,12 +145,12 @@
 
                         <ImageView
                             android:id="@+id/img_budget_wallet"
-                            android:layout_width="22dp"
-                            android:layout_height="22dp"
+                            android:layout_width="@dimen/sw_icon_size_22"
+                            android:layout_height="@dimen/sw_icon_size_22"
                             android:layout_gravity="center"
-                            android:contentDescription="Budget wallet"
+                            android:contentDescription="@string/content_description_budget_wallet"
                             android:src="@drawable/ic_wallet"
-                            app:tint="#FFFFFF" />
+                            app:tint="@color/sw_on_primary" />
 
                     </com.google.android.material.card.MaterialCardView>
 
@@ -159,13 +158,12 @@
                         android:id="@+id/budget_summary_values_container"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="22dp"
+                        android:layout_marginTop="@dimen/sw_space_22"
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/budget_wallet_icon_container">
-
 
                         <LinearLayout
                             android:id="@+id/total_budget_container"
@@ -179,28 +177,27 @@
                                 android:id="@+id/tv_total_budget_label"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Total Budget"
-                                android:textColor="#D9FFFFFF"
-                                android:textSize="12sp" />
+                                android:text="@string/total_budget_label"
+                                android:textColor="@color/sw_on_primary_85"
+                                android:textSize="@dimen/sw_text_size_12" />
 
                             <com.google.android.material.textview.MaterialTextView
                                 android:id="@+id/tv_total_budget_amount"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
+                                android:layout_marginTop="@dimen/sw_space_5"
                                 android:fontFamily="sans-serif-medium"
-                                android:text="₹50,000"
-                                android:textColor="#FFFFFF"
-                                android:textSize="18sp" />
+                                android:text="@string/amount_rupee_50000"
+                                android:textColor="@color/sw_on_primary"
+                                android:textSize="@dimen/sw_text_size_18" />
 
                         </LinearLayout>
 
                         <View
                             android:id="@+id/divider_total_spent"
-                            android:layout_width="1dp"
-                            android:layout_height="44dp"
-                            android:background="#33FFFFFF" />
-
+                            android:layout_width="@dimen/sw_divider_thickness"
+                            android:layout_height="@dimen/sw_budget_summary_divider_height"
+                            android:background="@color/sw_on_primary_20" />
 
                         <LinearLayout
                             android:id="@+id/total_spent_container"
@@ -214,28 +211,27 @@
                                 android:id="@+id/tv_total_spent_label"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Total Spent"
-                                android:textColor="#D9FFFFFF"
-                                android:textSize="12sp" />
+                                android:text="@string/total_spent_label"
+                                android:textColor="@color/sw_on_primary_85"
+                                android:textSize="@dimen/sw_text_size_12" />
 
                             <com.google.android.material.textview.MaterialTextView
                                 android:id="@+id/tv_total_spent_amount"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
+                                android:layout_marginTop="@dimen/sw_space_5"
                                 android:fontFamily="sans-serif-medium"
-                                android:text="₹32,500"
-                                android:textColor="#FFFFFF"
-                                android:textSize="18sp" />
+                                android:text="@string/amount_rupee_32500"
+                                android:textColor="@color/sw_on_primary"
+                                android:textSize="@dimen/sw_text_size_18" />
 
                         </LinearLayout>
 
                         <View
                             android:id="@+id/divider_spent_remaining"
-                            android:layout_width="1dp"
-                            android:layout_height="44dp"
-                            android:background="#33FFFFFF" />
-
+                            android:layout_width="@dimen/sw_divider_thickness"
+                            android:layout_height="@dimen/sw_budget_summary_divider_height"
+                            android:background="@color/sw_on_primary_20" />
 
                         <LinearLayout
                             android:id="@+id/remaining_budget_container"
@@ -249,61 +245,59 @@
                                 android:id="@+id/tv_remaining_budget_label"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Remaining"
-                                android:textColor="#D9FFFFFF"
-                                android:textSize="12sp" />
+                                android:text="@string/remaining_label"
+                                android:textColor="@color/sw_on_primary_85"
+                                android:textSize="@dimen/sw_text_size_12" />
 
                             <com.google.android.material.textview.MaterialTextView
                                 android:id="@+id/tv_remaining_budget_amount"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
+                                android:layout_marginTop="@dimen/sw_space_5"
                                 android:fontFamily="sans-serif-medium"
-                                android:text="₹17,500"
-                                android:textColor="#FFFFFF"
-                                android:textSize="18sp" />
+                                android:text="@string/amount_rupee_17500"
+                                android:textColor="@color/sw_on_primary"
+                                android:textSize="@dimen/sw_text_size_18" />
 
                         </LinearLayout>
 
                     </LinearLayout>
 
-
                     <View
                         android:id="@+id/budget_summary_horizontal_divider"
                         android:layout_width="0dp"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="20dp"
-                        android:background="#33FFFFFF"
+                        android:layout_height="@dimen/sw_divider_thickness"
+                        android:layout_marginTop="@dimen/sw_space_20"
+                        android:background="@color/sw_on_primary_20"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/budget_summary_values_container" />
 
-
                     <com.google.android.material.progressindicator.LinearProgressIndicator
                         android:id="@+id/budget_summary_progress"
                         android:layout_width="0dp"
-                        android:layout_height="8dp"
-                        android:layout_marginTop="18dp"
+                        android:layout_height="@dimen/sw_budget_summary_progress_height"
+                        android:layout_marginTop="@dimen/sw_space_18"
                         android:indeterminate="false"
                         android:progress="65"
-                        app:indicatorColor="#FFFFFF"
+                        app:indicatorColor="@color/sw_on_primary"
                         app:indicatorTrackGapSize="0dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/budget_summary_horizontal_divider"
-                        app:trackColor="#33FFFFFF"
-                        app:trackCornerRadius="4dp"
+                        app:trackColor="@color/sw_on_primary_20"
+                        app:trackCornerRadius="@dimen/sw_corner_radius_4"
                         app:trackStopIndicatorSize="0dp"
-                        app:trackThickness="8dp" />
+                        app:trackThickness="@dimen/sw_budget_summary_progress_height" />
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/tv_budget_progress_info"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="You've used 65% of your budget"
-                        android:textColor="#D9FFFFFF"
-                        android:textSize="13sp"
+                        android:layout_marginTop="@dimen/sw_space_10"
+                        android:text="@string/budget_usage_message"
+                        android:textColor="@color/sw_on_primary_85"
+                        android:textSize="@dimen/sw_text_size_13"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/budget_summary_progress" />
@@ -312,48 +306,48 @@
 
             </com.google.android.material.card.MaterialCardView>
 
-
+            <!-- Budget analytics -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/budget_analytics_card"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="2dp"
-                app:cardBackgroundColor="#FFFFFF"
-                app:cardCornerRadius="24dp"
-                app:cardElevation="2dp"
+                android:layout_marginStart="@dimen/sw_space_2"
+                android:layout_marginTop="@dimen/sw_space_16"
+                android:layout_marginEnd="@dimen/sw_space_2"
+                app:cardBackgroundColor="@color/sw_surface"
+                app:cardCornerRadius="@dimen/sw_corner_radius_24"
+                app:cardElevation="@dimen/sw_card_elevation"
                 app:cardUseCompatPadding="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/budget_summary_card"
-                app:strokeColor="#EAECF0"
-                app:strokeWidth="1dp">
+                app:strokeColor="@color/sw_outline_soft"
+                app:strokeWidth="@dimen/sw_stroke_width">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingStart="18dp"
-                    android:paddingTop="18dp"
-                    android:paddingEnd="18dp"
-                    android:paddingBottom="18dp">
+                    android:paddingStart="@dimen/sw_space_18"
+                    android:paddingTop="@dimen/sw_space_18"
+                    android:paddingEnd="@dimen/sw_space_18"
+                    android:paddingBottom="@dimen/sw_space_18">
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/tv_budget_analytics_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-medium"
-                        android:text="Budget Analytics"
-                        android:textColor="#101828"
-                        android:textSize="18sp"
+                        android:text="@string/budget_analytics_title"
+                        android:textColor="@color/sw_text_primary"
+                        android:textSize="@dimen/sw_text_size_18"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <com.github.mikephil.charting.charts.PieChart
                         android:id="@+id/budget_donut_chart"
-                        android:layout_width="170dp"
-                        android:layout_height="170dp"
-                        android:layout_marginTop="20dp"
+                        android:layout_width="@dimen/sw_budget_analytics_chart_size"
+                        android:layout_height="@dimen/sw_budget_analytics_chart_size"
+                        android:layout_marginTop="@dimen/sw_space_20"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tv_budget_analytics_title" />
 
@@ -361,7 +355,7 @@
                         android:id="@+id/rv_budget_analytics_categories"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="24dp"
+                        android:layout_marginStart="@dimen/sw_space_24"
                         android:clipToPadding="false"
                         android:nestedScrollingEnabled="false"
                         android:overScrollMode="never"
@@ -374,40 +368,40 @@
 
             </com.google.android.material.card.MaterialCardView>
 
-
+            <!-- Budget performance -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/budget_performance_card"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="2dp"
-                app:cardBackgroundColor="#FFFFFF"
-                app:cardCornerRadius="24dp"
-                app:cardElevation="2dp"
+                android:layout_marginStart="@dimen/sw_space_2"
+                android:layout_marginTop="@dimen/sw_space_16"
+                android:layout_marginEnd="@dimen/sw_space_2"
+                app:cardBackgroundColor="@color/sw_surface"
+                app:cardCornerRadius="@dimen/sw_corner_radius_24"
+                app:cardElevation="@dimen/sw_card_elevation"
                 app:cardUseCompatPadding="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/budget_analytics_card"
-                app:strokeColor="#EAECF0"
-                app:strokeWidth="1dp">
+                app:strokeColor="@color/sw_outline_soft"
+                app:strokeWidth="@dimen/sw_stroke_width">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingStart="18dp"
-                    android:paddingTop="18dp"
-                    android:paddingEnd="18dp"
-                    android:paddingBottom="18dp">
+                    android:paddingStart="@dimen/sw_space_18"
+                    android:paddingTop="@dimen/sw_space_18"
+                    android:paddingEnd="@dimen/sw_space_18"
+                    android:paddingBottom="@dimen/sw_space_18">
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/tv_budget_performance_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-medium"
-                        android:text="Budget Performance"
-                        android:textColor="#101828"
-                        android:textSize="18sp"
+                        android:text="@string/budget_performance_title"
+                        android:textColor="@color/sw_text_primary"
+                        android:textSize="@dimen/sw_text_size_18"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -415,10 +409,10 @@
                         android:id="@+id/tv_budget_performance_subtitle"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="Daily budget usage trend"
-                        android:textColor="#667085"
-                        android:textSize="13sp"
+                        android:layout_marginTop="@dimen/sw_space_4"
+                        android:text="@string/budget_performance_subtitle"
+                        android:textColor="@color/sw_text_secondary"
+                        android:textSize="@dimen/sw_text_size_13"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tv_budget_performance_title" />
@@ -426,8 +420,8 @@
                     <com.github.mikephil.charting.charts.LineChart
                         android:id="@+id/budget_performance_chart"
                         android:layout_width="0dp"
-                        android:layout_height="190dp"
-                        android:layout_marginTop="18dp"
+                        android:layout_height="@dimen/sw_budget_performance_chart_height"
+                        android:layout_marginTop="@dimen/sw_space_18"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tv_budget_performance_subtitle" />
@@ -436,39 +430,40 @@
 
             </com.google.android.material.card.MaterialCardView>
 
+            <!-- Budget categories -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/budget_categories_card"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="2dp"
-                app:cardBackgroundColor="#FFFFFF"
-                app:cardCornerRadius="24dp"
-                app:cardElevation="2dp"
+                android:layout_marginStart="@dimen/sw_space_2"
+                android:layout_marginTop="@dimen/sw_space_16"
+                android:layout_marginEnd="@dimen/sw_space_2"
+                app:cardBackgroundColor="@color/sw_surface"
+                app:cardCornerRadius="@dimen/sw_corner_radius_24"
+                app:cardElevation="@dimen/sw_card_elevation"
                 app:cardUseCompatPadding="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/budget_performance_card"
-                app:strokeColor="#EAECF0"
-                app:strokeWidth="1dp">
+                app:strokeColor="@color/sw_outline_soft"
+                app:strokeWidth="@dimen/sw_stroke_width">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingStart="18dp"
-                    android:paddingTop="18dp"
-                    android:paddingEnd="18dp"
-                    android:paddingBottom="18dp">
+                    android:paddingStart="@dimen/sw_space_18"
+                    android:paddingTop="@dimen/sw_space_18"
+                    android:paddingEnd="@dimen/sw_space_18"
+                    android:paddingBottom="@dimen/sw_space_18">
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/tv_budget_categories_title"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-medium"
-                        android:text="Budget Categories"
-                        android:textColor="#101828"
-                        android:textSize="18sp"
+                        android:text="@string/budget_categories_title"
+                        android:textColor="@color/sw_text_primary"
+                        android:textSize="@dimen/sw_text_size_18"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -476,7 +471,7 @@
                         android:id="@+id/rv_budget_categories"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="18dp"
+                        android:layout_marginTop="@dimen/sw_space_18"
                         android:clipToPadding="false"
                         android:nestedScrollingEnabled="false"
                         android:overScrollMode="never"
@@ -488,11 +483,10 @@
 
             </com.google.android.material.card.MaterialCardView>
 
-
             <Space
                 android:id="@+id/budget_bottom_space"
                 android:layout_width="0dp"
-                android:layout_height="12dp"
+                android:layout_height="@dimen/sw_space_12"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/budget_categories_card" />

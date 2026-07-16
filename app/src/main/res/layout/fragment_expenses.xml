@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/expenses_root"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+   android:fitsSystemWindows="true">                   <!--add-->
 
-    <!-- Fixed Header -->
+
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/expenses_app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/sw_background"
         app:elevation="0dp"
         app:liftOnScroll="true"
-        android:background="@color/sw_background"
         app:liftOnScrollTargetViewId="@id/expenses_scroll_view">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,39 +22,39 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/sw_background"
-            android:paddingStart="24dp"
-            android:paddingTop="10dp"
-            android:paddingEnd="24dp"
-            android:paddingBottom="1dp">
+            android:paddingStart="@dimen/sw_space_24"
+            android:paddingTop="@dimen/sw_space_10"
+            android:paddingEnd="@dimen/sw_space_24"
+            android:paddingBottom="@dimen/sw_space_1">
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_expenses_title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Expenses"
-                android:textColor="#10231C"
-                android:textSize="32sp"
+                android:text="@string/expenses_title"
+                android:textColor="@color/sw_text_primary_expenses"
+                android:textSize="@dimen/sw_text_size_32"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
                 android:id="@+id/btn_search_expenses"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="@dimen/sw_touch_target"
+                android:layout_height="@dimen/sw_touch_target"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                android:contentDescription="Search expenses"
-                android:padding="12dp"
+                android:contentDescription="@string/content_description_search_expenses"
+                android:padding="@dimen/sw_space_12"
                 android:src="@drawable/ic_search"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:tint="#10231C" />
+                app:tint="@color/sw_text_primary_expenses" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <!-- Scrollable Content -->
+
     <androidx.core.widget.NestedScrollView
         android:id="@+id/expenses_scroll_view"
         android:layout_width="match_parent"
@@ -60,38 +62,38 @@
         android:clipToPadding="false"
         android:fillViewport="true"
         android:overScrollMode="never"
-        android:paddingBottom="110dp"
+        android:paddingBottom="@dimen/sw_expenses_bottom_padding"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/expenses_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingStart="24dp"
-            android:paddingTop="10dp"
-            android:paddingEnd="24dp"
-            android:paddingBottom="24dp">
+            android:paddingStart="@dimen/sw_space_24"
+            android:paddingTop="@dimen/sw_space_10"
+            android:paddingEnd="@dimen/sw_space_24"
+            android:paddingBottom="@dimen/sw_space_24">
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_expenses_subtitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Track and manage your expenses"
-                android:textColor="#66756E"
-                android:textSize="16sp"
+                android:text="@string/expenses_subtitle"
+                android:textColor="@color/sw_text_secondary_expenses"
+                android:textSize="@dimen/sw_text_size_16"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <!-- Total Expense Card -->
+
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/expense_summary_card"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                app:cardBackgroundColor="#0F8A5F"
-                app:cardCornerRadius="26dp"
-                app:cardElevation="2dp"
+                android:layout_marginTop="@dimen/sw_space_16"
+                app:cardBackgroundColor="@color/sw_primary"
+                app:cardCornerRadius="@dimen/sw_corner_radius_26"
+                app:cardElevation="@dimen/sw_card_elevation"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_expenses_subtitle"
@@ -100,28 +102,28 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingStart="22dp"
-                    android:paddingTop="22dp"
-                    android:paddingEnd="22dp"
-                    android:paddingBottom="22dp">
+                    android:paddingStart="@dimen/sw_space_22"
+                    android:paddingTop="@dimen/sw_space_22"
+                    android:paddingEnd="@dimen/sw_space_22"
+                    android:paddingBottom="@dimen/sw_space_22">
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/tv_total_expense_label"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="Total Expense"
-                        android:textColor="#D9FFFFFF"
-                        android:textSize="15sp"
+                        android:text="@string/total_expense_label"
+                        android:textColor="@color/sw_on_primary_85"
+                        android:textSize="@dimen/sw_text_size_15"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toStartOf="@id/expense_card_icon_space"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <!-- Empty space for future wallet/image/icon -->
+
                     <Space
                         android:id="@+id/expense_card_icon_space"
-                        android:layout_width="52dp"
-                        android:layout_height="52dp"
+                        android:layout_width="@dimen/sw_expenses_summary_icon_space"
+                        android:layout_height="@dimen/sw_expenses_summary_icon_space"
                         android:visibility="visible"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -130,22 +132,21 @@
                         android:id="@+id/tv_total_expense_amount"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="₹24,580"
-                        android:textColor="#FFFFFF"
-                        android:textSize="36sp"
+                        android:layout_marginTop="@dimen/sw_space_10"
+                        android:text="@string/amount_rupee_24580"
+                        android:textColor="@color/sw_on_primary"
+                        android:textSize="@dimen/sw_text_size_36"
                         android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="@+id/tv_total_expense_label"
-                        app:layout_constraintStart_toStartOf="@+id/tv_total_expense_label"
+                        app:layout_constraintEnd_toEndOf="@id/tv_total_expense_label"
+                        app:layout_constraintStart_toStartOf="@id/tv_total_expense_label"
                         app:layout_constraintTop_toBottomOf="@id/tv_total_expense_label" />
 
-                    <!-- Horizontal Line -->
                     <View
                         android:id="@+id/expense_summary_divider"
                         android:layout_width="0dp"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="22dp"
-                        android:background="#33FFFFFF"
+                        android:layout_height="@dimen/sw_divider_thickness"
+                        android:layout_marginTop="@dimen/sw_space_22"
+                        android:background="@color/sw_on_primary_20"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tv_total_expense_amount" />
@@ -154,14 +155,14 @@
                         android:id="@+id/expense_high_low_container"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="18dp"
+                        android:layout_marginTop="@dimen/sw_space_18"
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/expense_summary_divider">
 
-                        <!-- Highest Expense -->
+
                         <LinearLayout
                             android:id="@+id/highest_expense_container"
                             android:layout_width="0dp"
@@ -172,28 +173,28 @@
 
                             <com.google.android.material.card.MaterialCardView
                                 android:id="@+id/highest_expense_icon_container"
-                                android:layout_width="42dp"
-                                android:layout_height="42dp"
-                                app:cardBackgroundColor="#26FFFFFF"
-                                app:cardCornerRadius="14dp"
+                                android:layout_width="@dimen/sw_icon_container_size_42"
+                                android:layout_height="@dimen/sw_icon_container_size_42"
+                                app:cardBackgroundColor="@color/sw_on_primary_15"
+                                app:cardCornerRadius="@dimen/sw_corner_radius_14"
                                 app:cardElevation="0dp"
                                 app:strokeWidth="0dp">
 
                                 <ImageView
                                     android:id="@+id/iv_highest_expense_icon"
-                                    android:layout_width="22dp"
-                                    android:layout_height="22dp"
+                                    android:layout_width="@dimen/sw_icon_size_22"
+                                    android:layout_height="@dimen/sw_icon_size_22"
                                     android:layout_gravity="center"
-                                    android:contentDescription="Highest expense"
+                                    android:contentDescription="@string/content_description_highest_expense"
                                     android:src="@drawable/ic_wallet"
-                                    app:tint="#FFFFFF" />
+                                    app:tint="@color/sw_on_primary" />
 
                             </com.google.android.material.card.MaterialCardView>
 
                             <LinearLayout
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="10dp"
+                                android:layout_marginStart="@dimen/sw_space_10"
                                 android:layout_weight="1"
                                 android:orientation="vertical">
 
@@ -201,34 +202,33 @@
                                     android:id="@+id/tv_highest_expense_label"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Highest Expense"
-                                    android:textColor="#D9FFFFFF"
-                                    android:textSize="12sp" />
+                                    android:text="@string/highest_expense_label"
+                                    android:textColor="@color/sw_on_primary_85"
+                                    android:textSize="@dimen/sw_text_size_12" />
 
                                 <com.google.android.material.textview.MaterialTextView
                                     android:id="@+id/tv_highest_expense_amount"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginTop="3dp"
-                                    android:text="₹4,250"
-                                    android:textColor="#FFFFFF"
-                                    android:textSize="17sp"
+                                    android:layout_marginTop="@dimen/sw_space_3"
+                                    android:text="@string/amount_rupee_4250"
+                                    android:textColor="@color/sw_on_primary"
+                                    android:textSize="@dimen/sw_text_size_17"
                                     android:textStyle="bold" />
 
                             </LinearLayout>
 
                         </LinearLayout>
 
-                        <!-- Vertical Line -->
                         <View
                             android:id="@+id/expense_summary_vertical_divider"
-                            android:layout_width="1dp"
-                            android:layout_height="46dp"
-                            android:layout_marginStart="12dp"
-                            android:layout_marginEnd="12dp"
-                            android:background="#33FFFFFF" />
+                            android:layout_width="@dimen/sw_divider_thickness"
+                            android:layout_height="@dimen/sw_expenses_summary_divider_height"
+                            android:layout_marginStart="@dimen/sw_space_12"
+                            android:layout_marginEnd="@dimen/sw_space_12"
+                            android:background="@color/sw_on_primary_20" />
 
-                        <!-- Lowest Expense -->
+
                         <LinearLayout
                             android:id="@+id/lowest_expense_container"
                             android:layout_width="0dp"
@@ -239,28 +239,28 @@
 
                             <com.google.android.material.card.MaterialCardView
                                 android:id="@+id/lowest_expense_icon_container"
-                                android:layout_width="42dp"
-                                android:layout_height="42dp"
-                                app:cardBackgroundColor="#26FFFFFF"
-                                app:cardCornerRadius="14dp"
+                                android:layout_width="@dimen/sw_icon_container_size_42"
+                                android:layout_height="@dimen/sw_icon_container_size_42"
+                                app:cardBackgroundColor="@color/sw_on_primary_15"
+                                app:cardCornerRadius="@dimen/sw_corner_radius_14"
                                 app:cardElevation="0dp"
                                 app:strokeWidth="0dp">
 
                                 <ImageView
                                     android:id="@+id/iv_lowest_expense_icon"
-                                    android:layout_width="22dp"
-                                    android:layout_height="22dp"
+                                    android:layout_width="@dimen/sw_icon_size_22"
+                                    android:layout_height="@dimen/sw_icon_size_22"
                                     android:layout_gravity="center"
-                                    android:contentDescription="Lowest expense"
+                                    android:contentDescription="@string/content_description_lowest_expense"
                                     android:src="@drawable/ic_leaf"
-                                    app:tint="#FFFFFF" />
+                                    app:tint="@color/sw_on_primary" />
 
                             </com.google.android.material.card.MaterialCardView>
 
                             <LinearLayout
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="10dp"
+                                android:layout_marginStart="@dimen/sw_space_10"
                                 android:layout_weight="1"
                                 android:orientation="vertical">
 
@@ -268,18 +268,18 @@
                                     android:id="@+id/tv_lowest_expense_label"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Lowest Expense"
-                                    android:textColor="#D9FFFFFF"
-                                    android:textSize="12sp" />
+                                    android:text="@string/lowest_expense_label"
+                                    android:textColor="@color/sw_on_primary_85"
+                                    android:textSize="@dimen/sw_text_size_12" />
 
                                 <com.google.android.material.textview.MaterialTextView
                                     android:id="@+id/tv_lowest_expense_amount"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginTop="3dp"
-                                    android:text="₹120"
-                                    android:textColor="#FFFFFF"
-                                    android:textSize="17sp"
+                                    android:layout_marginTop="@dimen/sw_space_3"
+                                    android:text="@string/amount_rupee_120"
+                                    android:textColor="@color/sw_on_primary"
+                                    android:textSize="@dimen/sw_text_size_17"
                                     android:textStyle="bold" />
 
                             </LinearLayout>
@@ -292,26 +292,25 @@
 
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Expense List Header -->
+
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_all_expenses_title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="22dp"
-                android:text="All Expenses"
-                android:textColor="#10231C"
-                android:textSize="18sp"
+                android:layout_marginTop="@dimen/sw_space_22"
+                android:text="@string/all_expenses_title"
+                android:textColor="@color/sw_text_primary_expenses"
+                android:textSize="@dimen/sw_text_size_18"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/expense_summary_card" />
 
-            <!-- Expense RecyclerView -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_expenses"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="@dimen/sw_space_12"
                 android:clipToPadding="false"
                 android:nestedScrollingEnabled="false"
                 android:overScrollMode="never"
