@@ -27,10 +27,11 @@ data class ExpenseEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
 
+    val title: String,
     val amount: Double,
-    val note: String,
     val categoryId: Long,
     val date: Long,
     val receiptImagePath: String? = null,
+    val note: String? = null,
     val createdAt: Long = System.currentTimeMillis()
 )
