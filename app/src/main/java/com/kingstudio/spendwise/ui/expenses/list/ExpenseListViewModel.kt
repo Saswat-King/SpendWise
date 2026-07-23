@@ -1,4 +1,4 @@
-package com.kingstudio.spendwise.ui.expenses
+package com.kingstudio.spendwise.ui.expenses.list
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -59,7 +59,7 @@ class ExpenseListViewModel @Inject constructor(
             expenseRepository.getHighestExpense(range),
             expenseRepository.getLowestExpense(range)
         ) { expenses, total, trend, highest, lowest ->
-            ExpenseListViewModel.RawExpenseData(expenses, total, trend, highest, lowest)
+            RawExpenseData(expenses, total, trend, highest, lowest)
         }
     }
 
@@ -69,10 +69,9 @@ class ExpenseListViewModel @Inject constructor(
 
         val visible = raw.expenses.filterNot { pending.containsKey(it.expense.id) }
 
-        if(visible.isEmpty()) {
+        if (visible.isEmpty()) {
             ExpenseListUiState.Empty
-        }
-        else {
+        } else {
             ExpenseListUiState.Success(
                 summary = ExpensesSummary(raw.total, raw.trend, raw.highest, raw.lowest),
                 groupedItems = visible.groupByDate()
@@ -128,6 +127,4 @@ class ExpenseListViewModel @Inject constructor(
             }
 
     }
-
-
 }

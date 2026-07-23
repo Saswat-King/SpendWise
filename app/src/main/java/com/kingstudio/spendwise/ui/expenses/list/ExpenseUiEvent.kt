@@ -1,4 +1,4 @@
-package com.kingstudio.spendwise.ui.expenses
+package com.kingstudio.spendwise.ui.expenses.list
 
 sealed class ExpenseUiEvent {
     object ExpenseSaved : ExpenseUiEvent()

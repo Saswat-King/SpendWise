@@ -1,4 +1,4 @@
-package com.kingstudio.spendwise.ui.expenses
+package com.kingstudio.spendwise.ui.expenses.list
 
 import com.kingstudio.spendwise.data.local.relation.ExpenseWithCategory
 import com.kingstudio.spendwise.data.model.PeriodComparison

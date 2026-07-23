@@ -21,3 +21,4 @@ app/src/main/res/layout/fragment_sign_up.xml
 app/src/main/java/com/kingstudio/spendwise/SignUpFragment.kt
 app/src/main/res/layout/fragment_profile_setup.xml
 app/src/main/java/com/kingstudio/spendwise/ProfileSetupFragment.kt
+app/src/main/res/drawable/test.xml
