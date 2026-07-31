@@ -16,7 +16,7 @@ import androidx.room.PrimaryKey
             onDelete = ForeignKey.CASCADE
         )
     ], indices = [
-        Index(value = ["categoryId"], unique = true)]
+        Index(value = ["categoryId, periodKey"], unique = true)]
 )
 
 data class BudgetEntity(
@@ -24,6 +24,7 @@ data class BudgetEntity(
     val id: Long = 0,
 
     val categoryId: Long,
+    val periodKey: String,
     val amount: Double,
     val createdAt: Long = System.currentTimeMillis()
 )

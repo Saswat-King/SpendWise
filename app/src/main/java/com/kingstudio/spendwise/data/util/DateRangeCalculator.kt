@@ -46,6 +46,22 @@ object DateRangeCalculator {
         }
     }
 
+    fun currentPeriodKey(): String {
+        val today = LocalDate.now(zone)
+        return "%04d-%02d".format(today.year, today.monthValue)
+    }
+
+    fun periodKeyForDate(epochMillis: Long): String {
+        val date = epochMillis.toLocalDate()
+        return "%04d-%02d".format(date.year, date.monthValue)
+    }
+
+    fun epochRangeForPeriodKey(periodKey: String): Pair<Long,Long> {
+        val (year,month) = periodKey.split("-").map { it.toInt() }
+        val firstDay = LocalDate.of(year,month,1)
+        return firstDay.toStartOfDayMillis() to firstDay.withDayOfMonth(firstDay.lengthOfMonth()).toEndOfDayMillis()
+    }
+
     private fun LocalDate.toStartOfDayMillis(): Long =
         atStartOfDay(zone).toInstant().toEpochMilli()
 

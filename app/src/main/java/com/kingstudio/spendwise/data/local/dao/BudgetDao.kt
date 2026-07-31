@@ -17,8 +17,19 @@ interface BudgetDao {
     @Query("SELECT * FROM budgets")
     fun getAllBudgetsWithCategory(): Flow<List<BudgetWithCategory>>
 
-    @Query("SELECT * FROM budgets WHERE categoryId = :categoryId")
-    suspend fun getBudgetByCategory(categoryId: Long): BudgetEntity?
+    @Transaction
+    @Query("SELECT * FROM budgets WHERE periodKey = :periodKey")
+    fun getBudgetsWithCategoryForPeriod(periodKey: String): Flow<List<BudgetWithCategory>>
+
+    @Query("SELECT * FROM budgets WHERE categoryId = :categoryId AND periodKey = :periodKey")
+    suspend fun getBudgetByCategory(categoryId: Long, periodKey: String): BudgetEntity?
+
+    @Query("SELECT * FROM budgets WHERE periodKey = :periodKey")
+    suspend fun getBudgetsForPeriodOnce(periodKey: String): List<BudgetEntity>
+
+    @Query("""SELECT DISTINCT periodKey FROM budgets WHERE periodKey < :beforePeriodKey
+        ORDER BY periodKey DESC LIMIT 1""")
+    suspend fun getLatestPeriodKeyBefore(beforePeriodKey: String): String?
 
     @Query("SELECT COALESCE(SUM(amount),0.0) FROM budgets")
     fun getTotalBudgetAmount(): Flow<Double>

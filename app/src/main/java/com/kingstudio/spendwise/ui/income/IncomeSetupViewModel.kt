@@ -66,10 +66,12 @@ class IncomeSetupViewModel @Inject constructor(
     val event: Flow<IncomeUiEvent> = _events.receiveAsFlow()
 
     init {
-        if(mode == FormMode.UPDATE) {
-            viewModelScope.launch {
-                val existing = incomeRepository.getAllIncome().first()
-                if(existing.isEmpty()) {
+        viewModelScope.launch {
+            incomeRepository.ensureCurrentPeriodSalaryExists()
+
+            if (mode == FormMode.UPDATE) {
+                val existing = incomeRepository.getCurrentPeriodIncomes().first()
+                if (existing.isNotEmpty()) {
                     val frequency = existing.first().frequency
                     _formState.update { current ->
                         current.copy(
@@ -81,7 +83,7 @@ class IncomeSetupViewModel @Inject constructor(
                             freelanceAmount = existing
                                 .find { it.source == IncomeSource.FREELANCE }?.amount?.toString() ?: "",
                             otherAmount = existing
-                                .find { it.source == IncomeSource.OTHER }?.amount.toString() ?: ""
+                                .find { it.source == IncomeSource.OTHER }?.amount?.toString() ?: ""
                         )
                     }
                 }
@@ -121,13 +123,7 @@ class IncomeSetupViewModel @Inject constructor(
                 }
             }
 
-            if(current.mode == FormMode.UPDATE) {
-                incomeRepository.getAllIncome().first().forEach {
-                    incomeRepository.deleteIncome(it)
-                }
-            }
-            entries.forEach { incomeRepository.saveIncome(it) }
-
+            incomeRepository.replaceCurrentPeriodIncomes(entries)
             _formState.update { it.copy(isSaving = false) }
             _events.send(IncomeUiEvent.IncomeSaved)
         }

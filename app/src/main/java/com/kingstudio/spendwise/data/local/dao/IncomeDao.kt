@@ -19,6 +19,21 @@ interface IncomeDao {
     @Query("SELECT COALESCE(SUM(amount),0.0) FROM incomes WHERE frequency = 'YEARLY' ")
     fun getTotalYearlyIncome(): Flow<Double>
 
+    @Query("SELECT * FROM incomes WHERE periodKey = :periodKey ORDER BY createdAt DESC")
+    fun getIncomesForPeriod(periodKey: String): Flow<List<IncomeEntity>>
+
+    @Query("SELECT * FROM incomes WHERE periodKey = :periodKey")
+    suspend fun getIncomesForPeriodOnce(periodKey: String): List<IncomeEntity>
+
+    @Query("SELECT COALESCE(SUM(amount), 0.0 ) FROM incomes WHERE periodKey = :periodKey AND frequency = 'MONTHLY'")
+    fun getTotalMonthlyIncomeForPeriod(periodKey: String): Flow<Double>
+
+    @Query("SELECT COALESCE(SUM(amount), 0.0 ) FROM incomes WHERE periodKey = :periodKey AND frequency = 'YEARLY'")
+    fun getTotalYearlyIncomeForPeriod(periodKey: String): Flow<Double>
+
+    @Query("""SELECT * FROM incomes WHERE source = 'SALARY' AND periodKey < :beforePeriodKey ORDER BY periodKey DESC LIMIT 1""")
+    suspend fun getMostRecentSalaryBeforePeriod(beforePeriodKey: String): IncomeEntity?
+
     @Upsert
     suspend fun upsertIncome(income: IncomeEntity): Long
 
