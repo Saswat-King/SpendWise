@@ -2,16 +2,16 @@ package com.kingstudio.spendwise.data.repository
 
 import com.kingstudio.spendwise.data.local.dao.IncomeDao
 import com.kingstudio.spendwise.data.local.entity.IncomeEntity
+import com.kingstudio.spendwise.data.local.entity.IncomeFrequency
 import com.kingstudio.spendwise.data.local.entity.IncomeSource
 import com.kingstudio.spendwise.data.util.DateRangeCalculator
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 interface IncomeRepository {
-    fun getAllIncome(): Flow<List<IncomeEntity>>
     fun getCurrentPeriodIncomes(): Flow<List<IncomeEntity>>
-    fun getNormalizedMonthlyIncome(): Flow<Double>
     fun getNormalizedCurrentMonthlyIncome(): Flow<Double>
     suspend fun replaceCurrentPeriodIncomes(entries: List<IncomeEntity>)
     suspend fun ensureCurrentPeriodSalaryExists(): Boolean
@@ -23,23 +23,20 @@ interface IncomeRepository {
 class IncomeRepositoryImpl @Inject constructor(
     private val incomeDao: IncomeDao) : IncomeRepository {
 
-    override fun getAllIncome(): Flow<List<IncomeEntity>> = incomeDao.getAllIncomes()
-
     override fun getCurrentPeriodIncomes(): Flow<List<IncomeEntity>> =
         incomeDao.getIncomesForPeriod(DateRangeCalculator.currentPeriodKey())
 
-    override fun getNormalizedMonthlyIncome(): Flow<Double> = combine(
-        incomeDao.getTotalMonthlyIncome(), incomeDao.getTotalYearlyIncome()) {
-            monthly, yearly -> monthly + (yearly / 12)
-    }
+    override fun getNormalizedCurrentMonthlyIncome(): Flow<Double> =
+        getCurrentPeriodIncomes().map { entries ->
+            if(entries.isEmpty()) return@map 0.0
 
-    override fun getNormalizedCurrentMonthlyIncome(): Flow<Double> {
-        val period = DateRangeCalculator.currentPeriodKey()
-        return combine(
-            incomeDao.getTotalMonthlyIncomeForPeriod(period),
-            incomeDao.getTotalYearlyIncomeForPeriod(period)
-        ) { monthly, yearly -> monthly + (yearly / 12) }
-    }
+            val frequency = entries.first().frequency
+            val total = entries.sumOf { it.amount }
+            when(frequency) {
+                IncomeFrequency.MONTHLY -> total
+                IncomeFrequency.YEARLY -> total / 12
+            }
+        }
 
     override suspend fun replaceCurrentPeriodIncomes(entries: List<IncomeEntity>) {
         val period = DateRangeCalculator.currentPeriodKey()

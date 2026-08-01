@@ -107,6 +107,12 @@ class IncomeSetupViewModel @Inject constructor(
             return
         }
 
+        if(primaryValue < 10) {
+            viewModelScope.launch {
+                _events.send(IncomeUiEvent.LowIncomeWarning)
+            }
+        }
+
         viewModelScope.launch {
             _formState.update { it.copy(isSaving = true) }
 

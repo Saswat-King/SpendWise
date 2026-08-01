@@ -10,15 +10,6 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface IncomeDao {
 
-    @Query("SELECT * FROM incomes ORDER BY createdAt DESC")
-    fun getAllIncomes(): Flow<List<IncomeEntity>>
-
-    @Query("SELECT COALESCE(SUM(amount), 0.0) FROM incomes WHERE frequency = 'MONTHLY' ")
-    fun getTotalMonthlyIncome(): Flow<Double>
-
-    @Query("SELECT COALESCE(SUM(amount),0.0) FROM incomes WHERE frequency = 'YEARLY' ")
-    fun getTotalYearlyIncome(): Flow<Double>
-
     @Query("SELECT * FROM incomes WHERE periodKey = :periodKey ORDER BY createdAt DESC")
     fun getIncomesForPeriod(periodKey: String): Flow<List<IncomeEntity>>
 
