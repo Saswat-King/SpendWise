@@ -11,6 +11,7 @@ data class IncomeFormState(
     val bonusAmount: String = "",
     val freelanceAmount: String = "",
     val otherAmount: String = "",
+
     val primaryIncomeError: String? = null,
     val isSaving: Boolean = false,
 

@@ -62,6 +62,12 @@ object DateRangeCalculator {
         return firstDay.toStartOfDayMillis() to firstDay.withDayOfMonth(firstDay.lengthOfMonth()).toEndOfDayMillis()
     }
 
+    fun previousPeriodKey(periodKey: String = currentPeriodKey()): String {
+        val (year, month) = periodKey.split("-").map { it.toInt() }
+        val previous = LocalDate.of(year, month,1).minusMonths(1)
+        return "%04d-%02d".format(previous.year, previous.monthValue)
+    }
+
     private fun LocalDate.toStartOfDayMillis(): Long =
         atStartOfDay(zone).toInstant().toEpochMilli()
 

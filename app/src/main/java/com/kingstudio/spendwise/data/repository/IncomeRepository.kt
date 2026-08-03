@@ -4,6 +4,7 @@ import com.kingstudio.spendwise.data.local.dao.IncomeDao
 import com.kingstudio.spendwise.data.local.entity.IncomeEntity
 import com.kingstudio.spendwise.data.local.entity.IncomeFrequency
 import com.kingstudio.spendwise.data.local.entity.IncomeSource
+import com.kingstudio.spendwise.data.model.PeriodComparison
 import com.kingstudio.spendwise.data.util.DateRangeCalculator
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
@@ -12,7 +13,9 @@ import javax.inject.Inject
 
 interface IncomeRepository {
     fun getCurrentPeriodIncomes(): Flow<List<IncomeEntity>>
+    fun getNormalizedIncomeForPeriod(periodKey: String): Flow<Double>
     fun getNormalizedCurrentMonthlyIncome(): Flow<Double>
+    fun getIncomeTrend(): Flow<PeriodComparison>
     suspend fun replaceCurrentPeriodIncomes(entries: List<IncomeEntity>)
     suspend fun ensureCurrentPeriodSalaryExists(): Boolean
     suspend fun saveIncome(income: IncomeEntity): Long
@@ -26,10 +29,9 @@ class IncomeRepositoryImpl @Inject constructor(
     override fun getCurrentPeriodIncomes(): Flow<List<IncomeEntity>> =
         incomeDao.getIncomesForPeriod(DateRangeCalculator.currentPeriodKey())
 
-    override fun getNormalizedCurrentMonthlyIncome(): Flow<Double> =
-        getCurrentPeriodIncomes().map { entries ->
+    override fun getNormalizedIncomeForPeriod(periodKey: String): Flow<Double> =
+        incomeDao.getIncomesForPeriod(periodKey).map { entries ->
             if(entries.isEmpty()) return@map 0.0
-
             val frequency = entries.first().frequency
             val total = entries.sumOf { it.amount }
             when(frequency) {
@@ -37,6 +39,18 @@ class IncomeRepositoryImpl @Inject constructor(
                 IncomeFrequency.YEARLY -> total / 12
             }
         }
+
+    override fun getNormalizedCurrentMonthlyIncome(): Flow<Double> =
+        getNormalizedIncomeForPeriod(DateRangeCalculator.currentPeriodKey())
+
+    override fun getIncomeTrend(): Flow<PeriodComparison> {
+        val current = DateRangeCalculator.currentPeriodKey()
+        val previous = DateRangeCalculator.previousPeriodKey(current)
+        return combine(
+            getNormalizedIncomeForPeriod(current),
+            getNormalizedIncomeForPeriod(previous)
+        ) { curr, prev -> PeriodComparison.calculate(curr,prev) }
+    }
 
     override suspend fun replaceCurrentPeriodIncomes(entries: List<IncomeEntity>) {
         val period = DateRangeCalculator.currentPeriodKey()
