@@ -1,4 +1,4 @@
-package com.kingstudio.spendwise.ui.budget
+package com.kingstudio.spendwise.ui.budget.setup
 
 object EssentialBudgetCategories {
     val names = setOf(

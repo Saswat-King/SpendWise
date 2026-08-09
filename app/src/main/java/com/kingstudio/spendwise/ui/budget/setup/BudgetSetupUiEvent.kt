@@ -1,4 +1,4 @@
-package com.kingstudio.spendwise.ui.budget
+package com.kingstudio.spendwise.ui.budget.setup
 
 sealed class BudgetSetupUiEvent {
     object BudgetSaved : BudgetSetupUiEvent()

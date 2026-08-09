@@ -1,4 +1,4 @@
-package com.kingstudio.spendwise.ui.budget
+package com.kingstudio.spendwise.ui.budget.setup
 
 import com.kingstudio.spendwise.data.local.entity.CategoryEntity
 import com.kingstudio.spendwise.ui.common.FormMode

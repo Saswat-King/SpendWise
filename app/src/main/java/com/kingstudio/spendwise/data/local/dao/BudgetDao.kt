@@ -19,6 +19,9 @@ interface BudgetDao {
     @Query("SELECT * FROM budgets WHERE categoryId = :categoryId AND periodKey = :periodKey")
     suspend fun getBudgetByCategory(categoryId: Long, periodKey: String): BudgetEntity?
 
+    @Query("SELECT DISTINCT periodKey FROM budgets ORDER BY periodKey DESC")
+    fun getAllPeriodKeysWithBudgets(): Flow<List<String>>
+
     @Query("SELECT * FROM budgets WHERE periodKey = :periodKey")
     suspend fun getBudgetsForPeriodOnce(periodKey: String): List<BudgetEntity>
 

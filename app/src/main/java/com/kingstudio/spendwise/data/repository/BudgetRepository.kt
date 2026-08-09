@@ -17,6 +17,7 @@ interface BudgetRepository {
     suspend fun getBudgetByCategory(categoryId: Long, periodKey: String = DateRangeCalculator.currentPeriodKey()): BudgetEntity?
     fun getBudgetOverviewForPeriod(periodKey: String): Flow<BudgetOverview>
     fun getCurrentPeriodBudgetOverview(): Flow<BudgetOverview>
+    fun getAvailablePeriods(): Flow<List<String>>
     suspend fun ensureCurrentPeriodBudgetsExist(): Boolean
     suspend fun setBudget(categoryId: Long, amount: Double, periodKey: String = DateRangeCalculator.currentPeriodKey())
     // suspend fun saveBudget(categoryId: Long, amount: Double)
@@ -64,6 +65,8 @@ class BudgetRepositoryImpl @Inject constructor(
 
     override fun getCurrentPeriodBudgetOverview(): Flow<BudgetOverview>  =
         getBudgetOverviewForPeriod(DateRangeCalculator.currentPeriodKey())
+
+    override fun getAvailablePeriods(): Flow<List<String>> = budgetDao.getAllPeriodKeysWithBudgets()
 
     override suspend fun ensureCurrentPeriodBudgetsExist(): Boolean {
         val currentPeriod = DateRangeCalculator.currentPeriodKey()
