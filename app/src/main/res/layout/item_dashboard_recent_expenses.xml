@@ -10,21 +10,29 @@
     android:focusable="true"
     android:paddingVertical="@dimen/sw_spend_item_padding_v">
 
-    <ImageView
-        android:id="@+id/iv_expense_icon"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_expense_icon_container"
         android:layout_width="@dimen/sw_spend_icon_size"
         android:layout_height="@dimen/sw_spend_icon_size"
         android:layout_marginStart="@dimen/sw_spend_item_horizontal_inset"
-        android:background="@drawable/bg_spend_icon_container"
-        android:importantForAccessibility="no"
-        android:padding="@dimen/sw_spend_icon_padding"
-        android:scaleType="center"
+        app:cardElevation="0dp"
+        app:strokeWidth="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:backgroundTint="@color/sw_spend_bg_shopping"
-        tools:src="@drawable/ic_shopping_bag"
-        tools:tint="@color/sw_spend_icon_shopping" />
+        tools:cardBackgroundColor="@color/sw_spend_bg_shopping">
+
+        <ImageView
+            android:id="@+id/iv_expense_icon"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:importantForAccessibility="no"
+            android:padding="@dimen/sw_spend_icon_padding"
+            android:scaleType="center"
+            tools:src="@drawable/ic_shopping_bag"
+            tools:tint="@color/sw_spend_icon_shopping" />
+
+    </com.google.android.material.card.MaterialCardView>
 
     <TextView
         android:id="@+id/tv_expense_category"
@@ -36,7 +44,7 @@
         android:singleLine="true"
         android:textAppearance="@style/TextAppearance.SpendWise.SpendCategory"
         app:layout_constraintEnd_toStartOf="@id/tv_expense_amount"
-        app:layout_constraintStart_toEndOf="@id/iv_expense_icon"
+        app:layout_constraintStart_toEndOf="@id/card_expense_icon_container"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Shopping" />
 
@@ -47,10 +55,9 @@
         android:layout_marginStart="@dimen/sw_spend_item_horizontal_inset"
         android:layout_marginEnd="@dimen/sw_spend_item_horizontal_inset"
         android:textAppearance="@style/TextAppearance.SpendWise.SpendAmount"
-        app:layout_constraintBottom_toBottomOf="@id/tv_expense_category"
+        app:layout_constraintBaseline_toBaselineOf="@id/tv_expense_category"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/tv_expense_category"
-        app:layout_constraintTop_toTopOf="@id/tv_expense_category"
         tools:text="-$89.99" />
 
     <TextView

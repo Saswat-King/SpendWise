@@ -15,7 +15,7 @@
     <string name="nav_dashboard">Dashboard</string>
     <string name="nav_expenses">Expenses</string>
     <string name="nav_budgets">Budget</string>
-    <string name="nav_insights">AI Insights</string>
+    <string name="nav_insights">Insights</string>
     <string name="nav_settings">Settings</string>
 
     <!-- Splash -->
@@ -106,12 +106,18 @@
     <string name="dashboard_overview_subtitle">Here\'s your financial overview</string>
 
     <string name="available_balance_label">Available balance</string>
-    <string name="dashboard_filter_this_month">This month</string>
+    <string name="available_balance">%,.2f</string>
+<!--    <string name="dashboard_filter_this_month">This month</string>-->
     <string name="income_label">Income</string>
+    <string name="income_amount">%,.2f</string>
     <string name="expense_label">Expense</string>
+    <string name="expense_amount">%,.2f</string>
 
     <string name="budget_overview_title">Budget Overview</string>
+    <string name="dashboard_budget_percent">%1$d%%</string>
     <string name="budget_used_label">of budget used</string>
+    <string name="dashboard_budget_used_amount">%,.0f</string>
+    <string name="dashboard_budget_total_amount">of %1$,.0f</string>
 
     <string name="recent_expenses_title">Recent Expenses</string>
 
@@ -189,8 +195,8 @@
     <string name="amount_rupee_50000">₹50,000</string>
 
     <string name="amount_dollar_zero">$0.00</string>
-    <string name="amount_dollar_income_zero">+$0.00</string>
-    <string name="amount_dollar_expense_zero">-$0.00</string>
+    <string name="amount_dollar_income_zero">0.00</string>
+    <string name="amount_dollar_expense_zero">0.00</string>
 
     <string name="budget_used_percent_preview" formatted="false">65%</string>
     <string name="budget_spent_preview">$1,625.00</string>
@@ -216,5 +222,12 @@
     <string name="content_description_budget_wallet">Budget wallet</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Budget Category Adapter -->
+    <string name="budget_category_percent">%1$d%%</string>
+    <string name="budget_category_amount">%1$,.0f / %2$,.0f</string>
+
+    <!-- Expense List Adapter -->
+    <string name="recent_expense_amount">-%1$,.2f</string>
 
 </resources>

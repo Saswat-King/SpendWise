@@ -286,7 +286,6 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/budget_summary_horizontal_divider"
                         app:trackColor="@color/sw_on_primary_20"
-                        app:trackCornerRadius="@dimen/sw_corner_radius_4"
                         app:trackStopIndicatorSize="0dp"
                         app:trackThickness="@dimen/sw_budget_summary_progress_height" />
 

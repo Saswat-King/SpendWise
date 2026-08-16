@@ -120,6 +120,7 @@
     <!-- Budget -->
     <dimen name="sw_budget_summary_divider_height">44dp</dimen>
     <dimen name="sw_budget_summary_progress_height">8dp</dimen>
+    <dimen name="sw_budget_category_progress_thickness">6dp</dimen>
     <dimen name="sw_budget_analytics_chart_size">170dp</dimen>
     <dimen name="sw_budget_performance_chart_height">190dp</dimen>
 

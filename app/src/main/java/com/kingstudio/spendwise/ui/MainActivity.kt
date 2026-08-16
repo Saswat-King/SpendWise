@@ -6,8 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
-import com.kingstudio.spendwise.ProfileSetupFragment
+import com.kingstudio.spendwise.ui.dashboard.DashboardFragment
 import com.kingstudio.spendwise.R
+import com.kingstudio.spendwise.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -31,7 +32,7 @@ class MainActivity : AppCompatActivity() {
 
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, ProfileSetupFragment())
+                .replace(R.id.fragment_container, DashboardFragment())
                 .commit()
         }
 

@@ -58,6 +58,10 @@ private object DefaultData {
         Triple("Groceries",           "ic_groceries",      "#66BB6A"),
         Triple("Health",              "ic_health",         "#EC407A"),
         Triple("Education",           "ic_education",      "#FFA726"),
+        Triple("Fitness",             "ic_fitness",        "#7E57C2"),
+        Triple("Pets",                "ic_pets",           "#8D6E63"),
+        Triple("Gifts",               "ic_gifts",          "#F06292"),
+        Triple("Subscriptions",       "ic_subscriptions",  "#26A69A"),
         Triple("Other",               "ic_other",          "#78909C")
     )
 }

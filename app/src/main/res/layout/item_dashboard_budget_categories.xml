@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="8dp"
+    android:paddingTop="8dp"
+    android:paddingEnd="16dp"
+    android:paddingBottom="8dp">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_budget_category_icon_container"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="0dp"
+        app:strokeWidth="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:cardBackgroundColor="@color/sw_spend_bg_shopping">
+
+        <ImageView
+            android:id="@+id/iv_budget_category_icon"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:importantForAccessibility="no"
+            android:padding="12dp"
+            android:scaleType="centerInside"
+            tools:src="@drawable/ic_shopping_bag"
+            tools:tint="@color/sw_spend_icon_shopping" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/tv_budget_category_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="12dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textAppearance="@style/TextAppearance.SpendWise.SpendCategory"
+        app:layout_constraintEnd_toStartOf="@id/tv_budget_category_percent"
+        app:layout_constraintStart_toEndOf="@id/card_budget_category_icon_container"
+        app:layout_constraintTop_toTopOf="@id/card_budget_category_icon_container"
+        tools:text="Shopping" />
+
+    <TextView
+        android:id="@+id/tv_budget_category_percent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.SpendWise.SpendAmount"
+        app:layout_constraintBaseline_toBaselineOf="@id/tv_budget_category_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="78%" />
+
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/budget_category_progress"
+        style="@style/Widget.SpendWise.BudgetProgressIndicator"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="24dp"
+        android:indeterminate="false"
+        android:max="100"
+        android:progress="78"
+        app:indicatorColor="@color/sw_indicator_green_bg"
+        app:indicatorTrackGapSize="0dp"
+        app:layout_constraintEnd_toStartOf="@id/tv_budget_category_amount"
+        app:layout_constraintStart_toStartOf="@id/tv_budget_category_name"
+        app:layout_constraintTop_toBottomOf="@id/tv_budget_category_name"
+        app:trackColor="@color/sw_on_primary_20"
+        app:trackStopIndicatorSize="0dp"
+        app:trackThickness="6dp" />
+
+    <TextView
+        android:id="@+id/tv_budget_category_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.SpendWise.SpendDescription"
+        app:layout_constraintBottom_toBottomOf="@id/budget_category_progress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/budget_category_progress"
+        tools:text="780 / 1,000" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

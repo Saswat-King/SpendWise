@@ -47,7 +47,12 @@
 
     <style
         name="Widget.SpendWise.BudgetProgressIndicator"
-        parent="Widget.MaterialComponents.LinearProgressIndicator" />
+        parent="Widget.MaterialComponents.LinearProgressIndicator" >
+
+        <item name="trackStopIndicatorSize">0dp</item>
+    </style>
+
+
 
 
     <!-- Recent expense item -->

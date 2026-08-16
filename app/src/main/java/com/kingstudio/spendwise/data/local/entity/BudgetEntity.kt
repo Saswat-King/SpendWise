@@ -16,7 +16,7 @@ import androidx.room.PrimaryKey
             onDelete = ForeignKey.CASCADE
         )
     ], indices = [
-        Index(value = ["categoryId, periodKey"], unique = true)]
+        Index(value = ["categoryId", "periodKey"], unique = true)]
 )
 
 data class BudgetEntity(
