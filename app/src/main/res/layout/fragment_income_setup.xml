@@ -197,7 +197,6 @@
                     android:hint="@string/input_zero"
                     android:inputType="numberDecimal"
                     android:maxLines="1"
-                    android:text="@string/income_amount_preview"
                     android:textColor="@color/sw_text_primary"
                     android:textColorHint="@color/sw_text_hint"
                     android:textSize="@dimen/sw_text_size_42"
@@ -612,7 +611,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/sw_space_18"
                         android:fontFamily="sans-serif-medium"
-                        android:text="@string/amount_rupee_50000"
                         android:textColor="@color/sw_on_primary"
                         android:textSize="@dimen/sw_text_size_42"
                         app:layout_constraintStart_toStartOf="parent"
@@ -623,7 +621,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/sw_space_4"
-                        android:text="@string/total_monthly_income_label"
                         android:textColor="@color/sw_on_primary_85"
                         android:textSize="@dimen/sw_text_size_15"
                         app:layout_constraintStart_toStartOf="parent"
@@ -684,7 +681,6 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/sw_space_8"
                                 android:fontFamily="sans-serif-medium"
-                                android:text="@string/amount_rupee_50000"
                                 android:textColor="@color/sw_on_primary"
                                 android:textSize="@dimen/sw_text_size_18" />
 
@@ -731,7 +727,6 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/sw_space_8"
                                 android:fontFamily="sans-serif-medium"
-                                android:text="@string/amount_rupee_zero"
                                 android:textColor="@color/sw_on_primary"
                                 android:textSize="@dimen/sw_text_size_18" />
 
@@ -778,7 +773,6 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/sw_space_8"
                                 android:fontFamily="sans-serif-medium"
-                                android:text="@string/amount_rupee_50000"
                                 android:textColor="@color/sw_on_primary"
                                 android:textSize="@dimen/sw_text_size_18" />
 

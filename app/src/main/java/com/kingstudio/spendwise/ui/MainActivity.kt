@@ -9,6 +9,7 @@ import androidx.core.view.updatePadding
 import com.kingstudio.spendwise.ui.dashboard.DashboardFragment
 import com.kingstudio.spendwise.R
 import com.kingstudio.spendwise.databinding.ActivityMainBinding
+import com.kingstudio.spendwise.ui.income.IncomeSetupFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -32,7 +33,7 @@ class MainActivity : AppCompatActivity() {
 
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, DashboardFragment())
+                .replace(R.id.fragment_container, IncomeSetupFragment())
                 .commit()
         }
 

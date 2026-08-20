@@ -14,6 +14,7 @@
 .cxx
 local.properties
 app/src/main/res/layout/test.xml
+app/src/main/res/layout/test2.xml
 app/src/main/res/drawable/income_wallet_illustration.webp
 app/src/main/res/layout/fragment_login.xml
 app/src/main/java/com/kingstudio/spendwise/LoginFragment.kt

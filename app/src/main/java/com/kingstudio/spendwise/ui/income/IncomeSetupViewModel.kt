@@ -63,7 +63,7 @@ class IncomeSetupViewModel @Inject constructor(
         )
 
     private val _events = Channel<IncomeUiEvent>()
-    val event: Flow<IncomeUiEvent> = _events.receiveAsFlow()
+    val events: Flow<IncomeUiEvent> = _events.receiveAsFlow()
 
     init {
         viewModelScope.launch {

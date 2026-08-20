@@ -81,10 +81,19 @@
     <string name="other_income_title">Other Income</string>
 
     <string name="income_summary_title">Income Summary</string>
-    <string name="total_monthly_income_label">Total Monthly Income</string>
+
+    <string name="income_summary_amount">%1$s%,.0f</string>
+    <string name="total_period_income">Total %1$s Income</string>
+
     <string name="base_income_label">Base Income</string>
+    <string name="base_income_amount">%1$s%,.0f</string>
+
     <string name="additional_income_label">Additional</string>
+    <string name="additional_income_amount">%1$s%,.0f</string>
+
     <string name="total_income_label">Total Income</string>
+    <string name="total_income_amount">%1$s%,.0f</string>
+
 
     <!-- Create budget -->
     <string name="create_budget_title">Create Your Budget</string>

@@ -17,6 +17,7 @@ import com.github.mikephil.charting.data.LineDataSet
 import com.kingstudio.spendwise.R
 import com.kingstudio.spendwise.data.local.dao.ExpenseDao
 import com.kingstudio.spendwise.databinding.FragmentDashboardBinding
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 // TODO: Rename parameter arguments, choose names that match
@@ -29,6 +30,8 @@ private const val ARG_PARAM2 = "param2"
  * Use the [DashboardFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
+
+@AndroidEntryPoint
 class DashboardFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
@@ -153,7 +156,7 @@ class DashboardFragment : Fragment() {
     }
 
     private fun setupClickListeners() {
-        // other click listeners
+        //TODO other click listeners
     }
 
     override fun onDestroyView() {
