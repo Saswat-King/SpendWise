@@ -58,7 +58,7 @@ class DashboardBudgetCategoriesAdapter : ListAdapter<CategoryBudgetProgress, Das
                 CategoryIconResolver.getIconColor(item.category.colorHex)
             )
 
-            binding.ivBudgetCategoryIcon.setBackgroundColor(
+            binding.cardBudgetCategoryIconContainer.setCardBackgroundColor(
                 CategoryIconResolver.getLightBackgroundColor(item.category.colorHex)
             )
         }

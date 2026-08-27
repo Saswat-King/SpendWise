@@ -60,6 +60,13 @@
     <color name="sw_spend_bg_shopping">#1D2D44</color>
     <color name="sw_spend_icon_shopping">#6EA8FE</color>
 
+    <!-- Category Selection Colors -->
+    <color name="category_card_background">#1E1E1E</color>
+    <color name="category_card_stroke">#3A3A3A</color>
+    <color name="category_selected_card_stroke">#3CC978</color>
+    <color name="category_selected_badge">#3CC978</color>
+    <color name="category_selected_check">#FFFFFF</color>
+
     <!-- Bottom navigation and main action -->
     <color name="sw_nav_active">#8FD8B5</color>
     <color name="sw_nav_inactive">#B8B8B8</color>

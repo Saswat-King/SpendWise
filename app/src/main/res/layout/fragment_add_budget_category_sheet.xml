@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="@dimen/sw_space_24"
+    android:paddingTop="@dimen/sw_space_16"
+    android:paddingEnd="@dimen/sw_space_24"
+    android:paddingBottom="@dimen/sw_space_10"
+    tools:context=".ui.budget.setup.add_category.AddBudgetCategorySheet">
+
+    <!-- Drag handle -->
+    <View
+        android:id="@+id/viewDragHandle"
+        android:layout_width="72dp"
+        android:layout_height="4dp"
+        android:background="@drawable/bg_bottom_sheet_handle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/sw_space_24"
+        android:text="@string/add_budget_title"
+        android:textColor="@color/sw_text_primary"
+        android:textSize="@dimen/sw_text_size_28"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewDragHandle" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvSubtitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/sw_space_6"
+        android:text="@string/add_budget_subtitle"
+        android:textColor="@color/sw_text_secondary"
+        android:textSize="@dimen/sw_text_size_15"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvCategories"
+        android:layout_width="0dp"
+        android:layout_height="260dp"
+        android:layout_marginTop="@dimen/sw_space_18"
+        android:clipToPadding="false"
+        android:overScrollMode="ifContentScrolls"
+        android:paddingTop="@dimen/sw_space_4"
+        android:paddingBottom="@dimen/sw_space_4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvSubtitle" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvAmountLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/sw_space_18"
+        android:text="@string/amount_label"
+        android:textColor="@color/sw_text_primary"
+        android:textSize="@dimen/sw_text_size_16"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rvCategories" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/amountInputContainer"
+        android:layout_width="0dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="@dimen/sw_space_10"
+        app:cardBackgroundColor="@color/sw_surface"
+        app:cardCornerRadius="@dimen/sw_corner_radius_16"
+        app:cardElevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvAmountLabel"
+        app:strokeColor="@color/sw_auth_accent"
+        app:strokeWidth="@dimen/sw_stroke_width">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="@dimen/sw_space_16"
+            android:paddingEnd="@dimen/sw_space_16">
+
+            <TextView
+                android:id="@+id/ivCurrency"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/content_description_currency"
+                android:text="@string/default_currency_symbol"
+                android:textColor="@color/sw_text_primary"
+                android:textSize="@dimen/sw_text_size_20"
+                android:textStyle="bold" />
+
+            <Space
+                android:layout_width="12dp"
+                android:layout_height="1dp" />
+
+            <EditText
+                android:id="@+id/etAmount"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:hint="@string/budget_amount_hint"
+                android:inputType="numberDecimal"
+                android:maxLines="1"
+                android:padding="0dp"
+                android:textColor="@color/sw_text_primary"
+                android:textColorHint="@color/sw_text_hint"
+                android:textSize="@dimen/sw_text_size_17" />
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSave"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/sw_button_height_large"
+        android:layout_marginTop="@dimen/sw_space_22"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/action_save"
+        android:textAllCaps="false"
+        android:textColor="@color/sw_on_primary"
+        android:textSize="@dimen/sw_text_size_16"
+        app:backgroundTint="@color/sw_auth_accent"
+        app:cornerRadius="@dimen/sw_corner_radius_16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/amountInputContainer" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

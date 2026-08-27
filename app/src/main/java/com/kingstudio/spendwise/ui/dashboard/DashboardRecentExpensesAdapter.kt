@@ -15,8 +15,7 @@ class DashboardRecentExpensesAdapter : ListAdapter<ExpenseWithCategory, Dashboar
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
-        val binding = ItemDashboardRecentExpensesBinding.inflate(
-            LayoutInflater.from(parent.context),
+        val binding = ItemDashboardRecentExpensesBinding.inflate(LayoutInflater.from(parent.context),
             parent, false)
 
         return ViewHolder(binding)
@@ -46,7 +45,7 @@ class DashboardRecentExpensesAdapter : ListAdapter<ExpenseWithCategory, Dashboar
                 CategoryIconResolver.getIconColor(item.category.colorHex)
             )
 
-            binding.ivExpenseIcon.setBackgroundColor(
+            binding.cardExpenseIconContainer.setCardBackgroundColor(
                 CategoryIconResolver.getLightBackgroundColor(item.category.colorHex)
             )
         }
