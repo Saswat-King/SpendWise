@@ -98,6 +98,7 @@
     <string name="create_budget_subtitle">Set spending limits for your main categories</string>
     <string name="add_category">Add Category</string>
     <string name="budget_summary_title">Budget Summary</string>
+    <string name="budget_summary_total_budget_amount">$%,.0f</string>
     <string name="total_budget_label">Total Budget</string>
 
     <!-- Add budget category sheet -->

@@ -14,7 +14,7 @@ import com.kingstudio.spendwise.ui.common.CategoryIconResolver
 
 class SelectCategoryAdapter(
     private val onCategoryClicked: (CategoryEntity) -> Unit
-) : ListAdapter<SelectableCategory, SelectCategoryAdapter.ViewHolder>(DiffCallBack) {
+) : ListAdapter<SelectableCategory, SelectCategoryAdapter.ViewHolder>(DiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
@@ -70,7 +70,7 @@ class SelectCategoryAdapter(
         }
     }
 
-    object DiffCallBack : DiffUtil.ItemCallback<SelectableCategory>() {
+    object DiffCallback : DiffUtil.ItemCallback<SelectableCategory>() {
 
         override fun areItemsTheSame(oldItem: SelectableCategory, newItem: SelectableCategory): Boolean =
             oldItem.category.id == newItem.category.id
