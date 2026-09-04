@@ -146,9 +146,23 @@
     <string name="expenses_title">Expenses</string>
     <string name="expenses_subtitle">Track and manage your expenses</string>
     <string name="total_expense_label">Total Expense</string>
+    <string name="expense_total_amount">$%,.2f</string>
     <string name="highest_expense_label">Highest Expense</string>
+    <string name="expense_highest_amount">$%,.2f</string>
     <string name="lowest_expense_label">Lowest Expense</string>
+    <string name="expense_lowest_amount">$%,.2f</string>
     <string name="all_expenses_title">All Expenses</string>
+
+    <!-- Expenses Empty State -->
+    <string name="empty_expense_total">0.00</string>
+    <string name="expense_no_data">No data yet</string>
+
+    <!-- Expenses List -->
+    <string name="expense_group_total">-$%,.2f</string>
+    <string name="expense_metadata">-$%,.2f</string>
+
+    <!-- Search expenses -->
+    <string name="hint_search_expenses">Search expenses</string>
 
     <!-- Add expense -->
     <string name="add_expense_title">Add Expense</string>
@@ -222,6 +236,7 @@
     <!-- Accessibility -->
     <string name="content_description_notifications">Notifications</string>
     <string name="content_description_search_expenses">Search expenses</string>
+    <string name="content_description_back">Back</string>
     <string name="content_description_highest_expense">Highest expense</string>
     <string name="content_description_lowest_expense">Lowest expense</string>
     <string name="content_description_edit_profile_photo">Edit profile photo</string>

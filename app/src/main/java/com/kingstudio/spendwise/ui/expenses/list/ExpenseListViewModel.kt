@@ -38,6 +38,7 @@ class ExpenseListViewModel @Inject constructor(
     val dateRange: StateFlow<DateRange> = _dateRange.asStateFlow()
 
     private val _pendingDeletions = MutableStateFlow<Map<Long, Job>>(emptyMap())
+//    private val _searchQuery = MutableStateFlow("")
 
     private val _events = Channel<ExpenseUiEvent>()
     val events: Flow<ExpenseUiEvent> = _events.receiveAsFlow()
@@ -69,13 +70,13 @@ class ExpenseListViewModel @Inject constructor(
 
         val visible = raw.expenses.filterNot { pending.containsKey(it.expense.id) }
 
-        if (visible.isEmpty()) {
+        if(visible.isEmpty()) {
             ExpenseListUiState.Empty
-        } else {
+        }
+        else {
             ExpenseListUiState.Success(
                 summary = ExpensesSummary(raw.total, raw.trend, raw.highest, raw.lowest),
-                groupedItems = visible.groupByDate()
-
+                groups = visible.groupByDate()
             )
         }
 
@@ -88,6 +89,10 @@ class ExpenseListViewModel @Inject constructor(
     fun onDateRangeSelected(range: DateRange) {
         _dateRange.value = range
     }
+
+//    fun onSearchQueryChanged(query: String) {
+//        _searchQuery.value = query
+//    }
 
     private val undoWindowMillis = 4_000L
 
@@ -111,20 +116,29 @@ class ExpenseListViewModel @Inject constructor(
     fun onUndoDelete(expenseId: Long) {
         _pendingDeletions.value[expenseId]?.cancel()
         _pendingDeletions.update { it - expenseId }
-
     }
 
-    private fun List<ExpenseWithCategory>.groupByDate(): List<ExpenseListItem> {
+    private fun List<ExpenseWithCategory>.groupByDate(): List<ExpenseGroup> {
         return this
             .groupBy { RelativeDateFormatter.toLocalDate(it.expense.date) }
             .toSortedMap(compareByDescending { it })
-            .flatMap { (date, dayExpenses) ->
+            .map { (_, dayExpenses) ->
                 val sorted = dayExpenses.sortedByDescending { it.expense.date }
-                val dayTotal = sorted.sumOf { it.expense.amount }
-                listOf(
-                    ExpenseListItem.DateHeader(RelativeDateFormatter.format(sorted.first().expense.date),dayTotal)
-                ) + sorted.map { ExpenseListItem.Row(it) }
-            }
 
+                ExpenseGroup(
+                    dateLabel = RelativeDateFormatter.format(sorted.first().expense.date),
+                    totalAmount = sorted.sumOf{ it.expense.amount },
+                    expenses = sorted
+                )
+            }
+    }
+
+    private fun ExpenseWithCategory.matchesSearch(query: String): Boolean {
+        val q = query.trim().lowercase()
+        return expense.title.lowercase().contains(q) ||
+                category.name.lowercase().contains(q) ||
+                (expense.note?.lowercase()?.contains(q) == true) ||
+                expense.amount.toString().contains(q) ||
+                RelativeDateFormatter.format(expense.date).lowercase().contains(q)
     }
 }

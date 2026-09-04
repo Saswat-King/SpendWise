@@ -1,12 +1,14 @@
 package com.kingstudio.spendwise.ui.expenses.list
 
 import com.kingstudio.spendwise.data.local.relation.ExpenseWithCategory
+import com.kingstudio.spendwise.data.model.DateRange
 import com.kingstudio.spendwise.data.model.PeriodComparison
 
-sealed class ExpenseListItem {
-    data class DateHeader(val label: String, val dayTotal: Double) : ExpenseListItem()
-    data class Row(val expense: ExpenseWithCategory) : ExpenseListItem()
-}
+data class ExpenseGroup(
+    val dateLabel: String,
+    val totalAmount: Double,
+    val expenses: List<ExpenseWithCategory>
+)
 
 
 data class ExpensesSummary(
@@ -19,7 +21,7 @@ data class ExpensesSummary(
 sealed class ExpenseListUiState {
     object Loading : ExpenseListUiState()
     data class Success(
-        val summary: ExpensesSummary, val groupedItems: List<ExpenseListItem>
+       val groups: List<ExpenseGroup>, val summary: ExpensesSummary
     ) : ExpenseListUiState()
 
     object Empty : ExpenseListUiState()

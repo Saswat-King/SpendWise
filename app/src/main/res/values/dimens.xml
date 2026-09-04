@@ -89,6 +89,7 @@
     <dimen name="sw_icon_container_size_48">48dp</dimen>
     <dimen name="sw_icon_container_size_50">50dp</dimen>
     <dimen name="sw_icon_container_size_52">52dp</dimen>
+    <dimen name="sw_icon_container_size_56">56dp</dimen>
 
     <dimen name="sw_divider_thickness">1dp</dimen>
 

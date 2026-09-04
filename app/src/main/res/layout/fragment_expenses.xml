@@ -24,7 +24,7 @@
             android:background="@color/sw_background"
             android:paddingStart="@dimen/sw_space_24"
             android:paddingTop="@dimen/sw_space_10"
-            android:paddingEnd="@dimen/sw_space_24"
+            android:paddingEnd="@dimen/sw_space_14"
             android:paddingBottom="@dimen/sw_space_1">
 
             <com.google.android.material.textview.MaterialTextView
@@ -44,11 +44,9 @@
                 android:layout_height="@dimen/sw_touch_target"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:contentDescription="@string/content_description_search_expenses"
-                android:padding="@dimen/sw_space_12"
                 android:src="@drawable/ic_search"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:tint="@color/sw_text_primary_expenses" />
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

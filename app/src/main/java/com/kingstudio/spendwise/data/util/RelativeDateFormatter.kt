@@ -1,5 +1,6 @@
 package com.kingstudio.spendwise.data.util
 
+import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
@@ -20,6 +21,12 @@ object RelativeDateFormatter {
             date.year == today.year -> date.format(sameYearFormat)
             else -> date.format(otherYearFormat)
         }
+    }
+
+    fun formatTime(epochMillis: Long):String {
+        val zone = ZoneId.systemDefault()
+        val time = Instant.ofEpochMilli(epochMillis).atZone(zone).toLocalTime()
+        return DateTimeFormatter.ofPattern("hh:mm a").format(time)
     }
 
     fun toLocalDate(epochMillis: Long): LocalDate =
