@@ -7,6 +7,7 @@ import com.kingstudio.spendwise.data.local.entity.IncomeEntity
 import com.kingstudio.spendwise.data.local.entity.IncomeFrequency
 import com.kingstudio.spendwise.data.local.entity.IncomeSource
 import com.kingstudio.spendwise.data.repository.IncomeRepository
+import com.kingstudio.spendwise.ui.common.DecimalInputFilter
 import com.kingstudio.spendwise.ui.common.FormMode
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
@@ -104,6 +105,11 @@ class IncomeSetupViewModel @Inject constructor(
 
         if(primaryValue == null || primaryValue <= 0.0) {
             _formState.update { it.copy(primaryIncomeError = "Enter your primary income") }
+            return
+        }
+
+        if(primaryValue > DecimalInputFilter.MAX_AMOUNT) {
+            _formState.update { it.copy(primaryIncomeError = "Amount is too large") }
             return
         }
 

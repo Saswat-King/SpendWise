@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.kingstudio.spendwise.databinding.FragmentAddBudgetCategorySheetBinding
 import com.kingstudio.spendwise.ui.budget.setup.BudgetSetupViewModel
+import com.kingstudio.spendwise.ui.common.DecimalInputFilter
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 // TODO: Rename parameter arguments, choose names that match
@@ -25,6 +27,8 @@ private const val ARG_PARAM2 = "param2"
  * Use the [AddBudgetCategorySheet.newInstance] factory method to
  * create an instance of this fragment.
  */
+
+@AndroidEntryPoint
 class AddBudgetCategorySheet : BottomSheetDialogFragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
@@ -56,6 +60,8 @@ class AddBudgetCategorySheet : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.etAmount.filters = arrayOf(DecimalInputFilter())
 
         val excludedIds = budgetSetUpViewModel.formState.value.categoryInputs
             .map { it.category.id }

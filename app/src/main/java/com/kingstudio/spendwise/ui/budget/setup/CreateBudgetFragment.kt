@@ -14,6 +14,7 @@ import com.kingstudio.spendwise.R
 import com.kingstudio.spendwise.databinding.FragmentCreateBudgetBinding
 import com.kingstudio.spendwise.ui.budget.setup.add_category.AddBudgetCategorySheet
 import com.kingstudio.spendwise.ui.common.FormMode
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 // TODO: Rename parameter arguments, choose names that match
@@ -26,6 +27,8 @@ private const val ARG_PARAM2 = "param2"
  * Use the [CreateBudgetFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
+
+@AndroidEntryPoint
 class CreateBudgetFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null

@@ -186,7 +186,6 @@
                         android:minHeight="0dp"
                         android:paddingStart="@dimen/sw_space_11"
                         android:paddingEnd="@dimen/sw_space_7"
-                        android:text="@string/dashboard_filter_this_month"
                         android:textAllCaps="false"
                         android:textColor="@color/sw_on_primary"
                         android:textSize="@dimen/sw_text_size_12"
@@ -200,7 +199,8 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:strokeColor="@color/sw_on_primary_40"
-                        app:strokeWidth="@dimen/sw_stroke_width" />
+                        app:strokeWidth="@dimen/sw_stroke_width"/>
+<!--                        android:text="@string/dashboard_filter_this_month"/>-->
 
                     <com.github.mikephil.charting.charts.LineChart
                         android:id="@+id/balance_chart"

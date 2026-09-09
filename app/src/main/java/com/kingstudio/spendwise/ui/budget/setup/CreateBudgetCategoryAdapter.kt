@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.kingstudio.spendwise.databinding.ItemCreateBudgetCategoryBinding
 import com.kingstudio.spendwise.ui.common.CategoryIconResolver
+import com.kingstudio.spendwise.ui.common.DecimalInputFilter
 
 
 class CreateBudgetCategoryAdapter(
@@ -33,6 +34,7 @@ class CreateBudgetCategoryAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
 
         private var currentWatcher: TextWatcher? = null
+        private var boundCategoryId: Long? = null
 
         fun bind(item: BudgetCategoryInput, isLast: Boolean) {
             binding.tvBudgetCategoryName.text = item.category.name
@@ -49,7 +51,10 @@ class CreateBudgetCategoryAdapter(
                 CategoryIconResolver.getLightBackgroundColor(item.category.colorHex)
             )
 
+            binding.etBudgetAmount.filters = arrayOf(DecimalInputFilter())
+
             currentWatcher?.let { binding.etBudgetAmount.removeTextChangedListener(it) }
+
 
             if(binding.etBudgetAmount.text.toString() != item.amount) {
                 binding.etBudgetAmount.setText(item.amount)

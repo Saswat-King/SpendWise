@@ -9,31 +9,32 @@ import androidx.core.view.updatePadding
 import com.kingstudio.spendwise.ui.dashboard.DashboardFragment
 import com.kingstudio.spendwise.R
 import com.kingstudio.spendwise.databinding.ActivityMainBinding
+import com.kingstudio.spendwise.ui.budget.setup.CreateBudgetFragment
+import com.kingstudio.spendwise.ui.expenses.list.ExpensesFragment
 import com.kingstudio.spendwise.ui.income.IncomeSetupFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val topInsets = insets.getInsets(
-                WindowInsetsCompat.Type.statusBars() or WindowInsetsCompat.Type.displayCutout())
-            v.updatePadding(
-                left = 0,
-                top = topInsets.top,
-                right = 0,
-                bottom = 0)
+        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, 0)
+            binding.bottomNavigationView.updatePadding(bottom = systemBars.bottom)
             insets
         }
 
 
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, IncomeSetupFragment())
+                .replace(R.id.fragment_container, CreateBudgetFragment())
                 .commit()
         }
 

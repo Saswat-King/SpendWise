@@ -106,7 +106,6 @@
                     android:inputType="numberDecimal"
                     android:maxLines="1"
                     android:padding="0dp"
-                    android:selectAllOnFocus="true"
                     android:textColor="@color/sw_text_primary"
                     android:textColorHint="@color/sw_text_hint"
                     android:textSize="@dimen/sw_text_size_16"

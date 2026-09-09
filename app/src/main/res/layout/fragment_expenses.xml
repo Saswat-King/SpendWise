@@ -2,6 +2,7 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/expenses_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -42,9 +43,11 @@
                 android:id="@+id/btn_search_expenses"
                 android:layout_width="@dimen/sw_touch_target"
                 android:layout_height="@dimen/sw_touch_target"
+                android:layout_marginBottom="2dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:contentDescription="@string/content_description_search_expenses"
                 android:src="@drawable/ic_search"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 

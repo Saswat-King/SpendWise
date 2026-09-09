@@ -22,6 +22,7 @@ import com.google.android.material.tabs.TabLayout
 import com.kingstudio.spendwise.R
 import com.kingstudio.spendwise.data.local.entity.IncomeFrequency
 import com.kingstudio.spendwise.databinding.FragmentIncomeSetupBinding
+import com.kingstudio.spendwise.ui.common.DecimalInputFilter
 import com.kingstudio.spendwise.ui.common.SupportedCurrencies
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -73,6 +74,7 @@ class IncomeSetupFragment : Fragment() {
     // Listeners
 
     private fun setupListeners() {
+        binding.etPrimaryIncomeAmount.filters = arrayOf(DecimalInputFilter())
         binding.incomeFrequencyTabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
                 val frequency = if(tab.position == 0) IncomeFrequency.MONTHLY else IncomeFrequency.YEARLY
@@ -90,6 +92,7 @@ class IncomeSetupFragment : Fragment() {
                 viewModel.onPrimaryIncomeChanged(s?.toString() ?: "")
             }
         })
+
 
         binding.currencySelectorContainer.setOnClickListener { showCurrencyPicker() }
 
@@ -123,18 +126,35 @@ class IncomeSetupFragment : Fragment() {
     // Dialogs
 
     private fun showCurrencyPicker() {
-        val labels = SupportedCurrencies.list
-            .map {"${it.symbol} ${it.displayName} ($it.code)"}
+        val currencies = SupportedCurrencies.list
+
+        val labels = currencies
+            .map { "${it.symbol} ${it.displayName} (${it.code})" }
             .toTypedArray()
 
-        MaterialAlertDialogBuilder(requireContext())
+        val currentSymbol = binding.tvCurrencySymbol.text.toString()
+
+        val selectedIndex = currencies.indexOfFirst {
+            it.symbol == currentSymbol
+        }.coerceAtLeast(0)
+
+        MaterialAlertDialogBuilder(
+            requireContext(), R.style.ThemeOverlay_SpendWise_CurrencyDialog
+        )
             .setTitle("Select Currency")
-            .setItems(labels) { _, index ->
-                binding.tvCurrencySymbol.text = SupportedCurrencies.list[index].symbol
-                //TODO Datastore and Currency-dependent text fields
+            .setSingleChoiceItems(
+                labels,
+                selectedIndex
+            ) { dialog, index ->
+
+                binding.tvCurrencySymbol.text = currencies[index].symbol
+
+                // TODO: DataStore and currency-dependent text fields
 
                 renderFormState(viewModel.formState.value)
                 renderSummary(viewModel.summary.value)
+
+                dialog.dismiss()
             }
             .show()
     }
@@ -144,10 +164,13 @@ class IncomeSetupFragment : Fragment() {
         title: String,
         currentAmount: String, onSave: (String) -> Unit ) {
 
+        binding.root.clearFocus()
+
         val editText = EditText(requireContext()).apply {
             inputType = InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_FLAG_DECIMAL
             setText(currentAmount)
             hint = "0"
+            filters = arrayOf(DecimalInputFilter())
             setSelection(text.length)
         }
 
@@ -164,6 +187,13 @@ class IncomeSetupFragment : Fragment() {
             .setPositiveButton("Save") {_,_ -> onSave(editText.text.toString())}
             .setNegativeButton("Cancel", null)
             .show()
+
+
+        dialog.setOnDismissListener {
+            WindowCompat.getInsetsController(requireActivity().window,editText)
+                .hide(WindowInsetsCompat.Type.ime())
+        }
+
 
         editText.requestFocus()
         editText.post {
@@ -197,6 +227,14 @@ class IncomeSetupFragment : Fragment() {
             binding.etPrimaryIncomeAmount.setSelection(binding.etPrimaryIncomeAmount.text?.length ?: 0)
             isBindingFields = false
         }
+
+        val salaryType = if (state.frequency == IncomeFrequency.YEARLY) {
+            "Yearly"
+        } else {
+            "Monthly"
+        }
+
+        binding.tvIncomePeriodNote.text =  getString(R.string.income_period_note, salaryType)
 
         binding.etPrimaryIncomeAmount.error = state.primaryIncomeError
 

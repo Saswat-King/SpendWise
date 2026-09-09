@@ -8,6 +8,7 @@ import com.kingstudio.spendwise.data.local.entity.IncomeFrequency
 import com.kingstudio.spendwise.data.repository.BudgetRepository
 import com.kingstudio.spendwise.data.repository.CategoryRepository
 import com.kingstudio.spendwise.data.repository.IncomeRepository
+import com.kingstudio.spendwise.ui.common.DecimalInputFilter
 import com.kingstudio.spendwise.ui.common.FormMode
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
@@ -136,7 +137,7 @@ class BudgetSetupViewModel @Inject constructor(
 
             current.categoryInputs.forEach { input ->
                 val amount = input.amount.toDoubleOrNull()
-                if(amount != null && amount > 0.0) {
+                if(amount != null && amount > 0.0 && amount<= DecimalInputFilter.MAX_AMOUNT) {
                     budgetRepository.setBudget(input.category.id, amount)
                 }
                 else if (current.mode == FormMode.UPDATE) {

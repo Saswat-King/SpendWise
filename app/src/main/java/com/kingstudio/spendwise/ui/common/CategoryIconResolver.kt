@@ -19,7 +19,7 @@ object CategoryIconResolver {
         "ic_gifts" -> R.drawable.ic_gift
         "ic_subscriptions" -> R.drawable.ic_subscriptions
         "ic_other" -> R.drawable.ic_other
-        else -> R.drawable.ic_other
+        else -> R.drawable.ic_category
     }
 
 

@@ -34,11 +34,46 @@
 
         <!-- DayNight handles dark mode through values-night -->
 
-
     </style>
+
+
 
     <style
         name="Theme.SpendWise"
         parent="Base.Theme.SpendWise" />
+
+
+<!--    Currency Picker Dialog-->
+    <style
+        name="ThemeOverlay.SpendWise.CurrencyDialog"
+        parent="ThemeOverlay.Material3.MaterialAlertDialog">
+
+        <!-- SpendWise light green surface -->
+        <item name="colorSurface">@color/sw_surface_primary_soft</item>
+
+        <!-- SpendWise primary text -->
+        <item name="colorOnSurface">@color/sw_text_primary</item>
+
+        <!-- SpendWise brand green for selected radio button -->
+        <item name="colorPrimary">@color/sw_green_primary</item>
+
+        <!-- Text displayed on the primary green -->
+        <item name="colorOnPrimary">@color/sw_on_primary</item>
+
+        <!-- SpendWise rounded dialog shape -->
+        <item name="shapeAppearanceOverlay">
+            @style/ShapeAppearanceOverlay.SpendWise.CurrencyDialog
+        </item>
+
+    </style>
+
+    <!-- Currency picker dialog corner radius -->
+    <style
+        name="ShapeAppearanceOverlay.SpendWise.CurrencyDialog"
+        parent="">
+
+        <item name="cornerSize">20dp</item>
+
+    </style>
 
 </resources>

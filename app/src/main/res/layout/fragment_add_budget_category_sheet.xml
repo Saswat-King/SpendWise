@@ -14,9 +14,9 @@
     <!-- Drag handle -->
     <View
         android:id="@+id/viewDragHandle"
-        android:layout_width="72dp"
-        android:layout_height="4dp"
-        android:background="@drawable/bg_bottom_sheet_handle"
+        android:layout_width="60dp"
+        android:layout_height="5dp"
+        android:background="@drawable/bg_bottom_sheet_drag_handle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

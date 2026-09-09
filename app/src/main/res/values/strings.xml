@@ -70,27 +70,27 @@
 
     <string name="primary_income_title">Primary Income</string>
     <string name="primary_income_description">Enter your take-home salary</string>
-    <string name="income_period_note">Monthly salary (after taxes)</string>
+    <string name="income_period_note">%1$s salary (after taxes)</string>
 
     <string name="additional_income_title">Additional Income (Optional)</string>
     <string name="additional_income_description">Add any extra income sources you have</string>
     <string name="bonus_income_title">Bonus</string>
-    <string name="freelance_income_title">Freelance Income</string>
-    <string name="other_income_title">Other Income</string>
+    <string name="freelance_income_title">Freelance</string>
+    <string name="other_income_title">Other</string>
 
     <string name="income_summary_title">Income Summary</string>
 
-    <string name="income_summary_amount">%1$s%,.0f</string>
+    <string name="income_summary_amount">%1$s%2$,.0f</string>
     <string name="total_period_income">Total %1$s Income</string>
 
     <string name="base_income_label">Base Income</string>
-    <string name="base_income_amount">%1$s%,.0f</string>
+    <string name="base_income_amount">%1$s%2$,.0f</string>
 
     <string name="additional_income_label">Additional</string>
-    <string name="additional_income_amount">%1$s%,.0f</string>
+    <string name="additional_income_amount">%1$s%2$,.0f</string>
 
     <string name="total_income_label">Total Income</string>
-    <string name="total_income_amount">%1$s%,.0f</string>
+    <string name="total_income_amount">%1$s%2$,.0f</string>
 
 
     <!-- Create budget -->
