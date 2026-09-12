@@ -19,7 +19,7 @@ class ExpenseGroupAdapter(
 ) : ListAdapter<ExpenseGroup, ExpenseGroupAdapter.GroupViewHolder>(DiffCallback) {
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExpenseGroupAdapter.GroupViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GroupViewHolder {
         val binding = ItemExpenseGroupBinding.inflate(
             LayoutInflater.from(parent.context), parent, false
         )
@@ -59,9 +59,10 @@ class ExpenseGroupAdapter(
 
             rowBinding.textCategory.text = category.name
             rowBinding.textDescription.text = expense.title
+            rowBinding.textMetadata.text = formatMetadata(expense)
 
-            rowBinding.textMetadata.text = itemView.context.getString(
-                R.string.expense_metadata, expense.amount
+            rowBinding.textAmount.text = itemView.context.getString(
+                R.string.expense_group_total, expense.amount
             )
 
             rowBinding.imageCategoryIcon.setImageResource(

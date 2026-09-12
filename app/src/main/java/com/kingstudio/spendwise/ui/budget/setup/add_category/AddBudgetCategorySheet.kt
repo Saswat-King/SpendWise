@@ -5,12 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.kingstudio.spendwise.R
 import com.kingstudio.spendwise.databinding.FragmentAddBudgetCategorySheetBinding
 import com.kingstudio.spendwise.ui.budget.setup.BudgetSetupViewModel
 import com.kingstudio.spendwise.ui.common.DecimalInputFilter
@@ -44,6 +46,8 @@ class AddBudgetCategorySheet : BottomSheetDialogFragment() {
     )
 
     private lateinit var categoryAdapter: SelectCategoryAdapter
+
+    override fun getTheme(): Int = R.style.ThemeOverlay_SpendWise_BottomSheet
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -90,12 +94,15 @@ class AddBudgetCategorySheet : BottomSheetDialogFragment() {
             val selectableCategory = sheetViewModel.displayItems.value
                 .find { it.category.id == selectedId }?.category
 
+
+            if(selectableCategory == null) {
+                Toast.makeText(requireContext(), "Please select a category", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
             val amountText = binding.etAmount.text?.toString().orEmpty()
             val amountValue = amountText.toDoubleOrNull()
 
-            if(selectableCategory == null) {
-                return@setOnClickListener
-            }
 
             if(amountValue == null || amountValue<=0.0) {
                 binding.etAmount.error = "Enter a valid amount"

@@ -11,7 +11,7 @@
     android:paddingBottom="@dimen/sw_space_10"
     tools:context=".ui.budget.setup.add_category.AddBudgetCategorySheet">
 
-    <!-- Drag handle -->
+
     <View
         android:id="@+id/viewDragHandle"
         android:layout_width="60dp"

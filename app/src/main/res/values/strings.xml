@@ -98,7 +98,7 @@
     <string name="create_budget_subtitle">Set spending limits for your main categories</string>
     <string name="add_category">Add Category</string>
     <string name="budget_summary_title">Budget Summary</string>
-    <string name="budget_summary_total_budget_amount">$%,.0f</string>
+    <string name="budget_summary_total_budget_amount">$%1$,.0f</string>
     <string name="total_budget_label">Total Budget</string>
 
     <!-- Add budget category sheet -->
@@ -122,17 +122,17 @@
     <string name="dashboard_overview_subtitle">Here\'s your financial overview</string>
 
     <string name="available_balance_label">Available balance</string>
-    <string name="available_balance">%,.2f</string>
+    <string name="available_balance">%1$,.2f</string>
     <!--    <string name="dashboard_filter_this_month">This month</string>-->
     <string name="income_label">Income</string>
-    <string name="income_amount">%,.2f</string>
+    <string name="income_amount">%1$,.2f</string>
     <string name="expense_label">Expense</string>
-    <string name="expense_amount">%,.2f</string>
+    <string name="expense_amount">%1$,.2f</string>
 
     <string name="budget_overview_title">Budget Overview</string>
     <string name="dashboard_budget_percent">%1$d%%</string>
     <string name="budget_used_label">of budget used</string>
-    <string name="dashboard_budget_used_amount">%,.0f</string>
+    <string name="dashboard_budget_used_amount">%1$,.0f</string>
     <string name="dashboard_budget_total_amount">of %1$,.0f</string>
 
     <string name="recent_expenses_title">Recent Expenses</string>
@@ -146,11 +146,11 @@
     <string name="expenses_title">Expenses</string>
     <string name="expenses_subtitle">Track and manage your expenses</string>
     <string name="total_expense_label">Total Expense</string>
-    <string name="expense_total_amount">$%,.2f</string>
+    <string name="expense_total_amount">$%1$,.2f</string>
     <string name="highest_expense_label">Highest Expense</string>
-    <string name="expense_highest_amount">$%,.2f</string>
+    <string name="expense_highest_amount">$%1$,.2f</string>
     <string name="lowest_expense_label">Lowest Expense</string>
-    <string name="expense_lowest_amount">$%,.2f</string>
+    <string name="expense_lowest_amount">$%1$,.2f</string>
     <string name="all_expenses_title">All Expenses</string>
 
     <!-- Expenses Empty State -->
@@ -158,11 +158,12 @@
     <string name="expense_no_data">No data yet</string>
 
     <!-- Expenses List -->
-    <string name="expense_group_total">-$%,.2f</string>
-    <string name="expense_metadata">-$%,.2f</string>
+    <string name="expense_group_total">-$%1$,.2f</string>
+
 
     <!-- Search expenses -->
     <string name="hint_search_expenses">Search expenses</string>
+    <string name="search_expense_amount">-$%1$,.2f</string>
 
     <!-- Add expense -->
     <string name="add_expense_title">Add Expense</string>

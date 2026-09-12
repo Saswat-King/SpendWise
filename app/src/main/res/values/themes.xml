@@ -76,4 +76,12 @@
 
     </style>
 
+    <!-- BottomSheet -->
+    <style name="ThemeOverlay.SpendWise.BottomSheet" parent="Theme.Material3.DayNight.BottomSheetDialog">
+        <item name="elevationOverlayEnabled">false</item>
+
+        <item name="colorSurfaceContainerLow">@color/sw_surface</item>
+
+    </style>
+
 </resources>
