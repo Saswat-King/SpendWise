@@ -132,6 +132,19 @@ class BudgetSetupViewModel @Inject constructor(
 
     fun saveBudget() {
         val current = _formState.value
+
+        val hasValidBudget = current.categoryInputs.any{
+            val amount = it.amount.toDoubleOrNull()
+            amount != null && amount > 0.0 && amount <= DecimalInputFilter.MAX_AMOUNT
+        }
+
+        if(!hasValidBudget) {
+            viewModelScope.launch {
+                _events.send(BudgetSetupUiEvent.ShowEmptyBudgetMessage)
+            }
+            return
+        }
+
         viewModelScope.launch {
             _formState.update { it.copy(isSaving = true) }
 

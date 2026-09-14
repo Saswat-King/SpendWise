@@ -5,8 +5,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/income_setup_root"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true">
+    android:layout_height="match_parent">
+<!--    android:fitsSystemWindows="true">-->
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/income_setup_app_bar"
@@ -19,7 +19,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/income_setup_header"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/sw_header_height"
+            android:layout_height="56dp"
             android:background="@color/sw_background"
             android:paddingStart="@dimen/sw_space_16"
             android:paddingEnd="@dimen/sw_space_16">

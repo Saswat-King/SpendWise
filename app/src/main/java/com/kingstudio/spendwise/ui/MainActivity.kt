@@ -1,22 +1,33 @@
 package com.kingstudio.spendwise.ui
 
 import android.os.Bundle
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
-import com.kingstudio.spendwise.ui.dashboard.DashboardFragment
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
 import com.kingstudio.spendwise.R
 import com.kingstudio.spendwise.databinding.ActivityMainBinding
-import com.kingstudio.spendwise.ui.budget.setup.CreateBudgetFragment
-import com.kingstudio.spendwise.ui.expenses.list.ExpensesFragment
-import com.kingstudio.spendwise.ui.income.IncomeSetupFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+
+    private val fullScreenDestinations = setOf(
+        R.id.incomeSetupFragment,
+        R.id.createBudgetFragment,
+//        R.id.profileSetupFragment
+
+        R.id.incomeUpdateFragment,
+        R.id.budgetUpdateFragment,
+//        R.id.profileUpdateFragment
+
+        R.id.searchFragment
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,11 +43,23 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, CreateBudgetFragment())
-                .commit()
-        }
+      val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragment_container)
+              as NavHostFragment
+
+      val navController = navHostFragment.navController
+
+      binding.bottomNavigationView.setupWithNavController(navController)
+
+      navController.addOnDestinationChangedListener { _, destination, _ ->
+          val isFullScreen = destination.id in fullScreenDestinations
+          binding.bottomNavigationView.visibility = if(isFullScreen) View.GONE else View.VISIBLE
+          binding.floatingActionButton.visibility = if(isFullScreen) View.GONE else View.VISIBLE
+      }
+
+
+      binding.floatingActionButton.setOnClickListener {
+          TODO("FAB action sheet")
+      }
 
     }
 }

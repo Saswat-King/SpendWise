@@ -69,7 +69,7 @@
 
     <!-- Shared components -->
     <dimen name="sw_touch_target">48dp</dimen>
-    <dimen name="sw_header_height">72dp</dimen>
+    <dimen name="sw_header_height">56dp</dimen>    <!-- 72-->
 
     <dimen name="sw_button_height_small">40dp</dimen>
     <dimen name="sw_button_height">48dp</dimen>

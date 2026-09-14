@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph_main"
+    app:startDestination="@id/incomeSetupFragment">
+
+
+    <fragment
+        android:id="@+id/incomeSetupFragment"
+        android:name="com.kingstudio.spendwise.ui.income.IncomeSetupFragment"
+        android:label="Income Setup">
+        <argument android:name="formMode" android:defaultValue="SETUP" app:argType="string"/>
+        <action android:id="@+id/action_incomeSetup_to_budgetSetup" app:destination="@+id/createBudgetFragment"/>
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/createBudgetFragment"
+        android:name="com.kingstudio.spendwise.ui.budget.setup.CreateBudgetFragment"
+        android:label="Budget Setup">
+        <argument android:name="formMode" android:defaultValue="SETUP" app:argType="string"/>
+
+<!--        profileSetup -->
+
+        <action android:id="@+id/action_budgetSetup_to_dashboard"
+            app:destination="@+id/nav_dashboard"
+            app:popUpTo="@id/nav_graph_main"
+            app:popUpToInclusive="true"/>
+
+<!--        profileSetup to dashboard-->
+
+    </fragment>
+
+
+
+   <!--Main app - bottom nav visible -->
+
+    <fragment
+        android:id="@+id/nav_dashboard"
+        android:name="com.kingstudio.spendwise.ui.dashboard.DashboardFragment"
+        android:label="Dashboard"/>
+
+
+    <fragment
+        android:id="@+id/nav_expenses"
+        android:name="com.kingstudio.spendwise.ui.expenses.list.ExpensesFragment"
+        android:label="Expenses">
+        <action
+            android:id="@+id/action_nav_expenses_to_searchFragment"
+            app:destination="@id/searchFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.kingstudio.spendwise.ui.expenses.list.search.ExpenseSearchFragment"
+        android:label="Search" />
+
+
+    <fragment
+        android:id="@+id/nav_budgets"
+        android:name="com.kingstudio.spendwise.BudgetFragment"
+        android:label="Budget"/>
+
+    <fragment
+        android:id="@+id/nav_insights"
+        android:name="com.kingstudio.spendwise.InsightsFragment"
+        android:label="Insights"/>
+
+
+    <!-- FAB update flow -->
+
+    <fragment
+        android:id="@+id/incomeUpdateFragment"
+        android:name="com.kingstudio.spendwise.ui.income.IncomeSetupFragment"
+        android:label="Update Income">
+        <argument android:name="formMode" android:defaultValue="UPDATE" app:argType="string"/>
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/budgetUpdateFragment"
+        android:name="com.kingstudio.spendwise.ui.budget.setup.CreateBudgetFragment"
+        android:label="Update Budget">
+        <argument android:name="formMode" android:defaultValue="UPDATE" app:argType="string"/>
+    </fragment>
+
+
+<!--    profile update -->
+
+</navigation>

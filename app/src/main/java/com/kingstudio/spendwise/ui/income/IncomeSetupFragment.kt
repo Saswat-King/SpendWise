@@ -10,12 +10,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.FrameLayout
+import android.widget.Toast
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
@@ -24,6 +26,7 @@ import com.kingstudio.spendwise.data.local.entity.IncomeFrequency
 import com.kingstudio.spendwise.databinding.FragmentIncomeSetupBinding
 import com.kingstudio.spendwise.ui.common.DecimalInputFilter
 import com.kingstudio.spendwise.ui.common.SupportedCurrencies
+import com.kingstudio.spendwise.ui.common.applyBottomNavigationBarInset
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -66,6 +69,7 @@ class IncomeSetupFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.incomeSetupScrollView.applyBottomNavigationBarInset()
         setupListeners()
         observeViewModel()
     }
@@ -228,6 +232,10 @@ class IncomeSetupFragment : Fragment() {
             isBindingFields = false
         }
 
+        if(state.primaryIncomeError != null) {
+            Toast.makeText(requireContext(), state.primaryIncomeError, Toast.LENGTH_SHORT).show()
+        }
+
         val salaryType = if (state.frequency == IncomeFrequency.YEARLY) {
             "Yearly"
         } else {
@@ -260,7 +268,9 @@ class IncomeSetupFragment : Fragment() {
     private fun handleEvent(event: IncomeUiEvent) {
         when(event) {
             is IncomeUiEvent.IncomeSaved -> {
-                // TODO navigate
+                findNavController().navigate(
+                    R.id.action_incomeSetup_to_budgetSetup
+                )
             }
             is IncomeUiEvent.LowIncomeWarning -> {
                 Snackbar.make(binding.root,

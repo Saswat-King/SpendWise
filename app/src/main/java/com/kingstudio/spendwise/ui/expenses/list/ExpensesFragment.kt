@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.kingstudio.spendwise.R
@@ -57,6 +58,7 @@ class ExpensesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
         observeViewModel()
+        setupListeners()
     }
 
 
@@ -152,6 +154,16 @@ class ExpensesFragment : Fragment() {
             }
         }
     }
+
+
+    private fun setupListeners() {
+        binding.btnSearchExpenses.setOnClickListener {
+            findNavController().navigate(
+                R.id.action_nav_expenses_to_searchFragment
+            )
+        }
+    }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

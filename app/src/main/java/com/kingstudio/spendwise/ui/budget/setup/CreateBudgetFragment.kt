@@ -5,15 +5,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kingstudio.spendwise.R
 import com.kingstudio.spendwise.databinding.FragmentCreateBudgetBinding
 import com.kingstudio.spendwise.ui.budget.setup.add_category.AddBudgetCategorySheet
 import com.kingstudio.spendwise.ui.common.FormMode
+import com.kingstudio.spendwise.ui.common.applyBottomNavigationBarInset
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -56,6 +59,7 @@ class CreateBudgetFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.createBudgetScrollView.applyBottomNavigationBarInset()
         setupRecyclerView()
         setupListeners()
         observeViewModel()
@@ -119,7 +123,14 @@ class CreateBudgetFragment : Fragment() {
     private fun handleEvent(event: BudgetSetupUiEvent) {
         when(event) {
             is BudgetSetupUiEvent.BudgetSaved -> {
-                // TODO navigate to other
+                findNavController().navigate(
+                    R.id.action_budgetSetup_to_dashboard
+                )
+            }
+
+            is BudgetSetupUiEvent.ShowEmptyBudgetMessage -> {
+                Toast.makeText(requireContext(),
+                    "Add at least one budget amount to continue.", Toast.LENGTH_SHORT).show()
             }
 
             is BudgetSetupUiEvent.NavigateToAddCategory -> {

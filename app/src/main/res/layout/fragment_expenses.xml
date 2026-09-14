@@ -203,6 +203,9 @@
                                     android:id="@+id/tv_highest_expense_label"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:maxLines="1"
+                                    android:ellipsize="none"
+                                    android:autoSizeTextType="uniform"
                                     android:text="@string/highest_expense_label"
                                     android:textColor="@color/sw_on_primary_85"
                                     android:textSize="@dimen/sw_text_size_12" />
@@ -211,6 +214,9 @@
                                     android:id="@+id/tv_highest_expense_amount"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:maxLines="1"
+                                    android:ellipsize="none"
+                                    android:autoSizeTextType="uniform"
                                     android:layout_marginTop="@dimen/sw_space_3"
                                     android:text="@string/amount_rupee_4250"
                                     android:textColor="@color/sw_on_primary"
@@ -225,8 +231,8 @@
                             android:id="@+id/expense_summary_vertical_divider"
                             android:layout_width="@dimen/sw_divider_thickness"
                             android:layout_height="@dimen/sw_expenses_summary_divider_height"
-                            android:layout_marginStart="@dimen/sw_space_12"
-                            android:layout_marginEnd="@dimen/sw_space_12"
+                            android:layout_marginStart="@dimen/sw_space_7"
+                            android:layout_marginEnd="@dimen/sw_space_8"
                             android:background="@color/sw_on_primary_20" />
 
 
@@ -269,6 +275,9 @@
                                     android:id="@+id/tv_lowest_expense_label"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:autoSizeTextType="uniform"
+                                    android:ellipsize="none"
+                                    android:maxLines="1"
                                     android:text="@string/lowest_expense_label"
                                     android:textColor="@color/sw_on_primary_85"
                                     android:textSize="@dimen/sw_text_size_12" />
@@ -278,6 +287,9 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="@dimen/sw_space_3"
+                                    android:autoSizeTextType="uniform"
+                                    android:ellipsize="none"
+                                    android:maxLines="1"
                                     android:text="@string/amount_rupee_120"
                                     android:textColor="@color/sw_on_primary"
                                     android:textSize="@dimen/sw_text_size_17"

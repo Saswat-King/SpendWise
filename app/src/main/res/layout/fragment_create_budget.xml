@@ -5,8 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/create_budget_root"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true">
+    android:layout_height="match_parent">
+<!--    android:fitsSystemWindows="true">-->
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/create_budget_app_bar"
@@ -19,9 +19,9 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/create_budget_header"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/sw_header_height"
+            android:layout_height="62dp"
             android:background="@color/sw_background"
-            android:paddingStart="@dimen/sw_space_12"
+            android:paddingStart="@dimen/sw_space_2"
             android:paddingEnd="@dimen/sw_space_16">
 
             <ImageButton
@@ -41,17 +41,17 @@
                 android:id="@+id/tv_create_budget_title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:maxLines="1"
-                android:ellipsize="none"
-                android:autoSizeTextType="uniform"
-                android:autoSizeMinTextSize="16sp"
+                android:layout_marginStart="@dimen/sw_space_5"
                 android:autoSizeMaxTextSize="24sp"
+                android:autoSizeMinTextSize="16sp"
                 android:autoSizeStepGranularity="1sp"
-                android:layout_marginStart="@dimen/sw_space_8"
+                android:autoSizeTextType="uniform"
+                android:ellipsize="none"
                 android:fontFamily="sans-serif-medium"
+                android:maxLines="1"
                 android:text="@string/create_budget_title"
                 android:textColor="@color/sw_text_primary"
-                android:textSize="@dimen/sw_text_size_24"
+                android:textSize="@dimen/sw_text_size_22"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/btn_create_budget_back"
