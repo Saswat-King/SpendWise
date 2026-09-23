@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="56dp"
+    android:paddingStart="2dp"
+    android:paddingEnd="2dp">
+
+    <!-- Category icon -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_budget_status_icon_container"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeWidth="0dp"
+        tools:cardBackgroundColor="@color/sw_spend_bg_shopping">
+
+        <ImageView
+            android:id="@+id/iv_budget_status_category_icon"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:importantForAccessibility="no"
+            android:padding="8dp"
+            android:scaleType="centerInside"
+            tools:src="@drawable/ic_shopping_bag"
+            tools:tint="@color/sw_spend_icon_shopping" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Category name + progress -->
+    <LinearLayout
+        android:id="@+id/layout_budget_category_info"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tv_budget_status_budget"
+        app:layout_constraintStart_toEndOf="@id/card_budget_status_icon_container"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_budget_status_category_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autoSizeTextType="uniform"
+            android:ellipsize="none"
+            android:maxLines="1"
+            android:textAppearance="@style/TextAppearance.SpendWise.SpendCategory"
+            android:textSize="11sp"
+            tools:text="Entertainment" />
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/budget_status_progress"
+            style="@style/Widget.SpendWise.BudgetProgressIndicator"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:indeterminate="false"
+            android:max="100"
+            android:progress="65"
+            app:indicatorColor="@color/sw_indicator_green_bg"
+            app:indicatorTrackGapSize="0dp"
+            app:trackColor="@color/sw_progress_track"
+            app:trackStopIndicatorSize="0dp"
+            app:trackThickness="5dp" />
+
+    </LinearLayout>
+
+    <!-- Budget -->
+    <TextView
+        android:id="@+id/tv_budget_status_budget"
+        android:layout_width="52dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="2dp"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="1"
+        android:textAppearance="@style/TextAppearance.SpendWise.SpendAmount"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tv_budget_status_spent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="$250.00" />
+
+    <!-- Spent -->
+    <TextView
+        android:id="@+id/tv_budget_status_spent"
+        android:layout_width="52dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="2dp"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="1"
+        android:textAppearance="@style/TextAppearance.SpendWise.SpendAmount"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tv_budget_status_remaining"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="$162.50" />
+
+    <!-- Remaining -->
+    <TextView
+        android:id="@+id/tv_budget_status_remaining"
+        android:layout_width="52dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="2dp"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="1"
+        android:textAppearance="@style/TextAppearance.SpendWise.SpendAmount"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/card_budget_status_badge"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="$87.50k" />
+
+    <!-- Status -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_budget_status_badge"
+        android:layout_width="60dp"
+        android:layout_height="20dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeWidth="0dp">
+
+        <TextView
+            android:id="@+id/tv_budget_status_badge"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="On Track"
+            android:textAppearance="@style/TextAppearance.SpendWise.SpendDescription"
+            android:textSize="10sp"
+            tools:textColor="@color/sw_auth_accent" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

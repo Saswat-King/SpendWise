@@ -47,6 +47,7 @@
     <!-- Progress and status -->
     <color name="sw_progress_track">#E9ECEF</color>
     <color name="sw_indicator_green_bg">#2D7A5A</color>
+    <color name="sw_indicator_amber_bg">#FFF3CD</color>
     <color name="sw_indicator_red_bg">#7D2C38</color>
     <color name="sw_badge_pill_bg">#2D7A5A</color>
 

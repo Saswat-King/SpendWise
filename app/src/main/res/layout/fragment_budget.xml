@@ -2,10 +2,10 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/budget_root"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true">
+    android:layout_height="match_parent">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/budget_app_bar"
@@ -128,6 +128,7 @@
                         android:text="@string/budget_summary_title"
                         android:textColor="@color/sw_on_primary"
                         android:textSize="@dimen/sw_text_size_18"
+                        app:autoSizeTextType="uniform"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -344,8 +345,8 @@
 
                     <com.github.mikephil.charting.charts.PieChart
                         android:id="@+id/budget_donut_chart"
-                        android:layout_width="@dimen/sw_budget_analytics_chart_size"
-                        android:layout_height="@dimen/sw_budget_analytics_chart_size"
+                        android:layout_width="152dp"
+                        android:layout_height="152dp"
                         android:layout_marginTop="@dimen/sw_space_20"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tv_budget_analytics_title" />
@@ -354,14 +355,16 @@
                         android:id="@+id/rv_budget_analytics_categories"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/sw_space_24"
+                        android:layout_marginStart="8dp"
                         android:clipToPadding="false"
                         android:nestedScrollingEnabled="false"
                         android:overScrollMode="never"
                         app:layout_constraintBottom_toBottomOf="@id/budget_donut_chart"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@id/budget_donut_chart"
-                        app:layout_constraintTop_toTopOf="@id/budget_donut_chart" />
+                        app:layout_constraintTop_toTopOf="@id/budget_donut_chart"
+                        tools:itemCount="5"
+                        tools:listitem="@layout/item_budget_analytics" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -404,26 +407,63 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/tv_budget_performance_subtitle"
-                        android:layout_width="0dp"
+                    <LinearLayout
+                        android:id="@+id/layout_budget_performance_legend"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/sw_space_4"
-                        android:text="@string/budget_performance_subtitle"
-                        android:textColor="@color/sw_text_secondary"
-                        android:textSize="@dimen/sw_text_size_13"
-                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginTop="@dimen/sw_space_12"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/tv_budget_performance_title" />
+                        app:layout_constraintTop_toBottomOf="@id/tv_budget_performance_title">
+
+                        <!-- Budget -->
+                        <View
+                            android:id="@+id/view_budget_legend_line"
+                            android:layout_width="28dp"
+                            android:layout_height="3dp"
+                            android:background="@drawable/bg_budget_legend_solid" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/tv_budget_legend"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/sw_space_8"
+                            android:text="@string/budget_legend"
+                            android:textColor="@color/sw_text_primary"
+                            android:textSize="@dimen/sw_text_size_13" />
+
+                        <!-- Gap between legend items -->
+                        <Space
+                            android:layout_width="@dimen/sw_space_24"
+                            android:layout_height="1dp"/>
+
+                        <!-- Actual Spending -->
+                        <View
+                            android:id="@+id/view_actual_spending_legend_line"
+                            android:layout_width="34dp"
+                            android:layout_height="8dp"
+                            android:background="@drawable/bg_actual_spending_legend_dashed"
+                            android:translationY="0.5dp" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/tv_actual_spending_legend"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/sw_space_8"
+                            android:text="@string/actual_spending_legend"
+                            android:textColor="@color/sw_text_primary"
+                            android:textSize="@dimen/sw_text_size_13" />
+
+                    </LinearLayout>
 
                     <com.github.mikephil.charting.charts.LineChart
                         android:id="@+id/budget_performance_chart"
                         android:layout_width="0dp"
                         android:layout_height="@dimen/sw_budget_performance_chart_height"
-                        android:layout_marginTop="@dimen/sw_space_18"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/tv_budget_performance_subtitle" />
+                        app:layout_constraintTop_toBottomOf="@+id/layout_budget_performance_legend" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -450,33 +490,101 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingStart="@dimen/sw_space_18"
+                    android:paddingStart="@dimen/sw_space_8"
                     android:paddingTop="@dimen/sw_space_18"
-                    android:paddingEnd="@dimen/sw_space_18"
+                    android:paddingEnd="@dimen/sw_space_8"
                     android:paddingBottom="@dimen/sw_space_18">
 
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/tv_budget_categories_title"
+                    <!-- Header row: title + column headers -->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/layout_budget_categories_header"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-medium"
-                        android:text="@string/budget_categories_title"
-                        android:textColor="@color/sw_text_primary"
-                        android:textSize="@dimen/sw_text_size_18"
+                        android:layout_height="28dp"
+                        android:paddingStart="2dp"
+                        android:paddingEnd="2dp"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent">
 
+                        <!-- Budget Categories -->
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/tv_budget_categories_title"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="1dp"
+                            android:fontFamily="sans-serif-medium"
+                            android:gravity="center_vertical"
+                            android:maxLines="1"
+                            android:text="@string/budget_categories_title"
+                            android:textColor="@color/sw_text_primary"
+                            android:textSize="@dimen/sw_text_size_15"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@id/tv_budget_header"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <!-- Budget -->
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/tv_budget_header"
+                            android:layout_width="52dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="1dp"
+                            android:gravity="center"
+                            android:text="Budget"
+                            android:textColor="@color/sw_text_secondary"
+                            android:textSize="@dimen/sw_text_size_11"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@id/tv_spent_header"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <!-- Spent -->
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/tv_spent_header"
+                            android:layout_width="52dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="3dp"
+                            android:gravity="center"
+                            android:text="Spent"
+                            android:textColor="@color/sw_text_secondary"
+                            android:textSize="@dimen/sw_text_size_11"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@id/tv_remaining_header"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <!-- Remaining -->
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/tv_remaining_header"
+                            android:layout_width="52dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="62dp"
+                            android:autoSizeTextType="uniform"
+                            android:ellipsize="none"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="Left"
+                            android:textColor="@color/sw_text_secondary"
+                            android:textSize="@dimen/sw_text_size_11"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <!-- Category rows -->
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rv_budget_categories"
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/sw_space_18"
                         android:clipToPadding="false"
                         android:nestedScrollingEnabled="false"
                         android:overScrollMode="never"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/tv_budget_categories_title" />
+                        app:layout_constraintTop_toBottomOf="@id/layout_budget_categories_header"
+                        tools:listitem="@layout/item_budget_category_status" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

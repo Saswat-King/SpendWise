@@ -58,7 +58,7 @@
 
     <fragment
         android:id="@+id/nav_budgets"
-        android:name="com.kingstudio.spendwise.BudgetFragment"
+        android:name="com.kingstudio.spendwise.ui.budget.overview.BudgetFragment"
         android:label="Budget"/>
 
     <fragment

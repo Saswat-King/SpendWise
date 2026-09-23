@@ -2,6 +2,7 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/dashboard_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -351,7 +352,7 @@
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/budget_progress_container"
-                        android:layout_width="@dimen/sw_dashboard_budget_progress_size"
+                        android:layout_width="@dimen/sw_dashboard_budget_indicator_size"
                         android:layout_height="@dimen/sw_dashboard_budget_progress_size"
                         android:layout_marginTop="@dimen/sw_space_12"
                         android:layout_marginBottom="@dimen/sw_space_12"
@@ -394,10 +395,11 @@
                                 android:id="@+id/tv_budget_percent"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginStart="2dp"
                                 android:fontFamily="sans-serif-medium"
                                 android:text="@string/budget_used_percent_preview"
                                 android:textColor="@color/sw_text_primary"
-                                android:textSize="@dimen/sw_text_size_28" />
+                                android:textSize="@dimen/sw_text_size_22" />
 
                             <TextView
                                 android:id="@+id/tv_budget_used_label"
@@ -434,14 +436,15 @@
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rv_budget_categories_preview"
                         android:layout_width="0dp"
-                        android:layout_height="@dimen/sw_dashboard_budget_list_height"
-                        android:layout_marginStart="@dimen/sw_space_16"
+                        android:layout_height="170dp"
+                        android:layout_marginStart="@dimen/sw_space_8"
                         android:nestedScrollingEnabled="false"
                         android:overScrollMode="never"
                         app:layout_constraintBottom_toBottomOf="@id/budget_progress_container"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@id/budget_progress_container"
-                        app:layout_constraintTop_toTopOf="@id/budget_progress_container" />
+                        app:layout_constraintTop_toTopOf="@id/budget_progress_container"
+                        tools:listitem="@layout/item_dashboard_budget_categories" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -515,7 +518,9 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/tv_recent_expenses_title" />
+                        app:layout_constraintTop_toBottomOf="@id/tv_recent_expenses_title"
+                        tools:itemCount="5"
+                        tools:listitem="@layout/item_dashboard_recent_expenses" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

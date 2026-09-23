@@ -26,3 +26,5 @@ app/src/main/res/drawable/test.xml
 app/src/main/java/com/kingstudio/spendwise/ExpenseSearchFragment.kt
 app/src/main/res/layout/fragment_expense_search.xml
 app/src/main/java/com/kingstudio/spendwise/ui/MainActivity.kt
+ pop back stack false not want
+ message to show that duplicate budget categories not allowed

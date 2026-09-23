@@ -17,7 +17,6 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.stateIn
 import javax.inject.Inject
-import kotlin.math.roundToInt
 
 @HiltViewModel
 class BudgetScreenViewModel @Inject constructor(
@@ -49,11 +48,10 @@ class BudgetScreenViewModel @Inject constructor(
                 val spendShares = overview.categoryProgress.map { cp ->
                     CategorySpendShare(
                         categoryName = cp.category.name,
+                        iconKey = cp.category.iconKey,
                         colorHex = cp.category.colorHex,
                         spentAmount = cp.spentAmount,
-                        percentOfTotalSpent = if(overview.totalSpent > 0)
-                                ((cp.spentAmount / overview.totalSpent) * 100).roundToInt()
-                        else 0
+                        budgetAmount = cp.budgetAmount
                     )
                 }
                 val performancePoints = BudgetPerformanceCalculator.calculate(
@@ -67,6 +65,7 @@ class BudgetScreenViewModel @Inject constructor(
                     BudgetCategoryRow(
                         categoryName = cp.category.name,
                         iconKey = cp.category.iconKey,
+                        colorHex = cp.category.colorHex,
                         budgetAmount = cp.budgetAmount,
                         spentAmount = cp.spentAmount,
                         remainingAmount = cp.remainingAmount,

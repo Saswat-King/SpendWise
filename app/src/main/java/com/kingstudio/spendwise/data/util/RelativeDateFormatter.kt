@@ -2,6 +2,7 @@ package com.kingstudio.spendwise.data.util
 
 import java.time.Instant
 import java.time.LocalDate
+import java.time.YearMonth
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 
@@ -31,4 +32,13 @@ object RelativeDateFormatter {
 
     fun toLocalDate(epochMillis: Long): LocalDate =
         java.time.Instant.ofEpochMilli(epochMillis).atZone(zone).toLocalDate()
+
+
+    fun formatPeriodKey(periodKey: String): String = try {
+        YearMonth.parse(periodKey, DateTimeFormatter.ofPattern("yyyy-MM"))
+            .format(DateTimeFormatter.ofPattern("MMMM yyyy"))
+
+    }catch (e: Exception) {
+        periodKey
+    }
 }

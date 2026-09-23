@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
@@ -113,7 +114,7 @@ class DashboardFragment : Fragment() {
             binding.tvBudgetPercent.text = getString(R.string.dashboard_budget_percent, data.budgetOverview.utilizationPercent)
             binding.tvBudgetUsedAmount.text =  getString(R.string.dashboard_budget_used_amount, data.budgetOverview.totalSpent)
             binding.tvBudgetTotalAmount.text = getString(R.string.dashboard_budget_total_amount,data.budgetOverview.totalBudget)
-            budgetAdapter.submitList(data.budgetOverview.categoryProgress)
+            budgetAdapter.submitList(data.budgetOverview.categoryProgress.take(4))
         }
         else {
             binding.budgetProgressContainer.visibility = View.GONE
@@ -121,7 +122,7 @@ class DashboardFragment : Fragment() {
         }
 
         // Recent Expenses
-        recentExpenseAdapter.submitList(data.recentExpenses)
+        recentExpenseAdapter.submitList(data.recentExpenses.take(5))
         setupClickListeners()
     }
 
@@ -156,7 +157,23 @@ class DashboardFragment : Fragment() {
     }
 
     private fun setupClickListeners() {
-        //TODO other click listeners
+       binding.tvBudgetViewAll.setOnClickListener {
+           findNavController().navigate(
+               R.id.nav_budgets
+           )
+       }
+
+       binding.tvRecentExpensesViewAll.setOnClickListener {
+           findNavController().navigate(
+               R.id.nav_expenses
+           )
+       }
+
+       binding.btnViewAiInsight.setOnClickListener {
+           findNavController().navigate(
+               R.id.nav_insights
+           )
+       }
     }
 
     override fun onDestroyView() {

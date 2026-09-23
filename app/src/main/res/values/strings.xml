@@ -99,7 +99,6 @@
     <string name="add_category">Add Category</string>
     <string name="budget_summary_title">Budget Summary</string>
     <string name="budget_summary_total_budget_amount">$%1$,.0f</string>
-    <string name="total_budget_label">Total Budget</string>
 
     <!-- Add budget category sheet -->
     <string name="add_budget_title">Add Budget</string>
@@ -190,14 +189,35 @@
     <string name="budget_filter_this_month">This Month</string>
     <string name="budget_subtitle">Track, manage, and achieve your financial goals</string>
 
-    <string name="total_spent_label">Total Spent</string>
-    <string name="remaining_label">Remaining</string>
-    <string name="budget_usage_message" formatted="false">You\'ve used 65% of your budget</string>
 
+    <string name="total_budget_label">Total Budget</string>
+    <string name="budget_total_amount">%1$,.0f</string>
+
+    <string name="total_spent_label">Total Spent</string>
+    <string name="budget_total_spent">%1$,.0f</string>
+
+    <string name="remaining_label">Remaining</string>
+    <string name="budget_remaining_amount">%1$,.0f</string>
+
+    <string name="budget_progress_empty_message">Set a budget to see your progress here</string>
+
+    <string name="budget_progress_info">You\'ve used %1$d%% of your total budget</string>
+<!--    <string name="budget_usage_message" formatted="false">You\'ve used 65% of your budget</string>-->
     <string name="budget_analytics_title">Budget Analytics</string>
+    <string name="budget_analytics_amount">%1$,.0f / %2$,.0f</string>
+
+
     <string name="budget_performance_title">Budget Performance</string>
+    <string name="budget_legend">Budget</string>
+    <string name="actual_spending_legend">Actual Spending</string>
+
     <string name="budget_performance_subtitle">Daily budget usage trend</string>
     <string name="budget_categories_title">Budget Categories</string>
+
+    <string name="budget_status_budget_amount">%1$,.0f</string>
+    <string name="budget_status_spent_amount">%1$,.0f</string>
+    <string name="budget_status_remaining_amount">%1$,.0f</string>
+
 
     <!-- AI insights -->
     <string name="ai_insights_title">AI Insights</string>

@@ -6,14 +6,16 @@ import com.kingstudio.spendwise.data.util.BudgetPerformanceCalculator
 
 data class CategorySpendShare(
     val categoryName: String,
+    val iconKey: String,
     val colorHex: String,
     val spentAmount: Double,
-    val percentOfTotalSpent: Int
+    val budgetAmount: Double
 )
 
 data class BudgetCategoryRow(
     val categoryName: String,
     val iconKey: String,
+    val colorHex: String,
     val budgetAmount: Double,
     val spentAmount: Double,
     val remainingAmount: Double,

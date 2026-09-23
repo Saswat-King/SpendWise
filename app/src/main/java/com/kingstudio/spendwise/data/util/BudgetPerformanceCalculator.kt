@@ -16,9 +16,7 @@ object BudgetPerformanceCalculator {
     private val zone = ZoneId.systemDefault()
 
     fun calculate(
-        periodKey: String,
-        totalBudget: Double,
-        dailyTotals: List<ExpenseDao.DailyTotal>,
+        periodKey: String, totalBudget: Double, dailyTotals: List<ExpenseDao.DailyTotal>,
         isCurrentPeriod: Boolean
     ): List<Point> {
         val (year,month) = periodKey.split("-").map { it.toInt() }

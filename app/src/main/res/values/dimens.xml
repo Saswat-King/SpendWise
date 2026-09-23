@@ -99,7 +99,7 @@
     <dimen name="sw_bottom_nav_indicator_height">32dp</dimen>
     <dimen name="sw_bottom_nav_indicator_corner_radius">16dp</dimen>
     <dimen name="sw_bottom_nav_icon_size">24dp</dimen>
-    <dimen name="sw_fab_size">49dp</dimen>
+    <dimen name="sw_fab_size">52dp</dimen>    <!--  49-->
 
     <!-- Dashboard -->
     <dimen name="sw_dashboard_header_height">62dp</dimen>

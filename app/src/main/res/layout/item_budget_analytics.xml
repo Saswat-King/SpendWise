@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="40dp"
+    android:paddingStart="2dp"
+    android:paddingTop="3dp"
+    android:paddingEnd="2dp"
+    android:paddingBottom="3dp">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_budget_analytics_icon_container"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        app:cardCornerRadius="9dp"
+        app:cardElevation="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeWidth="0dp"
+        tools:cardBackgroundColor="@color/sw_spend_bg_shopping">
+
+        <ImageView
+            android:id="@+id/iv_budget_analytics_icon"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:importantForAccessibility="no"
+            android:padding="8dp"
+            android:scaleType="centerInside"
+            tools:src="@drawable/ic_shopping_bag"
+            tools:tint="@color/sw_spend_icon_shopping" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/tv_budget_analytics_category"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:autoSizeTextType="uniform"
+        android:ellipsize="none"
+        android:maxLines="1"
+        android:textAppearance="@style/TextAppearance.SpendWise.SpendCategory"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tv_budget_analytics_amount"
+        app:layout_constraintStart_toEndOf="@id/card_budget_analytics_icon_container"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5"
+        tools:text="Shopping" />
+
+    <TextView
+        android:id="@+id/tv_budget_analytics_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="none"
+        android:gravity="center"
+        android:maxLines="1"
+        android:textAppearance="@style/TextAppearance.SpendWise.SpendDescription"
+        android:textSize="10sp"
+        android:translationY="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5"
+        tools:text="780 / 1,000" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
