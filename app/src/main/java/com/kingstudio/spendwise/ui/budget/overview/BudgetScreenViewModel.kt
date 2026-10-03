@@ -4,11 +4,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kingstudio.spendwise.data.model.DateRange
 import com.kingstudio.spendwise.data.repository.BudgetRepository
+import com.kingstudio.spendwise.data.repository.CurrencyRepository
 import com.kingstudio.spendwise.data.repository.ExpenseRepository
 import com.kingstudio.spendwise.data.util.BudgetPerformanceCalculator
 import com.kingstudio.spendwise.data.util.DateRangeCalculator
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -21,11 +23,14 @@ import javax.inject.Inject
 @HiltViewModel
 class BudgetScreenViewModel @Inject constructor(
     private val budgetRepository: BudgetRepository,
-    private val expenseRepository: ExpenseRepository
+    private val expenseRepository: ExpenseRepository,
+    private val currencyRepository: CurrencyRepository
 ) : ViewModel() {
 
     private val _selectedPeriodKey = MutableStateFlow(DateRangeCalculator.currentPeriodKey())
     val selectedPeriodKey: StateFlow<String> = _selectedPeriodKey.asStateFlow()
+
+    val currencyCode: Flow<String> = currencyRepository.selectedCurrencyCode
 
     val availablePeriods: StateFlow<List<String>> = budgetRepository.getAvailablePeriods()
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())

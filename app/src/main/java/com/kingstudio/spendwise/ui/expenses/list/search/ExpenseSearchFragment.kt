@@ -17,11 +17,10 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.kingstudio.spendwise.R
 import com.kingstudio.spendwise.databinding.FragmentExpenseSearchBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.launch
-import org.checkerframework.checker.index.qual.GTENegativeOne
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -117,7 +116,10 @@ class ExpenseSearchFragment : Fragment() {
     private fun observeViewModel() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.uiState.collect { state ->
+                combine(viewModel.uiState, viewModel.currencyCode) {
+                    state, code -> state to code }.collect { (state, code) ->
+                    resultAdapter.currencyCode = code
+
                     when(state) {
                         is ExpenseSearchUiState.Idle -> {
                             binding.rvSearchResults.visibility = GONE

@@ -5,19 +5,24 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.kingstudio.spendwise.R
 import com.kingstudio.spendwise.data.local.entity.ExpenseEntity
 import com.kingstudio.spendwise.data.local.relation.ExpenseWithCategory
+import com.kingstudio.spendwise.data.util.CurrencyFormatter
 import com.kingstudio.spendwise.data.util.RelativeDateFormatter
 import com.kingstudio.spendwise.databinding.ItemExpenseRowBinding
-import com.kingstudio.spendwise.ui.budget.setup.CreateBudgetCategoryAdapter
 import com.kingstudio.spendwise.ui.common.CategoryIconResolver
-import com.kingstudio.spendwise.ui.expenses.list.ExpenseGroupAdapter.GroupViewHolder
 
 class ExpenseSearchAdapter(
     private val onRowClicked: (ExpenseWithCategory) -> Unit
 ) : ListAdapter<ExpenseWithCategory, ExpenseSearchAdapter.ViewHolder>(DiffCallback) {
 
+    var currencyCode: String = "INR"
+        set(value) {
+            if(field != value) {
+                field = value
+                notifyItemRangeChanged(0, itemCount)
+            }
+        }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemExpenseRowBinding.inflate(
@@ -27,7 +32,7 @@ class ExpenseSearchAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(getItem(position), currencyCode)
     }
 
     class ViewHolder(
@@ -35,16 +40,14 @@ class ExpenseSearchAdapter(
         private val onRowClicked: (ExpenseWithCategory) -> Unit
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: ExpenseWithCategory) {
+        fun bind(item: ExpenseWithCategory, currencyCode: String) {
             val expense = item.expense
             val category = item.category
 
             binding.textCategory.text = category.name
             binding.textDescription.text = expense.title
             binding.textMetadata.text = formatMetadata(expense)
-            binding.textAmount.text = itemView.context.getString(
-                R.string.search_expense_amount, expense.amount
-            )
+            binding.textAmount.text = CurrencyFormatter.formatPlain(expense.amount, currencyCode)
 
             binding.imageCategoryIcon.setImageResource(CategoryIconResolver.getIconResource(category.iconKey))
             binding.imageCategoryIcon.setColorFilter(CategoryIconResolver.getIconColor(category.colorHex))
@@ -60,7 +63,7 @@ class ExpenseSearchAdapter(
             val dateLabel = RelativeDateFormatter.format(expense.date)
             val time = RelativeDateFormatter.formatTime(expense.date)
             val notePart = if(!expense.note.isNullOrBlank()) " • ${expense.note}" else ""
-            return "$dateLabel • $time$notePart "
+            return "$dateLabel • $time$notePart"
         }
     }
 

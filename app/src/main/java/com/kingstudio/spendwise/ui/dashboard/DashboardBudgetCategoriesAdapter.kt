@@ -9,10 +9,20 @@ import androidx.recyclerview.widget.RecyclerView
 import com.kingstudio.spendwise.R
 import com.kingstudio.spendwise.data.model.BudgetZone
 import com.kingstudio.spendwise.data.model.CategoryBudgetProgress
+import com.kingstudio.spendwise.data.util.CurrencyFormatter
 import com.kingstudio.spendwise.databinding.ItemDashboardBudgetCategoriesBinding
 import com.kingstudio.spendwise.ui.common.CategoryIconResolver
 
 class DashboardBudgetCategoriesAdapter : ListAdapter<CategoryBudgetProgress, DashboardBudgetCategoriesAdapter.ViewHolder>(DiffCallback) {
+
+    var currencyCode: String = "INR"
+        set(value) {
+            if(field != value) {
+                field = value
+                notifyItemRangeChanged(0, itemCount)
+            }
+        }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
@@ -24,13 +34,13 @@ class DashboardBudgetCategoriesAdapter : ListAdapter<CategoryBudgetProgress, Das
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(getItem(position), currencyCode)
     }
 
     class ViewHolder(private val binding: ItemDashboardBudgetCategoriesBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: CategoryBudgetProgress) {
+        fun bind(item: CategoryBudgetProgress, currencyCode: String) {
             binding.tvBudgetCategoryName.text = item.category.name
 
             binding.tvBudgetCategoryPercent.text =  binding.root.context.getString(
@@ -38,14 +48,14 @@ class DashboardBudgetCategoriesAdapter : ListAdapter<CategoryBudgetProgress, Das
 
             binding.budgetCategoryProgress.progress = item.percentUsed.coerceIn(0,100)
 
-            binding.tvBudgetCategoryAmount.text =
-                binding.root.context.getString(
-                    R.string.budget_category_amount, item.spentAmount, item.budgetAmount)
+            binding.tvBudgetCategoryAmount.text = binding.root.context.getString(R.string.budget_category_amount,
+                    CurrencyFormatter.formatPlain(item.spentAmount, currencyCode, 0),
+                    CurrencyFormatter.formatPlain(item.budgetAmount, currencyCode,0))
 
             val color = when(item.zone) {
                 BudgetZone.SAFE -> "#4CAF50".toColorInt()
                 BudgetZone.CAUTION -> "#FFA726".toColorInt()
-                BudgetZone.DANGER -> "#EF530".toColorInt()
+                BudgetZone.DANGER -> "#EF5350".toColorInt()
             }
 
             binding.budgetCategoryProgress.setIndicatorColor(color)

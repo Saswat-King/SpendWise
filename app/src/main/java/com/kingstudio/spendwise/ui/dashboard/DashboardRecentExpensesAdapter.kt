@@ -7,11 +7,20 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.kingstudio.spendwise.R
 import com.kingstudio.spendwise.data.local.relation.ExpenseWithCategory
+import com.kingstudio.spendwise.data.util.CurrencyFormatter
 import com.kingstudio.spendwise.data.util.RelativeDateFormatter
 import com.kingstudio.spendwise.databinding.ItemDashboardRecentExpensesBinding
 import com.kingstudio.spendwise.ui.common.CategoryIconResolver
 
 class DashboardRecentExpensesAdapter : ListAdapter<ExpenseWithCategory, DashboardRecentExpensesAdapter.ViewHolder>(DiffCallback) {
+
+    var currencyCode: String = "INR"
+        set(value) {
+            if(field != value) {
+                field = value
+                notifyItemRangeChanged(0, itemCount)
+            }
+        }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
@@ -22,19 +31,20 @@ class DashboardRecentExpensesAdapter : ListAdapter<ExpenseWithCategory, Dashboar
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(getItem(position), currencyCode)
     }
 
 
     class ViewHolder(private val binding: ItemDashboardRecentExpensesBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: ExpenseWithCategory) {
+        fun bind(item: ExpenseWithCategory, currencyCode: String) {
             binding.tvExpenseCategory.text = item.category.name
             binding.tvExpenseDescription.text = item.expense.title
-            binding.tvExpenseAmount.text = binding.root.context.getString(
-                R.string.recent_expense_amount, item.expense.amount
-            )
+
+            binding.tvExpenseAmount.text = binding.root.context.getString(R.string.recent_expense_amount,
+                CurrencyFormatter.formatPlain(item.expense.amount, currencyCode))
+
             binding.tvExpenseDate.text = RelativeDateFormatter.format(item.expense.date)
 
             binding.ivExpenseIcon.setImageResource(

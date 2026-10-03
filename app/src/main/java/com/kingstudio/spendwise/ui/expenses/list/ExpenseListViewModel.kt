@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.kingstudio.spendwise.data.local.relation.ExpenseWithCategory
 import com.kingstudio.spendwise.data.model.DateRange
 import com.kingstudio.spendwise.data.model.PeriodComparison
+import com.kingstudio.spendwise.data.repository.CurrencyRepository
 import com.kingstudio.spendwise.data.repository.ExpenseRepository
 import com.kingstudio.spendwise.data.util.RelativeDateFormatter
 import com.kingstudio.spendwise.di.ApplicationScope
@@ -31,6 +32,7 @@ import kotlin.time.Duration.Companion.milliseconds
 @HiltViewModel
 class ExpenseListViewModel @Inject constructor(
     private val expenseRepository: ExpenseRepository,
+    private val currencyRepository: CurrencyRepository,
     @ApplicationScope private val applicationScope: CoroutineScope
 ) : ViewModel() {
 
@@ -63,6 +65,8 @@ class ExpenseListViewModel @Inject constructor(
             RawExpenseData(expenses, total, trend, highest, lowest)
         }
     }
+
+    val currencyCode: Flow<String> = currencyRepository.selectedCurrencyCode
 
     val uiState: StateFlow<ExpenseListUiState> = combine(
         rawData, _pendingDeletions

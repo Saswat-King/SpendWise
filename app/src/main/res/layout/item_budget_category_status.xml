@@ -54,7 +54,7 @@
             android:ellipsize="none"
             android:maxLines="1"
             android:textAppearance="@style/TextAppearance.SpendWise.SpendCategory"
-            android:textSize="11sp"
+            android:textSize="14sp"
             tools:text="Entertainment" />
 
         <com.google.android.material.progressindicator.LinearProgressIndicator
@@ -140,10 +140,8 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:maxLines="1"
-            android:text="On Track"
             android:textAppearance="@style/TextAppearance.SpendWise.SpendDescription"
-            android:textSize="10sp"
-            tools:textColor="@color/sw_auth_accent" />
+            android:textSize="10sp" />
 
     </com.google.android.material.card.MaterialCardView>
 

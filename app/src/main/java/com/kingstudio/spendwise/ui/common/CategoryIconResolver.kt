@@ -17,7 +17,7 @@ object CategoryIconResolver {
         "ic_fitness" -> R.drawable.ic_fitness
         "ic_pets" -> R.drawable.ic_pets
         "ic_gifts" -> R.drawable.ic_gift
-        "ic_subscriptions" -> R.drawable.ic_subscriptions
+        "ic_media" -> R.drawable.ic_subscriptions
         "ic_other" -> R.drawable.ic_other
         else -> R.drawable.ic_category
     }

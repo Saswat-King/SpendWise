@@ -8,6 +8,7 @@ import android.view.inputmethod.EditorInfo
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.kingstudio.spendwise.data.util.CurrencyFormatter
 import com.kingstudio.spendwise.databinding.ItemCreateBudgetCategoryBinding
 import com.kingstudio.spendwise.ui.common.CategoryIconResolver
 import com.kingstudio.spendwise.ui.common.DecimalInputFilter
@@ -17,6 +18,15 @@ class CreateBudgetCategoryAdapter(
     private val onAmountChanged: (categoryId: Long, amount: String) -> Unit
 ) : ListAdapter<BudgetCategoryInput, CreateBudgetCategoryAdapter.ViewHolder>(DiffCallback) {
 
+    var currencyCode: String = "INR"
+        set(value) {
+            if(field != value) {
+                field = value
+                notifyItemRangeChanged(0, itemCount)
+            }
+        }
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
        val binding =  ItemCreateBudgetCategoryBinding.inflate(LayoutInflater.from(
            parent.context),parent,false)
@@ -25,7 +35,7 @@ class CreateBudgetCategoryAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(getItem(position),isLast = position == itemCount - 1)
+        holder.bind(getItem(position),isLast = position == itemCount - 1, currencyCode = currencyCode)
     }
 
     class ViewHolder(
@@ -36,8 +46,9 @@ class CreateBudgetCategoryAdapter(
         private var currentWatcher: TextWatcher? = null
         private var boundCategoryId: Long? = null
 
-        fun bind(item: BudgetCategoryInput, isLast: Boolean) {
+        fun bind(item: BudgetCategoryInput, isLast: Boolean, currencyCode: String) {
             binding.tvBudgetCategoryName.text = item.category.name
+            binding.tvBudgetCurrencySymbol.text = CurrencyFormatter.symbolFor(currencyCode)
 
             binding.imgBudgetCategory.setImageResource(
                 CategoryIconResolver.getIconResource(item.category.iconKey)

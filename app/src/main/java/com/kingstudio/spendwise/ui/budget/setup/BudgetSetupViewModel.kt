@@ -7,6 +7,7 @@ import com.kingstudio.spendwise.data.local.entity.CategoryEntity
 import com.kingstudio.spendwise.data.local.entity.IncomeFrequency
 import com.kingstudio.spendwise.data.repository.BudgetRepository
 import com.kingstudio.spendwise.data.repository.CategoryRepository
+import com.kingstudio.spendwise.data.repository.CurrencyRepository
 import com.kingstudio.spendwise.data.repository.IncomeRepository
 import com.kingstudio.spendwise.ui.common.DecimalInputFilter
 import com.kingstudio.spendwise.ui.common.FormMode
@@ -30,11 +31,14 @@ class BudgetSetupViewModel @Inject constructor(
     private val budgetRepository: BudgetRepository,
     private val categoryRepository: CategoryRepository,
     private val incomeRepository: IncomeRepository,
+    private val currencyRepository: CurrencyRepository,
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
     private val mode: FormMode =
         FormMode.valueOf(savedStateHandle.get<String>("formMode") ?: FormMode.SETUP.name )
+
+    val currencyCode: Flow<String> = currencyRepository.selectedCurrencyCode
 
     private val _formState = MutableStateFlow(BudgetSetupFormState(mode = mode))
     val formState: StateFlow<BudgetSetupFormState> = _formState.asStateFlow()

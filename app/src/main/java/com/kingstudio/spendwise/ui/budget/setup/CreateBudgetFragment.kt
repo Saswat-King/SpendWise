@@ -13,11 +13,13 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kingstudio.spendwise.R
+import com.kingstudio.spendwise.data.util.CurrencyFormatter
 import com.kingstudio.spendwise.databinding.FragmentCreateBudgetBinding
 import com.kingstudio.spendwise.ui.budget.setup.add_category.AddBudgetCategorySheet
 import com.kingstudio.spendwise.ui.common.FormMode
 import com.kingstudio.spendwise.ui.common.applyBottomNavigationBarInset
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.launch
 
 // TODO: Rename parameter arguments, choose names that match
@@ -93,15 +95,27 @@ class CreateBudgetFragment : Fragment() {
     private fun observeViewModel() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                launch { viewModel.formState.collect { renderFormState(it) } }
-                launch { viewModel.summary.collect { renderSummary(it) } }
+                launch {
+                    combine(viewModel.formState, viewModel.currencyCode) {
+                        state, code -> state to code }.collect {
+                        (state, code) -> renderFormState(state, code)
+                    }
+                }
+
+                launch {
+                    combine(viewModel.summary, viewModel.currencyCode) {
+                        summary, code -> summary to code }.collect { (summary, code) ->
+                            renderSummary(summary, code)
+                        }
+                }
+
                 launch { viewModel.events.collect { handleEvent(it) } }
             }
         }
     }
 
 
-    private fun renderFormState(state: BudgetSetupFormState) {
+    private fun renderFormState(state: BudgetSetupFormState, currencyCode: String) {
         binding.tvCreateBudgetTitle.text = state.screenTitle
         binding.btnContinueBudget.text = state.buttonLabel
         binding.btnContinueBudget.isEnabled = !state.isSaving
@@ -110,14 +124,13 @@ class CreateBudgetFragment : Fragment() {
             if(state.mode == FormMode.UPDATE) R.drawable.ic_close else R.drawable.ic_arrow_back
         )
 
+        categoryAdapter.currencyCode = currencyCode
         categoryAdapter.submitList(state.categoryInputs)
     }
 
 
-    private fun renderSummary(summary: BudgetSetupSummary) {
-        // TODO Datastore and Currency-dependent text fields
-        binding.tvCreateBudgetTotalAmount.text =
-            getString(R.string.budget_summary_total_budget_amount, summary.totalBudget)
+    private fun renderSummary(summary: BudgetSetupSummary, currencyCode: String) {
+        binding.tvCreateBudgetTotalAmount.text = CurrencyFormatter.formatCompact(summary.totalBudget, currencyCode)
     }
 
     private fun handleEvent(event: BudgetSetupUiEvent) {

@@ -3,11 +3,13 @@ package com.kingstudio.spendwise.ui.expenses.list.search
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kingstudio.spendwise.data.local.relation.ExpenseWithCategory
+import com.kingstudio.spendwise.data.repository.CurrencyRepository
 import com.kingstudio.spendwise.data.repository.ExpenseRepository
 import com.kingstudio.spendwise.data.util.RelativeDateFormatter
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -29,10 +31,13 @@ sealed class ExpenseSearchUiState {
 @OptIn(FlowPreview::class)
 @HiltViewModel
 class ExpenseSearchViewModel @Inject constructor(
-    private val expenseRepository: ExpenseRepository
+    private val expenseRepository: ExpenseRepository,
+    private val currencyRepository: CurrencyRepository
 ) : ViewModel() {
 
     private val _query = MutableStateFlow("")
+
+    val currencyCode: Flow<String> = currencyRepository.selectedCurrencyCode
 
     @OptIn(ExperimentalCoroutinesApi::class)
     val uiState: StateFlow<ExpenseSearchUiState> = _query
@@ -66,5 +71,4 @@ class ExpenseSearchViewModel @Inject constructor(
                 expense.amount.toString().contains(q) ||
                 RelativeDateFormatter.format(expense.date).lowercase().contains(q)
     }
-
 }

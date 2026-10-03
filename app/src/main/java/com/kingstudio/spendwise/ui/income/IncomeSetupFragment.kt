@@ -23,6 +23,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
 import com.kingstudio.spendwise.R
 import com.kingstudio.spendwise.data.local.entity.IncomeFrequency
+import com.kingstudio.spendwise.data.util.CurrencyFormatter
 import com.kingstudio.spendwise.databinding.FragmentIncomeSetupBinding
 import com.kingstudio.spendwise.ui.common.DecimalInputFilter
 import com.kingstudio.spendwise.ui.common.SupportedCurrencies
@@ -46,6 +47,8 @@ class IncomeSetupFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+
+    private var currentCurrencyCode = "INR"
 
     private var _binding: FragmentIncomeSetupBinding? = null
     private val binding get() = _binding!!
@@ -152,6 +155,8 @@ class IncomeSetupFragment : Fragment() {
             ) { dialog, index ->
 
                 binding.tvCurrencySymbol.text = currencies[index].symbol
+                viewModel.onCurrencySelected(currencies[index].code)
+
 
                 // TODO: DataStore and currency-dependent text fields
 
@@ -215,6 +220,7 @@ class IncomeSetupFragment : Fragment() {
                 launch { viewModel.formState.collect { renderFormState(it) } }
                 launch { viewModel.summary.collect { renderSummary(it) } }
                 launch { viewModel.events.collect { handleEvent(it) } }
+                launch { viewModel.currencyCode.collect { renderCurrency(it) } }
             }
         }
     }
@@ -256,13 +262,21 @@ class IncomeSetupFragment : Fragment() {
         binding.tvOtherIncomeAmount.text = formatAmount(state.otherAmount)
     }
 
+    private fun renderCurrency(code: String) {
+        currentCurrencyCode = code
+        binding.tvCurrencySymbol.text = CurrencyFormatter.symbolFor(code)
+        renderFormState(viewModel.formState.value)
+        renderSummary(viewModel.summary.value)
+    }
+
     private fun renderSummary(summary: IncomeSummary) {
         val symbol = binding.tvCurrencySymbol.text.toString()
-        binding.tvIncomeSummaryAmount.text = getString(R.string.income_summary_amount, symbol, summary.totalIncome)
-        binding.tvIncomeSummarySubtitle.text =  getString(R.string.total_period_income, summary.periodLabel)
-        binding.tvBaseIncomeAmount.text = getString(R.string.base_income_amount, symbol, summary.baseIncome)
-        binding.tvAdditionalIncomeAmount.text = getString(R.string.additional_income_amount, symbol, summary.additionalIncome)
-        binding.tvTotalIncomeAmount.text =  getString(R.string.total_income_amount, symbol, summary.totalIncome)
+        binding.tvIncomeSummaryAmount.text = CurrencyFormatter.formatCompact(summary.totalIncome, currentCurrencyCode)
+
+        binding.tvIncomeSummarySubtitle.text = getString(R.string.total_period_income, summary.periodLabel)
+        binding.tvBaseIncomeAmount.text = CurrencyFormatter.formatCompact(summary.baseIncome, currentCurrencyCode)
+        binding.tvAdditionalIncomeAmount.text = CurrencyFormatter.formatCompact(summary.additionalIncome, currentCurrencyCode)
+        binding.tvTotalIncomeAmount.text =  CurrencyFormatter.formatCompact(summary.totalIncome, currentCurrencyCode)
     }
 
     private fun handleEvent(event: IncomeUiEvent) {
@@ -281,9 +295,8 @@ class IncomeSetupFragment : Fragment() {
     }
 
     private fun formatAmount(raw: String): String {
-        val symbol = binding.tvCurrencySymbol.text.toString()
         val value = raw.toDoubleOrNull() ?: 0.0
-        return "$symbol${"%,.0f".format(value)}"
+        return CurrencyFormatter.formatCompact(value, currentCurrencyCode)
     }
 
     override fun onDestroyView() {

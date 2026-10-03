@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.kingstudio.spendwise.data.local.entity.IncomeEntity
 import com.kingstudio.spendwise.data.local.entity.IncomeFrequency
 import com.kingstudio.spendwise.data.local.entity.IncomeSource
+import com.kingstudio.spendwise.data.repository.CurrencyRepository
 import com.kingstudio.spendwise.data.repository.IncomeRepository
 import com.kingstudio.spendwise.ui.common.DecimalInputFilter
 import com.kingstudio.spendwise.ui.common.FormMode
@@ -27,6 +28,7 @@ import javax.inject.Inject
 @HiltViewModel
 class IncomeSetupViewModel @Inject constructor(
     private val incomeRepository: IncomeRepository,
+    private val currencyRepository: CurrencyRepository,
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
@@ -42,6 +44,8 @@ class IncomeSetupViewModel @Inject constructor(
         )
     )
     val formState: StateFlow<IncomeFormState> = _formState.asStateFlow()
+
+    val currencyCode: Flow<String> = currencyRepository.selectedCurrencyCode
 
     val summary: StateFlow<IncomeSummary> = _formState
         .map { state ->
@@ -97,6 +101,9 @@ class IncomeSetupViewModel @Inject constructor(
     fun onBonusChanged(amount: String) = _formState.update { it.copy(bonusAmount = amount) }
     fun onFreelanceChanged(amount: String) = _formState.update { it.copy(freelanceAmount = amount) }
     fun onOtherChanged(amount: String) = _formState.update { it.copy(otherAmount = amount) }
+    fun onCurrencySelected(code: String) {
+        viewModelScope.launch { currencyRepository.setCurrencyCode(code) }
+    }
 
 
     fun saveIncome() {

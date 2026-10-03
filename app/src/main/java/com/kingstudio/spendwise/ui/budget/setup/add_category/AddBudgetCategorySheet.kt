@@ -13,6 +13,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.kingstudio.spendwise.R
+import com.kingstudio.spendwise.data.util.CurrencyFormatter
 import com.kingstudio.spendwise.databinding.FragmentAddBudgetCategorySheetBinding
 import com.kingstudio.spendwise.ui.budget.setup.BudgetSetupViewModel
 import com.kingstudio.spendwise.ui.common.DecimalInputFilter
@@ -117,8 +118,16 @@ class AddBudgetCategorySheet : BottomSheetDialogFragment() {
     private fun observeViewModel() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                sheetViewModel.displayItems.collect { items ->
-                    categoryAdapter.submitList(items)
+                launch {
+                    sheetViewModel.displayItems.collect { items ->
+                        categoryAdapter.submitList(items)
+                    }
+                }
+
+                launch {
+                    budgetSetUpViewModel.currencyCode.collect { code ->
+                        binding.ivCurrency.text = CurrencyFormatter.symbolFor(code)
+                    }
                 }
             }
         }

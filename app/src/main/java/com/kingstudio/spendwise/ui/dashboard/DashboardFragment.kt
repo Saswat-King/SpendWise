@@ -2,6 +2,7 @@ package com.kingstudio.spendwise.ui.dashboard
 
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -17,8 +18,10 @@ import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.kingstudio.spendwise.R
 import com.kingstudio.spendwise.data.local.dao.ExpenseDao
+import com.kingstudio.spendwise.data.util.CurrencyFormatter
 import com.kingstudio.spendwise.databinding.FragmentDashboardBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.launch
 
 // TODO: Rename parameter arguments, choose names that match
@@ -85,25 +88,26 @@ class DashboardFragment : Fragment() {
     private fun observeUiState() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.uiState.collect { state ->
-                    when(state) {
-                        is DashboardScreenState.Loading -> {
-                            // Loading
+                combine(viewModel.uiState, viewModel.currencyCode) { state, code -> state to code }
+                    .collect { (state, code) ->
+                        when (state) {
+                            is DashboardScreenState.Loading -> { // Do nothing for now
+                                 }
+
+                            is DashboardScreenState.Success -> renderState(state.data, code)
                         }
-                        is DashboardScreenState.Success -> renderState(state.data)
                     }
-                }
             }
         }
     }
 
-    private fun renderState(data: DashboardUiState) {
+    private fun renderState(data: DashboardUiState, currencyCode: String) {
         binding.tvGreeting.text = data.greeting
 
         // Balance Card
-        binding.tvAvailableBalance.text = getString(R.string.available_balance, data.availableBalance)
-        binding.tvIncomeAmount.text = getString(R.string.income_amount, data.income)
-        binding.tvExpenseAmount.text = getString(R.string.expense_amount, data.expenses)
+        binding.tvAvailableBalance.text = CurrencyFormatter.formatCompact(data.availableBalance,currencyCode)
+        binding.tvIncomeAmount.text = CurrencyFormatter.formatCompact(data.income,currencyCode)
+        binding.tvExpenseAmount.text = CurrencyFormatter.formatCompact(data.expenses, currencyCode)
         renderBalanceChart(data.spendingTrendPoints)
 
         // Budget Overview
@@ -112,8 +116,13 @@ class DashboardFragment : Fragment() {
             binding.rvBudgetCategoriesPreview.visibility = View.VISIBLE
             binding.budgetCircularProgress.progress = data.budgetOverview.utilizationPercent
             binding.tvBudgetPercent.text = getString(R.string.dashboard_budget_percent, data.budgetOverview.utilizationPercent)
-            binding.tvBudgetUsedAmount.text =  getString(R.string.dashboard_budget_used_amount, data.budgetOverview.totalSpent)
-            binding.tvBudgetTotalAmount.text = getString(R.string.dashboard_budget_total_amount,data.budgetOverview.totalBudget)
+            binding.tvBudgetUsedAmount.text = CurrencyFormatter.formatCompact(data.budgetOverview.totalSpent, currencyCode)
+
+            binding.tvBudgetTotalAmount.text = getString(R.string.dashboard_budget_total_amount,
+                CurrencyFormatter.formatCompact(data.budgetOverview.totalBudget,currencyCode))
+
+
+            budgetAdapter.currencyCode = currencyCode
             budgetAdapter.submitList(data.budgetOverview.categoryProgress.take(4))
         }
         else {
@@ -122,6 +131,8 @@ class DashboardFragment : Fragment() {
         }
 
         // Recent Expenses
+
+        recentExpenseAdapter.currencyCode = currencyCode
         recentExpenseAdapter.submitList(data.recentExpenses.take(5))
         setupClickListeners()
     }

@@ -295,7 +295,6 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/sw_space_10"
-                        android:text="@string/budget_usage_message"
                         android:textColor="@color/sw_on_primary_85"
                         android:textSize="@dimen/sw_text_size_13"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -461,6 +460,7 @@
                         android:id="@+id/budget_performance_chart"
                         android:layout_width="0dp"
                         android:layout_height="@dimen/sw_budget_performance_chart_height"
+                        android:layout_marginTop="8dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/layout_budget_performance_legend" />
@@ -499,7 +499,7 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/layout_budget_categories_header"
                         android:layout_width="0dp"
-                        android:layout_height="28dp"
+                        android:layout_height="wrap_content"
                         android:paddingStart="2dp"
                         android:paddingEnd="2dp"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -511,15 +511,14 @@
                             android:id="@+id/tv_budget_categories_title"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="1dp"
                             android:fontFamily="sans-serif-medium"
                             android:gravity="center_vertical"
-                            android:maxLines="1"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="10dp"
                             android:text="@string/budget_categories_title"
                             android:textColor="@color/sw_text_primary"
-                            android:textSize="@dimen/sw_text_size_15"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toStartOf="@id/tv_budget_header"
+                            android:textSize="@dimen/sw_text_size_18"
+                            app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
@@ -528,7 +527,7 @@
                             android:id="@+id/tv_budget_header"
                             android:layout_width="52dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
+                            android:layout_marginTop="16dp"
                             android:layout_marginEnd="1dp"
                             android:gravity="center"
                             android:text="Budget"
@@ -536,14 +535,14 @@
                             android:textSize="@dimen/sw_text_size_11"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toStartOf="@id/tv_spent_header"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toBottomOf="@+id/tv_budget_categories_title" />
 
                         <!-- Spent -->
                         <com.google.android.material.textview.MaterialTextView
                             android:id="@+id/tv_spent_header"
                             android:layout_width="52dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
+                            android:layout_marginTop="16dp"
                             android:layout_marginEnd="3dp"
                             android:gravity="center"
                             android:text="Spent"
@@ -551,14 +550,14 @@
                             android:textSize="@dimen/sw_text_size_11"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toStartOf="@id/tv_remaining_header"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toBottomOf="@+id/tv_budget_categories_title" />
 
                         <!-- Remaining -->
                         <com.google.android.material.textview.MaterialTextView
                             android:id="@+id/tv_remaining_header"
                             android:layout_width="52dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
+                            android:layout_marginTop="16dp"
                             android:layout_marginEnd="62dp"
                             android:autoSizeTextType="uniform"
                             android:ellipsize="none"
@@ -569,7 +568,7 @@
                             android:textSize="@dimen/sw_text_size_11"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toBottomOf="@+id/tv_budget_categories_title" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -578,6 +577,7 @@
                         android:id="@+id/rv_budget_categories"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
                         android:clipToPadding="false"
                         android:nestedScrollingEnabled="false"
                         android:overScrollMode="never"

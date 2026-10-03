@@ -52,8 +52,8 @@ private object DefaultData {
         Triple("Shopping",            "ic_shopping_bag",   "#5C6BC0"),
         Triple("Food & Dining",       "ic_food",           "#FF7043"),
         Triple("Transport",           "ic_transport",      "#26A69A"),
-        Triple("Bills & Utilities",   "ic_bills",          "#EF5350"),
-        Triple("Entertainment",       "ic_entertainment",  "#AB47BC"),
+        Triple("Bills",               "ic_bills",          "#EF5350"),
+        Triple("Enjoyment",           "ic_entertainment",  "#AB47BC"),
         Triple("Travel",              "ic_travel",         "#42A5F5"),
         Triple("Groceries",           "ic_groceries",      "#66BB6A"),
         Triple("Health",              "ic_health",         "#EC407A"),
@@ -61,7 +61,7 @@ private object DefaultData {
         Triple("Fitness",             "ic_fitness",        "#7E57C2"),
         Triple("Pets",                "ic_pets",           "#8D6E63"),
         Triple("Gifts",               "ic_gifts",          "#F06292"),
-        Triple("Subscriptions",       "ic_subscriptions",  "#26A69A"),
+        Triple("Media",               "ic_media",          "#26A69A"),
         Triple("Other",               "ic_other",          "#78909C")
     )
 }

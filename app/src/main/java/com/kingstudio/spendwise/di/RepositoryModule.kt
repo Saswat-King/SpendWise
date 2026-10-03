@@ -4,6 +4,8 @@ import com.kingstudio.spendwise.data.repository.BudgetRepository
 import com.kingstudio.spendwise.data.repository.BudgetRepositoryImpl
 import com.kingstudio.spendwise.data.repository.CategoryRepository
 import com.kingstudio.spendwise.data.repository.CategoryRepositoryImpl
+import com.kingstudio.spendwise.data.repository.CurrencyRepository
+import com.kingstudio.spendwise.data.repository.CurrencyRepositoryImpl
 import com.kingstudio.spendwise.data.repository.ExpenseRepository
 import com.kingstudio.spendwise.data.repository.ExpenseRepositoryImpl
 import com.kingstudio.spendwise.data.repository.IncomeRepository
@@ -34,4 +36,7 @@ abstract class RepositoryModule {
     @Binds
     @Singleton
     abstract fun bindIncomeRepository(impl: IncomeRepositoryImpl): IncomeRepository
+
+    @Binds
+    abstract fun bindCurrencyRepository(impl: CurrencyRepositoryImpl): CurrencyRepository
 }

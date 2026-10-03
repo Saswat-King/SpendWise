@@ -8,6 +8,7 @@ import com.kingstudio.spendwise.data.model.BudgetOverview
 import com.kingstudio.spendwise.data.model.DateRange
 import com.kingstudio.spendwise.data.model.PeriodComparison
 import com.kingstudio.spendwise.data.repository.BudgetRepository
+import com.kingstudio.spendwise.data.repository.CurrencyRepository
 import com.kingstudio.spendwise.data.repository.ExpenseRepository
 import com.kingstudio.spendwise.data.repository.IncomeRepository
 import com.kingstudio.spendwise.data.util.DateRangeCalculator
@@ -25,7 +26,8 @@ import javax.inject.Inject
 class DashboardViewModel @Inject constructor(
     private val expenseRepository: ExpenseRepository,
     private val budgetRepository: BudgetRepository,
-    private val incomeRepository: IncomeRepository
+    private val incomeRepository: IncomeRepository,
+    private val currencyRepository: CurrencyRepository
 ) : ViewModel() {
 
     init {
@@ -56,6 +58,8 @@ class DashboardViewModel @Inject constructor(
     ) { prevIncome, prevExpenses, daily, budget, recent ->
         DashboardExtras(prevIncome, prevExpenses, daily, budget, recent)
     }
+
+    val currencyCode: Flow<String> = currencyRepository.selectedCurrencyCode
 
     val uiState: StateFlow<DashboardScreenState> = combine(
         incomeRepository.getNormalizedCurrentMonthlyIncome(),

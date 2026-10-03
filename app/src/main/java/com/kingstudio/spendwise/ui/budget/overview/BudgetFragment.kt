@@ -13,20 +13,28 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.github.mikephil.charting.formatter.PercentFormatter
+import com.github.mikephil.charting.formatter.ValueFormatter
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.kingstudio.spendwise.R
 import com.kingstudio.spendwise.data.util.BudgetPerformanceCalculator
+import com.kingstudio.spendwise.data.util.CurrencyFormatter
 import com.kingstudio.spendwise.data.util.RelativeDateFormatter
 import com.kingstudio.spendwise.databinding.FragmentBudgetBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.launch
+import java.time.LocalDate
+import java.time.LocalTime
+import java.time.format.DateTimeFormatter
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -115,16 +123,19 @@ class BudgetFragment : Fragment() {
     private fun observeViewModel() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.uiState.collect { state -> renderState(state) }
+                combine(viewModel.uiState, viewModel.currencyCode) {
+                    state, code -> state to code }.collect {
+                    (state, code) -> renderState(state, code)
+                }
             }
         }
     }
 
-    private fun renderState(state: BudgetScreenState) {
+    private fun renderState(state: BudgetScreenState, currencyCode: String) {
         when(state) {
             is BudgetScreenState.Loading -> {}
             is BudgetScreenState.Empty -> renderEmptyState()
-            is BudgetScreenState.Success -> renderSuccess(state.data)
+            is BudgetScreenState.Success -> renderSuccess(state.data, currencyCode)
         }
     }
 
@@ -143,13 +154,13 @@ class BudgetFragment : Fragment() {
     }
 
 
-    private fun renderSuccess(data: BudgetScreenUiState) {
+    private fun renderSuccess(data: BudgetScreenUiState, currencyCode: String) {
         binding.btnBudgetMonth.text = RelativeDateFormatter.formatPeriodKey(data.selectedPeriodKey)
 
         val overview = data.overview
-        binding.tvTotalBudgetAmount.text = getString(R.string.budget_total_amount, overview.totalBudget)
-        binding.tvTotalSpentAmount.text = getString(R.string.budget_total_spent, overview.totalSpent)
-        binding.tvRemainingBudgetAmount.text = getString(R.string.budget_remaining_amount, overview.remaining)
+        binding.tvTotalBudgetAmount.text = CurrencyFormatter.formatCompact(overview.totalBudget, currencyCode)
+        binding.tvTotalSpentAmount.text = CurrencyFormatter.formatCompact(overview.totalSpent, currencyCode)
+        binding.tvRemainingBudgetAmount.text = CurrencyFormatter.formatCompact(overview.remaining, currencyCode)
 
 
         val utilizationPercent = if( overview.totalBudget > 0) {
@@ -161,8 +172,10 @@ class BudgetFragment : Fragment() {
 
 
         renderDonutChart(data.spendShares)
-        renderPerformanceChart(data.performancePoints)
+        renderPerformanceChart(data.selectedPeriodKey, data.performancePoints)
 
+        analyticsAdapter.currencyCode = currencyCode
+        categoryStatusAdapter.currencyCode = currencyCode
         analyticsAdapter.submitList(data.spendShares)
         categoryStatusAdapter.submitList(data.categoryRows)
     }
@@ -206,11 +219,19 @@ class BudgetFragment : Fragment() {
     }
 
 
-    private fun renderPerformanceChart(points: List<BudgetPerformanceCalculator.Point>) {
+    private fun renderPerformanceChart(periodKey: String, points: List<BudgetPerformanceCalculator.Point>) {
         if(points.isEmpty()) {
             binding.budgetPerformanceChart.clear()
             return
         }
+
+        val (year, month) = periodKey.split("-").map { it.toInt() }
+        val labelFormat = DateTimeFormatter.ofPattern("MMM d")
+
+        val dateLabels = points.map {
+            LocalDate.of(year, month, it.dayOfMonth).format(labelFormat)
+        }
+
 
         val budgetEntries = points.mapIndexed { index, point ->
             Entry(index.toFloat(),point.cumulativeBudget.toFloat())
@@ -222,11 +243,10 @@ class BudgetFragment : Fragment() {
 
 
         val budgetSet = LineDataSet(budgetEntries, "Budget").apply {
-            color = ContextCompat.getColor(requireContext(), R.color.sw_outline_soft)
+            color = ContextCompat.getColor(requireContext(), R.color.sw_primary)
             lineWidth = 2f
             setDrawCircles(false)
             setDrawValues(false)
-            enableDashedLine(6f,4f,0f)
         }
 
         val actualSet = LineDataSet(actualEntries, "Actual Spending").apply {
@@ -235,6 +255,7 @@ class BudgetFragment : Fragment() {
             setDrawCircles(false)
             setDrawValues(false)
             setDrawFilled(true)
+            enableDashedLine(6f,7f,0f)
             fillColor =  ContextCompat.getColor(requireContext(), R.color.sw_primary)
             fillAlpha = 30
         }
@@ -243,10 +264,17 @@ class BudgetFragment : Fragment() {
             data = LineData(budgetSet, actualSet)
             description.isEnabled = false
             legend.isEnabled = false
+            xAxis.textColor = ContextCompat.getColor(requireContext(), R.color.sw_text_primary)
+            axisLeft.textColor = ContextCompat.getColor(requireContext(), R.color.sw_text_primary)
             axisRight.isEnabled = false
             xAxis.isEnabled = true
-            axisLeft.isEnabled = true
-            axisLeft.setDrawGridLines(false)
+            xAxis.position = XAxis.XAxisPosition.BOTTOM
+            xAxis.valueFormatter = IndexAxisValueFormatter(dateLabels)
+            xAxis.isGranularityEnabled = true
+            xAxis.granularity = 1f
+            xAxis.setLabelCount(6,false)
+            xAxis.setDrawGridLines(false)
+            axisLeft.setDrawGridLines(true)
             setTouchEnabled(false)
             invalidate()
         }

@@ -13,9 +13,11 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.kingstudio.spendwise.R
+import com.kingstudio.spendwise.data.util.CurrencyFormatter
 import com.kingstudio.spendwise.databinding.FragmentExpensesBinding
 import com.kingstudio.spendwise.ui.common.CategoryIconResolver
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.launch
 
 // TODO: Rename parameter arguments, choose names that match
@@ -81,42 +83,46 @@ class ExpensesFragment : Fragment() {
     private fun observeViewModel() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                launch { viewModel.uiState.collect { renderState(it) } }
+                launch {
+                    combine(viewModel.uiState, viewModel.currencyCode) {
+                        state, code -> state to code } .collect {
+                        (state, code) -> renderState(state, code)
+                    }
+                }
+
                 launch { viewModel.events.collect { handleEvent(it) } }
             }
         }
     }
 
 
-    private fun renderState(state: ExpenseListUiState) {
+    private fun renderState(state: ExpenseListUiState, currencyCode: String) {
         when(state) {
             is ExpenseListUiState.Loading -> {
                 // future update for loading
             }
 
             is ExpenseListUiState.Empty -> {
-                binding.tvTotalExpenseAmount.text = getString(R.string.empty_expense_total)
+                binding.tvTotalExpenseAmount.text = CurrencyFormatter.formatCompact(0.0, currencyCode)
                 binding.tvHighestExpenseAmount.text = getString(R.string.expense_no_data)
                 binding.tvLowestExpenseAmount.text = getString(R.string.expense_no_data)
                 groupAdapter.submitList(emptyList())
             }
 
             is ExpenseListUiState.Success -> {
-                renderSummary(state.summary)
+                renderSummary(state.summary, currencyCode)
                 groupAdapter.submitList(state.groups)
             }
         }
     }
 
 
-    private fun renderSummary(summary: ExpensesSummary) {
-        binding.tvTotalExpenseAmount.text =
-            getString(R.string.expense_total_amount, summary.totalAmount)
+    private fun renderSummary(summary: ExpensesSummary, currencyCode: String) {
+        binding.tvTotalExpenseAmount.text = CurrencyFormatter.formatCompact(summary.totalAmount, currencyCode)
 
         val highest = summary.highestExpense
         if(highest != null) {
-            binding.tvHighestExpenseAmount.text =
-                getString(R.string.expense_highest_amount, highest.expense.amount)
+            binding.tvHighestExpenseAmount.text = CurrencyFormatter.formatCompact(highest.expense.amount, currencyCode)
 
             binding.ivHighestExpenseIcon.setImageResource(
                 CategoryIconResolver.getIconResource(highest.category.iconKey)
@@ -129,8 +135,7 @@ class ExpensesFragment : Fragment() {
 
         val lowest = summary.lowestExpense
         if(lowest != null) {
-            binding.tvLowestExpenseAmount.text =
-                getString(R.string.expense_lowest_amount, lowest.expense.amount)
+            binding.tvLowestExpenseAmount.text = CurrencyFormatter.formatCompact(lowest.expense.amount, currencyCode)
 
             binding.ivLowestExpenseIcon.setImageResource(
                 CategoryIconResolver.getIconResource(lowest.category.iconKey)
