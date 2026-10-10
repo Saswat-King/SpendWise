@@ -10,14 +10,19 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
+import androidx.core.os.bundleOf
+
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.kingstudio.spendwise.R
 import com.kingstudio.spendwise.databinding.FragmentExpenseSearchBinding
+import com.kingstudio.spendwise.ui.expenses.list.ExpensesFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.launch
@@ -78,7 +83,14 @@ class ExpenseSearchFragment : Fragment() {
 
     private fun setupRecyclerView() {
         resultAdapter = ExpenseSearchAdapter { expenseWithCategory ->
-            // TODO navigate to update screen nav graph
+
+            WindowCompat.getInsetsController(requireActivity().window, binding.etSearchExpenses)
+                .hide(WindowInsetsCompat.Type.ime())
+
+            val action = ExpenseSearchFragmentDirections
+                .actionSearchFragmentToAddEditExpense(expenseWithCategory.expense.id)
+
+            findNavController().navigate(action)
         }
 
         binding.rvSearchResults.apply {

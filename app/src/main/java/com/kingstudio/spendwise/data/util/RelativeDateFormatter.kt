@@ -11,6 +11,7 @@ object RelativeDateFormatter {
     private val zone = ZoneId.systemDefault()
     private val sameYearFormat = DateTimeFormatter.ofPattern("MMMM d")
     private val otherYearFormat = DateTimeFormatter.ofPattern("MMMM d, yyyy")
+    private val fullDateFormat = DateTimeFormatter.ofPattern("d MMM yyyy")
 
     fun format(epochMillis: Long): String {
         val date = java.time.Instant.ofEpochMilli(epochMillis).atZone(zone).toLocalDate()
@@ -41,4 +42,7 @@ object RelativeDateFormatter {
     }catch (e: Exception) {
         periodKey
     }
+
+
+    fun formatFullDate(epochMillis: Long): String = toLocalDate(epochMillis).format(fullDateFormat)
 }

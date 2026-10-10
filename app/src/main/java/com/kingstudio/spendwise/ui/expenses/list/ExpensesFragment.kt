@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -66,7 +67,12 @@ class ExpensesFragment : Fragment() {
 
     private fun setupRecyclerView() {
         groupAdapter = ExpenseGroupAdapter(
-            onRowClicked = { expenseWithCategory -> // Todo nav graph
+            onRowClicked = { expenseWithCategory ->
+
+                val action = ExpensesFragmentDirections.actionNavExpensesToAddEditExpense(
+                        expenseWithCategory.expense.id)
+
+                findNavController().navigate(action)
             },
 
             onRowLongPressed = { expenseWithCategory ->

@@ -48,12 +48,21 @@
         <action
             android:id="@+id/action_nav_expenses_to_searchFragment"
             app:destination="@id/searchFragment" />
+
+        <action
+            android:id="@+id/action_nav_expenses_to_addEditExpense"
+            app:destination="@+id/addEditExpenseFragment"/>
     </fragment>
+
 
     <fragment
         android:id="@+id/searchFragment"
         android:name="com.kingstudio.spendwise.ui.expenses.list.search.ExpenseSearchFragment"
-        android:label="Search" />
+        android:label="Search" >
+        <action
+            android:id="@+id/action_searchFragment_to_addEditExpense"
+            app:destination="@+id/addEditExpenseFragment"/>
+    </fragment>
 
 
     <fragment
@@ -67,7 +76,19 @@
         android:label="Insights"/>
 
 
+
     <!-- FAB update flow -->
+
+    <fragment
+        android:id="@+id/addEditExpenseFragment"
+        android:name="com.kingstudio.spendwise.ui.expenses.addedit.AddExpenseFragment"
+        android:label="Add Expense">
+        <argument
+            android:name="expenseId"
+            android:defaultValue="0L"
+            app:argType="long"/>
+    </fragment>
+
 
     <fragment
         android:id="@+id/incomeUpdateFragment"

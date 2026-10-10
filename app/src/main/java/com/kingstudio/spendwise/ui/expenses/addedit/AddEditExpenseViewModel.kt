@@ -6,7 +6,9 @@ import androidx.lifecycle.viewModelScope
 import com.kingstudio.spendwise.data.local.entity.CategoryEntity
 import com.kingstudio.spendwise.data.local.entity.ExpenseEntity
 import com.kingstudio.spendwise.data.repository.CategoryRepository
+import com.kingstudio.spendwise.data.repository.CurrencyRepository
 import com.kingstudio.spendwise.data.repository.ExpenseRepository
+import com.kingstudio.spendwise.ui.common.DecimalInputFilter
 import com.kingstudio.spendwise.ui.expenses.list.ExpenseUiEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
@@ -25,6 +27,7 @@ import javax.inject.Inject
 class AddEditExpenseViewModel @Inject constructor(
     private val expenseRepository: ExpenseRepository,
     private val categoryRepository: CategoryRepository,
+    private val currencyRepository: CurrencyRepository,
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
@@ -40,6 +43,8 @@ class AddEditExpenseViewModel @Inject constructor(
     )
 
     val formState: StateFlow<ExpenseFormState> = _formState.asStateFlow()
+
+    val currencyCode: Flow<String> = currencyRepository.selectedCurrencyCode
 
     val categories: StateFlow<List<CategoryEntity>> = categoryRepository
         .getAllCategories()
@@ -57,7 +62,7 @@ class AddEditExpenseViewModel @Inject constructor(
                         it.copy(
                             expenseId = expense.id,
                             title = expense.title,
-                            amount = expense.amount.toString(),
+                            amount = DecimalInputFilter.toInputString(expense.amount),
                             categoryId =  expense.categoryId,
                             date = expense.date,
                             note = expense.note ?: ""
@@ -68,15 +73,16 @@ class AddEditExpenseViewModel @Inject constructor(
         }
     }
 
-    fun onTitleChanged(title: String) = _formState.update { it.copy(title = title.take(40), titleError = null) }
-    fun onAmountChanged(amount: String) = _formState.update { it.copy(amount = amount.take(9), amountError = null) }
+    fun onTitleChanged(title: String) = _formState.update { it.copy(title = title.take(TITLE_MAX_LENGTH), titleError = null) }
+    fun onAmountChanged(amount: String) = _formState.update { it.copy(amount = amount, amountError = null) }
     fun onCategorySelected(categoryId: Long) = _formState.update { it.copy(categoryId = categoryId, categoryError = null) }
     fun onDateSelected(epochMillis: Long) =  _formState.update { it.copy(date = epochMillis) }
-    fun onNoteChanged(note: String) = _formState.update { it.copy(note = note.take(150)) }
+    fun onNoteChanged(note: String) = _formState.update { it.copy(note = note.take(NOTE_MAX_LENGTH)) }
 
 
     fun saveExpense() {
         val current = _formState.value
+        if(current.isSaving) return
         val amountValue = current.amount.toDoubleOrNull()
         var hasError = false
 
@@ -88,6 +94,11 @@ class AddEditExpenseViewModel @Inject constructor(
             _formState.update { it.copy(amountError = "Enter a valid amount") }
             hasError = true
         }
+        else if(amountValue > DecimalInputFilter.MAX_AMOUNT) {
+            _formState.update { it.copy(amountError = "Amount is too large") }
+            hasError = true
+        }
+
         if(current.categoryId == null) {
             _formState.update { it.copy(categoryError = "Select a category") }
             hasError = true
@@ -111,5 +122,10 @@ class AddEditExpenseViewModel @Inject constructor(
             _formState.update { it.copy(isSaving = false) }
             _events.send(ExpenseUiEvent.ExpenseSaved)
         }
+    }
+
+    companion object {
+        const val TITLE_MAX_LENGTH = 40
+        const val NOTE_MAX_LENGTH = 150
     }
 }

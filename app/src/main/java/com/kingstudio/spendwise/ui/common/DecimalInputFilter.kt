@@ -2,6 +2,8 @@ package com.kingstudio.spendwise.ui.common
 
 import android.text.InputFilter
 import android.text.Spanned
+import java.math.BigDecimal
+import java.math.RoundingMode
 
 class DecimalInputFilter(
     private val maxDecimalDigits: Int = 2,
@@ -10,6 +12,10 @@ class DecimalInputFilter(
 
     companion object {
         const val MAX_AMOUNT = 99_999_999.99
+
+        fun toInputString(amount: Double): String =
+            BigDecimal.valueOf(amount).setScale(2, RoundingMode.HALF_UP)
+                .stripTrailingZeros().toPlainString()
     }
 
     override fun filter(

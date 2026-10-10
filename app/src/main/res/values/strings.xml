@@ -176,6 +176,8 @@
     <string name="add_expense_subtitle">Track a new expense quickly and keep your budget updated</string>
 
     <string name="expense_title_label">Expense Title</string>
+    <string name="expense_title_limit_toast">Title can be up to %1$d characters</string>
+    
     <string name="expense_title_hint">Enter expense title</string>
 
     <string name="amount_label">Amount</string>
@@ -185,9 +187,11 @@
 
     <string name="date_label">Date</string>
     <string name="select_date">Select date</string>
+    <string name="expense_historical_date_warning">This expense will be counted in %1$s</string>
 
     <string name="note_optional_label">Note (Optional)</string>
     <string name="note_hint">Add a short note</string>
+    <string name="note_counter">%1$d/%2$d</string>
 
     <string name="save_expense">Save Expense</string>
 
@@ -211,7 +215,7 @@
     <string name="budget_progress_info">You\'ve used %1$d%% of your total budget</string>
 <!--    <string name="budget_usage_message" formatted="false">You\'ve used 65% of your budget</string>-->
     <string name="budget_analytics_title">Budget Analytics</string>
-    <string name="budget_analytics_amount">%1$,.0f / %2$,.0f</string>
+    <string name="budget_analytics_amount">%1$s / %2$s</string>
 
 
     <string name="budget_performance_title">Budget Performance</string>

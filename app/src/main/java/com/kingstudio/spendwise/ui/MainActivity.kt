@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.kingstudio.spendwise.R
@@ -22,6 +23,7 @@ class MainActivity : AppCompatActivity() {
         R.id.createBudgetFragment,
 //        R.id.profileSetupFragment
 
+        R.id.addEditExpenseFragment,
         R.id.incomeUpdateFragment,
         R.id.budgetUpdateFragment,
 //        R.id.profileUpdateFragment
@@ -58,7 +60,7 @@ class MainActivity : AppCompatActivity() {
 
 
       binding.floatingActionButton.setOnClickListener {
-          TODO("FAB action sheet")
+          navController.navigate(R.id.addEditExpenseFragment)
       }
 
     }

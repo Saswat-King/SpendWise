@@ -2,11 +2,11 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/add_expense_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/sw_background"
-    android:fitsSystemWindows="true">
+    android:background="@color/sw_background">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/add_expense_app_bar"
@@ -158,6 +158,8 @@
                         android:textColor="@color/sw_text_primary"
                         android:textColorHint="@color/sw_text_hint"
                         android:textSize="@dimen/sw_text_size_17"
+                        android:imeOptions="actionNext"
+                        android:nextFocusForward="@id/et_expense_amount"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@id/expense_title_icon_container"
                         app:layout_constraintTop_toBottomOf="@id/tv_expense_title_label" />
@@ -213,7 +215,6 @@
                     android:fontFamily="sans-serif-medium"
                     android:hint="@string/input_zero"
                     android:inputType="numberDecimal"
-                    android:maxLength="9"
                     android:maxLines="1"
                     android:padding="0dp"
                     android:singleLine="true"
@@ -432,6 +433,15 @@
                     android:paddingTop="@dimen/sw_space_16"
                     android:paddingEnd="@dimen/sw_space_16"
                     android:paddingBottom="@dimen/sw_space_16">
+
+                    <TextView
+                        android:id="@+id/tv_note_counter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/et_expense_note" />
 
                     <com.google.android.material.card.MaterialCardView
                         android:id="@+id/note_icon_container"
