@@ -7,11 +7,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
+import androidx.core.view.updatePadding
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -39,6 +42,8 @@ import kotlinx.coroutines.launch
 import java.time.Instant
 import java.time.ZoneId
 import java.time.ZoneOffset
+import com.google.android.material.R.id.snackbar_text
+import java.time.LocalDate
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -85,6 +90,7 @@ class AddExpenseFragment : Fragment() {
         setupListeners()
         observeViewmodel()
         reattachDatePickerListener()
+        setupInsets()
 
 //        if(savedInstanceState == null && viewModel.formState.value.mode == ExpenseFormMode.ADD) {
 //            focusAmountField()
@@ -103,6 +109,23 @@ class AddExpenseFragment : Fragment() {
             null
         }
         binding.etExpenseTitle.filters = arrayOf(titleLimitObserver, *binding.etExpenseTitle.filters)
+    }
+
+
+    private fun setupInsets() {
+        ViewCompat.setOnApplyWindowInsetsListener(binding.addExpenseRoot) { _, insets ->
+            val bottom = insets.getInsets(
+                WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.ime()
+            ).bottom
+            binding.addExpenseScrollView.updatePadding(bottom = bottom)
+
+            if(insets.isVisible(WindowInsetsCompat.Type.ime()) && binding.etExpenseNote.hasFocus()) {
+                binding.addExpenseScrollView.post {
+                    binding.addExpenseScrollView.fullScroll(View.FOCUS_DOWN)
+                }
+            }
+            insets
+        }
     }
 
     private fun setupListeners() {
@@ -133,6 +156,16 @@ class AddExpenseFragment : Fragment() {
                     viewModel.currencyCode.collect {
                         binding.tvExpenseCurrencySymbol.text = CurrencyFormatter.symbolFor(it)
                     }
+                }
+
+                launch {
+                    viewModel.messages.collect {
+                        Snackbar.make(binding.root, it, Snackbar.LENGTH_LONG).show()
+                    }
+                }
+
+                launch {
+                    viewModel.events.collect { handleEvent(it) }
                 }
             }
         }
@@ -171,7 +204,7 @@ class AddExpenseFragment : Fragment() {
             binding.imgCategoryIcon.clearColorFilter()
 
             binding.categoryIconContainer.setCardBackgroundColor(
-                ContextCompat.getColor(requireContext(), R.color.sw_primary)
+                ContextCompat.getColor(requireContext(), R.color.sw_surface_primary)
             )
         }
         else {
@@ -225,30 +258,61 @@ class AddExpenseFragment : Fragment() {
 
         prepareForDialog()
         val selectedIndex = categories.indexOfFirst { it.id == viewModel.formState.value.categoryId }
+        val budgetedIds = viewModel.budgetedCategoryIds.value
+
+        val labels = categories.map {
+            if (it.id in budgetedIds) it.name else getString(R.string.category_not_in_budget_label, it.name)
+        }.toTypedArray()
+
 
         MaterialAlertDialogBuilder(requireContext())
             .setTitle(R.string.select_category)
-            .setSingleChoiceItems(categories.map {it.name}.toTypedArray(), selectedIndex) { dialog, index ->
-                viewModel.onCategorySelected(categories[index].id)
+            .setSingleChoiceItems(labels, selectedIndex) { dialog, index ->
+                val picked = categories[index]
                 dialog.dismiss()
+
+                if(!viewModel.onCategorySelected(picked.id)) {
+                    Snackbar.make(
+                        binding.root, getString(R.string.category_not_in_budget, picked.name),
+                        Snackbar.LENGTH_LONG
+                    ).apply {
+                        view.findViewById<TextView>(snackbar_text).maxLines = 4
+                    }.show()
+                }
             }
             .show()
+
     }
+
 
     private fun showDatePicker() {
         prepareForDialog()
 
+        val today = RelativeDateFormatter.toLocalDate(System.currentTimeMillis())
+        val monthStart = utcMidnight(today.withDayOfMonth(1))
+        val todayUtc = utcMidnight(today)
+
         val picker = MaterialDatePicker.Builder.datePicker()
             .setTitleText(R.string.select_date)
-            .setSelection(toPickerSelection(viewModel.formState.value.date))
+            .setSelection(toPickerSelection(viewModel.formState.value.date).coerceIn( monthStart, todayUtc ))
             .setCalendarConstraints(
-                CalendarConstraints.Builder().setValidator(DateValidatorPointBackward.now()).build()
+                CalendarConstraints.Builder()
+                    .setStart(monthStart)
+                    .setEnd(todayUtc)
+                    .setValidator(DateValidatorPointBackward.before(todayUtc))
+                    .build()
             )
             .build()
+
 
         picker.addOnPositiveButtonClickListener { onDatePicked(it) }
         picker.show(childFragmentManager, DATE_PICKER_TAG)
     }
+
+
+    private fun utcMidnight(date: LocalDate): Long =
+        date.atStartOfDay(ZoneOffset.UTC).toInstant().toEpochMilli()
+
 
     @Suppress("UNCHECKED_CAST")
     private fun reattachDatePickerListener() {
@@ -258,16 +322,8 @@ class AddExpenseFragment : Fragment() {
 
 
     private fun onDatePicked(utcMillis: Long) {
-        val merged = fromPickerSelection(utcMillis, viewModel.formState.value.date)
-        viewModel.onDateSelected(merged)
-
-        val pickedKey = DateRangeCalculator.periodKeyForDate(merged)
-        if(pickedKey != DateRangeCalculator.currentPeriodKey()) {
-            Snackbar.make(binding.root, getString(
-                R.string.expense_historical_date_warning,
-                RelativeDateFormatter.formatPeriodKey(pickedKey)), Snackbar.LENGTH_LONG)
-                .show()
-        }
+        viewModel.onDateSelected(fromPickerSelection(utcMillis,
+            viewModel.formState.value.date))
     }
 
 
@@ -284,6 +340,8 @@ class AddExpenseFragment : Fragment() {
         return minOf(merged, System.currentTimeMillis())
     }
 
+
+    // helpers
 
     private fun hideKeyboard() {
         WindowCompat.getInsetsController(requireActivity().window, binding.root)

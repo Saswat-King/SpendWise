@@ -5,8 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/expenses_root"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-   android:fitsSystemWindows="true">                   <!--add-->
+    android:layout_height="match_parent">
 
 
     <com.google.android.material.appbar.AppBarLayout
@@ -39,17 +38,23 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageButton
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_search_expenses"
                 android:layout_width="@dimen/sw_touch_target"
                 android:layout_height="@dimen/sw_touch_target"
                 android:layout_marginBottom="2dp"
-                android:background="?attr/selectableItemBackgroundBorderless"
+                android:backgroundTint="@color/sw_background"
                 android:contentDescription="@string/content_description_search_expenses"
-                android:src="@drawable/ic_search"
+                app:cornerRadius="20dp"
+                app:icon="@drawable/ic_search"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:iconSize="26dp"
+                app:iconTint="?attr/colorOnSurface"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:strokeWidth="0dp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -63,7 +68,7 @@
         android:clipToPadding="false"
         android:fillViewport="true"
         android:overScrollMode="never"
-        android:paddingBottom="@dimen/sw_expenses_bottom_padding"
+        android:paddingBottom="0dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -73,7 +78,7 @@
             android:paddingStart="@dimen/sw_space_24"
             android:paddingTop="@dimen/sw_space_10"
             android:paddingEnd="@dimen/sw_space_24"
-            android:paddingBottom="@dimen/sw_space_24">
+            android:paddingBottom="@dimen/sw_space_1">
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_expenses_subtitle"
@@ -93,12 +98,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/sw_space_16"
                 app:cardBackgroundColor="@color/sw_primary"
-                app:cardCornerRadius="@dimen/sw_corner_radius_26"
+                app:cardCornerRadius="@dimen/sw_corner_radius_14"
                 app:cardElevation="@dimen/sw_card_elevation"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_expenses_subtitle"
-                app:strokeWidth="0dp">
+                app:strokeWidth="@dimen/sw_stroke_width_0">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -136,7 +141,7 @@
                         android:layout_marginTop="@dimen/sw_space_10"
                         android:text="@string/amount_rupee_24580"
                         android:textColor="@color/sw_on_primary"
-                        android:textSize="@dimen/sw_text_size_36"
+                        android:textSize="@dimen/sw_text_size_32"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="@id/tv_total_expense_label"
                         app:layout_constraintStart_toStartOf="@id/tv_total_expense_label"
@@ -203,9 +208,9 @@
                                     android:id="@+id/tv_highest_expense_label"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:maxLines="1"
-                                    android:ellipsize="none"
                                     android:autoSizeTextType="uniform"
+                                    android:ellipsize="none"
+                                    android:maxLines="1"
                                     android:text="@string/highest_expense_label"
                                     android:textColor="@color/sw_on_primary_85"
                                     android:textSize="@dimen/sw_text_size_12" />
@@ -214,10 +219,10 @@
                                     android:id="@+id/tv_highest_expense_amount"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:maxLines="1"
-                                    android:ellipsize="none"
-                                    android:autoSizeTextType="uniform"
                                     android:layout_marginTop="@dimen/sw_space_3"
+                                    android:autoSizeTextType="uniform"
+                                    android:ellipsize="none"
+                                    android:maxLines="1"
                                     android:text="@string/amount_rupee_4250"
                                     android:textColor="@color/sw_on_primary"
                                     android:textSize="@dimen/sw_text_size_17"

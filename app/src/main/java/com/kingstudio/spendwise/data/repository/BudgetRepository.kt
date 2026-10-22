@@ -11,6 +11,7 @@ import com.kingstudio.spendwise.data.util.BudgetProgressCalculator
 import com.kingstudio.spendwise.data.util.DateRangeCalculator
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 interface BudgetRepository {
@@ -18,6 +19,7 @@ interface BudgetRepository {
     fun getBudgetOverviewForPeriod(periodKey: String): Flow<BudgetOverview>
     fun getCurrentPeriodBudgetOverview(): Flow<BudgetOverview>
     fun getAvailablePeriods(): Flow<List<String>>
+    fun getBudgetedCategoryIds(periodKey: String): Flow<Set<Long>>
     suspend fun ensureCurrentPeriodBudgetsExist(): Boolean
     suspend fun setBudget(categoryId: Long, amount: Double, periodKey: String = DateRangeCalculator.currentPeriodKey())
     // suspend fun saveBudget(categoryId: Long, amount: Double)
@@ -67,6 +69,12 @@ class BudgetRepositoryImpl @Inject constructor(
         getBudgetOverviewForPeriod(DateRangeCalculator.currentPeriodKey())
 
     override fun getAvailablePeriods(): Flow<List<String>> = budgetDao.getAllPeriodKeysWithBudgets()
+
+
+    override fun getBudgetedCategoryIds(periodKey: String): Flow<Set<Long>> =
+        budgetDao.getBudgetsWithCategoryForPeriod(periodKey).map {
+            list -> list.map { it.category.id }.toSet() }
+
 
     override suspend fun ensureCurrentPeriodBudgetsExist(): Boolean {
         val currentPeriod = DateRangeCalculator.currentPeriodKey()

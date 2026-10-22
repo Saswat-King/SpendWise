@@ -12,8 +12,8 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card_budget_analytics_icon_container"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
         app:cardCornerRadius="9dp"
         app:cardElevation="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -39,32 +39,49 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="2dp"
         android:autoSizeTextType="uniform"
         android:ellipsize="none"
         android:maxLines="1"
         android:textAppearance="@style/TextAppearance.SpendWise.SpendCategory"
         android:textSize="13sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/tv_budget_analytics_amount"
+        app:layout_constraintEnd_toStartOf="@+id/tv_budget_analytics_percentage"
         app:layout_constraintStart_toEndOf="@id/card_budget_analytics_icon_container"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5"
         tools:text="Shopping" />
 
     <TextView
-        android:id="@+id/tv_budget_analytics_amount"
+        android:id="@+id/tv_budget_analytics_spent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:ellipsize="end"
+        android:fontFamily="sans-serif"
+        android:gravity="center_vertical"
+        android:autoSizeTextType="uniform"
+        android:maxLines="1"
+        android:textColor="?attr/colorOnSurfaceVariant"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/tv_budget_analytics_category"
+        app:layout_constraintStart_toStartOf="@+id/tv_budget_analytics_category"
+        app:layout_constraintTop_toBottomOf="@+id/tv_budget_analytics_category"
+        tools:text="₹5.2K spent" />
+
+    <TextView
+        android:id="@+id/tv_budget_analytics_percentage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ellipsize="none"
         android:gravity="center"
         android:maxLines="1"
         android:textAppearance="@style/TextAppearance.SpendWise.SpendDescription"
-        android:textSize="10sp"
+        android:textSize="14sp"
+        android:textStyle="bold"
         android:translationY="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.5"
-        tools:text="780 / 1,000" />
+        tools:text="100%" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

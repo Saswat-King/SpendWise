@@ -25,7 +25,7 @@ class BudgetAnalyticsAdapter : ListAdapter<CategorySpendShare, BudgetAnalyticsAd
       val binding = ItemBudgetAnalyticsBinding.inflate(LayoutInflater.from(parent.context),
           parent, false)
 
-        return ViewHolder(binding)
+         return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.bind(getItem(position), currencyCode)
@@ -34,11 +34,23 @@ class BudgetAnalyticsAdapter : ListAdapter<CategorySpendShare, BudgetAnalyticsAd
     class ViewHolder(private val binding: ItemBudgetAnalyticsBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: CategorySpendShare, currencyCode: String) {
+
+            val context = binding.root.context
+            val spent  = CurrencyFormatter.formatCompact(item.spentAmount, currencyCode)
+
             binding.tvBudgetAnalyticsCategory.text = item.categoryName
 
-            binding.tvBudgetAnalyticsAmount.text = binding.root.context.getString(R.string.budget_analytics_amount,
-                CurrencyFormatter.formatCompact(item.spentAmount, currencyCode),
-                CurrencyFormatter.formatCompact(item.budgetAmount, currencyCode))
+           binding.tvBudgetAnalyticsSpent.text = if(item.categoryCount > 1) {
+               context.getString(R.string.budget_analytics_other_spent, item.categoryCount, spent)
+           } else {
+               context.getString(R.string.budget_analytics_spent, spent)
+           }
+
+
+           binding.tvBudgetAnalyticsPercentage.text = context.getString(
+               R.string.budget_analytics_percentage, item.percentOfTotalSpent)
+
+           binding.tvBudgetAnalyticsPercentage.setTextColor(CategoryIconResolver.getIconColor(item.colorHex))
 
             binding.ivBudgetAnalyticsIcon.setImageResource(
                 CategoryIconResolver.getIconResource(item.iconKey)

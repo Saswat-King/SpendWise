@@ -21,8 +21,6 @@ import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
-import com.github.mikephil.charting.formatter.PercentFormatter
-import com.github.mikephil.charting.formatter.ValueFormatter
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.kingstudio.spendwise.R
 import com.kingstudio.spendwise.data.util.BudgetPerformanceCalculator
@@ -195,24 +193,18 @@ class BudgetFragment : Fragment() {
 
         val dataSet = PieDataSet(entries,"").apply {
             this.colors = colors
-            sliceSpace = 2f
-            setDrawValues(true)
-            valueTextColor = Color.WHITE
-            valueTextSize = 12f
+//            sliceSpace = 2f
+            setDrawValues(false)
         }
 
         binding.budgetDonutChart.apply {
-            data = PieData(dataSet).apply {
-                setValueFormatter(PercentFormatter(binding.budgetDonutChart))
-            }
-
-            setUsePercentValues(true)
+            data = PieData(dataSet)
             setDrawEntryLabels(false)
             description.isEnabled = false
             legend.isEnabled = false
             setHoleColor(Color.TRANSPARENT)
             holeRadius = 55f
-            transparentCircleRadius = 58f
+//            transparentCircleRadius = 58f
             setTouchEnabled(false)
             invalidate()
         }

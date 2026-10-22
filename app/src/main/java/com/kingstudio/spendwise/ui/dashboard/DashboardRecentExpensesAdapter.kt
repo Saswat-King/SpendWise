@@ -42,9 +42,7 @@ class DashboardRecentExpensesAdapter : ListAdapter<ExpenseWithCategory, Dashboar
             binding.tvExpenseCategory.text = item.category.name
             binding.tvExpenseDescription.text = item.expense.title
 
-            binding.tvExpenseAmount.text = binding.root.context.getString(R.string.recent_expense_amount,
-                CurrencyFormatter.formatPlain(item.expense.amount, currencyCode))
-
+            binding.tvExpenseAmount.text = CurrencyFormatter.formatPlain(item.expense.amount, currencyCode)
             binding.tvExpenseDate.text = RelativeDateFormatter.format(item.expense.date)
 
             binding.ivExpenseIcon.setImageResource(

@@ -109,7 +109,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 app:cardBackgroundColor="@color/sw_surface"
-                app:cardCornerRadius="@dimen/sw_corner_radius_20"
+                app:cardCornerRadius="@dimen/sw_corner_radius_14"
                 app:cardElevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -172,13 +172,13 @@
                 android:layout_marginTop="@dimen/sw_space_20"
                 android:layout_marginEnd="@dimen/sw_space_2"
                 app:cardBackgroundColor="@color/sw_primary"
-                app:cardCornerRadius="@dimen/sw_corner_radius_24"
+                app:cardCornerRadius="@dimen/sw_corner_radius_14"
                 app:cardElevation="@dimen/sw_card_elevation"
                 app:cardUseCompatPadding="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/btn_add_budget_category"
-                app:strokeWidth="0dp">
+                app:strokeWidth="@dimen/sw_stroke_width_0">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"

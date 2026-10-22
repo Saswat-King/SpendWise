@@ -10,8 +10,6 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
-import androidx.core.os.bundleOf
-
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.viewModels
@@ -20,9 +18,10 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import com.kingstudio.spendwise.R
+import com.kingstudio.spendwise.data.util.DateRangeCalculator
 import com.kingstudio.spendwise.databinding.FragmentExpenseSearchBinding
-import com.kingstudio.spendwise.ui.expenses.list.ExpensesFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.launch
@@ -83,6 +82,11 @@ class ExpenseSearchFragment : Fragment() {
 
     private fun setupRecyclerView() {
         resultAdapter = ExpenseSearchAdapter { expenseWithCategory ->
+
+            if(!DateRangeCalculator.isInCurrentPeriod(expenseWithCategory.expense.date)) {
+                Snackbar.make(binding.root, R.string.expense_past_month_blocked, Snackbar.LENGTH_LONG).show()
+                return@ExpenseSearchAdapter
+            }
 
             WindowCompat.getInsetsController(requireActivity().window, binding.etSearchExpenses)
                 .hide(WindowInsetsCompat.Type.ime())

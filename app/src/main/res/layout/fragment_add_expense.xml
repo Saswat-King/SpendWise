@@ -90,14 +90,13 @@
                 android:layout_marginTop="@dimen/sw_space_20"
                 android:layout_marginEnd="@dimen/sw_space_2"
                 app:cardBackgroundColor="@color/sw_surface"
-                app:cardCornerRadius="@dimen/sw_corner_radius_18"
+                app:cardCornerRadius="@dimen/sw_corner_radius_14"
                 app:cardElevation="@dimen/sw_card_elevation"
                 app:cardUseCompatPadding="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_add_expense_subtitle"
-                app:strokeColor="@color/sw_outline_soft"
-                app:strokeWidth="@dimen/sw_stroke_width">
+                app:strokeWidth="@dimen/sw_stroke_width_0">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -149,17 +148,17 @@
                         android:layout_marginStart="@dimen/sw_space_14"
                         android:background="@null"
                         android:hint="@string/expense_title_hint"
+                        android:imeOptions="actionNext"
                         android:inputType="textCapSentences"
                         android:maxLength="40"
                         android:maxLines="1"
                         android:minHeight="@dimen/sw_touch_target"
+                        android:nextFocusForward="@id/et_expense_amount"
                         android:padding="0dp"
                         android:singleLine="true"
                         android:textColor="@color/sw_text_primary"
                         android:textColorHint="@color/sw_text_hint"
                         android:textSize="@dimen/sw_text_size_17"
-                        android:imeOptions="actionNext"
-                        android:nextFocusForward="@id/et_expense_amount"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@id/expense_title_icon_container"
                         app:layout_constraintTop_toBottomOf="@id/tv_expense_title_label" />
@@ -238,15 +237,14 @@
                 android:clickable="true"
                 android:focusable="true"
                 app:cardBackgroundColor="@color/sw_surface"
-                app:cardCornerRadius="@dimen/sw_corner_radius_18"
+                app:cardCornerRadius="@dimen/sw_corner_radius_14"
                 app:cardElevation="@dimen/sw_card_elevation"
                 app:cardUseCompatPadding="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/expense_amount_container"
                 app:rippleColor="@color/sw_primary_ripple"
-                app:strokeColor="@color/sw_outline_soft"
-                app:strokeWidth="@dimen/sw_stroke_width">
+                app:strokeWidth="@dimen/sw_stroke_width_0">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -328,15 +326,14 @@
                 android:clickable="true"
                 android:focusable="true"
                 app:cardBackgroundColor="@color/sw_surface"
-                app:cardCornerRadius="@dimen/sw_corner_radius_18"
+                app:cardCornerRadius="@dimen/sw_corner_radius_14"
                 app:cardElevation="@dimen/sw_card_elevation"
                 app:cardUseCompatPadding="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/category_selector_card"
                 app:rippleColor="@color/sw_primary_ripple"
-                app:strokeColor="@color/sw_outline_soft"
-                app:strokeWidth="@dimen/sw_stroke_width">
+                app:strokeWidth="@dimen/sw_stroke_width_0">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -416,14 +413,13 @@
                 android:layout_marginTop="@dimen/sw_space_16"
                 android:layout_marginEnd="@dimen/sw_space_2"
                 app:cardBackgroundColor="@color/sw_surface"
-                app:cardCornerRadius="@dimen/sw_corner_radius_18"
+                app:cardCornerRadius="@dimen/sw_corner_radius_14"
                 app:cardElevation="@dimen/sw_card_elevation"
                 app:cardUseCompatPadding="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/date_selector_card"
-                app:strokeColor="@color/sw_outline_soft"
-                app:strokeWidth="@dimen/sw_stroke_width">
+                app:strokeWidth="@dimen/sw_stroke_width_0">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"

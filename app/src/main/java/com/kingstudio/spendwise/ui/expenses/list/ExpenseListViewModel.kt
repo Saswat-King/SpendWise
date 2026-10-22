@@ -7,6 +7,7 @@ import com.kingstudio.spendwise.data.model.DateRange
 import com.kingstudio.spendwise.data.model.PeriodComparison
 import com.kingstudio.spendwise.data.repository.CurrencyRepository
 import com.kingstudio.spendwise.data.repository.ExpenseRepository
+import com.kingstudio.spendwise.data.util.DateRangeCalculator
 import com.kingstudio.spendwise.data.util.RelativeDateFormatter
 import com.kingstudio.spendwise.di.ApplicationScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -48,9 +49,9 @@ class ExpenseListViewModel @Inject constructor(
     private data class RawExpenseData(
         val expenses: List<ExpenseWithCategory>,
         val total: Double,
-        val trend: PeriodComparison,
-        val highest: ExpenseWithCategory?,
-        val lowest: ExpenseWithCategory?
+        val trend: PeriodComparison
+//        val highest: ExpenseWithCategory?,
+//        val lowest: ExpenseWithCategory?
     )
 
     @OptIn(ExperimentalCoroutinesApi::class)
@@ -59,10 +60,10 @@ class ExpenseListViewModel @Inject constructor(
             expenseRepository.getExpensesForRange(range),
             expenseRepository.getTotalExpensesForRange(range),
             expenseRepository.getExpenseTrend(range),
-            expenseRepository.getHighestExpense(range),
-            expenseRepository.getLowestExpense(range)
-        ) { expenses, total, trend, highest, lowest ->
-            RawExpenseData(expenses, total, trend, highest, lowest)
+//            expenseRepository.getHighestExpense(range),
+//            expenseRepository.getLowestExpense(range)
+        ) { expenses, total, trend  ->
+            RawExpenseData(expenses, total, trend)
         }
     }
 
@@ -79,7 +80,10 @@ class ExpenseListViewModel @Inject constructor(
         }
         else {
             ExpenseListUiState.Success(
-                summary = ExpensesSummary(raw.total, raw.trend, raw.highest, raw.lowest),
+                summary = ExpensesSummary(raw.total, raw.trend,
+                    highestCategory = visible.toCategoryTotals().maxByOrNull { it.total },
+                    lowestCategory = visible.toCategoryTotals().minByOrNull { it.total }
+                ),
                 groups = visible.groupByDate()
             )
         }
@@ -102,6 +106,8 @@ class ExpenseListViewModel @Inject constructor(
 
     fun onDeleteExpense(item: ExpenseWithCategory) {
         val expenses = item.expense
+
+        if(!DateRangeCalculator.isInCurrentPeriod(expenses.date)) return
 
         if(_pendingDeletions.value.containsKey(expenses.id)) return
 
@@ -136,6 +142,12 @@ class ExpenseListViewModel @Inject constructor(
                 )
             }
     }
+
+    private fun List<ExpenseWithCategory>.toCategoryTotals(): List<CategoryTotal> =
+        groupBy { it.category.id }.map { (_, items) ->
+            CategoryTotal(items.first().category, items.sumOf { it.expense.amount })
+        }
+
 
     private fun ExpenseWithCategory.matchesSearch(query: String): Boolean {
         val q = query.trim().lowercase()

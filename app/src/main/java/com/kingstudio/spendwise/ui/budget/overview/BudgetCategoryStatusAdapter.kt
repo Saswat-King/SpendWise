@@ -41,12 +41,39 @@ class BudgetCategoryStatusAdapter :
             val context = binding.root.context
 
             binding.tvBudgetStatusCategoryName.text = item.categoryName
-            binding.tvBudgetStatusBudget.text = CurrencyFormatter.formatCompact(item.budgetAmount, currencyCode)
-            binding.tvBudgetStatusSpent.text = CurrencyFormatter.formatCompact(item.spentAmount, currencyCode)
-            binding.tvBudgetStatusRemaining.text = CurrencyFormatter.formatCompact(item.remainingAmount, currencyCode)
+
+            binding.tvBudgetStatusSpent.text = context.getString(
+                R.string.budget_status_spent_of,
+                CurrencyFormatter.formatCompact(item.spentAmount, currencyCode),
+                CurrencyFormatter.formatCompact(item.budgetAmount, currencyCode)
+            )
+
+            binding.tvBudgetStatusPercent.text = context.getString(R.string.budget_status_percent, item.displayPercent)
+            binding.budgetStatusProgress.progress = item.displayPercent
+
+            val (colorRes, labelRes) = when {
+                item.isOver -> Pair(R.color.sw_indicator_dark_red_bg, R.string.budget_status_over)
+                item.isFullyUsed -> Pair(R.color.sw_indicator_light_red_bg, R.string.budget_status_fully_used)
+                item.zone == BudgetZone.SAFE -> Pair(R.color.sw_indicator_green_bg, R.string.budget_status_on_track)
+                else -> Pair(R.color.sw_indicator_amber_bg, R.string.budget_status_near_limit)
+            }
+
+            val color = ContextCompat.getColor(context, colorRes)
+            binding.budgetStatusProgress.setIndicatorColor(color)
+            binding.tvBudgetStatusPercent.setTextColor(color)
+            binding.tvBudgetStatusBadge.setTextColor(color)
+            binding.tvBudgetStatusBadge.setText(labelRes)
+
+            binding.tvBudgetStatusRemaining.text = if (item.isOver) {
+                context.getString(R.string.budget_status_over_by,
+                    CurrencyFormatter.formatCompact(-item.remainingAmount, currencyCode))
+            } else {
+                context.getString(R.string.budget_status_remaining,
+                    CurrencyFormatter.formatCompact(item.remainingAmount, currencyCode))
+            }
+
 
             binding.budgetStatusProgress.progress = item.percentUsed.coerceIn(0,100)
-            binding.tvBudgetStatusBadge.text = item.statusLabel
 
             binding.ivBudgetStatusCategoryIcon.setImageResource(
                 CategoryIconResolver.getIconResource(item.iconKey)
@@ -59,16 +86,6 @@ class BudgetCategoryStatusAdapter :
             binding.cardBudgetStatusIconContainer.setCardBackgroundColor(
                 CategoryIconResolver.getLightBackgroundColor(item.colorHex)
             )
-
-            val (indicatorColorRes, badgeColorRes) = when (item.zone) {
-                BudgetZone.SAFE -> R.color.sw_indicator_green_bg to R.color.sw_badge_bg
-                BudgetZone.CAUTION -> R.color.sw_indicator_amber_bg to R.color.sw_indicator_amber_bg
-                BudgetZone.DANGER -> R.color.sw_indicator_red_bg to R.color.sw_indicator_red_bg
-            }
-
-            binding.budgetStatusProgress.setIndicatorColor(ContextCompat.getColor(context, indicatorColorRes))
-            binding.cardBudgetStatusBadge.setCardBackgroundColor(ContextCompat.getColor(context, badgeColorRes))
-
         }
     }
 

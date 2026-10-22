@@ -137,7 +137,7 @@ class CreateBudgetFragment : Fragment() {
         when(event) {
             is BudgetSetupUiEvent.BudgetSaved -> {
                 findNavController().navigate(
-                    R.id.action_budgetSetup_to_dashboard
+                    R.id.action_budget_setup_or_update_to_dashboard
                 )
             }
 

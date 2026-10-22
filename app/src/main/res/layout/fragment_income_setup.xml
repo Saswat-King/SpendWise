@@ -253,14 +253,13 @@
                 android:focusable="true"
                 android:foreground="?attr/selectableItemBackground"
                 app:cardBackgroundColor="@color/sw_surface"
-                app:cardCornerRadius="@dimen/sw_corner_radius_18"
+                app:cardCornerRadius="@dimen/sw_corner_radius_14"
                 app:cardElevation="@dimen/sw_card_elevation"
                 app:cardUseCompatPadding="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_additional_income_description"
-                app:strokeColor="@color/sw_outline_soft"
-                app:strokeWidth="@dimen/sw_stroke_width">
+                app:strokeWidth="@dimen/sw_stroke_width_0">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -359,14 +358,13 @@
                 android:focusable="true"
                 android:foreground="?attr/selectableItemBackground"
                 app:cardBackgroundColor="@color/sw_surface"
-                app:cardCornerRadius="@dimen/sw_corner_radius_18"
+                app:cardCornerRadius="@dimen/sw_corner_radius_14"
                 app:cardElevation="@dimen/sw_card_elevation"
                 app:cardUseCompatPadding="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/bonus_income_card"
-                app:strokeColor="@color/sw_outline_soft"
-                app:strokeWidth="@dimen/sw_stroke_width">
+                app:strokeWidth="@dimen/sw_stroke_width_0">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -465,14 +463,13 @@
                 android:focusable="true"
                 android:foreground="?attr/selectableItemBackground"
                 app:cardBackgroundColor="@color/sw_surface"
-                app:cardCornerRadius="@dimen/sw_corner_radius_18"
+                app:cardCornerRadius="@dimen/sw_corner_radius_14"
                 app:cardElevation="@dimen/sw_card_elevation"
                 app:cardUseCompatPadding="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/freelance_income_card"
-                app:strokeColor="@color/sw_outline_soft"
-                app:strokeWidth="@dimen/sw_stroke_width">
+                app:strokeWidth="@dimen/sw_stroke_width_0">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -568,13 +565,13 @@
                 android:layout_marginTop="@dimen/sw_space_24"
                 android:layout_marginEnd="@dimen/sw_space_2"
                 app:cardBackgroundColor="@color/sw_primary"
-                app:cardCornerRadius="@dimen/sw_corner_radius_24"
+                app:cardCornerRadius="@dimen/sw_corner_radius_14"
                 app:cardElevation="@dimen/sw_card_elevation"
                 app:cardUseCompatPadding="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/other_income_card"
-                app:strokeWidth="0dp">
+                app:strokeWidth="@dimen/sw_stroke_width_0">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"

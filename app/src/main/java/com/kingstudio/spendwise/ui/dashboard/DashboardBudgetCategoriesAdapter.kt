@@ -12,6 +12,7 @@ import com.kingstudio.spendwise.data.model.CategoryBudgetProgress
 import com.kingstudio.spendwise.data.util.CurrencyFormatter
 import com.kingstudio.spendwise.databinding.ItemDashboardBudgetCategoriesBinding
 import com.kingstudio.spendwise.ui.common.CategoryIconResolver
+import com.kingstudio.spendwise.ui.common.indicatorColor
 
 class DashboardBudgetCategoriesAdapter : ListAdapter<CategoryBudgetProgress, DashboardBudgetCategoriesAdapter.ViewHolder>(DiffCallback) {
 
@@ -43,22 +44,9 @@ class DashboardBudgetCategoriesAdapter : ListAdapter<CategoryBudgetProgress, Das
         fun bind(item: CategoryBudgetProgress, currencyCode: String) {
             binding.tvBudgetCategoryName.text = item.category.name
 
-            binding.tvBudgetCategoryPercent.text =  binding.root.context.getString(
-                R.string.budget_category_percent, item.percentUsed)
-
             binding.budgetCategoryProgress.progress = item.percentUsed.coerceIn(0,100)
 
-            binding.tvBudgetCategoryAmount.text = binding.root.context.getString(R.string.budget_category_amount,
-                    CurrencyFormatter.formatPlain(item.spentAmount, currencyCode, 0),
-                    CurrencyFormatter.formatPlain(item.budgetAmount, currencyCode,0))
-
-            val color = when(item.zone) {
-                BudgetZone.SAFE -> "#4CAF50".toColorInt()
-                BudgetZone.CAUTION -> "#FFA726".toColorInt()
-                BudgetZone.DANGER -> "#EF5350".toColorInt()
-            }
-
-            binding.budgetCategoryProgress.setIndicatorColor(color)
+            binding.budgetCategoryProgress.setIndicatorColor(item.zone.indicatorColor())
 
             binding.ivBudgetCategoryIcon.setImageResource(
                 CategoryIconResolver.getIconResource(item.category.iconKey)

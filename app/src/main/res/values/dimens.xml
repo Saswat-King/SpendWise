@@ -46,6 +46,7 @@
 
     <!-- Strokes and elevation -->
     <dimen name="sw_stroke_width">1dp</dimen>
+    <dimen name="sw_stroke_width_0">0dp</dimen>
     <dimen name="sw_stroke_width_emphasized">1.5dp</dimen>
     <dimen name="sw_card_elevation">2dp</dimen>
     <dimen name="sw_floating_elevation">3dp</dimen>

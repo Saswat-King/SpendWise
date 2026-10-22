@@ -1,13 +1,17 @@
 package com.kingstudio.spendwise.ui.expenses.addedit
 
+
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.kingstudio.spendwise.R
 import com.kingstudio.spendwise.data.local.entity.CategoryEntity
 import com.kingstudio.spendwise.data.local.entity.ExpenseEntity
+import com.kingstudio.spendwise.data.repository.BudgetRepository
 import com.kingstudio.spendwise.data.repository.CategoryRepository
 import com.kingstudio.spendwise.data.repository.CurrencyRepository
 import com.kingstudio.spendwise.data.repository.ExpenseRepository
+import com.kingstudio.spendwise.data.util.DateRangeCalculator
 import com.kingstudio.spendwise.ui.common.DecimalInputFilter
 import com.kingstudio.spendwise.ui.expenses.list.ExpenseUiEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -26,6 +30,7 @@ import javax.inject.Inject
 @HiltViewModel
 class AddEditExpenseViewModel @Inject constructor(
     private val expenseRepository: ExpenseRepository,
+    private val budgetRepository: BudgetRepository,
     private val categoryRepository: CategoryRepository,
     private val currencyRepository: CurrencyRepository,
     savedStateHandle: SavedStateHandle
@@ -51,13 +56,26 @@ class AddEditExpenseViewModel @Inject constructor(
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000),emptyList())
 
 
+    val budgetedCategoryIds: StateFlow<Set<Long>> = budgetRepository
+        .getBudgetedCategoryIds(DateRangeCalculator.currentPeriodKey())
+        .stateIn(viewModelScope, SharingStarted.Eagerly, emptySet())
+
+    private var originalCategoryId: Long? = null
+
+
     private val _events = Channel<ExpenseUiEvent>()
     val events: Flow<ExpenseUiEvent> = _events.receiveAsFlow()
+
+    private val _messages = Channel<Int>()
+    val messages: Flow<Int> = _messages.receiveAsFlow()
+
 
     init {
         if(isEditMode) {
             viewModelScope.launch {
                 expenseRepository.getExpenseById(expenseId!!)?.let { expense ->
+                    originalCategoryId = expense.categoryId
+
                     _formState.update {
                         it.copy(
                             expenseId = expense.id,
@@ -75,10 +93,17 @@ class AddEditExpenseViewModel @Inject constructor(
 
     fun onTitleChanged(title: String) = _formState.update { it.copy(title = title.take(TITLE_MAX_LENGTH), titleError = null) }
     fun onAmountChanged(amount: String) = _formState.update { it.copy(amount = amount, amountError = null) }
-    fun onCategorySelected(categoryId: Long) = _formState.update { it.copy(categoryId = categoryId, categoryError = null) }
+
+    fun onCategorySelected(categoryId: Long): Boolean {
+        if(!canUseCategory(categoryId)) return false
+        _formState.update { it.copy(categoryId = categoryId, categoryError = null) }
+        return true
+    }
+
     fun onDateSelected(epochMillis: Long) =  _formState.update { it.copy(date = epochMillis) }
     fun onNoteChanged(note: String) = _formState.update { it.copy(note = note.take(NOTE_MAX_LENGTH)) }
 
+    private fun canUseCategory(categoryId: Long) = categoryId in budgetedCategoryIds.value || categoryId == originalCategoryId
 
     fun saveExpense() {
         val current = _formState.value
@@ -103,7 +128,18 @@ class AddEditExpenseViewModel @Inject constructor(
             _formState.update { it.copy(categoryError = "Select a category") }
             hasError = true
         }
+
+        if(current.categoryId != null && !canUseCategory(current.categoryId) ) {
+            _formState.update { it.copy(categoryError = "Category not in budget") }
+            hasError = true
+        }
+
         if(hasError) return
+
+        if(!DateRangeCalculator.isInCurrentPeriod(current.date)) {
+            viewModelScope.launch{ _messages.send(R.string.expense_past_month_blocked) }
+            return
+        }
 
 
         viewModelScope.launch {

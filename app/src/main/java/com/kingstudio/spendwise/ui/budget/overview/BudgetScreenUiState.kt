@@ -9,7 +9,8 @@ data class CategorySpendShare(
     val iconKey: String,
     val colorHex: String,
     val spentAmount: Double,
-    val budgetAmount: Double
+    val percentOfTotalSpent: Int,
+    val categoryCount: Int = 1
 )
 
 data class BudgetCategoryRow(
@@ -21,8 +22,20 @@ data class BudgetCategoryRow(
     val remainingAmount: Double,
     val percentUsed: Int,
     val zone: BudgetZone,
-    val statusLabel: String
-)
+//    val statusLabel: String
+) {
+    val isOver: Boolean get() = remainingAmount < -MONEY_EPSILON
+    val isFullyUsed: Boolean get() = !isOver && remainingAmount <= MONEY_EPSILON
+
+    val displayPercent: Int get() = when {
+        isOver || isFullyUsed -> 100
+        budgetAmount <= 0.0 -> 0
+        else -> ((spentAmount / budgetAmount) * 100).toInt()
+    }
+}
+
+private const val MONEY_EPSILON = 0.005
+
 
 data class BudgetScreenUiState(
     val selectedPeriodKey: String,
@@ -39,8 +52,8 @@ sealed class BudgetScreenState {
     object Empty : BudgetScreenState()
 }
 
-fun BudgetZone.toStatusLabel(): String = when(this) {
-    BudgetZone.SAFE -> "On Track"
-    BudgetZone.CAUTION -> "Near Limit"
-    BudgetZone.DANGER -> "Over Budget"
-}
+//fun BudgetZone.toStatusLabel(): String = when(this) {
+//    BudgetZone.SAFE -> "On Track"
+//    BudgetZone.CAUTION -> "Near Limit"
+//    BudgetZone.DANGER -> "Over Budget"
+//}

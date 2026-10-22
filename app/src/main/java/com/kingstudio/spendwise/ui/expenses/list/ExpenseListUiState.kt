@@ -1,5 +1,6 @@
 package com.kingstudio.spendwise.ui.expenses.list
 
+import com.kingstudio.spendwise.data.local.entity.CategoryEntity
 import com.kingstudio.spendwise.data.local.relation.ExpenseWithCategory
 import com.kingstudio.spendwise.data.model.DateRange
 import com.kingstudio.spendwise.data.model.PeriodComparison
@@ -10,12 +11,17 @@ data class ExpenseGroup(
     val expenses: List<ExpenseWithCategory>
 )
 
+data class CategoryTotal(
+    val category: CategoryEntity,
+    val total: Double
+)
+
 
 data class ExpensesSummary(
     val totalAmount: Double,
     val trend: PeriodComparison,
-    val highestExpense: ExpenseWithCategory?,
-    val lowestExpense: ExpenseWithCategory?
+    val highestCategory: CategoryTotal?,
+    val lowestCategory: CategoryTotal?
 )
 
 sealed class ExpenseListUiState {

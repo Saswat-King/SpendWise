@@ -2,6 +2,7 @@ package com.kingstudio.spendwise.ui.budget.overview
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.kingstudio.spendwise.data.model.CategoryBudgetProgress
 import com.kingstudio.spendwise.data.model.DateRange
 import com.kingstudio.spendwise.data.repository.BudgetRepository
 import com.kingstudio.spendwise.data.repository.CurrencyRepository
@@ -19,6 +20,9 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.stateIn
 import javax.inject.Inject
+
+private const val BREAKDOWN_TOP_COUNT = 3
+private const val OTHER_COLOR_HEX = "#90A4AE"
 
 @HiltViewModel
 class BudgetScreenViewModel @Inject constructor(
@@ -50,15 +54,8 @@ class BudgetScreenViewModel @Inject constructor(
                 BudgetScreenState.Empty
             }
             else {
-                val spendShares = overview.categoryProgress.map { cp ->
-                    CategorySpendShare(
-                        categoryName = cp.category.name,
-                        iconKey = cp.category.iconKey,
-                        colorHex = cp.category.colorHex,
-                        spentAmount = cp.spentAmount,
-                        budgetAmount = cp.budgetAmount
-                    )
-                }
+                val spendShares = buildSpendBreakdown(overview.categoryProgress)
+
                 val performancePoints = BudgetPerformanceCalculator.calculate(
                     periodKey = periodKey,
                     totalBudget = overview.totalBudget,
@@ -76,7 +73,6 @@ class BudgetScreenViewModel @Inject constructor(
                         remainingAmount = cp.remainingAmount,
                         percentUsed = cp.percentUsed,
                         zone = cp.zone,
-                        statusLabel = cp.zone.toStatusLabel()
                     )
                 }
                 BudgetScreenState.Success(
@@ -99,5 +95,44 @@ class BudgetScreenViewModel @Inject constructor(
 
     fun onPeriodSelected(periodKey: String) {
         _selectedPeriodKey.value = periodKey
+    }
+
+
+    private fun buildSpendBreakdown(progress: List<CategoryBudgetProgress>): List<CategorySpendShare> {
+        val spending = progress.filter { it.spentAmount > 0 }.sortedByDescending { it.spentAmount }
+        if(spending.isEmpty()) return emptyList()
+
+        val top = if(spending.size <= BREAKDOWN_TOP_COUNT + 1) spending else spending.take(BREAKDOWN_TOP_COUNT)
+        val rest = spending.drop(top.size)
+
+        val shares = top.map{
+            CategorySpendShare(
+                it.category.name,
+                it.category.iconKey,
+                it.category.colorHex,
+                it.spentAmount,
+                0
+            )
+        }.toMutableList()
+
+        if(rest.isNotEmpty()) {
+            shares += CategorySpendShare(
+                "Other", "ic_other",
+                OTHER_COLOR_HEX, rest.sumOf { it.spentAmount },
+                0, rest.size
+            )
+        }
+
+        val percents = roundedPercents(shares.map { it.spentAmount })
+        return shares.mapIndexed { index, share -> share.copy(percentOfTotalSpent = percents[index])}
+    }
+
+
+    private fun roundedPercents(values: List<Double>): List<Int> {
+        val raw = values.map { it / values.sum()*100 }
+        val result = raw.map { it.toInt() }.toMutableList()
+        val byRemainder = raw.indices.sortedByDescending { raw[it] - result[it] }
+        repeat(100 - result.sum()) { result[byRemainder[it]]++ }
+        return result
     }
 }

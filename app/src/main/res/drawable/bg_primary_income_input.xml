@@ -8,6 +8,6 @@
         android:width="@dimen/sw_primary_input_stroke_width"
         android:color="@color/sw_outline_primary" />
 
-    <corners android:radius="@dimen/sw_corner_radius_18" />
+    <corners android:radius="@dimen/sw_corner_radius_14" />
 
 </shape>

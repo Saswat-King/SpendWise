@@ -76,4 +76,6 @@ object DateRangeCalculator {
 
     private fun Long.toLocalDate(): LocalDate =
         Instant.ofEpochMilli(this).atZone(zone).toLocalDate()
+
+    fun isInCurrentPeriod(epochMillis: Long) = periodKeyForDate(epochMillis) == currentPeriodKey()
 }

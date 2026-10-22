@@ -26,7 +26,7 @@ object CurrencyFormatter {
         }
 
         val sign = if(amount < 0) "-" else ""
-        return "$sign$symbol${numberFormat.format(amount)}"
+        return "$sign$symbol${numberFormat.format(abs(amount))}"
     }
 
 

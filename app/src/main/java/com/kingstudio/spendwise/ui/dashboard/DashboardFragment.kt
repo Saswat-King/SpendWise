@@ -18,8 +18,10 @@ import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.kingstudio.spendwise.R
 import com.kingstudio.spendwise.data.local.dao.ExpenseDao
+import com.kingstudio.spendwise.data.util.BudgetProgressCalculator
 import com.kingstudio.spendwise.data.util.CurrencyFormatter
 import com.kingstudio.spendwise.databinding.FragmentDashboardBinding
+import com.kingstudio.spendwise.ui.common.indicatorColor
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.launch
@@ -81,7 +83,6 @@ class DashboardFragment : Fragment() {
         binding.rvRecentExpensesPreview.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = recentExpenseAdapter
-            setHasFixedSize(true)
         }
     }
 
@@ -114,8 +115,15 @@ class DashboardFragment : Fragment() {
         if(data.budgetOverview != null) {
             binding.budgetProgressContainer.visibility = View.VISIBLE
             binding.rvBudgetCategoriesPreview.visibility = View.VISIBLE
-            binding.budgetCircularProgress.progress = data.budgetOverview.utilizationPercent
-            binding.tvBudgetPercent.text = getString(R.string.dashboard_budget_percent, data.budgetOverview.utilizationPercent)
+
+            val ringPercent = data.budgetOverview.utilizationPercent.coerceIn(0, 100)
+            binding.budgetCircularProgress.progress = ringPercent
+
+            binding.budgetCircularProgress.setIndicatorColor(
+                BudgetProgressCalculator.calculateZone(ringPercent).indicatorColor()
+            )
+
+            binding.tvBudgetPercent.text = getString(R.string.dashboard_budget_percent, ringPercent)
             binding.tvBudgetUsedAmount.text = CurrencyFormatter.formatCompact(data.budgetOverview.totalSpent, currencyCode)
 
             binding.tvBudgetTotalAmount.text = getString(R.string.dashboard_budget_total_amount,

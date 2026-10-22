@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -15,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.kingstudio.spendwise.R
 import com.kingstudio.spendwise.data.util.CurrencyFormatter
+import com.kingstudio.spendwise.data.util.DateRangeCalculator
 import com.kingstudio.spendwise.databinding.FragmentExpensesBinding
 import com.kingstudio.spendwise.ui.common.CategoryIconResolver
 import dagger.hilt.android.AndroidEntryPoint
@@ -69,14 +69,27 @@ class ExpensesFragment : Fragment() {
         groupAdapter = ExpenseGroupAdapter(
             onRowClicked = { expenseWithCategory ->
 
-                val action = ExpensesFragmentDirections.actionNavExpensesToAddEditExpense(
+                if(DateRangeCalculator.isInCurrentPeriod(expenseWithCategory.expense.date)) {
+                    val action = ExpensesFragmentDirections.actionNavExpensesToAddEditExpense(
                         expenseWithCategory.expense.id)
 
-                findNavController().navigate(action)
+                    findNavController().navigate(action)
+                }
+
+                else {
+                    showPastMonthLocked()
+                }
             },
 
             onRowLongPressed = { expenseWithCategory ->
-                viewModel.onDeleteExpense(expenseWithCategory)
+
+                if(DateRangeCalculator.isInCurrentPeriod(expenseWithCategory.expense.date)) {
+                    viewModel.onDeleteExpense(expenseWithCategory)
+                }
+
+                else {
+                    showPastMonthLocked()
+                }
             }
         )
         binding.rvExpenses.apply {
@@ -126,9 +139,9 @@ class ExpensesFragment : Fragment() {
     private fun renderSummary(summary: ExpensesSummary, currencyCode: String) {
         binding.tvTotalExpenseAmount.text = CurrencyFormatter.formatCompact(summary.totalAmount, currencyCode)
 
-        val highest = summary.highestExpense
+        val highest = summary.highestCategory
         if(highest != null) {
-            binding.tvHighestExpenseAmount.text = CurrencyFormatter.formatCompact(highest.expense.amount, currencyCode)
+            binding.tvHighestExpenseAmount.text = CurrencyFormatter.formatCompact(highest.total, currencyCode)
 
             binding.ivHighestExpenseIcon.setImageResource(
                 CategoryIconResolver.getIconResource(highest.category.iconKey)
@@ -139,9 +152,9 @@ class ExpensesFragment : Fragment() {
         }
 
 
-        val lowest = summary.lowestExpense
+        val lowest = summary.lowestCategory
         if(lowest != null) {
-            binding.tvLowestExpenseAmount.text = CurrencyFormatter.formatCompact(lowest.expense.amount, currencyCode)
+            binding.tvLowestExpenseAmount.text = CurrencyFormatter.formatCompact(lowest.total, currencyCode)
 
             binding.ivLowestExpenseIcon.setImageResource(
                 CategoryIconResolver.getIconResource(lowest.category.iconKey)
@@ -164,6 +177,10 @@ class ExpensesFragment : Fragment() {
 
             }
         }
+    }
+
+    private fun showPastMonthLocked() {
+        Snackbar.make(binding.root, R.string.expense_past_month_blocked, Snackbar.LENGTH_LONG).show()
     }
 
 

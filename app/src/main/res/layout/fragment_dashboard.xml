@@ -113,13 +113,13 @@
                 android:layout_marginTop="@dimen/sw_space_16"
                 android:layout_marginEnd="@dimen/sw_space_2"
                 app:cardBackgroundColor="@color/sw_primary"
-                app:cardCornerRadius="@dimen/sw_corner_radius_20"
+                app:cardCornerRadius="@dimen/sw_corner_radius_14"
                 app:cardElevation="@dimen/sw_card_elevation"
                 app:cardUseCompatPadding="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_overview"
-                app:strokeWidth="0dp">
+                app:strokeWidth="@dimen/sw_stroke_width_0">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -171,7 +171,7 @@
                         android:maxLines="1"
                         android:text="@string/amount_dollar_zero"
                         android:textColor="@color/sw_on_primary"
-                        android:textSize="@dimen/sw_text_size_28"
+                        android:textSize="@dimen/sw_text_size_32"
                         app:layout_constraintEnd_toStartOf="@id/vertical_top_guideline"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tv_available_balance_label" />
@@ -200,8 +200,8 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:strokeColor="@color/sw_on_primary_40"
-                        app:strokeWidth="@dimen/sw_stroke_width"/>
-<!--                        android:text="@string/dashboard_filter_this_month"/>-->
+                        app:strokeWidth="@dimen/sw_stroke_width" />
+                    <!--                        android:text="@string/dashboard_filter_this_month"/>-->
 
                     <com.github.mikephil.charting.charts.LineChart
                         android:id="@+id/balance_chart"
@@ -232,7 +232,7 @@
                         android:gravity="start"
                         android:text="@string/income_label"
                         android:textColor="@color/sw_on_primary_85"
-                        android:textSize="@dimen/sw_text_size_13"
+                        android:textSize="@dimen/sw_text_size_16"
                         app:layout_constraintEnd_toStartOf="@id/vertical_bottom_guideline"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/divider_balance" />
@@ -247,7 +247,7 @@
                         android:maxLines="1"
                         android:text="@string/amount_dollar_income_zero"
                         android:textColor="@color/sw_on_primary"
-                        android:textSize="@dimen/sw_text_size_17"
+                        android:textSize="@dimen/sw_text_size_20"
                         app:layout_constraintEnd_toEndOf="@id/tv_income_label"
                         app:layout_constraintStart_toStartOf="@id/tv_income_label"
                         app:layout_constraintTop_toBottomOf="@id/tv_income_label" />
@@ -271,7 +271,7 @@
                         android:layout_marginTop="@dimen/sw_space_12"
                         android:text="@string/expense_label"
                         android:textColor="@color/sw_on_primary_85"
-                        android:textSize="@dimen/sw_text_size_13"
+                        android:textSize="@dimen/sw_text_size_16"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@id/vertical_bottom_guideline"
                         app:layout_constraintTop_toBottomOf="@id/divider_balance" />
@@ -286,7 +286,7 @@
                         android:maxLines="1"
                         android:text="@string/amount_dollar_expense_zero"
                         android:textColor="@color/sw_on_primary"
-                        android:textSize="@dimen/sw_text_size_17"
+                        android:textSize="@dimen/sw_text_size_20"
                         app:layout_constraintEnd_toEndOf="@id/tv_expense_label"
                         app:layout_constraintStart_toStartOf="@id/tv_expense_label"
                         app:layout_constraintTop_toBottomOf="@id/tv_expense_label" />
@@ -303,14 +303,13 @@
                 android:layout_marginTop="@dimen/sw_space_16"
                 android:layout_marginEnd="@dimen/sw_space_2"
                 app:cardBackgroundColor="@color/sw_surface"
-                app:cardCornerRadius="@dimen/sw_corner_radius_18"
+                app:cardCornerRadius="@dimen/sw_corner_radius_14"
                 app:cardElevation="@dimen/sw_card_elevation"
                 app:cardUseCompatPadding="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/balance_card"
-                app:strokeColor="@color/sw_outline_subtle"
-                app:strokeWidth="@dimen/sw_stroke_width">
+                app:strokeWidth="@dimen/sw_stroke_width_0">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -458,14 +457,13 @@
                 android:layout_marginTop="@dimen/sw_space_16"
                 android:layout_marginEnd="@dimen/sw_space_2"
                 app:cardBackgroundColor="@color/sw_surface"
-                app:cardCornerRadius="@dimen/sw_corner_radius_18"
+                app:cardCornerRadius="@dimen/sw_corner_radius_14"
                 app:cardElevation="@dimen/sw_card_elevation"
                 app:cardUseCompatPadding="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/budget_overview_card"
-                app:strokeColor="@color/sw_outline_subtle"
-                app:strokeWidth="@dimen/sw_stroke_width">
+                app:strokeWidth="@dimen/sw_stroke_width_0">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -510,7 +508,6 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/sw_space_12"
-                        android:layout_marginBottom="@dimen/sw_space_12"
                         android:clipToPadding="false"
                         android:minHeight="@dimen/sw_dashboard_recent_list_min_height"
                         android:nestedScrollingEnabled="false"
@@ -534,14 +531,13 @@
                 android:layout_marginTop="@dimen/sw_space_16"
                 android:layout_marginEnd="@dimen/sw_space_2"
                 app:cardBackgroundColor="@color/sw_surface"
-                app:cardCornerRadius="@dimen/sw_corner_radius_18"
+                app:cardCornerRadius="@dimen/sw_corner_radius_14"
                 app:cardElevation="@dimen/sw_card_elevation"
                 app:cardUseCompatPadding="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/recent_expenses_card"
-                app:strokeColor="@color/sw_outline_subtle"
-                app:strokeWidth="@dimen/sw_stroke_width">
+                app:strokeWidth="@dimen/sw_stroke_width_0">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"

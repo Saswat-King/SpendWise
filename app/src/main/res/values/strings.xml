@@ -139,7 +139,7 @@
     <string name="budget_category_amount">%1$s / %2$s</string>
 
     <!-- Expense List Adapter -->
-    <string name="recent_expense_amount">-%1$s</string>
+    <string name="recent_expense_amount">%1$s</string>
     <string name="recent_expenses_title">Recent Expenses</string>
 
     <string name="dashboard_ai_insight_title">AI Insight</string>
@@ -185,9 +185,12 @@
     <string name="category_label">Category</string>
     <string name="select_category">Select category</string>
 
+    <string name="category_not_in_budget">%1$s isn\'t in your budget. It was removed or never added. Add it to your budget first to record expenses under it.</string>
+    <string name="category_not_in_budget_label">%1$s (not in budget)</string>
+
     <string name="date_label">Date</string>
     <string name="select_date">Select date</string>
-    <string name="expense_historical_date_warning">This expense will be counted in %1$s</string>
+   <string name="expense_past_month_blocked">Expenses from previous months are locked. You can\'t add, edit, or delete them.</string>
 
     <string name="note_optional_label">Note (Optional)</string>
     <string name="note_hint">Add a short note</string>
@@ -215,7 +218,9 @@
     <string name="budget_progress_info">You\'ve used %1$d%% of your total budget</string>
 <!--    <string name="budget_usage_message" formatted="false">You\'ve used 65% of your budget</string>-->
     <string name="budget_analytics_title">Budget Analytics</string>
-    <string name="budget_analytics_amount">%1$s / %2$s</string>
+    <string name="budget_analytics_percentage">%1$d%%</string>
+    <string name="budget_analytics_spent">%1$s spent</string>
+    <string name="budget_analytics_other_spent">%1$d categories · %2$s</string>
 
 
     <string name="budget_performance_title">Budget Performance</string>
@@ -225,9 +230,14 @@
     <string name="budget_performance_subtitle">Daily budget usage trend</string>
     <string name="budget_categories_title">Budget Categories</string>
 
-    <string name="budget_status_budget_amount">%1$,.0f</string>
-    <string name="budget_status_spent_amount">%1$,.0f</string>
-    <string name="budget_status_remaining_amount">%1$,.0f</string>
+    <string name="budget_status_spent_of">%1$s spent of %2$s</string>
+    <string name="budget_status_percent">%1$d%%</string>
+    <string name="budget_status_on_track">On track</string>
+    <string name="budget_status_near_limit">Near limit</string>
+    <string name="budget_status_fully_used">Fully used</string>
+    <string name="budget_status_over">Over budget</string>
+    <string name="budget_status_remaining">%1$s remaining</string>
+    <string name="budget_status_over_by">%1$s over budget</string>
 
 
     <!-- AI insights -->

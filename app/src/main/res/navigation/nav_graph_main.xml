@@ -4,6 +4,12 @@
     android:id="@+id/nav_graph_main"
     app:startDestination="@id/incomeSetupFragment">
 
+    <action
+        android:id="@+id/action_budget_setup_or_update_to_dashboard"
+        app:destination="@id/nav_dashboard"
+        app:popUpTo="@id/nav_graph_main"
+        app:popUpToInclusive="true" />
+
 
     <fragment
         android:id="@+id/incomeSetupFragment"
@@ -21,11 +27,6 @@
         <argument android:name="formMode" android:defaultValue="SETUP" app:argType="string"/>
 
 <!--        profileSetup -->
-
-        <action android:id="@+id/action_budgetSetup_to_dashboard"
-            app:destination="@+id/nav_dashboard"
-            app:popUpTo="@id/nav_graph_main"
-            app:popUpToInclusive="true"/>
 
 <!--        profileSetup to dashboard-->
 

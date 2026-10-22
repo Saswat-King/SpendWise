@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="56dp"
-    android:paddingStart="2dp"
-    android:paddingEnd="2dp">
+    android:layout_height="wrap_content"
+    android:paddingStart="8dp"
+    android:paddingTop="8dp"
+    android:paddingEnd="8dp"
+    android:paddingBottom="8dp">
 
     <!-- Category icon -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card_budget_status_icon_container"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
         app:cardCornerRadius="10dp"
         app:cardElevation="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:strokeWidth="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:strokeWidth="0dp"
         tools:cardBackgroundColor="@color/sw_spend_bg_shopping">
 
         <ImageView
@@ -25,124 +27,131 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:importantForAccessibility="no"
-            android:padding="8dp"
-            android:scaleType="centerInside"
+            android:padding="11dp"
+            android:scaleType="fitCenter"
             tools:src="@drawable/ic_shopping_bag"
             tools:tint="@color/sw_spend_icon_shopping" />
 
     </com.google.android.material.card.MaterialCardView>
 
-    <!-- Category name + progress -->
+    <!-- Category title and amount spent -->
     <LinearLayout
         android:id="@+id/layout_budget_category_info"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="6dp"
+        android:layout_marginStart="12dp"
         android:layout_marginEnd="8dp"
         android:gravity="center_vertical"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/tv_budget_status_budget"
         app:layout_constraintStart_toEndOf="@id/card_budget_status_icon_container"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintEnd_toStartOf="@id/tv_budget_status_percent"
+        app:layout_constraintTop_toTopOf="@id/card_budget_status_icon_container"
+        app:layout_constraintBottom_toBottomOf="@id/card_budget_status_icon_container">
 
         <TextView
             android:id="@+id/tv_budget_status_category_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:autoSizeTextType="uniform"
-            android:ellipsize="none"
+            android:fontFamily="sans-serif-medium"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
             android:maxLines="1"
-            android:textAppearance="@style/TextAppearance.SpendWise.SpendCategory"
-            android:textSize="14sp"
-            tools:text="Entertainment" />
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:text="Enjoyment" />
 
-        <com.google.android.material.progressindicator.LinearProgressIndicator
-            android:id="@+id/budget_status_progress"
-            style="@style/Widget.SpendWise.BudgetProgressIndicator"
+        <TextView
+            android:id="@+id/tv_budget_status_spent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:indeterminate="false"
-            android:max="100"
-            android:progress="65"
-            app:indicatorColor="@color/sw_indicator_green_bg"
-            app:indicatorTrackGapSize="0dp"
-            app:trackColor="@color/sw_progress_track"
-            app:trackStopIndicatorSize="0dp"
-            app:trackThickness="5dp" />
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            android:textSize="14sp"
+            tools:text="₹1.2K spent of ₹500" />
 
     </LinearLayout>
 
-    <!-- Budget -->
+    <!-- Spending percentage: top-aligned with category title -->
     <TextView
-        android:id="@+id/tv_budget_status_budget"
-        android:layout_width="52dp"
+        android:id="@+id/tv_budget_status_percent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="2dp"
-        android:ellipsize="end"
-        android:gravity="center"
+        android:layout_marginTop="4dp"
+        android:fontFamily="sans-serif"
+        android:gravity="end"
+        android:includeFontPadding="false"
         android:maxLines="1"
-        android:textAppearance="@style/TextAppearance.SpendWise.SpendAmount"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/tv_budget_status_spent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="$250.00" />
-
-    <!-- Spent -->
-    <TextView
-        android:id="@+id/tv_budget_status_spent"
-        android:layout_width="52dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="2dp"
-        android:ellipsize="end"
-        android:gravity="center"
-        android:maxLines="1"
-        android:textAppearance="@style/TextAppearance.SpendWise.SpendAmount"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/tv_budget_status_remaining"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="$162.50" />
-
-    <!-- Remaining -->
-    <TextView
-        android:id="@+id/tv_budget_status_remaining"
-        android:layout_width="52dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="2dp"
-        android:ellipsize="end"
-        android:gravity="center"
-        android:maxLines="1"
-        android:textAppearance="@style/TextAppearance.SpendWise.SpendAmount"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/card_budget_status_badge"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="$87.50k" />
-
-    <!-- Status -->
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/card_budget_status_badge"
-        android:layout_width="60dp"
-        android:layout_height="20dp"
-        app:cardCornerRadius="8dp"
-        app:cardElevation="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textColor="?attr/colorError"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:strokeWidth="0dp">
+        tools:text="100%" />
 
-        <TextView
-            android:id="@+id/tv_budget_status_badge"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:maxLines="1"
-            android:textAppearance="@style/TextAppearance.SpendWise.SpendDescription"
-            android:textSize="10sp" />
+    <!-- Status directly below the percentage; no extra card -->
+    <TextView
+        android:id="@+id/tv_budget_status_badge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:fontFamily="sans-serif"
+        android:gravity="end"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:textColor="?attr/colorError"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_budget_status_percent"
+        tools:text="Over budget" />
 
-    </com.google.android.material.card.MaterialCardView>
+    <!-- Progress bar below the complete top row -->
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/budget_status_progress"
+        style="@style/Widget.SpendWise.BudgetProgressIndicator"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:indeterminate="false"
+        android:max="100"
+        android:progress="100"
+        app:indicatorColor="?attr/colorError"
+        app:indicatorTrackGapSize="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_budget_category_info"
+        app:trackColor="@color/sw_progress_track"
+        app:trackStopIndicatorSize="0dp"
+        app:trackThickness="6dp"
+        tools:progress="100" />
+
+    <!-- Amount exceeding the budget -->
+    <TextView
+        android:id="@+id/tv_budget_status_remaining"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="?attr/colorOnSurfaceVariant"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/budget_status_progress"
+        tools:text="₹700 over budget" />
+
+    <!-- Divider between categories -->
+    <View
+        android:id="@+id/view_budget_status_divider"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="16dp"
+        android:background="?attr/colorOutlineVariant"
+        android:importantForAccessibility="no"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_budget_status_remaining" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
