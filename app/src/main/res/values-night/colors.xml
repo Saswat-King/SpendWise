@@ -85,7 +85,7 @@
 
     <!-- Authentication -->
     <color name="sw_auth_primary">#087747</color>
-    <color name="sw_auth_accent">#8FD8B5</color>
+    <color name="sw_auth_accent">#5AC894</color>
     <color name="sw_auth_text_primary">#F2F4F7</color>
     <color name="sw_auth_icon_container">#1A3027</color>
     <color name="sw_auth_text_hint">#AAB2BD</color>

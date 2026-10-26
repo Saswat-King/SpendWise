@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/sw_background">
+
+    <ImageButton
+        android:id="@+id/btn_back"
+        android:layout_width="@dimen/sw_touch_target"
+        android:layout_height="@dimen/sw_touch_target"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/content_description_back"
+        android:padding="@dimen/sw_space_12"
+        android:src="@drawable/ic_arrow_back"
+        app:layout_constraintBottom_toBottomOf="@id/search_card"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/search_card"
+        app:tint="@color/sw_text_primary" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/search_card"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="@dimen/sw_space_16"
+        android:layout_marginEnd="24dp"
+        app:cardBackgroundColor="@color/category_card_background"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btn_back"
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeColor="@color/sw_auth_accent"
+        app:strokeWidth="1dp">
+
+        <EditText
+            android:id="@+id/et_search_expenses"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:hint="@string/hint_search_expenses"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingStart="@dimen/sw_space_16"
+            android:paddingTop="@dimen/sw_space_12"
+            android:paddingEnd="@dimen/sw_space_16"
+            android:paddingBottom="@dimen/sw_space_12"
+            android:textColor="@color/sw_text_primary"
+            android:textColorHint="@color/sw_text_hint"
+            android:textSize="@dimen/sw_text_size_16" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_search_results"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/sw_space_16"
+        android:clipToPadding="false"
+        android:paddingBottom="@dimen/sw_space_16"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/search_card" />
+
+    <!-- Empty state shown when the search returns no expenses -->
+    <LinearLayout
+        android:id="@+id/empty_state"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/sw_space_24"
+        android:layout_marginEnd="@dimen/sw_space_24"
+        android:layout_marginBottom="32dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/rv_search_results"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_card">
+
+        <ImageView
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:contentDescription="@null"
+            android:padding="@dimen/sw_space_12"
+            android:src="@drawable/ic_search"
+            app:tint="@color/sw_text_secondary" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sw_space_12"
+            android:gravity="center"
+            android:text="No results found"
+            android:textColor="@color/sw_text_primary"
+            android:textSize="@dimen/sw_text_size_18"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sw_space_4"
+            android:gravity="center"
+            android:text="Try a different search term."
+            android:textColor="@color/sw_text_secondary"
+            android:textSize="@dimen/sw_text_size_14" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

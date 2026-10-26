@@ -107,6 +107,32 @@
     </fragment>
 
 
+
+    <dialog
+        android:id="@+id/fabActionSheet"
+        android:name="com.kingstudio.spendwise.ui.fab.FabActionSheet"
+        android:label="Quick Action">
+
+        <action
+            android:id="@+id/action_fabSheet_to_addExpense"
+            app:destination="@+id/addEditExpenseFragment"
+            app:popUpToInclusive="true"/>
+
+        <action
+            android:id="@+id/action_fabSheet_to_budgetUpdate"
+            app:destination="@+id/budgetUpdateFragment"
+            app:popUpTo="@id/fabActionSheet"
+            app:popUpToInclusive="true"/>
+
+        <action
+            android:id="@+id/action_fabSheet_to_incomeUpdate"
+            app:destination="@+id/incomeUpdateFragment"
+            app:popUpTo="@id/fabActionSheet"
+            app:popUpToInclusive="true"/>
+
+    </dialog>
+
+
 <!--    profile update -->
 
 </navigation>

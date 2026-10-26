@@ -9,6 +9,7 @@ import com.kingstudio.spendwise.data.repository.BudgetRepository
 import com.kingstudio.spendwise.data.repository.CategoryRepository
 import com.kingstudio.spendwise.data.repository.CurrencyRepository
 import com.kingstudio.spendwise.data.repository.IncomeRepository
+import com.kingstudio.spendwise.data.repository.PeriodRollover
 import com.kingstudio.spendwise.ui.common.DecimalInputFilter
 import com.kingstudio.spendwise.ui.common.FormMode
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -30,7 +31,7 @@ import javax.inject.Inject
 class BudgetSetupViewModel @Inject constructor(
     private val budgetRepository: BudgetRepository,
     private val categoryRepository: CategoryRepository,
-    private val incomeRepository: IncomeRepository,
+    private val periodRollover: PeriodRollover,
     private val currencyRepository: CurrencyRepository,
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
@@ -40,7 +41,12 @@ class BudgetSetupViewModel @Inject constructor(
 
     val currencyCode: Flow<String> = currencyRepository.selectedCurrencyCode
 
-    private val _formState = MutableStateFlow(BudgetSetupFormState(mode = mode))
+   private val _formState = MutableStateFlow(BudgetSetupFormState(
+       mode = mode,
+       screenTitle = if(mode == FormMode.UPDATE) "Manage Your Monthly Budget" else "Create Your Monthly Budget",
+       buttonLabel = if(mode == FormMode.UPDATE) "Save Changes" else "Continue"
+
+   ))
     val formState: StateFlow<BudgetSetupFormState> = _formState.asStateFlow()
 
     val summary: StateFlow<BudgetSetupSummary> = _formState
@@ -61,26 +67,7 @@ class BudgetSetupViewModel @Inject constructor(
     init {
         viewModelScope.launch {
 
-            val incomeEntries = incomeRepository.getCurrentPeriodIncomes().first()
-            val frequencyLabel = when(incomeEntries.firstOrNull()?.frequency) {
-                IncomeFrequency.YEARLY -> "Yearly"
-                else -> "Monthly"
-            }
-
-            val screenTitle = if(mode == FormMode.UPDATE) {
-                "Manage Your $frequencyLabel Budget"
-            }
-            else {
-                "Create Your $frequencyLabel Budget"
-            }
-
-            _formState.update { state ->
-                state.copy(
-                    screenTitle = screenTitle,
-                    buttonLabel = if(mode == FormMode.UPDATE) "Save Changes" else "Continue"
-
-                )
-            }
+           periodRollover.ensureCurrentPeriod()
 
             val allCategories = categoryRepository.getAllCategories().first()
 
@@ -98,12 +85,12 @@ class BudgetSetupViewModel @Inject constructor(
                     .categoryProgress.associate{ it.category.id to it.budgetAmount }
             } else emptyMap()
 
-            _formState.update {
-                it.copy(
+            _formState.update { currentState ->
+                currentState.copy(
                     categoryInputs = relevantCategories.map { category ->
                         BudgetCategoryInput(
                             category = category,
-                            amount = existingAmounts[category.id]?.toString() ?: ""
+                            amount = existingAmounts[category.id]?.let { existingAmount -> DecimalInputFilter.toInputString(existingAmount) } ?: ""
                         )
                     }
                 )

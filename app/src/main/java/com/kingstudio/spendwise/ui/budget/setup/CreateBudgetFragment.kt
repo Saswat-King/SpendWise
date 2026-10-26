@@ -136,9 +136,13 @@ class CreateBudgetFragment : Fragment() {
     private fun handleEvent(event: BudgetSetupUiEvent) {
         when(event) {
             is BudgetSetupUiEvent.BudgetSaved -> {
-                findNavController().navigate(
-                    R.id.action_budget_setup_or_update_to_dashboard
-                )
+                val navController = findNavController()
+                if(navController.currentDestination?.id == R.id.budgetUpdateFragment){
+                    navController.popBackStack()
+                }
+                else {
+                    navController.navigate(R.id.action_budget_setup_or_update_to_dashboard)
+                }
             }
 
             is BudgetSetupUiEvent.ShowEmptyBudgetMessage -> {

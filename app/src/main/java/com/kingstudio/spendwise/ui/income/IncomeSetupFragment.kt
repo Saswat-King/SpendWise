@@ -282,9 +282,13 @@ class IncomeSetupFragment : Fragment() {
     private fun handleEvent(event: IncomeUiEvent) {
         when(event) {
             is IncomeUiEvent.IncomeSaved -> {
-                findNavController().navigate(
-                    R.id.action_incomeSetup_to_budgetSetup
-                )
+                val navController = findNavController()
+                if(navController.currentDestination?.id == R.id.incomeUpdateFragment){
+                    navController.popBackStack()
+                }
+                else {
+                    navController.navigate(R.id.action_incomeSetup_to_budgetSetup)
+                }
             }
             is IncomeUiEvent.LowIncomeWarning -> {
                 Snackbar.make(binding.root,

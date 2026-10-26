@@ -8,6 +8,7 @@ import com.kingstudio.spendwise.data.local.entity.IncomeFrequency
 import com.kingstudio.spendwise.data.local.entity.IncomeSource
 import com.kingstudio.spendwise.data.repository.CurrencyRepository
 import com.kingstudio.spendwise.data.repository.IncomeRepository
+import com.kingstudio.spendwise.data.repository.PeriodRollover
 import com.kingstudio.spendwise.ui.common.DecimalInputFilter
 import com.kingstudio.spendwise.ui.common.FormMode
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -29,6 +30,7 @@ import javax.inject.Inject
 class IncomeSetupViewModel @Inject constructor(
     private val incomeRepository: IncomeRepository,
     private val currencyRepository: CurrencyRepository,
+    private val periodRollover: PeriodRollover,
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
@@ -72,7 +74,7 @@ class IncomeSetupViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            incomeRepository.ensureCurrentPeriodSalaryExists()
+            periodRollover.ensureCurrentPeriod()
 
             if (mode == FormMode.UPDATE) {
                 val existing = incomeRepository.getCurrentPeriodIncomes().first()
@@ -82,13 +84,13 @@ class IncomeSetupViewModel @Inject constructor(
                         current.copy(
                             frequency = frequency,
                             primaryIncomeAmount = existing
-                                .find { it.source == IncomeSource.SALARY }?.amount?.toString() ?: "",
+                                .find { it.source == IncomeSource.SALARY }?.amount?.let { DecimalInputFilter.toInputString(it) } ?: "",
                             bonusAmount = existing
-                                .find { it.source == IncomeSource.BONUS }?.amount?.toString() ?: "",
+                                .find { it.source == IncomeSource.BONUS }?.amount?.let { DecimalInputFilter.toInputString(it) } ?: "",
                             freelanceAmount = existing
-                                .find { it.source == IncomeSource.FREELANCE }?.amount?.toString() ?: "",
+                                .find { it.source == IncomeSource.FREELANCE }?.amount?.let { DecimalInputFilter.toInputString(it) } ?: "",
                             otherAmount = existing
-                                .find { it.source == IncomeSource.OTHER }?.amount?.toString() ?: ""
+                                .find { it.source == IncomeSource.OTHER }?.amount?.let { DecimalInputFilter.toInputString(it) } ?: ""
                         )
                     }
                 }

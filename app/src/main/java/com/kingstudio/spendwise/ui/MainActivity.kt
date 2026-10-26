@@ -1,5 +1,6 @@
 package com.kingstudio.spendwise.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.enableEdgeToEdge
@@ -7,16 +8,23 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
-import androidx.navigation.findNavController
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.kingstudio.spendwise.R
+import com.kingstudio.spendwise.data.repository.PeriodRollover
+import com.kingstudio.spendwise.data.util.DateRangeCalculator
 import com.kingstudio.spendwise.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+
+    @Inject lateinit var periodRollover: PeriodRollover
+    private val launchPeriodKey = DateRangeCalculator.currentPeriodKey()
 
     private val fullScreenDestinations = setOf(
         R.id.incomeSetupFragment,
@@ -60,8 +68,20 @@ class MainActivity : AppCompatActivity() {
 
 
       binding.floatingActionButton.setOnClickListener {
-          navController.navigate(R.id.addEditExpenseFragment)
+          if(navController.currentDestination?.id != R.id.fabActionSheet) {
+              navController.navigate(R.id.fabActionSheet)
+          }
       }
 
+    }
+
+    override fun onStart() {
+        super.onStart()
+        if(DateRangeCalculator.currentPeriodKey() != launchPeriodKey) {
+            finish()
+            startActivity(Intent(this, MainActivity::class.java))
+            return
+        }
+        lifecycleScope.launch { periodRollover.ensureCurrentPeriod() }
     }
 }

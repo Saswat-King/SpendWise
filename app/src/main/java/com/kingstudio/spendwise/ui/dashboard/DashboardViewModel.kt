@@ -19,7 +19,6 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -30,12 +29,7 @@ class DashboardViewModel @Inject constructor(
     private val currencyRepository: CurrencyRepository
 ) : ViewModel() {
 
-    init {
-        viewModelScope.launch {
-            incomeRepository.ensureCurrentPeriodSalaryExists()
-            budgetRepository.ensureCurrentPeriodBudgetsExist()
-        }
-    }
+
     private val previousPeriodKey = DateRangeCalculator.previousPeriodKey()
     private val previousPeriodRange: DateRange = DateRangeCalculator
         .epochRangeForPeriodKey(previousPeriodKey)
