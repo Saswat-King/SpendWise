@@ -23,7 +23,5 @@ app/src/main/java/com/kingstudio/spendwise/SignUpFragment.kt
 app/src/main/res/layout/fragment_profile_setup.xml
 app/src/main/java/com/kingstudio/spendwise/ProfileSetupFragment.kt
 app/src/main/res/drawable/test.xml
-app/src/main/java/com/kingstudio/spendwise/ui/MainActivity.kt
-app/src/main/java/com/kingstudio/spendwise/data/repository/PeriodRollover.kt
- pop back stack false not want
- message to show that duplicate budget categories not allowed
+# pop back stack false not want
+# message to show that duplicate budget categories not allowed
