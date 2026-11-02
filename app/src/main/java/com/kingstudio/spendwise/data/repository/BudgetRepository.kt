@@ -94,8 +94,10 @@ class BudgetRepositoryImpl @Inject constructor(
 
 
     override suspend fun setBudget(categoryId: Long, amount: Double, periodKey: String) {
+       val existing = budgetDao.getBudgetByCategory(categoryId, periodKey)
         budgetDao.upsertBudget(
-            BudgetEntity(categoryId = categoryId, periodKey = periodKey, amount = amount)
+            existing?.copy(amount = amount)
+                ?: BudgetEntity(categoryId = categoryId, periodKey = periodKey, amount = amount)
         )
     }
 
