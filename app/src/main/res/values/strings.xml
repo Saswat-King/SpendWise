@@ -252,6 +252,24 @@
     <string name="budget_warnings_title">Budget Warnings</string>
     <string name="view_all_budgets">View All Budgets</string>
 
+
+
+    <!-- Insight Templates-->
+    <string name="insight_spending_warning_exceeds">At this pace you\'ll spend about %1$s this month, %2$d%% more than your income.</string>
+    <string name="insight_spending_warning_within">At this pace you\'ll spend about %1$s this month, around %2$d%% of your income.</string>
+    <string name="insight_category_shift">%1$s spending is up %2$d%% (%3$s more) compared with the same point last month.</string>
+    <string name="insight_weekend_pattern">You spend about %1$d%% more on %2$s days, around %3$s a day.</string>
+    <string name="insight_unusual_expense">One %1$s expense of %2$s makes up %3$d%% of this month\'s spending.</string>
+    <string name="insight_no_spend_days">You\'ve had %1$d no-spend days this month. Nice work.</string>
+    <string name="insight_small_spends">Small purchases add up to %1$s, %2$d%% of this month\'s spending.</string>
+    <!-- AI Saving Tips -->
+
+    <string name="insight_saving_tip_savings">Setting money aside as soon as income arrives is the easiest way to raise your savings.</string>
+    <string name="insight_saving_tip_budget">Look at the categories closest to their limits and ease off spending there first.</string>
+    <string name="insight_saving_tip_default">Compare this month\'s bigger purchases with last month\'s to see what changed.</string>
+
+
+
     <!-- Default and preview values -->
     <string name="default_currency_symbol">₹</string>
     <string name="input_zero">0</string>
